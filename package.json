@@ -9,7 +9,8 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "jest",
-    "dev": "preppy --watch --exec"
+    "dev": "preppy --watch --exec",
+    "build": "preppy"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +23,7 @@
     "eslint-config-react-app": "^7.0.0",
     "jest": "^27.4.7",
     "meow": "^9.0.0",
+    "pkg-dir": "^5.0.0",
     "preppy": "^11.0.2"
   },
   "peerDependencies": {
