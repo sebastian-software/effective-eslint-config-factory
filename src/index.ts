@@ -20,17 +20,17 @@ export async function main(flags: CliOptions) {
   const tsRecommended = await getTypeScriptRecommended()
   console.log("TypeScript:", tsRecommended)
 
-  const prettierDisabled = await getPrettierDisabledRules()
-  console.log("Prettier:", prettierDisabled)
-
-  const craRecommended = await getCreateReactAppRecommended()
-  console.log("CRA:", craRecommended)
-
   const jsxRecommended = await getJSXRecommended()
   console.log("JSX:", jsxRecommended)
 
   const hooksRecommended = await getReactHooksRecommended()
   console.log("ReactHooks:", hooksRecommended)
+
+  const craRecommended = await getCreateReactAppRecommended()
+  console.log("CRA:", craRecommended)
+
+  const prettierDisabled = await getPrettierDisabledRules()
+  console.log("Prettier:", prettierDisabled)
 }
 
 async function getESLintRecommended() {
