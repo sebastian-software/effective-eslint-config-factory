@@ -1,6 +1,7 @@
 import pkgDir from 'pkg-dir';
 import {join} from "path"
-import { configs } from "eslint-plugin-react"
+
+import { Linter } from "eslint"
 
 interface CliOptions {
   nodejs: boolean
@@ -8,32 +9,79 @@ interface CliOptions {
   typescript: boolean
 }
 
-export async function main(flags: CliOptions) {
-  console.log("Effective ESLint...", flags)
-
-  const eslintRecommended = await getESLintRecommended()
-  console.log("ESLint:",eslintRecommended)
-
-  const reactRecommended = await getReactRecommended()
-  console.log("React:", reactRecommended)
-
-  const tsRecommended = await getTypeScriptRecommended()
-  console.log("TypeScript:", tsRecommended)
-
-  const jsxRecommended = await getJSXRecommended()
-  console.log("JSX:", jsxRecommended)
-
-  const hooksRecommended = await getReactHooksRecommended()
-  console.log("ReactHooks:", hooksRecommended)
-
-  const craRecommended = await getCreateReactAppRecommended()
-  console.log("CRA:", craRecommended)
-
-  const prettierDisabled = await getPrettierDisabledRules()
-  console.log("Prettier:", prettierDisabled)
+interface RuleLoaderReturn {
+  config?: any
+  rules: Linter.RulesRecord
 }
 
-async function getESLintRecommended() {
+type OriginRuleConfig = Record<string, Linter.RuleEntry>
+type OrginStructuredRules = Record<string, OriginRuleConfig>
+type KeyValue = Record<string, any>
+
+function mergeIntoStructure(source: RuleLoaderReturn, originName: string, dist: OrginStructuredRules) {
+  const { rules, config } = source
+
+  for (const ruleName in rules) {
+    if (!dist[ruleName]) {
+      dist[ruleName] = {}
+    }
+    dist[ruleName][originName] = rules[ruleName]
+  }
+}
+
+function sortRules(source: KeyValue) {
+  const ruleNames = Object.keys(source)
+  ruleNames.sort((first: string, second: string) => {
+    if ((first.includes("/") && second.includes("/")) || (!first.includes("/") && !second.includes("/"))) {
+      return first > second ? 1 : -1
+    }
+    if (first.includes("/")) {
+      return 1
+    }
+    if (second.includes("/")) {
+      return -1
+    }
+
+    return 0
+  })
+
+  const result: KeyValue = {}
+  for (const ruleName of ruleNames) {
+    result[ruleName] = source[ruleName]
+  }
+  return result
+}
+
+export async function main(flags: CliOptions) {
+  console.log("Effective ESLint...", flags)
+  const dist: OrginStructuredRules = {}
+
+  const eslintRecommended = await getESLintRecommended()
+  mergeIntoStructure(eslintRecommended, "eslint", dist)
+
+  const reactRecommended = await getReactRecommended()
+  mergeIntoStructure(reactRecommended, "react", dist)
+
+  const tsRecommended = await getTypeScriptRecommended()
+  mergeIntoStructure(tsRecommended, "ts", dist)
+
+  const jsxRecommended = await getJSXRecommended()
+  mergeIntoStructure(jsxRecommended, "jsx", dist)
+
+  const hooksRecommended = await getReactHooksRecommended()
+  mergeIntoStructure(hooksRecommended, "hooks", dist)
+
+  const craRecommended = await getCreateReactAppRecommended()
+  mergeIntoStructure(craRecommended, "cra", dist)
+
+  const prettierDisabled = await getPrettierDisabledRules()
+  mergeIntoStructure(prettierDisabled, "prettier", dist)
+
+  const result = sortRules(dist)
+  console.log(result)
+}
+
+async function getESLintRecommended(): Promise<RuleLoaderReturn> {
   const root = await pkgDir(require.resolve("eslint"))
   if (!root) {
     throw new Error("Installation Issue: ESLint package was not found!")
@@ -45,7 +93,7 @@ async function getESLintRecommended() {
   }
 }
 
-async function getReactRecommended() {
+async function getReactRecommended(): Promise<RuleLoaderReturn> {
   const react = await import("eslint-plugin-react")
   const { rules, ...config } = react.configs.recommended
   return {
@@ -54,33 +102,34 @@ async function getReactRecommended() {
   }
 }
 
-async function getTypeScriptRecommended(typeChecks=true) {
+async function getTypeScriptRecommended(typeChecks=true): Promise<RuleLoaderReturn> {
   const { configs } = await import("@typescript-eslint/eslint-plugin")
   const config = configs.base
-  const recommended = configs.recommended.rules
-  const tsc = typeChecks ? configs["recommended-requiring-type-checking"].rules : {}
+  const recommended = configs.recommended.rules as Linter.RulesRecord
+  const tsc = typeChecks ? configs["recommended-requiring-type-checking"].rules as Linter.RulesRecord : {}
+  const rules: Linter.RulesRecord = { ...recommended, ...tsc }
 
   return {
     config,
-    rules: { ...recommended, ...tsc }
+    rules
   }
 }
 
-async function getPrettierDisabledRules() {
+async function getPrettierDisabledRules(): Promise<RuleLoaderReturn> {
   process.env.ESLINT_CONFIG_PRETTIER_NO_DEPRECATED = "true"
 
   const { rules } = await import("eslint-config-prettier")
   return { rules }
 }
 
-async function getCreateReactAppRecommended() {
+async function getCreateReactAppRecommended(): Promise<RuleLoaderReturn> {
   const { rules } = await import("eslint-config-react-app")
   return {
     rules
   }
 }
 
-async function getJSXRecommended() {
+async function getJSXRecommended(): Promise<RuleLoaderReturn> {
   const plugin = await import("eslint-plugin-jsx-a11y")
   const { rules, ...config } = plugin.configs.recommended
   return {
@@ -89,7 +138,7 @@ async function getJSXRecommended() {
   }
 }
 
-async function getReactHooksRecommended() {
+async function getReactHooksRecommended(): Promise<RuleLoaderReturn> {
   const plugin = await import("eslint-plugin-react-hooks")
   const { rules, ...config } = plugin.configs.recommended
   return { config, rules }
