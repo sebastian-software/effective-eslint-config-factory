@@ -22,6 +22,9 @@ export async function main(flags: CliOptions) {
 
   const prettierDisabled = await getPrettierDisabledRules()
   console.log("Prettier:", prettierDisabled)
+
+  const craRecommended = await getCreateReactAppRecommended()
+  console.log("CRA:", craRecommended)
 }
 
 async function getESLintRecommended() {
@@ -62,4 +65,11 @@ async function getPrettierDisabledRules() {
 
   const { rules } = await import("eslint-config-prettier")
   return { rules }
+}
+
+async function getCreateReactAppRecommended() {
+  const { rules } = await import("eslint-config-react-app")
+  return {
+    rules
+  }
 }
