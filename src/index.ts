@@ -16,6 +16,12 @@ export async function main(flags: CliOptions) {
 
   const reactRecommended = await getReactRecommended()
   console.log("React:", reactRecommended)
+
+  const tsRecommended = await getTypeScriptRecommended()
+  console.log("TypeScript:", tsRecommended)
+
+  const prettierDisabled = await getPrettierDisabledRules()
+  console.log("Prettier:", prettierDisabled)
 }
 
 async function getESLintRecommended() {
@@ -34,7 +40,26 @@ async function getReactRecommended() {
   const react = await import("eslint-plugin-react")
   const { rules, ...config } = react.configs.recommended
   return {
-    rules,
-    config
+    config,
+    rules
   }
+}
+
+async function getTypeScriptRecommended(typeChecks=true) {
+  const { configs } = await import("@typescript-eslint/eslint-plugin")
+  const config = configs.base
+  const recommended = configs.recommended.rules
+  const tsc = typeChecks ? configs["recommended-requiring-type-checking"].rules : {}
+
+  return {
+    config,
+    rules: { ...recommended, ...tsc }
+  }
+}
+
+async function getPrettierDisabledRules() {
+  process.env.ESLINT_CONFIG_PRETTIER_NO_DEPRECATED = "true"
+
+  const { rules } = await import("eslint-config-prettier")
+  return { rules }
 }

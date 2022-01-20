@@ -16,15 +16,18 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/eslint-config-prettier": "^6.11.0",
     "@typescript-eslint/eslint-plugin": "^5.10.0",
     "eslint": "*",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.3.0",
     "eslint-config-react-app": "^7.0.0",
     "jest": "^27.4.7",
     "meow": "^9.0.0",
     "pkg-dir": "^5.0.0",
-    "preppy": "^11.0.2"
+    "preppy": "^11.0.2",
+    "prettier": "^2.5.1"
   },
   "peerDependencies": {
     "eslint": "^8.7.0"
