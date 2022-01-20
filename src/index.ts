@@ -28,6 +28,9 @@ export async function main(flags: CliOptions) {
 
   const jsxRecommended = await getJSXRecommended()
   console.log("JSX:", jsxRecommended)
+
+  const hooksRecommended = await getReactHooksRecommended()
+  console.log("ReactHooks:", hooksRecommended)
 }
 
 async function getESLintRecommended() {
@@ -84,4 +87,10 @@ async function getJSXRecommended() {
     config,
     rules
   }
+}
+
+async function getReactHooksRecommended() {
+  const plugin = await import("eslint-plugin-react-hooks")
+  const { rules, ...config } = plugin.configs.recommended
+  return { config, rules }
 }
