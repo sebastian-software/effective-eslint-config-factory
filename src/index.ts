@@ -18,6 +18,17 @@ type OriginRuleConfig = Record<string, Linter.RuleEntry>
 type OrginStructuredRules = Record<string, OriginRuleConfig>
 type KeyValue = Record<string, any>
 
+const ignoreRules = /^(vue|flowtype|standard)\//
+
+function removedFilteredRules(rules: KeyValue) {
+  const ruleNames = Object.keys(rules).filter((ruleName) => !ignoreRules.test(ruleName))
+  const filteredRules: KeyValue = {}
+  for (const ruleName of ruleNames) {
+    filteredRules[ruleName] = rules[ruleName]
+  }
+  return filteredRules
+}
+
 function mergeIntoStructure(source: RuleLoaderReturn, originName: string, dist: OrginStructuredRules) {
   const { rules, config } = source
 
@@ -77,7 +88,7 @@ export async function main(flags: CliOptions) {
   const prettierDisabled = await getPrettierDisabledRules()
   mergeIntoStructure(prettierDisabled, "prettier", dist)
 
-  const result = sortRules(dist)
+  const result = sortRules(removedFilteredRules(dist))
   console.log(result)
 }
 
