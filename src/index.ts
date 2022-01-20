@@ -88,8 +88,13 @@ export async function main(flags: CliOptions) {
   const prettierDisabled = await getPrettierDisabledRules()
   mergeIntoStructure(prettierDisabled, "prettier", dist)
 
+
+
   const result = sortRules(removedFilteredRules(dist))
   console.log(result)
+
+  getAirbnbBase()
+  getAirbnbReact()
 }
 
 async function getESLintRecommended(): Promise<RuleLoaderReturn> {
@@ -153,4 +158,22 @@ async function getReactHooksRecommended(): Promise<RuleLoaderReturn> {
   const plugin = await import("eslint-plugin-react-hooks")
   const { rules, ...config } = plugin.configs.recommended
   return { config, rules }
+}
+
+async function getAirbnbBase(): Promise<RuleLoaderReturn> {
+  const plugin = await import("eslint-config-airbnb-base")
+  console.log("BASE:", plugin.extends)
+}
+
+
+async function getAirbnbReact(): Promise<RuleLoaderReturn> {
+  const plugin = await import("eslint-config-airbnb")
+  console.log("REACT:", plugin.extends)
+
+  const loader = plugin.extends.filter((importPath: string) => !importPath.includes("airbnb-base")).map((importPath: string) => require(importPath))
+
+  console.log("Loader:", loader)
+  // TODO
+
+  return loader
 }
