@@ -25,6 +25,9 @@ export async function main(flags: CliOptions) {
 
   const craRecommended = await getCreateReactAppRecommended()
   console.log("CRA:", craRecommended)
+
+  const jsxRecommended = await getJSXRecommended()
+  console.log("JSX:", jsxRecommended)
 }
 
 async function getESLintRecommended() {
@@ -70,6 +73,15 @@ async function getPrettierDisabledRules() {
 async function getCreateReactAppRecommended() {
   const { rules } = await import("eslint-config-react-app")
   return {
+    rules
+  }
+}
+
+async function getJSXRecommended() {
+  const plugin = await import("eslint-plugin-jsx-a11y")
+  const { rules, ...config } = plugin.configs.recommended
+  return {
+    config,
     rules
   }
 }
