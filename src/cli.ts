@@ -3,28 +3,30 @@ import { main } from '.';
 
 const cli = meow(`
 	Usage
-	  $ foo <input>
+	  $ effective-eslint
 
 	Options
-	  --rainbow, -r  Include a rainbow
+	  --nodejs, -n  Enable NodeJS support
+		--react, -r  Enable React support
+		--typescript, -t  Enable TypeScript support
 
-	Examples
-	  $ foo unicorns --rainbow
-	  🌈 unicorns 🌈
+	Example
+	  $ effective-eslint --react --typescript
 `, {
 	flags: {
-		rainbow: {
+		nodejs: {
 			type: 'boolean',
-			alias: 'r'
+			alias: 'n'
+		},
+		react: {
+			type: 'boolean',
+			alias: 'n'
+		},
+		typescript: {
+			type: 'boolean',
+			alias: 'n'
 		}
 	}
 });
-/*
-{
-	input: ['unicorns'],
-	flags: {rainbow: true},
-	...
-}
-*/
 
-main(cli.input[0], cli.flags);
+main(cli.flags);
