@@ -16,11 +16,10 @@ describe("getSingleSourceKey()", () => {
 
 describe("getEqualValue", () => {
   test("return result when one value", () => {
-    expect(
-      getEqualValue([
-        { first: 1, second: 2 }
-      ])
-    ).toEqual({ first: 1, second: 2 })
+    expect(getEqualValue([{ first: 1, second: 2 }])).toEqual({
+      first: 1,
+      second: 2
+    })
   })
 })
 
