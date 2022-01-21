@@ -1,5 +1,6 @@
 import pkgDir from 'pkg-dir';
 import {join} from "path"
+import {merge,assign} from "lodash"
 
 import { Linter } from "eslint"
 
@@ -88,13 +89,32 @@ export async function main(flags: CliOptions) {
   const prettierDisabled = await getPrettierDisabledRules()
   mergeIntoStructure(prettierDisabled, "prettier", dist)
 
+  const airbnbBase = await getAirbnbBase()
+  mergeIntoStructure(airbnbBase, "airbnb", dist)
 
+  const airbnbReact = await getAirbnbReact()
+  mergeIntoStructure(airbnbReact, "airbnb-react", dist)
 
   const result = sortRules(removedFilteredRules(dist))
   console.log(result)
+}
 
-  getAirbnbBase()
-  getAirbnbReact()
+function flattenExtends(extendsBlock: string[]) {
+  const loader: Linter.BaseConfig[] = extendsBlock.filter((importPath: string) => !importPath.includes("airbnb-base")).map((importPath: string) => require(importPath))
+
+  const allConfig = {}
+  const allRules = {}
+
+  loader.forEach((fileContent) => {
+    const { rules, ...config } = fileContent
+    assign(allRules, rules)
+    merge(allConfig, config)
+  })
+
+  return {
+    config: allConfig,
+    rules: allRules
+  }
 }
 
 async function getESLintRecommended(): Promise<RuleLoaderReturn> {
@@ -162,18 +182,10 @@ async function getReactHooksRecommended(): Promise<RuleLoaderReturn> {
 
 async function getAirbnbBase(): Promise<RuleLoaderReturn> {
   const plugin = await import("eslint-config-airbnb-base")
-  console.log("BASE:", plugin.extends)
+  return flattenExtends(plugin.extends)
 }
-
 
 async function getAirbnbReact(): Promise<RuleLoaderReturn> {
   const plugin = await import("eslint-config-airbnb")
-  console.log("REACT:", plugin.extends)
-
-  const loader = plugin.extends.filter((importPath: string) => !importPath.includes("airbnb-base")).map((importPath: string) => require(importPath))
-
-  console.log("Loader:", loader)
-  // TODO
-
-  return loader
+  return flattenExtends(plugin.extends)
 }
