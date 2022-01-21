@@ -1,7 +1,8 @@
-import meow from 'meow';
-import { main } from '.';
+import meow from "meow"
+import { main } from "."
 
-const cli = meow(`
+const cli = meow(
+  `
 	Usage
 	  $ effective-eslint
 
@@ -12,21 +13,23 @@ const cli = meow(`
 
 	Example
 	  $ effective-eslint --react --typescript
-`, {
-	flags: {
-		nodejs: {
-			type: 'boolean',
-			alias: 'n'
-		},
-		react: {
-			type: 'boolean',
-			alias: 'n'
-		},
-		typescript: {
-			type: 'boolean',
-			alias: 'n'
-		}
-	}
-});
+`,
+  {
+    flags: {
+      nodejs: {
+        type: "boolean",
+        alias: "n"
+      },
+      react: {
+        type: "boolean",
+        alias: "n"
+      },
+      typescript: {
+        type: "boolean",
+        alias: "n"
+      }
+    }
+  }
+)
 
-main(cli.flags);
+main(cli.flags)

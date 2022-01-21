@@ -1,6 +1,6 @@
-import pkgDir from 'pkg-dir';
-import {join} from "path"
-import {merge,assign} from "lodash"
+import pkgDir from "pkg-dir"
+import { join } from "path"
+import { merge, assign, isEqual } from "lodash"
 
 import { Linter } from "eslint"
 
@@ -21,14 +21,12 @@ type KeyValue = Record<string, any>
 
 const ignoreRules = /^(vue|flowtype|standard)\//
 
-const sourcePriority = [
-  "local",
-  "prettier",
-  "ts"
-]
+const sourcePriority = ["local", "prettier", "ts"]
 
 function removedFilteredRules(rules: KeyValue) {
-  const ruleNames = Object.keys(rules).filter((ruleName) => !ignoreRules.test(ruleName))
+  const ruleNames = Object.keys(rules).filter(
+    (ruleName) => !ignoreRules.test(ruleName)
+  )
   const filteredRules: KeyValue = {}
   for (const ruleName of ruleNames) {
     filteredRules[ruleName] = rules[ruleName]
@@ -48,7 +46,11 @@ function humanizeRuleLevel(ruleLevel: 0 | 1 | 2) {
   throw new Error("Invalid rule level: " + ruleLevel)
 }
 
-function mergeIntoStructure(source: RuleLoaderReturn, originName: string, dist: OrginStructuredRules) {
+function mergeIntoStructure(
+  source: RuleLoaderReturn,
+  originName: string,
+  dist: OrginStructuredRules
+) {
   const { rules, config } = source
 
   for (const ruleName in rules) {
@@ -72,7 +74,10 @@ function mergeIntoStructure(source: RuleLoaderReturn, originName: string, dist: 
 function sortRules(source: KeyValue) {
   const ruleNames = Object.keys(source)
   ruleNames.sort((first: string, second: string) => {
-    if ((first.includes("/") && second.includes("/")) || (!first.includes("/") && !second.includes("/"))) {
+    if (
+      (first.includes("/") && second.includes("/")) ||
+      (!first.includes("/") && !second.includes("/"))
+    ) {
       return first > second ? 1 : -1
     }
     if (first.includes("/")) {
@@ -93,7 +98,7 @@ function sortRules(source: KeyValue) {
 }
 
 export function getSingleSourceKey(object: KeyValue): string | null {
-  let single = null;
+  let single = null
   for (const key in object) {
     if (single) {
       return null
@@ -102,7 +107,7 @@ export function getSingleSourceKey(object: KeyValue): string | null {
     }
   }
 
-  return single;
+  return single
 }
 
 function getPriorityValue(ruleValues: KeyValue): Linter.RuleEntry | undefined {
@@ -172,12 +177,6 @@ function simplify(source: KeyValue): KeyValue {
   return result
 }
 
-
-
-
-
-
-
 export async function main(flags: CliOptions) {
   console.log("Effective ESLint...", flags)
   const dist: OrginStructuredRules = {}
@@ -210,7 +209,6 @@ export async function main(flags: CliOptions) {
   // TODO: eslint-plugin-import + eslint-import-resolver-babel-module
   // TODO: eslint-plugin-filenames
 
-
   // ==== ==== ==== ==== ==== ==== ====
   // Cross-Plugin Recommendations
   // ==== ==== ==== ==== ==== ==== ====
@@ -227,7 +225,6 @@ export async function main(flags: CliOptions) {
   const airbnbReact = await getAirbnbReact()
   mergeIntoStructure(airbnbReact, "airbnb-react", dist)
 
-
   // ==== ==== ==== ==== ==== ==== ====
   // Post-Processing
   // ==== ==== ==== ==== ==== ==== ====
@@ -238,7 +235,9 @@ export async function main(flags: CliOptions) {
 }
 
 function flattenExtends(extendsBlock: string[]) {
-  const loader: Linter.BaseConfig[] = extendsBlock.filter((importPath: string) => !importPath.includes("airbnb-base")).map((importPath: string) => require(importPath))
+  const loader: Linter.BaseConfig[] = extendsBlock
+    .filter((importPath: string) => !importPath.includes("airbnb-base"))
+    .map((importPath: string) => require(importPath))
 
   const allConfig = {}
   const allRules = {}
@@ -276,11 +275,16 @@ async function getReactRecommended(): Promise<RuleLoaderReturn> {
   }
 }
 
-async function getTypeScriptRecommended(typeChecks=true): Promise<RuleLoaderReturn> {
+async function getTypeScriptRecommended(
+  typeChecks = true
+): Promise<RuleLoaderReturn> {
   const { configs } = await import("@typescript-eslint/eslint-plugin")
   const config = configs.base
   const recommended = configs.recommended.rules as Linter.RulesRecord
-  const tsc = typeChecks ? configs["recommended-requiring-type-checking"].rules as Linter.RulesRecord : {}
+  const tsc = typeChecks
+    ? (configs["recommended-requiring-type-checking"]
+        .rules as Linter.RulesRecord)
+    : {}
   const rules: Linter.RulesRecord = { ...recommended, ...tsc }
 
   return {
