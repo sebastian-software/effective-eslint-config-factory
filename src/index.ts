@@ -164,12 +164,15 @@ function simplify(source: KeyValue): KeyValue {
         result[ruleName] = priorityValue
         solvedCounter++
       } else {
-        //console.log("Needs resolution for: " + ruleName, ruleValues)
-        openCounter++
 
         const equal = getEqualValue(ruleValues)
         if (equal) {
-          console.log("Found equal value in: " + ruleName, ruleValues)
+          result[ruleName] = equal
+          solvedCounter++
+        } else {
+          console.log("Needs resolution for: " + ruleName, ruleValues)
+          openCounter++
+
         }
       }
     }
