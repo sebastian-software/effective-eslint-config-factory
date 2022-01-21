@@ -1,4 +1,4 @@
-import { getSingleSourceKey} from "."
+import { getSingleSourceKey, getEqualValue } from "."
 
 describe("getSingleSourceKey()", () => {
   test("supports empty", () => {
@@ -6,10 +6,66 @@ describe("getSingleSourceKey()", () => {
   })
 
   test("supports with one entry", () => {
-    expect(getSingleSourceKey({first:1})).toBe("first")
+    expect(getSingleSourceKey({ first: 1 })).toBe("first")
   })
 
   test("supports with two entries", () => {
-    expect(getSingleSourceKey({first:1, second:2})).toBe(null)
+    expect(getSingleSourceKey({ first: 1, second: 2 })).toBe(null)
+  })
+})
+
+describe("getEqualValue", () => {
+  test("return result when one value", () => {
+    expect(
+      getEqualValue([
+        { first: 1, second: 2 }
+      ])
+    ).toEqual({ first: 1, second: 2 })
+  })
+})
+
+describe("getEqualValue", () => {
+  test("return result when two equal", () => {
+    expect(
+      getEqualValue([
+        { first: 1, second: 2 },
+        { first: 1, second: 2 }
+      ])
+    ).toEqual({ first: 1, second: 2 })
+  })
+})
+
+describe("getEqualValue", () => {
+  test("return undefined when two equal and one different", () => {
+    expect(
+      getEqualValue([
+        { first: 1, second: 2 },
+        { first: 1, second: 2 },
+        { first: 1, second: 3 }
+      ])
+    ).toBeUndefined()
+  })
+})
+
+describe("getEqualValue", () => {
+  test("return result when three equal", () => {
+    expect(
+      getEqualValue([
+        { first: 1, second: 2 },
+        { first: 1, second: 2 },
+        { first: 1, second: 2 }
+      ])
+    ).toEqual({ first: 1, second: 2 })
+  })
+})
+
+describe("getEqualValue", () => {
+  test("return result when two equal but different order", () => {
+    expect(
+      getEqualValue([
+        { first: 1, second: 2 },
+        { second: 2, first: 1 }
+      ])
+    ).toEqual({ first: 1, second: 2 })
   })
 })
