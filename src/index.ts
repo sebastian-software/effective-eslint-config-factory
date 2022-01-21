@@ -82,6 +82,13 @@ function mergeIntoStructure(
       ruleValue = [ "off" ]
     }
 
+    // If a ruleLevel is "warn", normalize it to "error"
+    // Indentions between different libraries vary here and need
+    // a different set-up approach in a merged configuration
+    if (ruleValue[0] === "warn") {
+      ruleValue[0] = "error"
+    }
+
     dist[ruleName][originName] = ruleValue
   }
 }
