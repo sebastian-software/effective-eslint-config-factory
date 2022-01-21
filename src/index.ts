@@ -72,6 +72,16 @@ function mergeIntoStructure(
       ruleValue[0] = humanizeRuleLevel(ruleValue[0])
     }
 
+    // Unify level-only to be always array
+    if (typeof ruleValue === "string") {
+      ruleValue = [ ruleValue ]
+    }
+
+    // If a rule is disabled reduce it to just off
+    if (ruleValue[0] === "off" && ruleValue.length > 1) {
+      ruleValue = [ "off" ]
+    }
+
     dist[ruleName][originName] = ruleValue
   }
 }
