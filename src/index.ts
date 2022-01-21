@@ -28,6 +28,14 @@ const ignoreRules = /^(vue|flowtype|standard)\//
 
 const sourcePriority = ["local", "prettier", "ts"]
 
+const ruleBasedSourcePriority: KeyValue = {
+  "react/no-direct-mutation-state": "cra",
+  "react/jsx-no-target-blank": "cra",
+  "react/jsx-no-duplicate-props": "airbnb-react"
+}
+
+
+
 function removedFilteredRules(rules: KeyValue) {
   const ruleNames = Object.keys(rules).filter(
     (ruleName) => !ignoreRules.test(ruleName)
@@ -186,8 +194,14 @@ function simplify(source: KeyValue): KeyValue {
           result[ruleName] = equal
           solvedCounter++
         } else {
-          console.log("Needs resolution for: " + ruleName, ruleValues)
-          openCounter++
+          const resolutionSource = ruleBasedSourcePriority[ruleName]
+          if (resolutionSource && ruleValues[resolutionSource]) {
+            result[ruleName] = ruleValues[resolutionSource]
+            solvedCounter++
+          } else {
+            console.log("Needs resolution for: " + ruleName, JSON.stringify(ruleValues, null, 2))
+            openCounter++
+          }
         }
       }
     }
