@@ -10,7 +10,8 @@ import {
   getReactHooksRecommended,
   getReactRecommended,
   getTypeScriptRecommended,
-  getUnicornRecommended
+  getUnicornRecommended,
+  RuleLoaderReturn
 } from "./loader"
 
 interface CliOptions {
@@ -133,7 +134,6 @@ export function getEqualValue(
   ruleValues: KeyValue
 ): Linter.RuleEntry | undefined {
   let last
-  let first = true
   for (const sourceName in ruleValues) {
     const currentValue = ruleValues[sourceName]
     if (!last) {

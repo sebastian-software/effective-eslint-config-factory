@@ -18,15 +18,18 @@ const cli = meow(
     flags: {
       nodejs: {
         type: "boolean",
-        alias: "n"
+        alias: "n",
+        default: false
       },
       react: {
         type: "boolean",
-        alias: "n"
+        alias: "n",
+        default: false
       },
       typescript: {
         type: "boolean",
-        alias: "n"
+        alias: "n",
+        default: false
       }
     }
   }

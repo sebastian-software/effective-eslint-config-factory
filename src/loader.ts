@@ -4,7 +4,7 @@ import { join } from "path"
 import { Linter } from "eslint"
 import { merge, assign } from "lodash"
 
-interface RuleLoaderReturn {
+export interface RuleLoaderReturn {
   config?: any
   rules: Linter.RulesRecord
 }
