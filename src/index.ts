@@ -21,6 +21,12 @@ type KeyValue = Record<string, any>
 
 const ignoreRules = /^(vue|flowtype|standard)\//
 
+const sourcePriority = [
+  "local",
+  "prettier",
+  "ts"
+]
+
 function removedFilteredRules(rules: KeyValue) {
   const ruleNames = Object.keys(rules).filter((ruleName) => !ignoreRules.test(ruleName))
   const filteredRules: KeyValue = {}
@@ -30,6 +36,18 @@ function removedFilteredRules(rules: KeyValue) {
   return filteredRules
 }
 
+function humanizeRuleLevel(ruleLevel: 0 | 1 | 2) {
+  if (ruleLevel === 0) {
+    return "off"
+  } else if (ruleLevel === 1) {
+    return "warn"
+  } else if (ruleLevel === 2) {
+    return "error"
+  }
+
+  throw new Error("Invalid rule level: " + ruleLevel)
+}
+
 function mergeIntoStructure(source: RuleLoaderReturn, originName: string, dist: OrginStructuredRules) {
   const { rules, config } = source
 
@@ -37,7 +55,17 @@ function mergeIntoStructure(source: RuleLoaderReturn, originName: string, dist: 
     if (!dist[ruleName]) {
       dist[ruleName] = {}
     }
-    dist[ruleName][originName] = rules[ruleName]
+
+    let ruleValue = rules[ruleName]
+
+    // Human-readable values for level
+    if (typeof ruleValue === "number") {
+      ruleValue = humanizeRuleLevel(ruleValue)
+    } else if (Array.isArray(ruleValue) && typeof ruleValue[0] === "number") {
+      ruleValue[0] = humanizeRuleLevel(ruleValue[0])
+    }
+
+    dist[ruleName][originName] = ruleValue
   }
 }
 
@@ -77,6 +105,15 @@ export function getSingleSourceKey(object: KeyValue): string | null {
   return single;
 }
 
+function getPriorityValue(ruleValues: KeyValue): Linter.RuleEntry | undefined {
+  for (const sourceName of sourcePriority) {
+    const sourceValue = ruleValues[sourceName]
+    if (sourceValue) {
+      return sourceValue
+    }
+  }
+}
+
 function simplify(source: KeyValue): KeyValue {
   const result: KeyValue = {}
   let openCounter = 0
@@ -88,8 +125,14 @@ function simplify(source: KeyValue): KeyValue {
       result[ruleName] = source[ruleName][singleKey]
       solvedCounter++
     } else {
-      console.log("Needs resolution for: " + ruleName, ruleValues)
-      openCounter++;
+      const priorityValue = getPriorityValue(ruleValues)
+      if (priorityValue) {
+        result[ruleName] = priorityValue
+        solvedCounter++
+      } else {
+        console.log("Needs resolution for: " + ruleName, ruleValues)
+        openCounter++;
+      }
     }
   }
 
