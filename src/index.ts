@@ -1,18 +1,22 @@
-import pkgDir from "pkg-dir"
-import { join } from "path"
-import { merge, assign, isEqual } from "lodash"
-
+import { isEqual } from "lodash"
 import { Linter } from "eslint"
+import {
+  getAirbnbBase,
+  getAirbnbReact,
+  getCreateReactAppRecommended,
+  getESLintRecommended,
+  getJSXRecommended,
+  getPrettierDisabledRules,
+  getReactHooksRecommended,
+  getReactRecommended,
+  getTypeScriptRecommended,
+  getUnicornRecommended
+} from "./loader"
 
 interface CliOptions {
   nodejs: boolean
   react: boolean
   typescript: boolean
-}
-
-interface RuleLoaderReturn {
-  config?: any
-  rules: Linter.RulesRecord
 }
 
 type OriginRuleConfig = Record<string, Linter.RuleEntry>
@@ -232,108 +236,4 @@ export async function main(flags: CliOptions) {
   const result = sortRules(removedFilteredRules(dist))
   const simplified = simplify(result)
   //console.log(simplified)
-}
-
-function flattenExtends(extendsBlock: string[]) {
-  const loader: Linter.BaseConfig[] = extendsBlock
-    .filter((importPath: string) => !importPath.includes("airbnb-base"))
-    .map((importPath: string) => require(importPath))
-
-  const allConfig = {}
-  const allRules = {}
-
-  loader.forEach((fileContent) => {
-    const { rules, ...config } = fileContent
-    assign(allRules, rules)
-    merge(allConfig, config)
-  })
-
-  return {
-    config: allConfig,
-    rules: allRules
-  }
-}
-
-async function getESLintRecommended(): Promise<RuleLoaderReturn> {
-  const root = await pkgDir(require.resolve("eslint"))
-  if (!root) {
-    throw new Error("Installation Issue: ESLint package was not found!")
-  }
-  const recommendedPath = join(root, "conf/eslint-recommended")
-  const { rules } = await import(recommendedPath)
-  return {
-    rules
-  }
-}
-
-async function getReactRecommended(): Promise<RuleLoaderReturn> {
-  const react = await import("eslint-plugin-react")
-  const { rules, ...config } = react.configs.recommended
-  return {
-    config,
-    rules
-  }
-}
-
-async function getTypeScriptRecommended(
-  typeChecks = true
-): Promise<RuleLoaderReturn> {
-  const { configs } = await import("@typescript-eslint/eslint-plugin")
-  const config = configs.base
-  const recommended = configs.recommended.rules as Linter.RulesRecord
-  const tsc = typeChecks
-    ? (configs["recommended-requiring-type-checking"]
-        .rules as Linter.RulesRecord)
-    : {}
-  const rules: Linter.RulesRecord = { ...recommended, ...tsc }
-
-  return {
-    config,
-    rules
-  }
-}
-
-async function getPrettierDisabledRules(): Promise<RuleLoaderReturn> {
-  process.env.ESLINT_CONFIG_PRETTIER_NO_DEPRECATED = "true"
-
-  const { rules } = await import("eslint-config-prettier")
-  return { rules }
-}
-
-async function getCreateReactAppRecommended(): Promise<RuleLoaderReturn> {
-  const { rules } = await import("eslint-config-react-app")
-  return {
-    rules
-  }
-}
-
-async function getJSXRecommended(): Promise<RuleLoaderReturn> {
-  const plugin = await import("eslint-plugin-jsx-a11y")
-  const { rules, ...config } = plugin.configs.recommended
-  return {
-    config,
-    rules
-  }
-}
-
-async function getReactHooksRecommended(): Promise<RuleLoaderReturn> {
-  const plugin = await import("eslint-plugin-react-hooks")
-  const { rules, ...config } = plugin.configs.recommended
-  return { config, rules }
-}
-
-async function getAirbnbBase(): Promise<RuleLoaderReturn> {
-  const plugin = await import("eslint-config-airbnb-base")
-  return flattenExtends(plugin.extends)
-}
-
-async function getAirbnbReact(): Promise<RuleLoaderReturn> {
-  const plugin = await import("eslint-config-airbnb")
-  return flattenExtends(plugin.extends)
-}
-
-async function getUnicornRecommended(): Promise<RuleLoaderReturn> {
-  const plugin = require("eslint-plugin-unicorn/configs/recommended")
-  const { rules, ...config } = plugin
-  return { config, rules }
 }
