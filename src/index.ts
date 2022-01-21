@@ -114,6 +114,31 @@ function getPriorityValue(ruleValues: KeyValue): Linter.RuleEntry | undefined {
   }
 }
 
+/**
+ * Return the value when all values are equal. Otherwise return undefined.
+ *
+ * @param ruleValues List of values
+ * @returns The detected equal value, otherwise undefined
+ */
+export function getEqualValue(
+  ruleValues: KeyValue
+): Linter.RuleEntry | undefined {
+  let last
+  let first = true
+  for (const sourceName in ruleValues) {
+    const currentValue = ruleValues[sourceName]
+    if (!last) {
+      last = currentValue
+      continue
+    }
+    if (!isEqual(last, currentValue)) {
+      return
+    }
+  }
+
+  return last
+}
+
 function simplify(source: KeyValue): KeyValue {
   const result: KeyValue = {}
   let openCounter = 0
@@ -130,8 +155,13 @@ function simplify(source: KeyValue): KeyValue {
         result[ruleName] = priorityValue
         solvedCounter++
       } else {
-        console.log("Needs resolution for: " + ruleName, ruleValues)
-        openCounter++;
+        //console.log("Needs resolution for: " + ruleName, ruleValues)
+        openCounter++
+
+        const equal = getEqualValue(ruleValues)
+        if (equal) {
+          console.log("Found equal value in: " + ruleName, ruleValues)
+        }
       }
     }
   }
