@@ -64,9 +64,41 @@ function sortRules(source: KeyValue) {
   return result
 }
 
+export function getSingleSourceKey(object: KeyValue): string | null {
+  let single = null;
+  for (const key in object) {
+    if (single) {
+      return null
+    } else {
+      single = key
+    }
+  }
+
+  return single;
+}
+
+function simplify(source: KeyValue): KeyValue {
+  for (const ruleName in source) {
+    const ruleValues = source[ruleName]
+
+
+  }
+
+}
+
+
+
+
+
+
+
 export async function main(flags: CliOptions) {
   console.log("Effective ESLint...", flags)
   const dist: OrginStructuredRules = {}
+
+  // ==== ==== ==== ==== ==== ==== ====
+  // Single Origin Recommendation
+  // ==== ==== ==== ==== ==== ==== ====
 
   const eslintRecommended = await getESLintRecommended()
   mergeIntoStructure(eslintRecommended, "eslint", dist)
@@ -83,6 +115,20 @@ export async function main(flags: CliOptions) {
   const hooksRecommended = await getReactHooksRecommended()
   mergeIntoStructure(hooksRecommended, "hooks", dist)
 
+  const unicornRecommended = await getUnicornRecommended()
+  mergeIntoStructure(unicornRecommended, "unicorn", dist)
+
+  // TODO: eslint-plugin-shopify-lean
+  // TODO: eslint-plugin-jsdoc
+  // TODO: eslint-plugin-jest
+  // TODO: eslint-plugin-import + eslint-import-resolver-babel-module
+  // TODO: eslint-plugin-filenames
+
+
+  // ==== ==== ==== ==== ==== ==== ====
+  // Cross-Plugin Recommendations
+  // ==== ==== ==== ==== ==== ==== ====
+
   const craRecommended = await getCreateReactAppRecommended()
   mergeIntoStructure(craRecommended, "cra", dist)
 
@@ -95,8 +141,14 @@ export async function main(flags: CliOptions) {
   const airbnbReact = await getAirbnbReact()
   mergeIntoStructure(airbnbReact, "airbnb-react", dist)
 
+
+  // ==== ==== ==== ==== ==== ==== ====
+  // Post-Processing
+  // ==== ==== ==== ==== ==== ==== ====
+
   const result = sortRules(removedFilteredRules(dist))
-  console.log(result)
+  const simplified = simplify(result)
+  console.log(simplified)
 }
 
 function flattenExtends(extendsBlock: string[]) {
@@ -188,4 +240,10 @@ async function getAirbnbBase(): Promise<RuleLoaderReturn> {
 async function getAirbnbReact(): Promise<RuleLoaderReturn> {
   const plugin = await import("eslint-config-airbnb")
   return flattenExtends(plugin.extends)
+}
+
+async function getUnicornRecommended(): Promise<RuleLoaderReturn> {
+  const plugin = require("eslint-plugin-unicorn/configs/recommended")
+  const { rules, ...config } = plugin
+  return { config, rules }
 }
