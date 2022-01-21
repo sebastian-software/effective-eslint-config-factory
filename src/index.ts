@@ -78,12 +78,25 @@ export function getSingleSourceKey(object: KeyValue): string | null {
 }
 
 function simplify(source: KeyValue): KeyValue {
+  const result: KeyValue = {}
+  let openCounter = 0
+  let solvedCounter = 0
   for (const ruleName in source) {
     const ruleValues = source[ruleName]
-
-
+    const singleKey = getSingleSourceKey(ruleValues)
+    if (singleKey) {
+      result[ruleName] = source[ruleName][singleKey]
+      solvedCounter++
+    } else {
+      console.log("Needs resolution for: " + ruleName, ruleValues)
+      openCounter++;
+    }
   }
 
+  console.log("Solved/Open: " + solvedCounter + "/" + openCounter)
+  // console.log(result)
+
+  return result
 }
 
 
@@ -148,7 +161,7 @@ export async function main(flags: CliOptions) {
 
   const result = sortRules(removedFilteredRules(dist))
   const simplified = simplify(result)
-  console.log(simplified)
+  //console.log(simplified)
 }
 
 function flattenExtends(extendsBlock: string[]) {
