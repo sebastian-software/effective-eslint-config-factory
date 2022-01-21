@@ -74,12 +74,12 @@ function mergeIntoStructure(
 
     // Unify level-only to be always array
     if (typeof ruleValue === "string") {
-      ruleValue = [ ruleValue ]
+      ruleValue = [ruleValue]
     }
 
     // If a rule is disabled reduce it to just off
     if (ruleValue[0] === "off" && ruleValue.length > 1) {
-      ruleValue = [ "off" ]
+      ruleValue = ["off"]
     }
 
     // If a ruleLevel is "warn", normalize it to "error"
