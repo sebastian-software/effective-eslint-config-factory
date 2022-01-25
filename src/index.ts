@@ -240,6 +240,42 @@ export function extractJestOverride(source: KeyValue): Linter.ConfigOverride {
   }
 }
 
+export function extractNode(source: KeyValue): Linter.BaseConfig {
+  const filteredRules: KeyValue = {}
+  const ruleNames = Object.keys(source)
+
+  for (const ruleName of ruleNames) {
+    if (ruleName.startsWith("node/")) {
+      filteredRules[ruleName] = source[ruleName]
+      delete source[ruleName]
+    }
+  }
+
+  return {
+    env: {
+      node: true,
+      browser: false
+    },
+    rules: filteredRules
+  }
+}
+
+export function extractReact(source: KeyValue): Linter.BaseConfig {
+  const filteredRules: KeyValue = {}
+  const ruleNames = Object.keys(source)
+
+  for (const ruleName of ruleNames) {
+    if (ruleName.startsWith("react/") || ruleName.startsWith("jsx-a11y/")) {
+      filteredRules[ruleName] = source[ruleName]
+      delete source[ruleName]
+    }
+  }
+
+  return {
+    rules: filteredRules
+  }
+}
+
 export function getBrowserVariant() {
   const confusingGlobals = require('confusing-browser-globals')
   return {
@@ -326,14 +362,19 @@ export async function main(flags: CliOptions) {
 
 
   const jestOverride = extractJestOverride(simplified)
-  console.log("JEST OVERRIDE:", jestOverride)
+
+  const nodeSpecific = extractNode(simplified)
+  const reactSpecific = extractReact(simplified)
 
   const browserVariant = getBrowserVariant();
-  console.log("Browser Variant:", )
+
 
 
   writeFiles({
     index: simplified,
+    node: nodeSpecific,
+    react: reactSpecific,
+
     jest: jestOverride,
     browser: browserVariant
   }, './config')
