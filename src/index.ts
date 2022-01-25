@@ -239,6 +239,22 @@ export function extractJestOverride(source: KeyValue): Linter.ConfigOverride {
   }
 }
 
+export function getBrowserVariant() {
+  const confusingGlobals = require('confusing-browser-globals')
+  return {
+    env: {
+      node: false,
+      browser: true,
+    },
+    rules: {
+      'no-restricted-globals': [
+        'error',
+        ...confusingGlobals,
+      ],
+    },
+  }
+}
+
 export async function main(flags: CliOptions) {
   console.log("Effective ESLint...", flags)
   const dist: OrginStructuredRules = {}
