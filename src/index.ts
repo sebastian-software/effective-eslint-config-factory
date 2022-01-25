@@ -29,7 +29,7 @@ type OriginRuleConfig = Record<string, Linter.RuleEntry>
 type OrginStructuredRules = Record<string, OriginRuleConfig>
 type KeyValue = Record<string, any>
 
-const ignoreRules = /^(vue|flowtype|standard)\//
+const ignoreRules = /^(vue|flowtype|standard|prettier|react-native)\//
 
 const sourcePriority = ["local", "prettier", "ts"]
 
@@ -189,14 +189,14 @@ function simplify(source: KeyValue): KeyValue {
       result[ruleName] = source[ruleName][singleKey]
       solvedCounter++
     } else {
-      const priorityValue = getPriorityValue(ruleValues)
-      if (priorityValue) {
-        result[ruleName] = priorityValue
+      const equal = getEqualValue(ruleValues)
+      if (equal) {
+        result[ruleName] = equal
         solvedCounter++
       } else {
-        const equal = getEqualValue(ruleValues)
-        if (equal) {
-          result[ruleName] = equal
+        const priorityValue = getPriorityValue(ruleValues)
+        if (priorityValue) {
+          result[ruleName] = priorityValue
           solvedCounter++
         } else {
           const resolutionSource = ruleBasedSourcePriority[ruleName]
@@ -213,7 +213,13 @@ function simplify(source: KeyValue): KeyValue {
   }
 
   console.log("Solved/Open: " + solvedCounter + "/" + openCounter)
-  // console.log(result)
+
+  for (const ruleName in source) {
+    if (result[ruleName] && result[ruleName][0] === "off") {
+      console.log("Dropping: ", ruleName)
+      delete result[ruleName]
+    }
+  }
 
   return result
 }
@@ -265,7 +271,7 @@ export function extractReact(source: KeyValue): Linter.BaseConfig {
   const ruleNames = Object.keys(source)
 
   for (const ruleName of ruleNames) {
-    if (ruleName.startsWith("react/") || ruleName.startsWith("jsx-a11y/")) {
+    if (ruleName.startsWith("react/") || ruleName.startsWith("react-hooks/") || ruleName.startsWith("jsx-a11y/")) {
       filteredRules[ruleName] = source[ruleName]
       delete source[ruleName]
     }
