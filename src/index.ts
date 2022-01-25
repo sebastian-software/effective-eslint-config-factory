@@ -17,6 +17,7 @@ import {
   getXoTypescript,
   RuleLoaderReturn
 } from "./loader"
+import { writeFiles } from "./writer"
 
 interface CliOptions {
   nodejs: boolean
@@ -326,4 +327,14 @@ export async function main(flags: CliOptions) {
 
   const jestOverride = extractJestOverride(simplified)
   console.log("JEST OVERRIDE:", jestOverride)
+
+  const browserVariant = getBrowserVariant();
+  console.log("Browser Variant:", )
+
+
+  writeFiles({
+    index: simplified,
+    jest: jestOverride,
+    browser: browserVariant
+  }, './config')
 }
