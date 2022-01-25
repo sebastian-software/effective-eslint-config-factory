@@ -212,14 +212,18 @@ function simplify(source: KeyValue): KeyValue {
     }
   }
 
-  console.log("Solved/Open: " + solvedCounter + "/" + openCounter)
+  console.log("Solved/Open: " + solvedCounter + "/" + openCounter + " rules")
 
+  let cleanupCounter = 0
   for (const ruleName in source) {
     if (result[ruleName] && result[ruleName][0] === "off") {
-      console.log("Dropping: ", ruleName)
+      // console.log("Dropping disabled:", ruleName)
       delete result[ruleName]
+      cleanupCounter++
     }
   }
+
+  console.log("Cleaned up: " + cleanupCounter + " rules")
 
   return result
 }
@@ -377,10 +381,12 @@ export async function main(flags: CliOptions) {
 
 
   writeFiles({
-    index: simplified,
+    index: {
+      rules: simplified
+    },
+
     node: nodeSpecific,
     react: reactSpecific,
-
     jest: jestOverride,
     browser: browserVariant
   }, './config')
