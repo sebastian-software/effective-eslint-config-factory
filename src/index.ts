@@ -9,6 +9,7 @@ import {
   getPrettierDisabledRules,
   getReactHooksRecommended,
   getReactRecommended,
+  getSatya164,
   getTypeScriptRecommended,
   getUnicornRecommended,
   RuleLoaderReturn
@@ -213,6 +214,28 @@ function simplify(source: KeyValue): KeyValue {
   return result
 }
 
+export function extractJestOverride(source: KeyValue): Linter.ConfigOverride {
+  const jestRules: KeyValue = {}
+  const ruleNames = Object.keys(source)
+
+  for (const ruleName of ruleNames) {
+    if (ruleName.startsWith("jest/")) {
+      jestRules[ruleName] = source[ruleName]
+      delete source[ruleName]
+    }
+  }
+
+  return {
+    plugins: ['jest'],
+    files: ['*.{spec,test}.{js,ts,tsx}', '**/__tests__/**/*.{js,ts,tsx}'],
+    env: {
+      jest: true,
+      'jest/globals': true,
+    },
+    rules: jestRules
+  }
+}
+
 export async function main(flags: CliOptions) {
   console.log("Effective ESLint...", flags)
   const dist: OrginStructuredRules = {}
@@ -261,6 +284,9 @@ export async function main(flags: CliOptions) {
   const airbnbReact = await getAirbnbReact()
   mergeIntoStructure(airbnbReact, "airbnb-react", dist)
 
+  const satya164 = await getSatya164()
+  mergeIntoStructure(satya164, "satya164", dist)
+
   // ==== ==== ==== ==== ==== ==== ====
   // Post-Processing
   // ==== ==== ==== ==== ==== ==== ====
@@ -268,4 +294,8 @@ export async function main(flags: CliOptions) {
   const result = sortRules(removedFilteredRules(dist))
   const simplified = simplify(result)
   //console.log(simplified)
+
+
+  const jestOverride = extractJestOverride(simplified)
+  console.log("JEST OVERRIDE:", jestOverride)
 }

@@ -112,3 +112,27 @@ export async function getUnicornRecommended(): Promise<RuleLoaderReturn> {
   const { rules, ...config } = plugin
   return { config, rules }
 }
+
+function getTSOverride(overrides: Linter.ConfigOverride[]) {
+  const { rules, ...config } = overrides.filter((overrideEntry: Linter.ConfigOverride) => overrideEntry.files.toString().includes("*.ts"))[0]
+  return { rules, config }
+}
+
+export async function getSatya164(): Promise<RuleLoaderReturn> {
+  const config = require("eslint-config-satya164")
+
+  const { rules, overrides, ...restConfig } = config
+  const tsOverride = getTSOverride(overrides)
+
+  return {
+    config: {
+      ...restConfig,
+      ...tsOverride.config
+    },
+
+    rules:{
+      ...rules,
+      ...tsOverride.rules
+    }
+  }
+}
