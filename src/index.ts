@@ -12,6 +12,9 @@ import {
   getSatya164,
   getTypeScriptRecommended,
   getUnicornRecommended,
+  getXo,
+  getXoReact,
+  getXoTypescript,
   RuleLoaderReturn
 } from "./loader"
 
@@ -200,7 +203,7 @@ function simplify(source: KeyValue): KeyValue {
             result[ruleName] = ruleValues[resolutionSource]
             solvedCounter++
           } else {
-            console.log("Needs resolution for: " + ruleName, JSON.stringify(ruleValues, null, 2))
+            //console.log("Needs resolution for: " + ruleName, JSON.stringify(ruleValues, null, 2))
             openCounter++
           }
         }
@@ -286,6 +289,15 @@ export async function main(flags: CliOptions) {
 
   const satya164 = await getSatya164()
   mergeIntoStructure(satya164, "satya164", dist)
+
+  const xo = await getXo()
+  mergeIntoStructure(xo, "xo-typescript", dist)
+
+  const xoReact = await getXoReact()
+  mergeIntoStructure(xoReact, "xo-react", dist)
+
+  const xoTypescript = await getXoTypescript()
+  mergeIntoStructure(xoTypescript, "xo-typescript", dist)
 
   // ==== ==== ==== ==== ==== ==== ====
   // Post-Processing

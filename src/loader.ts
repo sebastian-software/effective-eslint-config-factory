@@ -3,6 +3,7 @@ import { join } from "path"
 
 import { Linter } from "eslint"
 import { merge, assign } from "lodash"
+import { rules } from "@typescript-eslint/eslint-plugin"
 
 export interface RuleLoaderReturn {
   config?: any
@@ -134,5 +135,32 @@ export async function getSatya164(): Promise<RuleLoaderReturn> {
       ...rules,
       ...tsOverride.rules
     }
+  }
+}
+
+export async function getXo(): Promise<RuleLoaderReturn> {
+  const { rules, ...config } = require("eslint-config-xo")
+
+  return {
+    config,
+    rules
+  }
+}
+
+export async function getXoTypescript(): Promise<RuleLoaderReturn> {
+  const { rules, ...config } = require("eslint-config-xo-typescript")
+
+  return {
+    config,
+    rules
+  }
+}
+
+export async function getXoReact(): Promise<RuleLoaderReturn> {
+  const { rules, ...config } = require("eslint-config-xo-react")
+
+  return {
+    config,
+    rules
   }
 }
