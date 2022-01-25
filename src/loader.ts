@@ -3,7 +3,6 @@ import { join } from "path"
 
 import { Linter } from "eslint"
 import { merge, assign } from "lodash"
-import { rules } from "@typescript-eslint/eslint-plugin"
 
 export interface RuleLoaderReturn {
   config?: any
