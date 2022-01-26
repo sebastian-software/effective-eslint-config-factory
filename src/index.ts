@@ -220,7 +220,8 @@ function simplify(source: KeyValue): Linter.RulesRecord {
 
   let cleanupCounter = 0
   for (const ruleName in source) {
-    if (result[ruleName] && result[ruleName][0] === "off") {
+    const ruleValue = result[ruleName] as string[]
+    if (ruleValue && ruleValue[0] === "off") {
       // console.log("Dropping disabled:", ruleName)
       delete result[ruleName]
       cleanupCounter++
