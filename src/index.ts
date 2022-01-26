@@ -5,6 +5,7 @@ import {
   getAirbnbReact,
   getCreateReactAppRecommended,
   getESLintRecommended,
+  getJestRecommended,
   getJSXRecommended,
   getPrettierDisabledRules,
   getReactHooksRecommended,
@@ -311,6 +312,9 @@ export async function main(flags: CliOptions) {
 
   const reactRecommended = await getReactRecommended()
   mergeIntoStructure(reactRecommended, "react", dist)
+
+  const jestRecommended = await getJestRecommended()
+  mergeIntoStructure(jestRecommended, "jest", dist)
 
   const tsRecommended = await getTypeScriptRecommended()
   mergeIntoStructure(tsRecommended, "ts", dist)

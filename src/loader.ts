@@ -49,6 +49,20 @@ export async function getTypeScriptRecommended(
   }
 }
 
+export async function getJestRecommended(): Promise<RuleLoaderReturn> {
+  const jest = require("eslint-plugin-jest")
+  const { rules, ...config } = jest.configs.recommended
+
+  // Also import the style rules. These are not about formatting, but
+  // more about sensible hints in my opinion
+  const allRules = { ...rules, ...jest.configs.style }
+
+  return {
+    config,
+    rules: allRules
+  }
+}
+
 export async function getPrettierDisabledRules(): Promise<RuleLoaderReturn> {
   process.env.ESLINT_CONFIG_PRETTIER_NO_DEPRECATED = "true"
 
