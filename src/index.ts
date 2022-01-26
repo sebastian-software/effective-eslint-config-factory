@@ -246,7 +246,9 @@ export function extractJestOverrideRules(source: KeyValue): Linter.RulesRecord {
   return jestRules
 }
 
-export function extractTestingLibOverrideRules(source: KeyValue): Linter.RulesRecord {
+export function extractTestingLibOverrideRules(
+  source: KeyValue
+): Linter.RulesRecord {
   const testingLibRules: Linter.RulesRecord = {}
   const ruleNames = Object.keys(source)
 
@@ -300,11 +302,13 @@ export function extractReact(source: KeyValue): Linter.RulesRecord {
 
 function mergeIntoNewConfig(configs: Linter.BaseConfig[]): Linter.BaseConfig {
   const dist: Linter.BaseConfig = {}
-  configs.forEach((config) => mergeWith(dist, config, (objValue: any, srcValue: any) => {
-    if (Array.isArray(objValue) && Array.isArray(srcValue)) {
-      return [...new Set([...objValue, ...srcValue])]
-    }
-  }))
+  configs.forEach((config) =>
+    mergeWith(dist, config, (objValue: any, srcValue: any) => {
+      if (Array.isArray(objValue) && Array.isArray(srcValue)) {
+        return [...new Set([...objValue, ...srcValue])]
+      }
+    })
+  )
   return dist
 }
 
@@ -391,7 +395,6 @@ export async function main(flags: CliOptions) {
 
   const reactSpecific = extractReact(simplified)
 
-
   // ==== ==== ==== ==== ==== ==== ====
   // Writing files
   // ==== ==== ==== ==== ==== ==== ====
@@ -429,7 +432,6 @@ export async function main(flags: CliOptions) {
             rules: testingLibOverrideRules
           }
         ]
-
       }
     },
     outputFolder

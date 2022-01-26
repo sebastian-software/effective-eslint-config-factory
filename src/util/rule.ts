@@ -1,4 +1,4 @@
-import { Linter } from "eslint";
+import { Linter } from "eslint"
 
 // Thanks to eslint-config-xo-typescript@0.49.0
 export function getNamingConventionRule({ isTsx = false }): Linter.RulesRecord {
