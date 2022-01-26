@@ -21,6 +21,7 @@ import {
 import { writeFiles } from "./writer"
 import baseCore from "./base/core"
 import baseReact from "./base/react"
+import jestOverride from "./base/jest"
 
 interface CliOptions {
   nodejs: boolean
@@ -229,8 +230,8 @@ function simplify(source: KeyValue): Linter.RulesRecord {
   return result
 }
 
-export function extractJestOverride(source: KeyValue): Linter.ConfigOverride {
-  const jestRules: KeyValue = {}
+export function extractJestOverrideRules(source: KeyValue): Linter.RulesRecord {
+  const jestRules: Linter.RulesRecord = {}
   const ruleNames = Object.keys(source)
 
   for (const ruleName of ruleNames) {
@@ -240,15 +241,7 @@ export function extractJestOverride(source: KeyValue): Linter.ConfigOverride {
     }
   }
 
-  return {
-    plugins: ["jest"],
-    files: ["*.{spec,test}.{js,ts,tsx}", "**/__tests__/**/*.{js,ts,tsx}"],
-    env: {
-      jest: true,
-      "jest/globals": true
-    },
-    rules: jestRules
-  }
+  return jestRules
 }
 
 export function extractNode(source: KeyValue): Linter.BaseConfig {
@@ -373,7 +366,7 @@ export async function main(flags: CliOptions) {
   // Extracing specific parts
   // ==== ==== ==== ==== ==== ==== ====
 
-  const jestOverride = extractJestOverride(simplified)
+  const jestOverrideRules = extractJestOverrideRules(simplified)
   const reactSpecific = extractReact(simplified)
 
   // ==== ==== ==== ==== ==== ==== ====
@@ -386,7 +379,14 @@ export async function main(flags: CliOptions) {
         ...baseCore,
         rules: {
           ...simplified
-        }
+        },
+        overrides: [
+          ...(baseCore.overrides || []),
+          {
+            ...jestOverride,
+            rules: jestOverrideRules
+          }
+        ]
       },
 
       react: {
@@ -395,9 +395,7 @@ export async function main(flags: CliOptions) {
           ...simplified,
           ...reactSpecific
         }
-      },
-
-      jest: jestOverride
+      }
     },
     "./config"
   )
