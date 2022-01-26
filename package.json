@@ -10,7 +10,10 @@
   "scripts": {
     "test": "jest",
     "dev": "preppy --watch --exec",
-    "build": "preppy"
+    "build": "preppy",
+    "lint": "eslint 'src/**/*.ts'",
+    "typecheck": "tsc --noEmit",
+    "typecheck:watch": "tsc --noEmit --watch"
   },
   "keywords": [],
   "author": "",
