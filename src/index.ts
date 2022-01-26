@@ -1,6 +1,5 @@
 import { isEqual, merge } from "lodash"
 import { Linter } from "eslint"
-import prettier from "prettier"
 import {
   getAirbnbBase,
   getAirbnbReact,
@@ -31,7 +30,7 @@ type OriginRuleConfig = Record<string, Linter.RuleEntry>
 type OrginStructuredRules = Record<string, OriginRuleConfig>
 type KeyValue = Record<string, any>
 
-const ignoreRules = /^(vue|flowtype|standard|prettier|react-native)\//
+const ignoreRules = /^(vue|flowtype|standard|prettier|react-native|node)\//
 
 const sourcePriority = ["local", "prettier", "ts"]
 
@@ -178,8 +177,8 @@ export function getEqualValue(
   return last
 }
 
-function simplify(source: KeyValue): KeyValue {
-  const result: KeyValue = {}
+function simplify(source: KeyValue): Linter.RulesRecord {
+  const result: Linter.RulesRecord = {}
   let openCounter = 0
   let solvedCounter = 0
   for (const ruleName in source) {
@@ -270,7 +269,7 @@ export function extractNode(source: KeyValue): Linter.BaseConfig {
   }
 }
 
-export function extractReact(source: KeyValue): Linter.BaseConfig {
+export function extractReact(source: KeyValue): Linter.RulesRecord {
   const filteredRules: KeyValue = {}
   const ruleNames = Object.keys(source)
 
@@ -285,19 +284,7 @@ export function extractReact(source: KeyValue): Linter.BaseConfig {
     }
   }
 
-  return {
-    rules: filteredRules
-  }
-}
-
-function getOverrideByFiles(
-  overrides: Linter.ConfigOverride[],
-  files: string[]
-) {
-  const filterString = [...files].sort().join("|")
-  return overrides.filter(
-    (entry) => [...entry.files].sort().join("|") === filterString
-  )[0]
+  return filteredRules
 }
 
 export async function main(flags: CliOptions) {
@@ -372,7 +359,6 @@ export async function main(flags: CliOptions) {
   // ==== ==== ==== ==== ==== ==== ====
 
   const jestOverride = extractJestOverride(simplified)
-  const nodeSpecific = extractNode(simplified)
   const reactSpecific = extractReact(simplified)
 
   // ==== ==== ==== ==== ==== ==== ====
@@ -386,8 +372,14 @@ export async function main(flags: CliOptions) {
         rules: simplified
       },
 
-      node: nodeSpecific,
-      react: reactSpecific,
+      react: {
+        ...core,
+        rules: {
+          ...simplified,
+          ...reactSpecific
+        }
+      },
+
       jest: jestOverride
     },
     "./config"

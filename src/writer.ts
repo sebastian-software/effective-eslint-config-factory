@@ -1,7 +1,7 @@
 import path from "path"
 import { Linter } from "eslint"
 import prettier from "prettier"
-import { writeFile } from "fs/promises"
+import { writeFile, mkdir } from "fs/promises"
 
 type ConfigList = Record<string, Linter.BaseConfig>
 
@@ -10,6 +10,8 @@ function formatJSON(json: any): string {
 }
 
 export async function writeFiles(configs: ConfigList, dist: string) {
+  mkdir(dist, { recursive: true })
+
   const configNames = Object.keys(configs)
   const fileNames = configNames.map((baseName) =>
     path.join(dist, baseName + ".js")
