@@ -19,6 +19,7 @@ import {
   RuleLoaderReturn
 } from "./loader"
 import { writeFiles } from "./writer"
+import core from "./base/core"
 
 interface CliOptions {
   nodejs: boolean
@@ -289,17 +290,14 @@ export function extractReact(source: KeyValue): Linter.BaseConfig {
   }
 }
 
-export function getBrowserVariant() {
-  const confusingGlobals = require("confusing-browser-globals")
-  return {
-    env: {
-      node: false,
-      browser: true
-    },
-    rules: {
-      "no-restricted-globals": ["error", ...confusingGlobals]
-    }
-  }
+function getOverrideByFiles(
+  overrides: Linter.ConfigOverride[],
+  files: string[]
+) {
+  const filterString = [...files].sort().join("|")
+  return overrides.filter(
+    (entry) => [...entry.files].sort().join("|") === filterString
+  )[0]
 }
 
 export async function main(flags: CliOptions) {
@@ -363,57 +361,6 @@ export async function main(flags: CliOptions) {
   mergeIntoStructure(xoTypescript, "xo-typescript", dist)
 
   // ==== ==== ==== ==== ==== ==== ====
-  // Merge Configs
-  // ==== ==== ==== ==== ==== ==== ====
-
-  console.log(
-    "eslintRecommended",
-    prettier.format(JSON.stringify(eslintRecommended.config), {
-      parser: "json"
-    })
-  )
-  console.log(
-    "reactRecommended",
-    prettier.format(JSON.stringify(reactRecommended.config), { parser: "json" })
-  )
-  console.log(
-    "tsRecommended",
-    prettier.format(JSON.stringify(tsRecommended.config), { parser: "json" })
-  )
-  console.log(
-    "jsxRecommended",
-    prettier.format(JSON.stringify(jsxRecommended.config), { parser: "json" })
-  )
-  console.log(
-    "craRecommended",
-    prettier.format(JSON.stringify(craRecommended.config), { parser: "json" })
-  )
-  console.log(
-    "airbnbBase",
-    prettier.format(JSON.stringify(airbnbBase.config), { parser: "json" })
-  )
-  console.log(
-    "airbnbReact",
-    prettier.format(JSON.stringify(airbnbReact.config), { parser: "json" })
-  )
-  console.log(
-    "satya164",
-    prettier.format(JSON.stringify(satya164.config), { parser: "json" })
-  )
-  console.log(
-    "xo",
-    prettier.format(JSON.stringify(xo.config), { parser: "json" })
-  )
-  console.log(
-    "xoReact",
-    prettier.format(JSON.stringify(xoReact.config), { parser: "json" })
-  )
-  console.log(
-    "xoTypescript",
-    prettier.format(JSON.stringify(xoTypescript.config), { parser: "json" })
-  )
-
-  // ==== ==== ==== ==== ==== ==== ====
   // Post-Processing
   // ==== ==== ==== ==== ==== ==== ====
 
@@ -425,11 +372,8 @@ export async function main(flags: CliOptions) {
   // ==== ==== ==== ==== ==== ==== ====
 
   const jestOverride = extractJestOverride(simplified)
-
   const nodeSpecific = extractNode(simplified)
   const reactSpecific = extractReact(simplified)
-
-  const browserVariant = getBrowserVariant()
 
   // ==== ==== ==== ==== ==== ==== ====
   // Writing files
@@ -438,13 +382,13 @@ export async function main(flags: CliOptions) {
   writeFiles(
     {
       index: {
+        ...core,
         rules: simplified
       },
 
       node: nodeSpecific,
       react: reactSpecific,
-      jest: jestOverride,
-      browser: browserVariant
+      jest: jestOverride
     },
     "./config"
   )
