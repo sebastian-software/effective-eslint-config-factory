@@ -1,4 +1,4 @@
-import { isEqual, merge } from "lodash"
+import { isEqual, merge, mergeWith } from "lodash"
 import { Linter } from "eslint"
 import {
   getAirbnbBase,
@@ -18,7 +18,8 @@ import {
   RuleLoaderReturn
 } from "./loader"
 import { writeFiles } from "./writer"
-import core from "./base/core"
+import baseCore from "./base/core"
+import baseReact from "./base/react"
 
 interface CliOptions {
   nodejs: boolean
@@ -287,6 +288,16 @@ export function extractReact(source: KeyValue): Linter.RulesRecord {
   return filteredRules
 }
 
+function mergeIntoNewConfig(configs: Linter.BaseConfig[]): Linter.BaseConfig {
+  const dist: Linter.BaseConfig = {}
+  configs.forEach((config) => mergeWith(dist, config, (objValue: any, srcValue: any) => {
+    if (Array.isArray(objValue) && Array.isArray(srcValue)) {
+      return [...new Set([...objValue, ...srcValue])]
+    }
+  }))
+  return dist
+}
+
 export async function main(flags: CliOptions) {
   console.log("Effective ESLint...", flags)
   const dist: OrginStructuredRules = {}
@@ -368,12 +379,14 @@ export async function main(flags: CliOptions) {
   writeFiles(
     {
       index: {
-        ...core,
-        rules: simplified
+        ...baseCore,
+        rules: {
+          ...simplified
+        }
       },
 
       react: {
-        ...core,
+        ...mergeIntoNewConfig([baseCore, baseReact]),
         rules: {
           ...simplified,
           ...reactSpecific
