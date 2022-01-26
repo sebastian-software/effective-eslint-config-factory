@@ -15,14 +15,15 @@ export async function getESLintRecommended(): Promise<RuleLoaderReturn> {
     throw new Error("Installation Issue: ESLint package was not found!")
   }
   const recommendedPath = join(root, "conf/eslint-recommended")
-  const { rules } = await import(recommendedPath)
+  const { rules, ...config } = require(recommendedPath)
   return {
+    config,
     rules
   }
 }
 
 export async function getReactRecommended(): Promise<RuleLoaderReturn> {
-  const react = await import("eslint-plugin-react")
+  const react = require("eslint-plugin-react")
   const { rules, ...config } = react.configs.recommended
   return {
     config,
@@ -33,7 +34,7 @@ export async function getReactRecommended(): Promise<RuleLoaderReturn> {
 export async function getTypeScriptRecommended(
   typeChecks = true
 ): Promise<RuleLoaderReturn> {
-  const { configs } = await import("@typescript-eslint/eslint-plugin")
+  const { configs } = require("@typescript-eslint/eslint-plugin")
   const config = configs.base
   const recommended = configs.recommended.rules as Linter.RulesRecord
   const tsc = typeChecks
@@ -51,19 +52,20 @@ export async function getTypeScriptRecommended(
 export async function getPrettierDisabledRules(): Promise<RuleLoaderReturn> {
   process.env.ESLINT_CONFIG_PRETTIER_NO_DEPRECATED = "true"
 
-  const { rules } = await import("eslint-config-prettier")
+  const { rules } = require("eslint-config-prettier")
   return { rules }
 }
 
 export async function getCreateReactAppRecommended(): Promise<RuleLoaderReturn> {
-  const { rules } = await import("eslint-config-react-app")
+  const { rules, ...config } = require("eslint-config-react-app")
   return {
+    config,
     rules
   }
 }
 
 export async function getJSXRecommended(): Promise<RuleLoaderReturn> {
-  const plugin = await import("eslint-plugin-jsx-a11y")
+  const plugin = require("eslint-plugin-jsx-a11y")
   const { rules, ...config } = plugin.configs.recommended
   return {
     config,
@@ -72,7 +74,7 @@ export async function getJSXRecommended(): Promise<RuleLoaderReturn> {
 }
 
 export async function getReactHooksRecommended(): Promise<RuleLoaderReturn> {
-  const plugin = await import("eslint-plugin-react-hooks")
+  const plugin = require("eslint-plugin-react-hooks")
   const { rules, ...config } = plugin.configs.recommended
   return { config, rules }
 }
@@ -114,7 +116,10 @@ export async function getUnicornRecommended(): Promise<RuleLoaderReturn> {
 }
 
 function getTSOverride(overrides: Linter.ConfigOverride[]) {
-  const { rules, ...config } = overrides.filter((overrideEntry: Linter.ConfigOverride) => overrideEntry.files.toString().includes("*.ts"))[0]
+  const { rules, ...config } = overrides.filter(
+    (overrideEntry: Linter.ConfigOverride) =>
+      overrideEntry.files.toString().includes("*.ts")
+  )[0]
   return { rules, config }
 }
 
@@ -130,7 +135,7 @@ export async function getSatya164(): Promise<RuleLoaderReturn> {
       ...tsOverride.config
     },
 
-    rules:{
+    rules: {
       ...rules,
       ...tsOverride.rules
     }

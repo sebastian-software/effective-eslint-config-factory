@@ -1,5 +1,6 @@
-import { isEqual } from "lodash"
+import { isEqual, merge } from "lodash"
 import { Linter } from "eslint"
+import prettier from "prettier"
 import {
   getAirbnbBase,
   getAirbnbReact,
@@ -38,8 +39,6 @@ const ruleBasedSourcePriority: KeyValue = {
   "react/jsx-no-target-blank": "cra",
   "react/jsx-no-duplicate-props": "airbnb-react"
 }
-
-
 
 function removedFilteredRules(rules: KeyValue) {
   const ruleNames = Object.keys(rules).filter(
@@ -240,11 +239,11 @@ export function extractJestOverride(source: KeyValue): Linter.ConfigOverride {
   }
 
   return {
-    plugins: ['jest'],
-    files: ['*.{spec,test}.{js,ts,tsx}', '**/__tests__/**/*.{js,ts,tsx}'],
+    plugins: ["jest"],
+    files: ["*.{spec,test}.{js,ts,tsx}", "**/__tests__/**/*.{js,ts,tsx}"],
     env: {
       jest: true,
-      'jest/globals': true,
+      "jest/globals": true
     },
     rules: jestRules
   }
@@ -275,7 +274,11 @@ export function extractReact(source: KeyValue): Linter.BaseConfig {
   const ruleNames = Object.keys(source)
 
   for (const ruleName of ruleNames) {
-    if (ruleName.startsWith("react/") || ruleName.startsWith("react-hooks/") || ruleName.startsWith("jsx-a11y/")) {
+    if (
+      ruleName.startsWith("react/") ||
+      ruleName.startsWith("react-hooks/") ||
+      ruleName.startsWith("jsx-a11y/")
+    ) {
       filteredRules[ruleName] = source[ruleName]
       delete source[ruleName]
     }
@@ -287,18 +290,15 @@ export function extractReact(source: KeyValue): Linter.BaseConfig {
 }
 
 export function getBrowserVariant() {
-  const confusingGlobals = require('confusing-browser-globals')
+  const confusingGlobals = require("confusing-browser-globals")
   return {
     env: {
       node: false,
-      browser: true,
+      browser: true
     },
     rules: {
-      'no-restricted-globals': [
-        'error',
-        ...confusingGlobals,
-      ],
-    },
+      "no-restricted-globals": ["error", ...confusingGlobals]
+    }
   }
 }
 
@@ -363,31 +363,89 @@ export async function main(flags: CliOptions) {
   mergeIntoStructure(xoTypescript, "xo-typescript", dist)
 
   // ==== ==== ==== ==== ==== ==== ====
+  // Merge Configs
+  // ==== ==== ==== ==== ==== ==== ====
+
+  console.log(
+    "eslintRecommended",
+    prettier.format(JSON.stringify(eslintRecommended.config), {
+      parser: "json"
+    })
+  )
+  console.log(
+    "reactRecommended",
+    prettier.format(JSON.stringify(reactRecommended.config), { parser: "json" })
+  )
+  console.log(
+    "tsRecommended",
+    prettier.format(JSON.stringify(tsRecommended.config), { parser: "json" })
+  )
+  console.log(
+    "jsxRecommended",
+    prettier.format(JSON.stringify(jsxRecommended.config), { parser: "json" })
+  )
+  console.log(
+    "craRecommended",
+    prettier.format(JSON.stringify(craRecommended.config), { parser: "json" })
+  )
+  console.log(
+    "airbnbBase",
+    prettier.format(JSON.stringify(airbnbBase.config), { parser: "json" })
+  )
+  console.log(
+    "airbnbReact",
+    prettier.format(JSON.stringify(airbnbReact.config), { parser: "json" })
+  )
+  console.log(
+    "satya164",
+    prettier.format(JSON.stringify(satya164.config), { parser: "json" })
+  )
+  console.log(
+    "xo",
+    prettier.format(JSON.stringify(xo.config), { parser: "json" })
+  )
+  console.log(
+    "xoReact",
+    prettier.format(JSON.stringify(xoReact.config), { parser: "json" })
+  )
+  console.log(
+    "xoTypescript",
+    prettier.format(JSON.stringify(xoTypescript.config), { parser: "json" })
+  )
+
+  // ==== ==== ==== ==== ==== ==== ====
   // Post-Processing
   // ==== ==== ==== ==== ==== ==== ====
 
   const result = sortRules(removedFilteredRules(dist))
   const simplified = simplify(result)
-  //console.log(simplified)
 
+  // ==== ==== ==== ==== ==== ==== ====
+  // Extracing specific parts
+  // ==== ==== ==== ==== ==== ==== ====
 
   const jestOverride = extractJestOverride(simplified)
 
   const nodeSpecific = extractNode(simplified)
   const reactSpecific = extractReact(simplified)
 
-  const browserVariant = getBrowserVariant();
+  const browserVariant = getBrowserVariant()
 
+  // ==== ==== ==== ==== ==== ==== ====
+  // Writing files
+  // ==== ==== ==== ==== ==== ==== ====
 
+  writeFiles(
+    {
+      index: {
+        rules: simplified
+      },
 
-  writeFiles({
-    index: {
-      rules: simplified
+      node: nodeSpecific,
+      react: reactSpecific,
+      jest: jestOverride,
+      browser: browserVariant
     },
-
-    node: nodeSpecific,
-    react: reactSpecific,
-    jest: jestOverride,
-    browser: browserVariant
-  }, './config')
+    "./config"
+  )
 }
