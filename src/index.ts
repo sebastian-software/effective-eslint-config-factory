@@ -11,6 +11,7 @@ import {
   getReactHooksRecommended,
   getReactRecommended,
   getSatya164,
+  getTestingLibRecommended,
   getTypeScriptRecommended,
   getUnicornRecommended,
   getXo,
@@ -21,7 +22,8 @@ import {
 import { writeFiles } from "./writer"
 import baseCore from "./base/core"
 import baseReact from "./base/react"
-import jestOverride from "./base/jest"
+import jestOverrideBlock from "./base/jest"
+import testingLibOverrideBlock from "./base/testinglib"
 
 interface CliOptions {
   nodejs: boolean
@@ -244,6 +246,20 @@ export function extractJestOverrideRules(source: KeyValue): Linter.RulesRecord {
   return jestRules
 }
 
+export function extractTestingLibOverrideRules(source: KeyValue): Linter.RulesRecord {
+  const testingLibRules: Linter.RulesRecord = {}
+  const ruleNames = Object.keys(source)
+
+  for (const ruleName of ruleNames) {
+    if (ruleName.startsWith("testing-library/")) {
+      testingLibRules[ruleName] = source[ruleName]
+      delete source[ruleName]
+    }
+  }
+
+  return testingLibRules
+}
+
 export function extractNode(source: KeyValue): Linter.BaseConfig {
   const filteredRules: KeyValue = {}
   const ruleNames = Object.keys(source)
@@ -309,6 +325,9 @@ export async function main(flags: CliOptions) {
   const jestRecommended = await getJestRecommended()
   mergeIntoStructure(jestRecommended, "jest", dist)
 
+  const testingLibRecommended = await getTestingLibRecommended()
+  mergeIntoStructure(testingLibRecommended, "testinglib", dist)
+
   const tsRecommended = await getTypeScriptRecommended()
   mergeIntoStructure(tsRecommended, "ts", dist)
 
@@ -321,6 +340,7 @@ export async function main(flags: CliOptions) {
   const unicornRecommended = await getUnicornRecommended()
   mergeIntoStructure(unicornRecommended, "unicorn", dist)
 
+  // TODO: Cypress
   // TODO: eslint-plugin-shopify-lean
   // TODO: eslint-plugin-jsdoc
   // TODO: eslint-plugin-jest
@@ -367,11 +387,18 @@ export async function main(flags: CliOptions) {
   // ==== ==== ==== ==== ==== ==== ====
 
   const jestOverrideRules = extractJestOverrideRules(simplified)
+  const testingLibOverrideRules = extractTestingLibOverrideRules(simplified)
+
   const reactSpecific = extractReact(simplified)
+
 
   // ==== ==== ==== ==== ==== ==== ====
   // Writing files
   // ==== ==== ==== ==== ==== ==== ====
+
+  const outputFolder = "./config"
+
+  const baseCoreAndReact = mergeIntoNewConfig([baseCore, baseReact])
 
   writeFiles(
     {
@@ -383,20 +410,28 @@ export async function main(flags: CliOptions) {
         overrides: [
           ...(baseCore.overrides || []),
           {
-            ...jestOverride,
+            ...jestOverrideBlock,
             rules: jestOverrideRules
           }
         ]
       },
 
       react: {
-        ...mergeIntoNewConfig([baseCore, baseReact]),
+        ...baseCoreAndReact,
         rules: {
           ...simplified,
           ...reactSpecific
-        }
+        },
+        overrides: [
+          ...(baseCoreAndReact.overrides || []),
+          {
+            ...testingLibOverrideBlock,
+            rules: testingLibOverrideRules
+          }
+        ]
+
       }
     },
-    "./config"
+    outputFolder
   )
 }

@@ -63,6 +63,16 @@ export async function getJestRecommended(): Promise<RuleLoaderReturn> {
   }
 }
 
+export async function getTestingLibRecommended(): Promise<RuleLoaderReturn> {
+  const testinglib = require("eslint-plugin-testing-library")
+  const { rules, ...config } = testinglib.configs.react
+
+  return {
+    config,
+    rules
+  }
+}
+
 export async function getPrettierDisabledRules(): Promise<RuleLoaderReturn> {
   process.env.ESLINT_CONFIG_PRETTIER_NO_DEPRECATED = "true"
 
