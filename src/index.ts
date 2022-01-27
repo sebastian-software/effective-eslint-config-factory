@@ -1,5 +1,8 @@
 import { isEqual, merge, mergeWith } from "lodash"
-import { Linter } from "eslint"
+import path from "path"
+import { ESLint, Linter } from "eslint"
+import pkgDir from "pkg-dir"
+import { getFixableRules } from "eslint-get-rules"
 import {
   getAirbnbBase,
   getAirbnbReact,
@@ -351,6 +354,8 @@ export async function main(flags: CliOptions) {
   // TODO: eslint-plugin-jest
   // TODO: eslint-plugin-import + eslint-import-resolver-babel-module
   // TODO: eslint-plugin-filenames
+  // TODO: https://www.npmjs.com/package/@graphql-eslint/eslint-plugin
+  // TODO: https://www.npmjs.com/package/eslint-plugin-mdx
 
   // ==== ==== ==== ==== ==== ==== ====
   // Cross-Plugin Recommendations
@@ -388,6 +393,21 @@ export async function main(flags: CliOptions) {
   const simplified = simplify(result)
 
   // ==== ==== ==== ==== ==== ==== ====
+  // Reducing levels
+  // ==== ==== ==== ==== ==== ==== ====
+
+  const fixable = await getFixableRules({ plugins: ["react", "react-hooks", "jsx-a11y", "@typescript-eslint", "unicorn", "import"] })
+  let fixableCounter = 0
+  for (const ruleName of fixable) {
+    if (ruleName in simplified) {
+      simplified[ruleName][0] = "warn"
+      fixableCounter++;
+    }
+  }
+
+  console.log("Switched to warning for " + fixableCounter + " autofixable rules")
+
+  // ==== ==== ==== ==== ==== ==== ====
   // Extracing specific parts
   // ==== ==== ==== ==== ==== ==== ====
 
@@ -401,7 +421,6 @@ export async function main(flags: CliOptions) {
   // ==== ==== ==== ==== ==== ==== ====
 
   const outputFolder = "./config"
-
   const baseCoreAndReact = mergeIntoNewConfig([baseCore, baseReact])
 
   writeFiles(
