@@ -57,7 +57,7 @@ const ruleBasedSourcePriority: KeyValue = {
   "no-self-assign": "eslint",
 
   // Disabled per typescript-eslint recommendation: https://github.com/typescript-eslint/typescript-eslint/blob/e26e43ffba96f6d46198b22f1c8dd5c814db2652/docs/getting-started/linting/FAQ.md#i-get-errors-from-the-no-undef-rule-about-global-variables-not-being-defined-even-though-there-are-no-typescript-errors
-  'no-undef': 'xo-typescript',
+  "no-undef": "xo-typescript",
 
   // Best list of affected globals is built into CRA
   "no-restricted-globals": "cra",
@@ -90,7 +90,7 @@ const ruleBasedSourcePriority: KeyValue = {
   "@typescript-eslint/consistent-type-assertions": "xo-typescript",
 
   // Allow single extends
-  "@typescript-eslint/no-empty-interface": "xo-typescript",
+  "@typescript-eslint/no-empty-interface": "xo-typescript"
 }
 
 function removedFilteredRules(rules: KeyValue) {
@@ -197,25 +197,37 @@ export function getSingleSourceKey(object: KeyValue): string | null {
   return single
 }
 
-function getForcedDisabled(ruleName: string, ruleValues: KeyValue): Linter.RuleEntry | undefined {
-  if (!ruleName.startsWith("@typescript-eslint/") && ruleName in TSEnabledRules) {
+function getForcedDisabled(
+  ruleName: string,
+  ruleValues: KeyValue
+): Linter.RuleEntry | undefined {
+  if (
+    !ruleName.startsWith("@typescript-eslint/") &&
+    ruleName in TSEnabledRules
+  ) {
     // Highest priority to rules from eslint builtin configured by TS preset to be disabled (replaced rules)
     if (ruleValues["ts"] && ruleValues["ts"][0] === "off") {
       return ruleValues["ts"]
     }
 
     // Highest priority to rules from eslint builtin configured by TS preset to be disabled (replaced rules)
-    if (ruleValues["xo-typescript"] && ruleValues["xo-typescript"][0] === "off") {
+    if (
+      ruleValues["xo-typescript"] &&
+      ruleValues["xo-typescript"][0] === "off"
+    ) {
       return ruleValues["xo-typescript"]
     }
   }
 
   // Next to are all rules which came from prettier
-  if (ruleValues.prettier && ruleValues.prettier[0] === "off" && !ruleName.startsWith("prettier/")) {
+  if (
+    ruleValues.prettier &&
+    ruleValues.prettier[0] === "off" &&
+    !ruleName.startsWith("prettier/")
+  ) {
     return ruleValues.prettier
   }
 }
-
 
 function getPriorityValue(ruleValues: KeyValue): Linter.RuleEntry | undefined {
   for (const sourceName of sourcePriority) {
@@ -296,14 +308,15 @@ async function simplify(source: KeyValue): Linter.RulesRecord {
       continue
     }
 
-
     unresolvedRules++
 
     if (unresolvedRules < 6) {
-      console.log("#" + unresolvedRules + ": Needs resolution for: " + ruleName, JSON.stringify(ruleValues, null, 2))
+      console.log(
+        "#" + unresolvedRules + ": Needs resolution for: " + ruleName,
+        JSON.stringify(ruleValues, null, 2)
+      )
     }
   }
-
 
   console.log("  - Disabled Rules:", forcedDisabledCount)
   console.log("  - Uniform Rule Values:", uniformCount)
@@ -324,12 +337,21 @@ async function simplify(source: KeyValue): Linter.RulesRecord {
   console.log("  - Entirely deleted: " + cleanupCounter + " disabled rules")
 
   console.log("Relaxing...")
-  const fixable = await getFixableRules({ plugins: ["react", "react-hooks", "jsx-a11y", "@typescript-eslint", "unicorn", "import"] })
+  const fixable = await getFixableRules({
+    plugins: [
+      "react",
+      "react-hooks",
+      "jsx-a11y",
+      "@typescript-eslint",
+      "unicorn",
+      "import"
+    ]
+  })
   let fixableCounter = 0
   for (const ruleName of fixable) {
     if (ruleName in result) {
       result[ruleName][0] = "warn"
-      fixableCounter++;
+      fixableCounter++
     }
   }
 
@@ -496,8 +518,6 @@ export async function main(flags: CliOptions) {
   // ==== ==== ==== ==== ==== ==== ====
   // Reducing levels
   // ==== ==== ==== ==== ==== ==== ====
-
-
 
   // ==== ==== ==== ==== ==== ==== ====
   // Extracing specific parts
