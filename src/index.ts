@@ -40,7 +40,7 @@ type KeyValue = Record<string, any>
 
 const ignoreRules = /^(vue|flowtype|standard|prettier|react-native|node)\//
 
-const sourcePriority = ["local", "prettier", "ts"]
+const sourcePriority = ["local", "prettier"]
 
 const ruleBasedSourcePriority: KeyValue = {
   "react/no-direct-mutation-state": "cra",
@@ -185,42 +185,48 @@ export function getEqualValue(
   return last
 }
 
-function simplify(source: KeyValue): Linter.RulesRecord {
+async function simplify(source: KeyValue): Linter.RulesRecord {
   const result: Linter.RulesRecord = {}
-  let openCounter = 0
-  let solvedCounter = 0
+  let unresolvedRules = 0
+  let uniformCount = 0
+  let solvedRulesCount = 0
+
+  console.log("Reducing...")
   for (const ruleName in source) {
     const ruleValues = source[ruleName]
     const singleKey = getSingleSourceKey(ruleValues)
     if (singleKey) {
       result[ruleName] = source[ruleName][singleKey]
-      solvedCounter++
+      uniformCount++
     } else {
       const equal = getEqualValue(ruleValues)
       if (equal) {
         result[ruleName] = equal
-        solvedCounter++
+        uniformCount++
       } else {
         const priorityValue = getPriorityValue(ruleValues)
         if (priorityValue) {
           result[ruleName] = priorityValue
-          solvedCounter++
+          solvedRulesCount++
         } else {
           const resolutionSource = ruleBasedSourcePriority[ruleName]
           if (resolutionSource && ruleValues[resolutionSource]) {
             result[ruleName] = ruleValues[resolutionSource]
-            solvedCounter++
+            solvedRulesCount++
           } else {
             //console.log("Needs resolution for: " + ruleName, JSON.stringify(ruleValues, null, 2))
-            openCounter++
+            unresolvedRules++
           }
         }
       }
     }
   }
 
-  console.log("Solved/Open: " + solvedCounter + "/" + openCounter + " rules")
+  console.log("  - Uniform Rules:", uniformCount)
+  console.log("  - Solved Rules:", solvedRulesCount)
+  console.log("  - Unresolved Rules:", unresolvedRules)
 
+  console.log("Cleaning up...")
   let cleanupCounter = 0
   for (const ruleName in source) {
     const ruleValue = result[ruleName] as string[]
@@ -231,7 +237,19 @@ function simplify(source: KeyValue): Linter.RulesRecord {
     }
   }
 
-  console.log("Cleaned up: " + cleanupCounter + " rules")
+  console.log("  - Entirely deleted: " + cleanupCounter + " disabled rules")
+
+  console.log("Relaxing...")
+  const fixable = await getFixableRules({ plugins: ["react", "react-hooks", "jsx-a11y", "@typescript-eslint", "unicorn", "import"] })
+  let fixableCounter = 0
+  for (const ruleName of fixable) {
+    if (ruleName in result) {
+      result[ruleName][0] = "warn"
+      fixableCounter++;
+    }
+  }
+
+  console.log("  - Warning Level: " + fixableCounter + " autofixable rules")
 
   return result
 }
@@ -348,12 +366,11 @@ export async function main(flags: CliOptions) {
   const unicornRecommended = await getUnicornRecommended()
   mergeIntoStructure(unicornRecommended, "unicorn", dist)
 
-  // TODO: Cypress
-  // TODO: eslint-plugin-shopify-lean
-  // TODO: eslint-plugin-jsdoc
-  // TODO: eslint-plugin-jest
-  // TODO: eslint-plugin-import + eslint-import-resolver-babel-module
-  // TODO: eslint-plugin-filenames
+  // TODO: https://www.npmjs.com/package/eslint-plugin-cypress
+  // TODO: https://www.npmjs.com/package/eslint-plugin-shopify-lean
+  // TODO: https://www.npmjs.com/package/eslint-plugin-jsdoc
+  // TODO: https://www.npmjs.com/package/eslint-plugin-import + https://www.npmjs.com/package/eslint-import-resolver-babel-module
+  // TODO: https://github.com/epaew/eslint-plugin-filenames-simple
   // TODO: https://www.npmjs.com/package/@graphql-eslint/eslint-plugin
   // TODO: https://www.npmjs.com/package/eslint-plugin-mdx
 
@@ -390,22 +407,13 @@ export async function main(flags: CliOptions) {
   // ==== ==== ==== ==== ==== ==== ====
 
   const result = sortRules(removedFilteredRules(dist))
-  const simplified = simplify(result)
+  const simplified = await simplify(result)
 
   // ==== ==== ==== ==== ==== ==== ====
   // Reducing levels
   // ==== ==== ==== ==== ==== ==== ====
 
-  const fixable = await getFixableRules({ plugins: ["react", "react-hooks", "jsx-a11y", "@typescript-eslint", "unicorn", "import"] })
-  let fixableCounter = 0
-  for (const ruleName of fixable) {
-    if (ruleName in simplified) {
-      simplified[ruleName][0] = "warn"
-      fixableCounter++;
-    }
-  }
 
-  console.log("Switched to warning for " + fixableCounter + " autofixable rules")
 
   // ==== ==== ==== ==== ==== ==== ====
   // Extracing specific parts
