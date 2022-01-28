@@ -40,12 +40,12 @@ type KeyValue = Record<string, any>
 
 const ignoreRules = /^(vue|flowtype|standard|prettier|react-native|node)\//
 
-const sourcePriority = ["local", "prettier"]
+const sourcePriority = ["local"]
 
 const ruleBasedSourcePriority: KeyValue = {
-  "react/no-direct-mutation-state": "cra",
-  "react/jsx-no-target-blank": "cra",
-  "react/jsx-no-duplicate-props": "airbnb-react"
+  // "react/no-direct-mutation-state": "cra",
+  // "react/jsx-no-target-blank": "cra",
+  // "react/jsx-no-duplicate-props": "airbnb-react"
 }
 
 function removedFilteredRules(rules: KeyValue) {
@@ -152,6 +152,19 @@ export function getSingleSourceKey(object: KeyValue): string | null {
   return single
 }
 
+function getForcedDisabled(ruleName: string, ruleValues: KeyValue): Linter.RuleEntry | undefined {
+  // Highest priority to rules from eslint builtin configured by TS preset to be disabled (replaced rules)
+  if (ruleValues.ts && ruleValues.ts[0] === "off" && !ruleName.startsWith("@typescript-eslint/")) {
+    return ruleValues.ts
+  }
+
+  // Next to are all rules which came from prettier
+  if (ruleValues.prettier && ruleValues.prettier[0] === "off" && !ruleName.startsWith("prettier/")) {
+    return ruleValues.prettier
+  }
+}
+
+
 function getPriorityValue(ruleValues: KeyValue): Linter.RuleEntry | undefined {
   for (const sourceName of sourcePriority) {
     const sourceValue = ruleValues[sourceName]
@@ -187,6 +200,8 @@ export function getEqualValue(
 
 async function simplify(source: KeyValue): Linter.RulesRecord {
   const result: Linter.RulesRecord = {}
+
+  let forcedDisabledCount = 0
   let unresolvedRules = 0
   let uniformCount = 0
   let solvedRulesCount = 0
@@ -194,36 +209,49 @@ async function simplify(source: KeyValue): Linter.RulesRecord {
   console.log("Reducing...")
   for (const ruleName in source) {
     const ruleValues = source[ruleName]
+
+    const forcedDisabledValue = getForcedDisabled(ruleName, ruleValues)
+    if (forcedDisabledValue) {
+      forcedDisabledCount++
+      continue
+    }
+
     const singleKey = getSingleSourceKey(ruleValues)
     if (singleKey) {
       result[ruleName] = source[ruleName][singleKey]
       uniformCount++
-    } else {
-      const equal = getEqualValue(ruleValues)
-      if (equal) {
-        result[ruleName] = equal
-        uniformCount++
-      } else {
-        const priorityValue = getPriorityValue(ruleValues)
-        if (priorityValue) {
-          result[ruleName] = priorityValue
-          solvedRulesCount++
-        } else {
-          const resolutionSource = ruleBasedSourcePriority[ruleName]
-          if (resolutionSource && ruleValues[resolutionSource]) {
-            result[ruleName] = ruleValues[resolutionSource]
-            solvedRulesCount++
-          } else {
-            //console.log("Needs resolution for: " + ruleName, JSON.stringify(ruleValues, null, 2))
-            unresolvedRules++
-          }
-        }
-      }
+      continue
     }
+
+    const equal = getEqualValue(ruleValues)
+    if (equal) {
+      result[ruleName] = equal
+      uniformCount++
+      continue
+    }
+
+    const priorityValue = getPriorityValue(ruleValues)
+    if (priorityValue) {
+      result[ruleName] = priorityValue
+      solvedRulesCount++
+      continue
+    }
+
+    const resolutionSource = ruleBasedSourcePriority[ruleName]
+    if (resolutionSource && ruleValues[resolutionSource]) {
+      result[ruleName] = ruleValues[resolutionSource]
+      solvedRulesCount++
+      continue
+    }
+
+    //console.log("Needs resolution for: " + ruleName, JSON.stringify(ruleValues, null, 2))
+    unresolvedRules++
   }
 
-  console.log("  - Uniform Rules:", uniformCount)
-  console.log("  - Solved Rules:", solvedRulesCount)
+
+  console.log("  - Disabled Rules:", forcedDisabledCount)
+  console.log("  - Uniform Rule Values:", uniformCount)
+  console.log("  - Priority Solved Rules:", solvedRulesCount)
   console.log("  - Unresolved Rules:", unresolvedRules)
 
   console.log("Cleaning up...")
