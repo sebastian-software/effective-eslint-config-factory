@@ -27,6 +27,7 @@ import baseCore from "./base/core"
 import baseReact from "./base/react"
 import jestOverrideBlock from "./base/jest"
 import testingLibOverrideBlock from "./base/testinglib"
+import { rules as TSEnabledRules } from "@typescript-eslint/eslint-plugin"
 
 interface CliOptions {
   nodejs: boolean
@@ -35,7 +36,7 @@ interface CliOptions {
 }
 
 type OriginRuleConfig = Record<string, Linter.RuleEntry>
-type OrginStructuredRules = Record<string, OriginRuleConfig>
+type OriginStructuredRules = Record<string, OriginRuleConfig>
 type KeyValue = Record<string, any>
 
 const ignoreRules = /^(vue|flowtype|standard|prettier|react-native|node)\//
@@ -43,9 +44,53 @@ const ignoreRules = /^(vue|flowtype|standard|prettier|react-native|node)\//
 const sourcePriority = ["local"]
 
 const ruleBasedSourcePriority: KeyValue = {
-  // "react/no-direct-mutation-state": "cra",
-  // "react/jsx-no-target-blank": "cra",
-  // "react/jsx-no-duplicate-props": "airbnb-react"
+  // Additional "except-parens" was used in some, but that's the default anyway
+  "no-cond-assign": "eslint",
+
+  // Some allow empty-catch, but that's not really useful anyway
+  "no-empty": "eslint",
+
+  // Some allow in loops but I most often not saw any good use or even need
+  "no-labels": "xo-typescript",
+
+  // Typical error... even if some relax it for props
+  "no-self-assign": "eslint",
+
+  // Disabled per typescript-eslint recommendation: https://github.com/typescript-eslint/typescript-eslint/blob/e26e43ffba96f6d46198b22f1c8dd5c814db2652/docs/getting-started/linting/FAQ.md#i-get-errors-from-the-no-undef-rule-about-global-variables-not-being-defined-even-though-there-are-no-typescript-errors
+  'no-undef': 'xo-typescript',
+
+  // Best list of affected globals is built into CRA
+  "no-restricted-globals": "cra",
+
+  // Good idea to prevent accidental issues
+  "no-unsafe-optional-chaining": "eslint",
+
+  // Sensible default for starters, no good reason to do otherwise as senior
+  "no-use-before-define": "cra",
+
+  // Checking classes as well in XO
+  "no-useless-computed-key": "xo-typescript",
+
+  // Really useless. Prevent on all levels.
+  "no-useless-rename": "xo-typescript",
+
+  // Sensible to be a littler stricter here as in XO
+  "valid-typeof": "xo-typescript",
+
+  // Prefer the simple-array style.
+  "@typescript-eslint/array-type": "xo-typescript",
+
+  // Nice to allow ts-expect with description
+  "@typescript-eslint/ban-ts-comment": "xo-typescript",
+
+  // Very good extension and hints of different ban types
+  "@typescript-eslint/ban-types": "xo-typescript",
+
+  // objectLiteralTypeAssertions is a win for sure
+  "@typescript-eslint/consistent-type-assertions": "xo-typescript",
+
+  // Allow single extends
+  "@typescript-eslint/no-empty-interface": "xo-typescript",
 }
 
 function removedFilteredRules(rules: KeyValue) {
@@ -74,7 +119,7 @@ function humanizeRuleLevel(ruleLevel: 0 | 1 | 2) {
 function mergeIntoStructure(
   source: RuleLoaderReturn,
   originName: string,
-  dist: OrginStructuredRules
+  dist: OriginStructuredRules
 ) {
   const { rules, config } = source
 
@@ -153,9 +198,16 @@ export function getSingleSourceKey(object: KeyValue): string | null {
 }
 
 function getForcedDisabled(ruleName: string, ruleValues: KeyValue): Linter.RuleEntry | undefined {
-  // Highest priority to rules from eslint builtin configured by TS preset to be disabled (replaced rules)
-  if (ruleValues.ts && ruleValues.ts[0] === "off" && !ruleName.startsWith("@typescript-eslint/")) {
-    return ruleValues.ts
+  if (!ruleName.startsWith("@typescript-eslint/") && ruleName in TSEnabledRules) {
+    // Highest priority to rules from eslint builtin configured by TS preset to be disabled (replaced rules)
+    if (ruleValues["ts"] && ruleValues["ts"][0] === "off") {
+      return ruleValues["ts"]
+    }
+
+    // Highest priority to rules from eslint builtin configured by TS preset to be disabled (replaced rules)
+    if (ruleValues["xo-typescript"] && ruleValues["xo-typescript"][0] === "off") {
+      return ruleValues["xo-typescript"]
+    }
   }
 
   // Next to are all rules which came from prettier
@@ -244,8 +296,12 @@ async function simplify(source: KeyValue): Linter.RulesRecord {
       continue
     }
 
-    //console.log("Needs resolution for: " + ruleName, JSON.stringify(ruleValues, null, 2))
+
     unresolvedRules++
+
+    if (unresolvedRules < 6) {
+      console.log("#" + unresolvedRules + ": Needs resolution for: " + ruleName, JSON.stringify(ruleValues, null, 2))
+    }
   }
 
 
@@ -364,7 +420,7 @@ function mergeIntoNewConfig(configs: Linter.BaseConfig[]): Linter.BaseConfig {
 
 export async function main(flags: CliOptions) {
   console.log("Effective ESLint...", flags)
-  const dist: OrginStructuredRules = {}
+  const dist: OriginStructuredRules = {}
 
   // ==== ==== ==== ==== ==== ==== ====
   // Single Origin Recommendation
