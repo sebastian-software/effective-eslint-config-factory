@@ -90,7 +90,15 @@ const ruleBasedSourcePriority: KeyValue = {
   "@typescript-eslint/consistent-type-assertions": "xo-typescript",
 
   // Allow single extends
-  "@typescript-eslint/no-empty-interface": "xo-typescript"
+  "@typescript-eslint/no-empty-interface": "xo-typescript",
+
+  // Some good limitations in XO
+  "@typescript-eslint/no-extraneous-class": "xo-typescript",
+
+  // Relaxing IIFEs in XO
+  "@typescript-eslint/no-floating-promises": "xo-typescript",
+
+
 }
 
 function removedFilteredRules(rules: KeyValue) {
