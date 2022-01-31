@@ -562,8 +562,7 @@ function mergeIntoNewConfig(configs: Linter.BaseConfig[]): Linter.BaseConfig {
   return dist
 }
 
-export async function main(flags: CliOptions) {
-  console.log("Effective ESLint...", flags)
+export async function compileFiles() {
   const dist: OriginStructuredRules = {}
 
   // ==== ==== ==== ==== ==== ==== ====
@@ -654,40 +653,48 @@ export async function main(flags: CliOptions) {
   // Writing files
   // ==== ==== ==== ==== ==== ==== ====
 
-  const outputFolder = "./config"
   const baseCoreAndReact = mergeIntoNewConfig([baseCore, baseReact])
 
-  writeFiles(
-    {
-      index: {
-        ...baseCore,
-        rules: {
-          ...simplified
-        },
-        overrides: [
-          ...(baseCore.overrides || []),
-          {
-            ...jestOverrideBlock,
-            rules: jestOverrideRules
-          }
-        ]
+  return {
+    index: {
+      ...baseCore,
+      rules: {
+        ...simplified
       },
-
-      react: {
-        ...baseCoreAndReact,
-        rules: {
-          ...simplified,
-          ...reactSpecific
-        },
-        overrides: [
-          ...(baseCoreAndReact.overrides || []),
-          {
-            ...testingLibOverrideBlock,
-            rules: testingLibOverrideRules
-          }
-        ]
-      }
+      overrides: [
+        ...(baseCore.overrides || []),
+        {
+          ...jestOverrideBlock,
+          rules: jestOverrideRules
+        }
+      ]
     },
+
+    react: {
+      ...baseCoreAndReact,
+      rules: {
+        ...simplified,
+        ...reactSpecific
+      },
+      overrides: [
+        ...(baseCoreAndReact.overrides || []),
+        {
+          ...testingLibOverrideBlock,
+          rules: testingLibOverrideRules
+        }
+      ]
+    }
+  }
+}
+
+export async function main(flags: CliOptions) {
+  console.log("Effective ESLint...", flags)
+
+  const outputFolder = "./config"
+  const fileLists = await compileFiles()
+
+  writeFiles(
+    fileLists,
     outputFolder
   )
 }
