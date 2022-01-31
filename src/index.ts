@@ -98,6 +98,46 @@ const ruleBasedSourcePriority: KeyValue = {
   // Relaxing IIFEs in XO
   "@typescript-eslint/no-floating-promises": "xo-typescript",
 
+  // XO disables void return checks for making event handling easier, not sure
+  // what an example here looks like. I guess the risk of misuse is higher than
+  // this convenience benefit.
+  "@typescript-eslint/no-misused-promises": "ts",
+
+  // Allow destructuring for convenience - that's also not really an alias
+  "@typescript-eslint/no-this-alias": "xo-typescript",
+  "@typescript-eslint/no-unused-vars": "xo-typescript",
+  "@typescript-eslint/restrict-plus-operands": "xo-typescript",
+  "@typescript-eslint/restrict-template-expressions": "xo-typescript",
+  "@typescript-eslint/triple-slash-reference": "xo-typescript",
+
+  // Using basic rule config from CRA
+  "jsx-a11y/alt-text": "cra",
+  "jsx-a11y/anchor-has-content": "cra",
+  "jsx-a11y/anchor-is-valid": "cra",
+  "jsx-a11y/aria-role": "cra",
+  "jsx-a11y/autocomplete-valid": "airbnb-react",
+  "jsx-a11y/no-autofocus": "airbnb-react",
+
+  // Tricky with custom components... therefore disabled
+  "jsx-a11y/control-has-associated-label": "jsx",
+  "jsx-a11y/heading-has-content": "jsx",
+  "jsx-a11y/interactive-supports-focus": "jsx",
+  "jsx-a11y/media-has-caption": "jsx",
+
+  "no-unsafe-negation": "xo-typescript",
+  "eqeqeq": "cra",
+  "default-case": "cra",
+
+  "jsx-a11y/no-interactive-element-to-noninteractive-role": "jsx",
+  "jsx-a11y/no-noninteractive-element-interactions": "jsx",
+  "jsx-a11y/no-distracting-elements": "jsx",
+  "jsx-a11y/no-noninteractive-tabindex": "jsx",
+  "jsx-a11y/no-noninteractive-element-to-interactive-role": "jsx",
+  "jsx-a11y/label-has-associated-control": "jsx",
+
+  "react/button-has-type": "xo-react",
+  "react/boolean-prop-naming": "xo-react",
+
 
 }
 
