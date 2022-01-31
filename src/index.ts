@@ -43,7 +43,9 @@ const ignoreRules = /^(vue|flowtype|standard|prettier|react-native|node)\//
 
 const sourcePriority = ["local"]
 
-const ruleBasedSourcePriority: KeyValue = {
+type SourcePriorityTable = Record<string, Linter.RuleEntry | string>
+
+const ruleBasedSourcePriority: SourcePriorityTable = {
   // Additional "except-parens" was used in some, but that's the default anyway
   "no-cond-assign": "eslint",
 
@@ -127,6 +129,7 @@ const ruleBasedSourcePriority: KeyValue = {
   "no-unsafe-negation": "xo-typescript",
   "eqeqeq": "cra",
   "default-case": "cra",
+  "array-callback-return": "cra",
 
   "jsx-a11y/no-interactive-element-to-noninteractive-role": "jsx",
   "jsx-a11y/no-noninteractive-element-interactions": "jsx",
@@ -138,7 +141,73 @@ const ruleBasedSourcePriority: KeyValue = {
   "react/button-has-type": "xo-react",
   "react/boolean-prop-naming": "xo-react",
 
+  "react/display-name": "react",
 
+  // Prop Types are legacy React. We use TS.
+  "react/prop-types": "off",
+  "react/default-props-match-prop-types": "off",
+  "react/no-unused-prop-types": "off",
+
+  // Legacy class-based React
+  "react/sort-comp": "airbnb-react",
+  "react/prefer-es6-class": "airbnb-react",
+  "react/state-in-constructor": "airbnb-react",
+
+  "react/require-default-props": "xo-react",
+  "react/jsx-no-bind": "xo-react",
+
+  "react/jsx-curly-brace-presence": "xo-react",
+  "react/jsx-boolean-value": "xo-react",
+
+  // Prefer function declarations over arrow functions for all things
+  "react/function-component-definition": "airbnb-react",
+
+  // Ignoring the case is a good idea as this might be a typo
+  "react/jsx-no-duplicate-props": "xo-react",
+
+  // Combination of airbnb-react and xo-react
+  "react/jsx-no-target-blank": [
+    "error",
+    {
+      "enforceDynamicLinks": "always",
+      "warnOnSpreadAttributes": true,
+      "forms": true
+    }
+  ],
+
+  // Not sure about what's the reason to allow all-caps in CRA/Airbnb
+  "react/jsx-pascal-case": "xo-react",
+
+  // Future error in React >= 16.9
+  "react/jsx-no-script-url": "xo-react",
+
+  // Nice concept to bring some harmony into prop order. Interesting that
+  // this the only preset containing such a rule definition.
+  "react/jsx-sort-props": "xo-react",
+
+  // Disabled effectively everywhere except Airbnb
+  "react/no-direct-mutation-state": "react",
+  "react/no-string-refs": "react",
+
+  // Mostly focused on old API design of React
+  "react/no-unsafe": "react",
+  "react/no-did-mount-set-state": "off",
+
+  // Good style, good find by XO
+  "react/prefer-read-only-props": "xo-react",
+
+  // Stricter and following the upcoming default. Fine.
+  "react/jsx-key": "xo-react",
+
+  // Practically common-sense to prevent this.
+  "react/style-prop-object": "cra",
+
+  // This unicorn rule is solved by TypeScript
+  "unicorn/no-null": "xo-typescript",
+
+  "react/static-property-placement": "xo-react",
+
+  "jsx-a11y/no-static-element-interactions": "jsx"
 }
 
 function removedFilteredRules(rules: KeyValue) {
@@ -350,8 +419,15 @@ async function simplify(source: KeyValue): Linter.RulesRecord {
     }
 
     const resolutionSource = ruleBasedSourcePriority[ruleName]
-    if (resolutionSource && ruleValues[resolutionSource]) {
-      result[ruleName] = ruleValues[resolutionSource]
+    if (resolutionSource) {
+      if (Array.isArray(resolutionSource)) {
+        result[ruleName] = resolutionSource
+      } else if (resolutionSource === "off") {
+        result[ruleName] = ["off"]
+      } else {
+        result[ruleName] = ruleValues[resolutionSource];
+      }
+
       solvedRulesCount++
       continue
     }
