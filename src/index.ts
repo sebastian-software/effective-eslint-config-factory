@@ -1,7 +1,5 @@
-import { isEqual, merge, mergeWith } from "lodash"
-import path from "path"
-import { ESLint, Linter } from "eslint"
-import pkgDir from "pkg-dir"
+import { isEqual, mergeWith } from "lodash"
+import { Linter } from "eslint"
 import { getFixableRules } from "eslint-get-rules"
 import {
   getAirbnbBase,
@@ -127,7 +125,7 @@ const ruleBasedSourcePriority: SourcePriorityTable = {
   "jsx-a11y/media-has-caption": "jsx",
 
   "no-unsafe-negation": "xo-typescript",
-  "eqeqeq": "cra",
+  eqeqeq: "cra",
   "default-case": "cra",
   "array-callback-return": "cra",
 
@@ -169,9 +167,9 @@ const ruleBasedSourcePriority: SourcePriorityTable = {
   "react/jsx-no-target-blank": [
     "error",
     {
-      "enforceDynamicLinks": "always",
-      "warnOnSpreadAttributes": true,
-      "forms": true
+      enforceDynamicLinks: "always",
+      warnOnSpreadAttributes: true,
+      forms: true
     }
   ],
 
@@ -425,7 +423,7 @@ async function simplify(source: KeyValue): Linter.RulesRecord {
       } else if (resolutionSource === "off") {
         result[ruleName] = ["off"]
       } else {
-        result[ruleName] = ruleValues[resolutionSource];
+        result[ruleName] = ruleValues[resolutionSource]
       }
 
       solvedRulesCount++
