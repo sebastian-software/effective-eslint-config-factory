@@ -27,6 +27,16 @@ $ yarn add @effective/eslint-config-factory
 ```
 
 
+## Topic specific Linting Plugins
+
+These plugins are not included as they are often focussed on a very narrow scope and could be easily added locally where needed:
+
+- [MDX](https://www.npmjs.com/package/eslint-plugin-mdx)
+- [GraphQL](https://www.npmjs.com/package/@graphql-eslint/eslint-plugin)
+- [Cypress](https://www.npmjs.com/package/eslint-plugin-cypress)
+
+Install these and follow their recommended settings if required.
+
 ## License
 
 [Apache License; Version 2.0, January 2004](http://www.apache.org/licenses/LICENSE-2.0)

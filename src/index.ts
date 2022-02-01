@@ -612,13 +612,10 @@ export async function compileFiles() {
   const unicornRecommended = getUnicornRecommended()
   mergeIntoStructure(unicornRecommended, "unicorn", dist)
 
-  // TODO: https://www.npmjs.com/package/eslint-plugin-cypress
   // TODO: https://www.npmjs.com/package/eslint-plugin-shopify-lean
   // TODO: https://www.npmjs.com/package/eslint-plugin-jsdoc
   // TODO: https://www.npmjs.com/package/eslint-plugin-import + https://www.npmjs.com/package/eslint-import-resolver-babel-module
   // TODO: https://github.com/epaew/eslint-plugin-filenames-simple
-  // TODO: https://www.npmjs.com/package/@graphql-eslint/eslint-plugin
-  // TODO: https://www.npmjs.com/package/eslint-plugin-mdx
 
   // ==== ==== ==== ==== ==== ==== ====
   // Cross-Plugin Recommendations
