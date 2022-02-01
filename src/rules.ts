@@ -68,6 +68,11 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
   "array-callback-return": "cra", // common in most presets
   "arrow-body-style": "off", // possible conflict with prettier, off is most presets
   "camelcase": "xo", // XO enforces camelCase properties, style heavy and controversial, but good thing to follow in 95% of code.
+
+  "@typescript-eslint/ban-types": "xo-typescript", // best collection of types to ban is in XO
+  "@typescript-eslint/ban-ts-comment": "xo-typescript", // XO allows exceptions which are a good idea
+  "@typescript-eslint/array-type": "xo-typescript", // Prefer simple arrays as in XO
+
 }
 
 export const ruleBasedSourcePriorityOld: SourcePriorityTable = {
