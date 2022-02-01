@@ -16,7 +16,10 @@
     "typecheck": "tsc --noEmit",
     "typecheck:watch": "tsc --noEmit --watch",
     "format": "prettier --write src",
-    "check": "npm run build -- --exec && npm run lint && npm run typecheck && npm run test"
+    "check": "npm run build -- --exec && npm run typecheck && npm run test",
+    "release": "git push && release-it --ci patch",
+    "release:minor": "git push && release-it --ci minor",
+    "release:major": "git push && release-it --ci major"
   },
   "keywords": [
     "eslint",
@@ -60,7 +63,8 @@
     "meow": "^9.0.0",
     "pkg-dir": "^5.0.0",
     "preppy": "^11.0.2",
-    "prettier": "^2.5.1"
+    "prettier": "^2.5.1",
+    "release-it": "^14.12.4"
   },
   "peerDependencies": {
     "eslint": "^8.7.0"
