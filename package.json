@@ -75,5 +75,13 @@
   },
   "peerDependencies": {
     "eslint": "^8.7.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sebastian-software/effective-eslint-config-factory.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sebastian-software/effective-eslint-config-factory/issues"
+  },
+  "homepage": "https://github.com/sebastian-software/effective-eslint-config-factory#readme"
 }
