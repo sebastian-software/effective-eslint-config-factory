@@ -24,8 +24,8 @@ import {
 import { writeFiles } from "./writer"
 import baseCore from "./base/core"
 import baseReact from "./base/react"
-import jestOverrideBlock from "./base/jest"
-import testingLibraryOverrideBlock from "./base/testinglib"
+import jestOverride from "./override/jest"
+import testingLibraryOverride from "./override/testinglib"
 import { rules as TSEnabledRules } from "@typescript-eslint/eslint-plugin"
 
 interface CliOptions {
@@ -683,7 +683,7 @@ export async function compileFiles() {
       overrides: [
         ...(baseCore.overrides ?? []),
         {
-          ...jestOverrideBlock,
+          ...jestOverride,
           rules: jestOverrideRules
         }
       ]
@@ -698,7 +698,7 @@ export async function compileFiles() {
       overrides: [
         ...(baseCoreAndReact.overrides ?? []),
         {
-          ...testingLibraryOverrideBlock,
+          ...testingLibraryOverride,
           rules: testingLibraryOverrideRules
         }
       ]
