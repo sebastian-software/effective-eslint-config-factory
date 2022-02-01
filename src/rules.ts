@@ -57,10 +57,17 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
   "one-var": "xo", // prefer readability, controversial as mainly formatting related, but also helps code accessibility
   "operator-assignment": "off", // mostly disabled, heavy on individual style
   "prefer-arrow-callback": "xo", // Kent and XO effectively idential, both allow named functions
-
-
-
-
+  "prefer-const": "xo", // XO has fine tuned setting for destructing
+  "prefer-destructuring": "off", // disabled by most presets, style focused
+  "prefer-promise-reject-errors": "off", // disabled by most presets
+  "prefer-regex-literals": "off", // style focused, disabled by most presets
+  "spaced-comment": "xo", // fine tuned in XO, disabled in most presets, style heavy and therefor controversial (still pretty standard in the actual behavior)
+  "strict": "kentdodds", // source format is ESM in most code bases, still useful as auto-detected
+  "valid-typeof": "eslint", // common in most presets
+  "accessor-pairs": "kentdodds", // XO enforces classes as well which seems like a so-so idea as one might offer get-only accessors
+  "array-callback-return": "cra", // common in most presets
+  "arrow-body-style": "off", // possible conflict with prettier, off is most presets
+  "camelcase": "xo", // XO enforces camelCase properties, style heavy and controversial, but good thing to follow in 95% of code.
 }
 
 export const ruleBasedSourcePriorityOld: SourcePriorityTable = {
