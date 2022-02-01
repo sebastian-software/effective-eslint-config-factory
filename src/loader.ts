@@ -104,7 +104,7 @@ export function getReactHooksRecommended(): RuleLoaderReturn {
   return { config, rules }
 }
 
-function flattenExtends(extendsBlock: string[]) {
+function flattenAirbnbExtends(extendsBlock: string[]) {
   const loader: Linter.BaseConfig[] = extendsBlock
     .filter((importPath: string) => !importPath.includes("airbnb-base"))
     .map((importPath: string) => require(importPath))
@@ -126,12 +126,12 @@ function flattenExtends(extendsBlock: string[]) {
 
 export function getAirbnbBase(): RuleLoaderReturn {
   const plugin = require("eslint-config-airbnb-base")
-  return flattenExtends(plugin.extends)
+  return flattenAirbnbExtends(plugin.extends)
 }
 
 export function getAirbnbReact(): RuleLoaderReturn {
   const plugin = require("eslint-config-airbnb")
-  return flattenExtends(plugin.extends)
+  return flattenAirbnbExtends(plugin.extends)
 }
 
 export function getUnicornRecommended(): RuleLoaderReturn {
