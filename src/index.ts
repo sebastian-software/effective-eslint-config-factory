@@ -233,7 +233,7 @@ function humanizeRuleLevel(ruleLevel: 0 | 1 | 2) {
     return "error"
   }
 
-  throw new Error("Invalid rule level: " + ruleLevel)
+  throw new Error(`Invalid rule level: ${ruleLevel as string}!`)
 }
 
 function mergeIntoStructure(
@@ -308,14 +308,13 @@ function sortRules(source: KeyValue) {
 }
 
 export function getSingleSourceKey(object: KeyValue): string | undefined {
-  let single = null
+  let single
   for (const key in object) {
     if (single) {
-      return null
+      return
     }
- 
-      single = key
-    
+
+    single = key
   }
 
   return single
@@ -562,13 +561,13 @@ export function extractReact(source: KeyValue): Linter.RulesRecord {
 
 function mergeIntoNewConfig(configs: Linter.BaseConfig[]): Linter.BaseConfig {
   const dist: Linter.BaseConfig = {}
-  for (const config of configs) 
+  for (const config of configs)
     mergeWith(dist, config, (objectValue: any, sourceValue: any) => {
       if (Array.isArray(objectValue) && Array.isArray(sourceValue)) {
         return [...new Set([...objectValue, ...sourceValue])]
       }
     })
-  
+
   return dist
 }
 
