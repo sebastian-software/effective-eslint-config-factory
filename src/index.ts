@@ -12,7 +12,7 @@ import {
   getReactHooksRecommended,
   getReactRecommended,
   getSatya164,
-  getTestingLibRecommended as getTestingLibraryRecommended,
+  getTestingLibraryRecommended,
   getTypeScriptRecommended,
   getUnicornRecommended,
   getXo,
