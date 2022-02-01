@@ -28,7 +28,7 @@ import baseReact from "./base/react"
 import jestOverride from "./override/jest"
 import testingLibraryOverride from "./override/testinglib"
 import { rules as TSEnabledRules } from "@typescript-eslint/eslint-plugin"
-import { extractJestOverrideRules, extractReact, extractTestingLibOverrideRules } from "../dist"
+import { extractJestOverrideRules, extractReact, extractTestingLibOverrideRules } from "./extract"
 import { KeyValue, RulesStructuredByOrigin, SimplifiedRuleValue, UnifiedRuleFormat } from "./types"
 import { ruleBasedSourcePriority } from "./rules"
 
