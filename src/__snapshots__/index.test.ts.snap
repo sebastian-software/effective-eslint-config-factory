@@ -107,10 +107,7 @@ Object {
         "jest",
       ],
       "rules": Object {
-        "jest/expect-expect": Array [
-          "error",
-        ],
-        "jest/no-alias-methods": Array [
+        "jest/max-nested-describe": Array [
           "error",
         ],
         "jest/no-commented-out-tests": Array [
@@ -137,31 +134,40 @@ Object {
         "jest/no-identical-title": Array [
           "error",
         ],
-        "jest/no-interpolation-in-snapshots": Array [
+        "jest/no-if": Array [
           "error",
         ],
-        "jest/no-jasmine-globals": Array [
+        "jest/no-interpolation-in-snapshots": Array [
           "error",
         ],
         "jest/no-jest-import": Array [
           "error",
         ],
-        "jest/no-mocks-import": Array [
+        "jest/no-large-snapshots": Array [
           "error",
+          Object {
+            "maxSize": 300,
+          },
         ],
-        "jest/no-standalone-expect": Array [
+        "jest/no-mocks-import": Array [
           "error",
         ],
         "jest/no-test-prefixes": Array [
           "error",
         ],
-        "jest/prefer-to-be": Array [
+        "jest/prefer-called-with": Array [
+          "error",
+        ],
+        "jest/prefer-hooks-on-top": Array [
           "error",
         ],
         "jest/prefer-to-contain": Array [
           "error",
         ],
         "jest/prefer-to-have-length": Array [
+          "error",
+        ],
+        "jest/prefer-todo": Array [
           "error",
         ],
         "jest/valid-describe-callback": Array [
@@ -261,167 +267,13 @@ Object {
         },
       },
     ],
-    "@typescript-eslint/class-literal-property-style": Array [
-      "warn",
-      "getters",
-    ],
-    "@typescript-eslint/consistent-indexed-object-style": Array [
-      "warn",
-    ],
-    "@typescript-eslint/consistent-type-assertions": Array [
-      "error",
-      Object {
-        "assertionStyle": "as",
-        "objectLiteralTypeAssertions": "allow-as-parameter",
-      },
-    ],
-    "@typescript-eslint/default-param-last": Array [
-      "error",
-    ],
     "@typescript-eslint/dot-notation": Array [
       "warn",
-    ],
-    "@typescript-eslint/lines-between-class-members": Array [
-      "warn",
-      "always",
-      Object {
-        "exceptAfterSingleLine": true,
-      },
-    ],
-    "@typescript-eslint/member-ordering": Array [
-      "error",
-      Object {
-        "default": Array [
-          "signature",
-          "public-static-field",
-          "public-static-method",
-          "protected-static-field",
-          "protected-static-method",
-          "private-static-field",
-          "private-static-method",
-          "static-field",
-          "static-method",
-          "public-decorated-field",
-          "public-instance-field",
-          "public-abstract-field",
-          "public-field",
-          "protected-decorated-field",
-          "protected-instance-field",
-          "protected-abstract-field",
-          "protected-field",
-          "private-decorated-field",
-          "private-instance-field",
-          "private-abstract-field",
-          "private-field",
-          "instance-field",
-          "abstract-field",
-          "decorated-field",
-          "field",
-          "public-constructor",
-          "protected-constructor",
-          "private-constructor",
-          "constructor",
-          "public-decorated-method",
-          "public-instance-method",
-          "public-abstract-method",
-          "public-method",
-          "protected-decorated-method",
-          "protected-instance-method",
-          "protected-abstract-method",
-          "protected-method",
-          "private-decorated-method",
-          "private-instance-method",
-          "private-abstract-method",
-          "private-method",
-          "instance-method",
-          "abstract-method",
-          "decorated-method",
-          "method",
-        ],
-      },
-    ],
-    "@typescript-eslint/naming-convention": Array [
-      "error",
-      Object {
-        "filter": Object {
-          "match": false,
-          "regex": "[- ]",
-        },
-        "format": Array [
-          "strictCamelCase",
-        ],
-        "leadingUnderscore": "allowSingleOrDouble",
-        "selector": Array [
-          "variable",
-          "function",
-          "classProperty",
-          "objectLiteralProperty",
-          "parameterProperty",
-          "classMethod",
-          "objectLiteralMethod",
-          "typeMethod",
-          "accessor",
-        ],
-        "trailingUnderscore": "allow",
-      },
-      Object {
-        "format": Array [
-          "StrictPascalCase",
-        ],
-        "selector": "typeLike",
-      },
-      Object {
-        "format": Array [
-          "StrictPascalCase",
-        ],
-        "prefix": Array [
-          "is",
-          "has",
-          "can",
-          "should",
-          "will",
-          "did",
-        ],
-        "selector": "variable",
-        "types": Array [
-          "boolean",
-        ],
-      },
-      Object {
-        "filter": "^(?!I)[A-Z]",
-        "format": Array [
-          "StrictPascalCase",
-        ],
-        "selector": "interface",
-      },
-      Object {
-        "filter": "^T$|^[A-Z][a-zA-Z]+$",
-        "format": Array [
-          "StrictPascalCase",
-        ],
-        "selector": "typeParameter",
-      },
-      Object {
-        "format": null,
-        "modifiers": Array [
-          "requiresQuotes",
-        ],
-        "selector": Array [
-          "classProperty",
-          "objectLiteralProperty",
-        ],
-      },
     ],
     "@typescript-eslint/no-array-constructor": Array [
       "warn",
     ],
     "@typescript-eslint/no-base-to-string": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-confusing-void-expression": Array [
-      "warn",
-    ],
-    "@typescript-eslint/no-dupe-class-members": Array [
       "error",
     ],
     "@typescript-eslint/no-duplicate-imports": Array [
@@ -430,36 +282,11 @@ Object {
     "@typescript-eslint/no-dynamic-delete": Array [
       "warn",
     ],
-    "@typescript-eslint/no-empty-function": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-empty-interface": Array [
-      "warn",
-      Object {
-        "allowSingleExtends": true,
-      },
-    ],
     "@typescript-eslint/no-explicit-any": Array [
       "warn",
     ],
     "@typescript-eslint/no-extra-non-null-assertion": Array [
       "warn",
-    ],
-    "@typescript-eslint/no-extraneous-class": Array [
-      "error",
-      Object {
-        "allowConstructorOnly": false,
-        "allowEmpty": false,
-        "allowStaticOnly": false,
-        "allowWithDecorator": true,
-      },
-    ],
-    "@typescript-eslint/no-floating-promises": Array [
-      "error",
-      Object {
-        "ignoreIIFE": true,
-        "ignoreVoid": true,
-      },
     ],
     "@typescript-eslint/no-for-in-array": Array [
       "error",
@@ -470,8 +297,11 @@ Object {
     "@typescript-eslint/no-implied-eval": Array [
       "error",
     ],
-    "@typescript-eslint/no-inferrable-types": Array [
-      "warn",
+    "@typescript-eslint/no-invalid-this": Array [
+      "error",
+    ],
+    "@typescript-eslint/no-invalid-void-type": Array [
+      "error",
     ],
     "@typescript-eslint/no-loop-func": Array [
       "error",
@@ -483,9 +313,6 @@ Object {
       "warn",
     ],
     "@typescript-eslint/no-misused-new": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-misused-promises": Array [
       "error",
     ],
     "@typescript-eslint/no-namespace": Array [
@@ -500,10 +327,7 @@ Object {
     "@typescript-eslint/no-non-null-assertion": Array [
       "error",
     ],
-    "@typescript-eslint/no-redeclare": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-require-imports": Array [
+    "@typescript-eslint/no-parameter-properties": Array [
       "error",
     ],
     "@typescript-eslint/no-restricted-imports": Array [
@@ -519,26 +343,16 @@ Object {
         "colors",
       ],
     ],
-    "@typescript-eslint/no-this-alias": Array [
+    "@typescript-eslint/no-shadow": Array [
       "error",
-      Object {
-        "allowDestructuring": true,
-      },
-    ],
-    "@typescript-eslint/no-throw-literal": Array [
-      "error",
-      Object {
-        "allowThrowingAny": false,
-        "allowThrowingUnknown": false,
-      },
     ],
     "@typescript-eslint/no-unnecessary-boolean-literal-compare": Array [
       "warn",
     ],
-    "@typescript-eslint/no-unnecessary-qualifier": Array [
+    "@typescript-eslint/no-unnecessary-condition": Array [
       "warn",
     ],
-    "@typescript-eslint/no-unnecessary-type-arguments": Array [
+    "@typescript-eslint/no-unnecessary-qualifier": Array [
       "warn",
     ],
     "@typescript-eslint/no-unnecessary-type-assertion": Array [
@@ -559,40 +373,11 @@ Object {
     "@typescript-eslint/no-unsafe-member-access": Array [
       "error",
     ],
-    "@typescript-eslint/no-unsafe-return": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-unused-expressions": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-unused-vars": Array [
-      "error",
-      Object {
-        "args": "after-used",
-        "argsIgnorePattern": "^_",
-        "caughtErrors": "all",
-        "caughtErrorsIgnorePattern": "^_$",
-        "ignoreRestSiblings": true,
-        "vars": "all",
-      },
-    ],
-    "@typescript-eslint/no-use-before-define": Array [
-      "error",
-      Object {
-        "classes": false,
-        "functions": false,
-        "typedefs": false,
-        "variables": false,
-      },
-    ],
     "@typescript-eslint/no-useless-constructor": Array [
       "error",
     ],
     "@typescript-eslint/no-var-requires": Array [
       "error",
-    ],
-    "@typescript-eslint/non-nullable-type-assertion-style": Array [
-      "warn",
     ],
     "@typescript-eslint/padding-line-between-statements": Array [
       "warn",
@@ -605,11 +390,8 @@ Object {
     "@typescript-eslint/prefer-as-const": Array [
       "warn",
     ],
-    "@typescript-eslint/prefer-for-of": Array [
+    "@typescript-eslint/prefer-enum-initializers": Array [
       "error",
-    ],
-    "@typescript-eslint/prefer-function-type": Array [
-      "warn",
     ],
     "@typescript-eslint/prefer-includes": Array [
       "warn",
@@ -626,13 +408,7 @@ Object {
     "@typescript-eslint/prefer-optional-chain": Array [
       "error",
     ],
-    "@typescript-eslint/prefer-readonly": Array [
-      "warn",
-    ],
     "@typescript-eslint/prefer-reduce-type-parameter": Array [
-      "warn",
-    ],
-    "@typescript-eslint/prefer-regexp-exec": Array [
       "warn",
     ],
     "@typescript-eslint/prefer-return-this-type": Array [
@@ -644,44 +420,11 @@ Object {
     "@typescript-eslint/prefer-ts-expect-error": Array [
       "warn",
     ],
-    "@typescript-eslint/promise-function-async": Array [
-      "warn",
-    ],
-    "@typescript-eslint/require-array-sort-compare": Array [
-      "error",
-      Object {
-        "ignoreStringArrays": true,
-      },
-    ],
-    "@typescript-eslint/require-await": Array [
-      "error",
-    ],
-    "@typescript-eslint/restrict-plus-operands": Array [
-      "error",
-      Object {
-        "allowAny": false,
-        "checkCompoundAssignments": true,
-      },
-    ],
-    "@typescript-eslint/restrict-template-expressions": Array [
-      "error",
-      Object {
-        "allowNumber": true,
-      },
-    ],
     "@typescript-eslint/return-await": Array [
       "warn",
     ],
     "@typescript-eslint/switch-exhaustiveness-check": Array [
       "error",
-    ],
-    "@typescript-eslint/triple-slash-reference": Array [
-      "error",
-      Object {
-        "lib": "never",
-        "path": "never",
-        "types": "never",
-      },
     ],
     "@typescript-eslint/unbound-method": Array [
       "error",
@@ -691,74 +434,28 @@ Object {
     ],
     "accessor-pairs": Array [
       "error",
-      Object {
-        "enforceForClassMembers": true,
-      },
     ],
     "array-callback-return": Array [
-      "error",
-    ],
-    "arrow-body-style": Array [
-      "warn",
-    ],
-    "babel/no-invalid-this": Array [
-      "error",
-    ],
-    "babel/no-unused-expressions": Array [
-      "error",
-      Object {
-        "allowShortCircuit": true,
-      },
-    ],
-    "babel/valid-typeof": Array [
       "error",
     ],
     "block-scoped-var": Array [
       "error",
     ],
-    "capitalized-comments": Array [
-      "warn",
-      "always",
-      Object {
-        "ignoreConsecutiveComments": true,
-        "ignoreInlineComments": true,
-        "ignorePattern": "pragma|ignore|prettier-ignore|webpack\\\\w+:|c8",
-      },
-    ],
-    "class-methods-use-this": Array [
+    "camelcase": Array [
       "error",
       Object {
-        "exceptMethods": Array [
-          "render",
-          "getInitialState",
-          "getDefaultProps",
-          "getChildContext",
-          "componentWillMount",
-          "UNSAFE_componentWillMount",
-          "componentDidMount",
-          "componentWillReceiveProps",
-          "UNSAFE_componentWillReceiveProps",
-          "shouldComponentUpdate",
-          "componentWillUpdate",
-          "UNSAFE_componentWillUpdate",
-          "componentDidUpdate",
-          "componentWillUnmount",
-          "componentDidCatch",
-          "getSnapshotBeforeUpdate",
-        ],
+        "properties": "always",
       },
     ],
     "complexity": Array [
       "error",
+      20,
     ],
     "constructor-super": Array [
       "error",
     ],
     "default-case": Array [
       "error",
-      Object {
-        "commentPattern": "^no default$",
-      },
     ],
     "default-case-last": Array [
       "error",
@@ -772,13 +469,9 @@ Object {
     ],
     "func-name-matching": Array [
       "error",
-      Object {
-        "considerPropertyDescriptor": true,
-      },
     ],
     "func-names": Array [
       "error",
-      "never",
     ],
     "getter-return": Array [
       "error",
@@ -790,15 +483,18 @@ Object {
     "guard-for-in": Array [
       "error",
     ],
-    "import/export": Array [
+    "id-denylist": Array [
       "error",
     ],
-    "import/extensions": Array [
+    "id-match": Array [
       "error",
-      Object {
-        "js": "never",
-        "json": "always",
-      },
+      "^\\\\$?(__)?(([A-Z]|[a-z]|[0-9]+)|([A-Z_]))*\\\\$?$",
+    ],
+    "import/default": Array [
+      "error",
+    ],
+    "import/export": Array [
+      "error",
     ],
     "import/first": Array [
       "warn",
@@ -806,13 +502,13 @@ Object {
     "import/imports-first": Array [
       "warn",
     ],
+    "import/no-absolute-path": Array [
+      "error",
+    ],
     "import/no-amd": Array [
       "error",
     ],
-    "import/no-anonymous-default-export": Array [
-      "error",
-    ],
-    "import/no-commonjs": Array [
+    "import/no-deprecated": Array [
       "error",
     ],
     "import/no-duplicates": Array [
@@ -821,17 +517,58 @@ Object {
     "import/no-extraneous-dependencies": Array [
       "error",
     ],
-    "import/no-self-import": Array [
+    "import/no-import-module-exports": Array [
+      "warn",
+    ],
+    "import/no-mutable-exports": Array [
       "error",
     ],
-    "import/no-unresolved": Array [
+    "import/no-named-as-default": Array [
+      "error",
+    ],
+    "import/no-named-as-default-member": Array [
+      "error",
+    ],
+    "import/no-named-default": Array [
+      "error",
+    ],
+    "import/no-relative-packages": Array [
+      "error",
+    ],
+    "import/no-self-import": Array [
       "error",
     ],
     "import/no-webpack-loader-syntax": Array [
       "error",
     ],
+    "import/order": Array [
+      "warn",
+      Object {
+        "groups": Array [
+          "builtin",
+          Array [
+            "external",
+            "internal",
+          ],
+          "parent",
+          Array [
+            "sibling",
+            "index",
+          ],
+        ],
+      },
+    ],
     "max-depth": Array [
       "error",
+      4,
+    ],
+    "max-lines": Array [
+      "error",
+      Object {
+        "max": 2500,
+        "skipBlankLines": false,
+        "skipComments": false,
+      },
     ],
     "max-nested-callbacks": Array [
       "error",
@@ -848,10 +585,6 @@ Object {
     ],
     "new-cap": Array [
       "error",
-      Object {
-        "capIsNew": true,
-        "newIsCap": true,
-      },
     ],
     "no-alert": Array [
       "error",
@@ -901,6 +634,9 @@ Object {
     "no-delete-var": Array [
       "error",
     ],
+    "no-div-regex": Array [
+      "warn",
+    ],
     "no-dupe-args": Array [
       "error",
     ],
@@ -913,12 +649,6 @@ Object {
     "no-duplicate-case": Array [
       "error",
     ],
-    "no-else-return": Array [
-      "warn",
-      Object {
-        "allowElseIf": false,
-      },
-    ],
     "no-empty": Array [
       "error",
     ],
@@ -926,9 +656,6 @@ Object {
       "error",
     ],
     "no-empty-pattern": Array [
-      "error",
-    ],
-    "no-eq-null": Array [
       "error",
     ],
     "no-eval": Array [
@@ -1036,9 +763,6 @@ Object {
     "no-octal-escape": Array [
       "error",
     ],
-    "no-promise-executor-return": Array [
-      "error",
-    ],
     "no-proto": Array [
       "error",
     ],
@@ -1128,10 +852,6 @@ Object {
     ],
     "no-return-assign": Array [
       "error",
-      "always",
-    ],
-    "no-return-await": Array [
-      "error",
     ],
     "no-script-url": Array [
       "error",
@@ -1160,19 +880,14 @@ Object {
     "no-this-before-super": Array [
       "error",
     ],
-    "no-undef-init": Array [
-      "warn",
-    ],
-    "no-underscore-dangle": Array [
+    "no-undef": Array [
       "error",
       Object {
-        "allow": Array [
-          "__REDUX_DEVTOOLS_EXTENSION_COMPOSE__",
-        ],
-        "allowAfterSuper": false,
-        "allowAfterThis": false,
-        "enforceInMethodNames": true,
+        "typeof": true,
       },
+    ],
+    "no-undef-init": Array [
+      "warn",
     ],
     "no-unmodified-loop-condition": Array [
       "error",
@@ -1191,23 +906,18 @@ Object {
     ],
     "no-unsafe-negation": Array [
       "error",
-      Object {
-        "enforceForOrderingRelations": true,
-      },
     ],
     "no-unsafe-optional-chaining": Array [
       "error",
+      Object {
+        "disallowArithmeticOperators": true,
+      },
     ],
     "no-unused-labels": Array [
       "warn",
     ],
-    "no-use-before-define": Array [
+    "no-unused-private-class-members": Array [
       "error",
-      Object {
-        "classes": false,
-        "functions": false,
-        "variables": false,
-      },
     ],
     "no-useless-backreference": Array [
       "error",
@@ -1239,29 +949,16 @@ Object {
     "no-var": Array [
       "warn",
     ],
-    "no-void": Array [
-      "error",
-      Object {
-        "allowAsStatement": true,
-      },
-    ],
-    "no-warning-comments": Array [
-      "error",
-    ],
     "no-with": Array [
       "error",
     ],
     "object-shorthand": Array [
       "warn",
-      "always",
+      "properties",
     ],
     "one-var": Array [
       "warn",
       "never",
-    ],
-    "operator-assignment": Array [
-      "warn",
-      "always",
     ],
     "prefer-arrow-callback": Array [
       "warn",
@@ -1275,45 +972,26 @@ Object {
         "destructuring": "all",
       },
     ],
-    "prefer-destructuring": Array [
-      "warn",
-      Object {
-        "AssignmentExpression": Object {
-          "array": false,
-          "object": false,
-        },
-        "VariableDeclarator": Object {
-          "array": false,
-          "object": true,
-        },
-      },
-      Object {
-        "enforceForRenamedProperties": false,
-      },
-    ],
     "prefer-exponentiation-operator": Array [
       "warn",
     ],
     "prefer-numeric-literals": Array [
       "warn",
     ],
-    "prefer-object-spread": Array [
+    "prefer-object-has-own": Array [
       "warn",
     ],
-    "prefer-promise-reject-errors": Array [
-      "error",
-      Object {
-        "allowEmptyReject": true,
-      },
-    ],
-    "prefer-regex-literals": Array [
-      "error",
+    "prefer-object-spread": Array [
+      "warn",
     ],
     "prefer-rest-params": Array [
       "error",
     ],
     "prefer-spread": Array [
       "error",
+    ],
+    "prefer-template": Array [
+      "warn",
     ],
     "radix": Array [
       "error",
@@ -1353,7 +1031,6 @@ Object {
     ],
     "strict": Array [
       "warn",
-      "never",
     ],
     "symbol-description": Array [
       "error",
@@ -1615,9 +1292,9 @@ Object {
     ],
     "valid-typeof": Array [
       "error",
-      Object {
-        "requireStringLiterals": false,
-      },
+    ],
+    "vars-on-top": Array [
+      "error",
     ],
     "yoda": Array [
       "warn",
@@ -1980,167 +1657,13 @@ Object {
         },
       },
     ],
-    "@typescript-eslint/class-literal-property-style": Array [
-      "warn",
-      "getters",
-    ],
-    "@typescript-eslint/consistent-indexed-object-style": Array [
-      "warn",
-    ],
-    "@typescript-eslint/consistent-type-assertions": Array [
-      "error",
-      Object {
-        "assertionStyle": "as",
-        "objectLiteralTypeAssertions": "allow-as-parameter",
-      },
-    ],
-    "@typescript-eslint/default-param-last": Array [
-      "error",
-    ],
     "@typescript-eslint/dot-notation": Array [
       "warn",
-    ],
-    "@typescript-eslint/lines-between-class-members": Array [
-      "warn",
-      "always",
-      Object {
-        "exceptAfterSingleLine": true,
-      },
-    ],
-    "@typescript-eslint/member-ordering": Array [
-      "error",
-      Object {
-        "default": Array [
-          "signature",
-          "public-static-field",
-          "public-static-method",
-          "protected-static-field",
-          "protected-static-method",
-          "private-static-field",
-          "private-static-method",
-          "static-field",
-          "static-method",
-          "public-decorated-field",
-          "public-instance-field",
-          "public-abstract-field",
-          "public-field",
-          "protected-decorated-field",
-          "protected-instance-field",
-          "protected-abstract-field",
-          "protected-field",
-          "private-decorated-field",
-          "private-instance-field",
-          "private-abstract-field",
-          "private-field",
-          "instance-field",
-          "abstract-field",
-          "decorated-field",
-          "field",
-          "public-constructor",
-          "protected-constructor",
-          "private-constructor",
-          "constructor",
-          "public-decorated-method",
-          "public-instance-method",
-          "public-abstract-method",
-          "public-method",
-          "protected-decorated-method",
-          "protected-instance-method",
-          "protected-abstract-method",
-          "protected-method",
-          "private-decorated-method",
-          "private-instance-method",
-          "private-abstract-method",
-          "private-method",
-          "instance-method",
-          "abstract-method",
-          "decorated-method",
-          "method",
-        ],
-      },
-    ],
-    "@typescript-eslint/naming-convention": Array [
-      "error",
-      Object {
-        "filter": Object {
-          "match": false,
-          "regex": "[- ]",
-        },
-        "format": Array [
-          "strictCamelCase",
-        ],
-        "leadingUnderscore": "allowSingleOrDouble",
-        "selector": Array [
-          "variable",
-          "function",
-          "classProperty",
-          "objectLiteralProperty",
-          "parameterProperty",
-          "classMethod",
-          "objectLiteralMethod",
-          "typeMethod",
-          "accessor",
-        ],
-        "trailingUnderscore": "allow",
-      },
-      Object {
-        "format": Array [
-          "StrictPascalCase",
-        ],
-        "selector": "typeLike",
-      },
-      Object {
-        "format": Array [
-          "StrictPascalCase",
-        ],
-        "prefix": Array [
-          "is",
-          "has",
-          "can",
-          "should",
-          "will",
-          "did",
-        ],
-        "selector": "variable",
-        "types": Array [
-          "boolean",
-        ],
-      },
-      Object {
-        "filter": "^(?!I)[A-Z]",
-        "format": Array [
-          "StrictPascalCase",
-        ],
-        "selector": "interface",
-      },
-      Object {
-        "filter": "^T$|^[A-Z][a-zA-Z]+$",
-        "format": Array [
-          "StrictPascalCase",
-        ],
-        "selector": "typeParameter",
-      },
-      Object {
-        "format": null,
-        "modifiers": Array [
-          "requiresQuotes",
-        ],
-        "selector": Array [
-          "classProperty",
-          "objectLiteralProperty",
-        ],
-      },
     ],
     "@typescript-eslint/no-array-constructor": Array [
       "warn",
     ],
     "@typescript-eslint/no-base-to-string": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-confusing-void-expression": Array [
-      "warn",
-    ],
-    "@typescript-eslint/no-dupe-class-members": Array [
       "error",
     ],
     "@typescript-eslint/no-duplicate-imports": Array [
@@ -2149,36 +1672,11 @@ Object {
     "@typescript-eslint/no-dynamic-delete": Array [
       "warn",
     ],
-    "@typescript-eslint/no-empty-function": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-empty-interface": Array [
-      "warn",
-      Object {
-        "allowSingleExtends": true,
-      },
-    ],
     "@typescript-eslint/no-explicit-any": Array [
       "warn",
     ],
     "@typescript-eslint/no-extra-non-null-assertion": Array [
       "warn",
-    ],
-    "@typescript-eslint/no-extraneous-class": Array [
-      "error",
-      Object {
-        "allowConstructorOnly": false,
-        "allowEmpty": false,
-        "allowStaticOnly": false,
-        "allowWithDecorator": true,
-      },
-    ],
-    "@typescript-eslint/no-floating-promises": Array [
-      "error",
-      Object {
-        "ignoreIIFE": true,
-        "ignoreVoid": true,
-      },
     ],
     "@typescript-eslint/no-for-in-array": Array [
       "error",
@@ -2189,8 +1687,11 @@ Object {
     "@typescript-eslint/no-implied-eval": Array [
       "error",
     ],
-    "@typescript-eslint/no-inferrable-types": Array [
-      "warn",
+    "@typescript-eslint/no-invalid-this": Array [
+      "error",
+    ],
+    "@typescript-eslint/no-invalid-void-type": Array [
+      "error",
     ],
     "@typescript-eslint/no-loop-func": Array [
       "error",
@@ -2202,9 +1703,6 @@ Object {
       "warn",
     ],
     "@typescript-eslint/no-misused-new": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-misused-promises": Array [
       "error",
     ],
     "@typescript-eslint/no-namespace": Array [
@@ -2219,10 +1717,7 @@ Object {
     "@typescript-eslint/no-non-null-assertion": Array [
       "error",
     ],
-    "@typescript-eslint/no-redeclare": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-require-imports": Array [
+    "@typescript-eslint/no-parameter-properties": Array [
       "error",
     ],
     "@typescript-eslint/no-restricted-imports": Array [
@@ -2238,26 +1733,16 @@ Object {
         "colors",
       ],
     ],
-    "@typescript-eslint/no-this-alias": Array [
+    "@typescript-eslint/no-shadow": Array [
       "error",
-      Object {
-        "allowDestructuring": true,
-      },
-    ],
-    "@typescript-eslint/no-throw-literal": Array [
-      "error",
-      Object {
-        "allowThrowingAny": false,
-        "allowThrowingUnknown": false,
-      },
     ],
     "@typescript-eslint/no-unnecessary-boolean-literal-compare": Array [
       "warn",
     ],
-    "@typescript-eslint/no-unnecessary-qualifier": Array [
+    "@typescript-eslint/no-unnecessary-condition": Array [
       "warn",
     ],
-    "@typescript-eslint/no-unnecessary-type-arguments": Array [
+    "@typescript-eslint/no-unnecessary-qualifier": Array [
       "warn",
     ],
     "@typescript-eslint/no-unnecessary-type-assertion": Array [
@@ -2278,40 +1763,11 @@ Object {
     "@typescript-eslint/no-unsafe-member-access": Array [
       "error",
     ],
-    "@typescript-eslint/no-unsafe-return": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-unused-expressions": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-unused-vars": Array [
-      "error",
-      Object {
-        "args": "after-used",
-        "argsIgnorePattern": "^_",
-        "caughtErrors": "all",
-        "caughtErrorsIgnorePattern": "^_$",
-        "ignoreRestSiblings": true,
-        "vars": "all",
-      },
-    ],
-    "@typescript-eslint/no-use-before-define": Array [
-      "error",
-      Object {
-        "classes": false,
-        "functions": false,
-        "typedefs": false,
-        "variables": false,
-      },
-    ],
     "@typescript-eslint/no-useless-constructor": Array [
       "error",
     ],
     "@typescript-eslint/no-var-requires": Array [
       "error",
-    ],
-    "@typescript-eslint/non-nullable-type-assertion-style": Array [
-      "warn",
     ],
     "@typescript-eslint/padding-line-between-statements": Array [
       "warn",
@@ -2324,11 +1780,8 @@ Object {
     "@typescript-eslint/prefer-as-const": Array [
       "warn",
     ],
-    "@typescript-eslint/prefer-for-of": Array [
+    "@typescript-eslint/prefer-enum-initializers": Array [
       "error",
-    ],
-    "@typescript-eslint/prefer-function-type": Array [
-      "warn",
     ],
     "@typescript-eslint/prefer-includes": Array [
       "warn",
@@ -2345,13 +1798,7 @@ Object {
     "@typescript-eslint/prefer-optional-chain": Array [
       "error",
     ],
-    "@typescript-eslint/prefer-readonly": Array [
-      "warn",
-    ],
     "@typescript-eslint/prefer-reduce-type-parameter": Array [
-      "warn",
-    ],
-    "@typescript-eslint/prefer-regexp-exec": Array [
       "warn",
     ],
     "@typescript-eslint/prefer-return-this-type": Array [
@@ -2363,44 +1810,11 @@ Object {
     "@typescript-eslint/prefer-ts-expect-error": Array [
       "warn",
     ],
-    "@typescript-eslint/promise-function-async": Array [
-      "warn",
-    ],
-    "@typescript-eslint/require-array-sort-compare": Array [
-      "error",
-      Object {
-        "ignoreStringArrays": true,
-      },
-    ],
-    "@typescript-eslint/require-await": Array [
-      "error",
-    ],
-    "@typescript-eslint/restrict-plus-operands": Array [
-      "error",
-      Object {
-        "allowAny": false,
-        "checkCompoundAssignments": true,
-      },
-    ],
-    "@typescript-eslint/restrict-template-expressions": Array [
-      "error",
-      Object {
-        "allowNumber": true,
-      },
-    ],
     "@typescript-eslint/return-await": Array [
       "warn",
     ],
     "@typescript-eslint/switch-exhaustiveness-check": Array [
       "error",
-    ],
-    "@typescript-eslint/triple-slash-reference": Array [
-      "error",
-      Object {
-        "lib": "never",
-        "path": "never",
-        "types": "never",
-      },
     ],
     "@typescript-eslint/unbound-method": Array [
       "error",
@@ -2410,74 +1824,28 @@ Object {
     ],
     "accessor-pairs": Array [
       "error",
-      Object {
-        "enforceForClassMembers": true,
-      },
     ],
     "array-callback-return": Array [
-      "error",
-    ],
-    "arrow-body-style": Array [
-      "warn",
-    ],
-    "babel/no-invalid-this": Array [
-      "error",
-    ],
-    "babel/no-unused-expressions": Array [
-      "error",
-      Object {
-        "allowShortCircuit": true,
-      },
-    ],
-    "babel/valid-typeof": Array [
       "error",
     ],
     "block-scoped-var": Array [
       "error",
     ],
-    "capitalized-comments": Array [
-      "warn",
-      "always",
-      Object {
-        "ignoreConsecutiveComments": true,
-        "ignoreInlineComments": true,
-        "ignorePattern": "pragma|ignore|prettier-ignore|webpack\\\\w+:|c8",
-      },
-    ],
-    "class-methods-use-this": Array [
+    "camelcase": Array [
       "error",
       Object {
-        "exceptMethods": Array [
-          "render",
-          "getInitialState",
-          "getDefaultProps",
-          "getChildContext",
-          "componentWillMount",
-          "UNSAFE_componentWillMount",
-          "componentDidMount",
-          "componentWillReceiveProps",
-          "UNSAFE_componentWillReceiveProps",
-          "shouldComponentUpdate",
-          "componentWillUpdate",
-          "UNSAFE_componentWillUpdate",
-          "componentDidUpdate",
-          "componentWillUnmount",
-          "componentDidCatch",
-          "getSnapshotBeforeUpdate",
-        ],
+        "properties": "always",
       },
     ],
     "complexity": Array [
       "error",
+      20,
     ],
     "constructor-super": Array [
       "error",
     ],
     "default-case": Array [
       "error",
-      Object {
-        "commentPattern": "^no default$",
-      },
     ],
     "default-case-last": Array [
       "error",
@@ -2491,13 +1859,9 @@ Object {
     ],
     "func-name-matching": Array [
       "error",
-      Object {
-        "considerPropertyDescriptor": true,
-      },
     ],
     "func-names": Array [
       "error",
-      "never",
     ],
     "getter-return": Array [
       "error",
@@ -2509,15 +1873,18 @@ Object {
     "guard-for-in": Array [
       "error",
     ],
-    "import/export": Array [
+    "id-denylist": Array [
       "error",
     ],
-    "import/extensions": Array [
+    "id-match": Array [
       "error",
-      Object {
-        "js": "never",
-        "json": "always",
-      },
+      "^\\\\$?(__)?(([A-Z]|[a-z]|[0-9]+)|([A-Z_]))*\\\\$?$",
+    ],
+    "import/default": Array [
+      "error",
+    ],
+    "import/export": Array [
+      "error",
     ],
     "import/first": Array [
       "warn",
@@ -2525,13 +1892,13 @@ Object {
     "import/imports-first": Array [
       "warn",
     ],
+    "import/no-absolute-path": Array [
+      "error",
+    ],
     "import/no-amd": Array [
       "error",
     ],
-    "import/no-anonymous-default-export": Array [
-      "error",
-    ],
-    "import/no-commonjs": Array [
+    "import/no-deprecated": Array [
       "error",
     ],
     "import/no-duplicates": Array [
@@ -2540,27 +1907,44 @@ Object {
     "import/no-extraneous-dependencies": Array [
       "error",
     ],
-    "import/no-self-import": Array [
+    "import/no-import-module-exports": Array [
+      "warn",
+    ],
+    "import/no-mutable-exports": Array [
       "error",
     ],
-    "import/no-unresolved": Array [
+    "import/no-named-as-default": Array [
+      "error",
+    ],
+    "import/no-named-as-default-member": Array [
+      "error",
+    ],
+    "import/no-named-default": Array [
+      "error",
+    ],
+    "import/no-relative-packages": Array [
+      "error",
+    ],
+    "import/no-self-import": Array [
       "error",
     ],
     "import/no-webpack-loader-syntax": Array [
       "error",
     ],
-    "jsx-a11y/alt-text": Array [
-      "error",
-    ],
-    "jsx-a11y/anchor-has-content": Array [
-      "error",
-    ],
-    "jsx-a11y/anchor-is-valid": Array [
-      "error",
+    "import/order": Array [
+      "warn",
       Object {
-        "aspects": Array [
-          "noHref",
-          "invalidHref",
+        "groups": Array [
+          "builtin",
+          Array [
+            "external",
+            "internal",
+          ],
+          "parent",
+          Array [
+            "sibling",
+            "index",
+          ],
         ],
       },
     ],
@@ -2573,19 +1957,10 @@ Object {
     "jsx-a11y/aria-proptypes": Array [
       "error",
     ],
-    "jsx-a11y/aria-role": Array [
-      "error",
-      Object {
-        "ignoreNonDOM": true,
-      },
-    ],
     "jsx-a11y/aria-unsupported-elements": Array [
       "error",
     ],
     "jsx-a11y/click-events-have-key-events": Array [
-      "error",
-    ],
-    "jsx-a11y/heading-has-content": Array [
       "error",
     ],
     "jsx-a11y/html-has-lang": Array [
@@ -2597,27 +1972,7 @@ Object {
     "jsx-a11y/img-redundant-alt": Array [
       "error",
     ],
-    "jsx-a11y/interactive-supports-focus": Array [
-      "error",
-      Object {
-        "tabbable": Array [
-          "button",
-          "checkbox",
-          "link",
-          "searchbox",
-          "spinbutton",
-          "switch",
-          "textbox",
-        ],
-      },
-    ],
-    "jsx-a11y/label-has-associated-control": Array [
-      "error",
-    ],
     "jsx-a11y/lang": Array [
-      "error",
-    ],
-    "jsx-a11y/media-has-caption": Array [
       "error",
     ],
     "jsx-a11y/mouse-events-have-key-events": Array [
@@ -2626,130 +1981,8 @@ Object {
     "jsx-a11y/no-access-key": Array [
       "error",
     ],
-    "jsx-a11y/no-autofocus": Array [
-      "error",
-      Object {
-        "ignoreNonDOM": true,
-      },
-    ],
-    "jsx-a11y/no-distracting-elements": Array [
-      "error",
-    ],
-    "jsx-a11y/no-interactive-element-to-noninteractive-role": Array [
-      "error",
-      Object {
-        "canvas": Array [
-          "img",
-        ],
-        "tr": Array [
-          "none",
-          "presentation",
-        ],
-      },
-    ],
-    "jsx-a11y/no-noninteractive-element-interactions": Array [
-      "error",
-      Object {
-        "alert": Array [
-          "onKeyUp",
-          "onKeyDown",
-          "onKeyPress",
-        ],
-        "body": Array [
-          "onError",
-          "onLoad",
-        ],
-        "dialog": Array [
-          "onKeyUp",
-          "onKeyDown",
-          "onKeyPress",
-        ],
-        "handlers": Array [
-          "onClick",
-          "onError",
-          "onLoad",
-          "onMouseDown",
-          "onMouseUp",
-          "onKeyPress",
-          "onKeyDown",
-          "onKeyUp",
-        ],
-        "iframe": Array [
-          "onError",
-          "onLoad",
-        ],
-        "img": Array [
-          "onError",
-          "onLoad",
-        ],
-      },
-    ],
-    "jsx-a11y/no-noninteractive-element-to-interactive-role": Array [
-      "error",
-      Object {
-        "fieldset": Array [
-          "radiogroup",
-          "presentation",
-        ],
-        "li": Array [
-          "menuitem",
-          "option",
-          "row",
-          "tab",
-          "treeitem",
-        ],
-        "ol": Array [
-          "listbox",
-          "menu",
-          "menubar",
-          "radiogroup",
-          "tablist",
-          "tree",
-          "treegrid",
-        ],
-        "table": Array [
-          "grid",
-        ],
-        "td": Array [
-          "gridcell",
-        ],
-        "ul": Array [
-          "listbox",
-          "menu",
-          "menubar",
-          "radiogroup",
-          "tablist",
-          "tree",
-          "treegrid",
-        ],
-      },
-    ],
-    "jsx-a11y/no-noninteractive-tabindex": Array [
-      "error",
-      Object {
-        "allowExpressionValues": true,
-        "roles": Array [
-          "tabpanel",
-        ],
-        "tags": Array [],
-      },
-    ],
     "jsx-a11y/no-redundant-roles": Array [
       "error",
-    ],
-    "jsx-a11y/no-static-element-interactions": Array [
-      "error",
-      Object {
-        "allowExpressionValues": true,
-        "handlers": Array [
-          "onClick",
-          "onMouseDown",
-          "onMouseUp",
-          "onKeyPress",
-          "onKeyDown",
-          "onKeyUp",
-        ],
-      },
     ],
     "jsx-a11y/role-has-required-aria-props": Array [
       "error",
@@ -2765,6 +1998,15 @@ Object {
     ],
     "max-depth": Array [
       "error",
+      4,
+    ],
+    "max-lines": Array [
+      "error",
+      Object {
+        "max": 2500,
+        "skipBlankLines": false,
+        "skipComments": false,
+      },
     ],
     "max-nested-callbacks": Array [
       "error",
@@ -2781,10 +2023,6 @@ Object {
     ],
     "new-cap": Array [
       "error",
-      Object {
-        "capIsNew": true,
-        "newIsCap": true,
-      },
     ],
     "no-alert": Array [
       "error",
@@ -2834,6 +2072,9 @@ Object {
     "no-delete-var": Array [
       "error",
     ],
+    "no-div-regex": Array [
+      "warn",
+    ],
     "no-dupe-args": Array [
       "error",
     ],
@@ -2846,12 +2087,6 @@ Object {
     "no-duplicate-case": Array [
       "error",
     ],
-    "no-else-return": Array [
-      "warn",
-      Object {
-        "allowElseIf": false,
-      },
-    ],
     "no-empty": Array [
       "error",
     ],
@@ -2859,9 +2094,6 @@ Object {
       "error",
     ],
     "no-empty-pattern": Array [
-      "error",
-    ],
-    "no-eq-null": Array [
       "error",
     ],
     "no-eval": Array [
@@ -2969,9 +2201,6 @@ Object {
     "no-octal-escape": Array [
       "error",
     ],
-    "no-promise-executor-return": Array [
-      "error",
-    ],
     "no-proto": Array [
       "error",
     ],
@@ -3061,10 +2290,6 @@ Object {
     ],
     "no-return-assign": Array [
       "error",
-      "always",
-    ],
-    "no-return-await": Array [
-      "error",
     ],
     "no-script-url": Array [
       "error",
@@ -3093,19 +2318,14 @@ Object {
     "no-this-before-super": Array [
       "error",
     ],
-    "no-undef-init": Array [
-      "warn",
-    ],
-    "no-underscore-dangle": Array [
+    "no-undef": Array [
       "error",
       Object {
-        "allow": Array [
-          "__REDUX_DEVTOOLS_EXTENSION_COMPOSE__",
-        ],
-        "allowAfterSuper": false,
-        "allowAfterThis": false,
-        "enforceInMethodNames": true,
+        "typeof": true,
       },
+    ],
+    "no-undef-init": Array [
+      "warn",
     ],
     "no-unmodified-loop-condition": Array [
       "error",
@@ -3124,23 +2344,18 @@ Object {
     ],
     "no-unsafe-negation": Array [
       "error",
-      Object {
-        "enforceForOrderingRelations": true,
-      },
     ],
     "no-unsafe-optional-chaining": Array [
       "error",
+      Object {
+        "disallowArithmeticOperators": true,
+      },
     ],
     "no-unused-labels": Array [
       "warn",
     ],
-    "no-use-before-define": Array [
+    "no-unused-private-class-members": Array [
       "error",
-      Object {
-        "classes": false,
-        "functions": false,
-        "variables": false,
-      },
     ],
     "no-useless-backreference": Array [
       "error",
@@ -3172,29 +2387,16 @@ Object {
     "no-var": Array [
       "warn",
     ],
-    "no-void": Array [
-      "error",
-      Object {
-        "allowAsStatement": true,
-      },
-    ],
-    "no-warning-comments": Array [
-      "error",
-    ],
     "no-with": Array [
       "error",
     ],
     "object-shorthand": Array [
       "warn",
-      "always",
+      "properties",
     ],
     "one-var": Array [
       "warn",
       "never",
-    ],
-    "operator-assignment": Array [
-      "warn",
-      "always",
     ],
     "prefer-arrow-callback": Array [
       "warn",
@@ -3208,45 +2410,26 @@ Object {
         "destructuring": "all",
       },
     ],
-    "prefer-destructuring": Array [
-      "warn",
-      Object {
-        "AssignmentExpression": Object {
-          "array": false,
-          "object": false,
-        },
-        "VariableDeclarator": Object {
-          "array": false,
-          "object": true,
-        },
-      },
-      Object {
-        "enforceForRenamedProperties": false,
-      },
-    ],
     "prefer-exponentiation-operator": Array [
       "warn",
     ],
     "prefer-numeric-literals": Array [
       "warn",
     ],
-    "prefer-object-spread": Array [
+    "prefer-object-has-own": Array [
       "warn",
     ],
-    "prefer-promise-reject-errors": Array [
-      "error",
-      Object {
-        "allowEmptyReject": true,
-      },
-    ],
-    "prefer-regex-literals": Array [
-      "error",
+    "prefer-object-spread": Array [
+      "warn",
     ],
     "prefer-rest-params": Array [
       "error",
     ],
     "prefer-spread": Array [
       "error",
+    ],
+    "prefer-template": Array [
+      "warn",
     ],
     "radix": Array [
       "error",
@@ -3257,131 +2440,14 @@ Object {
     "react-hooks/rules-of-hooks": Array [
       "error",
     ],
-    "react/boolean-prop-naming": Array [
-      "error",
-      Object {
-        "validateNested": true,
-      },
-    ],
-    "react/button-has-type": Array [
-      "error",
-    ],
-    "react/destructuring-assignment": Array [
-      "error",
-      "always",
-    ],
-    "react/display-name": Array [
-      "error",
-    ],
-    "react/forbid-foreign-prop-types": Array [
-      "error",
-      Object {
-        "allowInPropTypes": true,
-      },
-    ],
-    "react/forbid-prop-types": Array [
-      "error",
-      Object {
-        "checkChildContextTypes": true,
-        "checkContextTypes": true,
-        "forbid": Array [
-          "any",
-          "array",
-          "object",
-        ],
-      },
-    ],
-    "react/function-component-definition": Array [
-      "warn",
-      Object {
-        "namedComponents": Array [
-          "function-declaration",
-          "function-expression",
-        ],
-        "unnamedComponents": "function-expression",
-      },
-    ],
-    "react/jsx-boolean-value": Array [
-      "warn",
-    ],
-    "react/jsx-curly-brace-presence": Array [
-      "warn",
-      "never",
-    ],
-    "react/jsx-filename-extension": Array [
-      "error",
-      Object {
-        "extensions": Array [
-          ".jsx",
-        ],
-      },
-    ],
-    "react/jsx-fragments": Array [
-      "warn",
-      "syntax",
-    ],
-    "react/jsx-key": Array [
-      "error",
-      Object {
-        "checkFragmentShorthand": true,
-        "checkKeyMustBeforeSpread": true,
-      },
-    ],
-    "react/jsx-no-bind": Array [
-      "error",
-      Object {
-        "allowArrowFunctions": true,
-      },
-    ],
     "react/jsx-no-comment-textnodes": Array [
       "error",
-    ],
-    "react/jsx-no-constructed-context-values": Array [
-      "error",
-    ],
-    "react/jsx-no-duplicate-props": Array [
-      "error",
-      Object {
-        "ignoreCase": true,
-      },
-    ],
-    "react/jsx-no-script-url": Array [
-      "error",
-    ],
-    "react/jsx-no-target-blank": Array [
-      "warn",
-      Object {
-        "enforceDynamicLinks": "always",
-        "forms": true,
-        "warnOnSpreadAttributes": true,
-      },
     ],
     "react/jsx-no-undef": Array [
       "error",
     ],
     "react/jsx-no-useless-fragment": Array [
       "warn",
-    ],
-    "react/jsx-pascal-case": Array [
-      "error",
-    ],
-    "react/jsx-props-no-spreading": Array [
-      "error",
-      Object {
-        "custom": "enforce",
-        "exceptions": Array [],
-        "explicitSpread": "ignore",
-        "html": "enforce",
-      },
-    ],
-    "react/jsx-sort-props": Array [
-      "warn",
-      Object {
-        "callbacksLast": true,
-        "noSortAlphabetically": true,
-        "reservedFirst": true,
-        "shorthandFirst": true,
-      },
     ],
     "react/jsx-uses-react": Array [
       "error",
@@ -3392,17 +2458,8 @@ Object {
     "react/no-access-state-in-setstate": Array [
       "error",
     ],
-    "react/no-array-index-key": Array [
-      "error",
-    ],
     "react/no-arrow-function-lifecycle": Array [
       "warn",
-    ],
-    "react/no-children-prop": Array [
-      "error",
-    ],
-    "react/no-danger": Array [
-      "error",
     ],
     "react/no-danger-with-children": Array [
       "error",
@@ -3411,9 +2468,6 @@ Object {
       "error",
     ],
     "react/no-did-update-set-state": Array [
-      "error",
-    ],
-    "react/no-direct-mutation-state": Array [
       "error",
     ],
     "react/no-find-dom-node": Array [
@@ -3434,9 +2488,6 @@ Object {
     "react/no-render-return-value": Array [
       "error",
     ],
-    "react/no-string-refs": Array [
-      "error",
-    ],
     "react/no-this-in-sfc": Array [
       "error",
     ],
@@ -3449,9 +2500,6 @@ Object {
     "react/no-unknown-property": Array [
       "warn",
     ],
-    "react/no-unstable-nested-components": Array [
-      "error",
-    ],
     "react/no-unused-class-component-methods": Array [
       "error",
     ],
@@ -3461,99 +2509,14 @@ Object {
     "react/no-will-update-set-state": Array [
       "error",
     ],
-    "react/prefer-es6-class": Array [
-      "error",
-      "always",
-    ],
-    "react/prefer-exact-props": Array [
-      "error",
-    ],
-    "react/prefer-read-only-props": Array [
-      "warn",
-    ],
-    "react/prefer-stateless-function": Array [
-      "error",
-      Object {
-        "ignorePureComponents": true,
-      },
-    ],
     "react/react-in-jsx-scope": Array [
       "error",
-    ],
-    "react/require-default-props": Array [
-      "error",
-      Object {
-        "forbidDefaultForRequired": true,
-        "ignoreFunctionalComponents": true,
-      },
     ],
     "react/require-render-return": Array [
       "error",
     ],
     "react/self-closing-comp": Array [
       "warn",
-    ],
-    "react/sort-comp": Array [
-      "error",
-      Object {
-        "groups": Object {
-          "lifecycle": Array [
-            "displayName",
-            "propTypes",
-            "contextTypes",
-            "childContextTypes",
-            "mixins",
-            "statics",
-            "defaultProps",
-            "constructor",
-            "getDefaultProps",
-            "getInitialState",
-            "state",
-            "getChildContext",
-            "getDerivedStateFromProps",
-            "componentWillMount",
-            "UNSAFE_componentWillMount",
-            "componentDidMount",
-            "componentWillReceiveProps",
-            "UNSAFE_componentWillReceiveProps",
-            "shouldComponentUpdate",
-            "componentWillUpdate",
-            "UNSAFE_componentWillUpdate",
-            "getSnapshotBeforeUpdate",
-            "componentDidUpdate",
-            "componentDidCatch",
-            "componentWillUnmount",
-          ],
-          "rendering": Array [
-            "/^render.+$/",
-            "render",
-          ],
-        },
-        "order": Array [
-          "static-variables",
-          "static-methods",
-          "instance-variables",
-          "lifecycle",
-          "/^handle.+$/",
-          "/^on.+$/",
-          "getters",
-          "setters",
-          "/^(get|set)(?!(InitialState$|DefaultProps$|ChildContext$)).+$/",
-          "instance-methods",
-          "everything-else",
-          "rendering",
-        ],
-      },
-    ],
-    "react/state-in-constructor": Array [
-      "error",
-      "always",
-    ],
-    "react/static-property-placement": Array [
-      "error",
-    ],
-    "react/style-prop-object": Array [
-      "error",
     ],
     "react/void-dom-elements-no-children": Array [
       "error",
@@ -3593,7 +2556,6 @@ Object {
     ],
     "strict": Array [
       "warn",
-      "never",
     ],
     "symbol-description": Array [
       "error",
@@ -3855,9 +2817,9 @@ Object {
     ],
     "valid-typeof": Array [
       "error",
-      Object {
-        "requireStringLiterals": false,
-      },
+    ],
+    "vars-on-top": Array [
+      "error",
     ],
     "yoda": Array [
       "warn",
