@@ -32,9 +32,9 @@ export async function getReactRecommended(): Promise<RuleLoaderReturn> {
   }
 }
 
-export async function getTypeScriptRecommended(
+export function getTypeScriptRecommended(
   typeChecks = true
-): Promise<RuleLoaderReturn> {
+): RuleLoaderReturn {
   const { configs } = require("@typescript-eslint/eslint-plugin")
   const config = configs.base
   const recommended = configs.recommended.rules as Linter.RulesRecord
@@ -50,7 +50,7 @@ export async function getTypeScriptRecommended(
   }
 }
 
-export async function getJestRecommended(): Promise<RuleLoaderReturn> {
+export function getJestRecommended(): RuleLoaderReturn {
   const jest = require("eslint-plugin-jest")
   const { rules, ...config } = jest.configs.recommended
 
@@ -64,7 +64,7 @@ export async function getJestRecommended(): Promise<RuleLoaderReturn> {
   }
 }
 
-export async function getTestingLibRecommended(): Promise<RuleLoaderReturn> {
+export function getTestingLibRecommended(): RuleLoaderReturn {
   const testinglib = require("eslint-plugin-testing-library")
   const { rules, ...config } = testinglib.configs.react
 
@@ -74,14 +74,14 @@ export async function getTestingLibRecommended(): Promise<RuleLoaderReturn> {
   }
 }
 
-export async function getPrettierDisabledRules(): Promise<RuleLoaderReturn> {
+export function getPrettierDisabledRules(): RuleLoaderReturn {
   process.env.ESLINT_CONFIG_PRETTIER_NO_DEPRECATED = "true"
 
   const { rules } = require("eslint-config-prettier")
   return { rules }
 }
 
-export async function getCreateReactAppRecommended(): Promise<RuleLoaderReturn> {
+export function getCreateReactAppRecommended(): RuleLoaderReturn {
   const { rules, ...config } = require("eslint-config-react-app")
   return {
     config,
@@ -89,7 +89,7 @@ export async function getCreateReactAppRecommended(): Promise<RuleLoaderReturn> 
   }
 }
 
-export async function getJSXRecommended(): Promise<RuleLoaderReturn> {
+export function getJSXRecommended(): RuleLoaderReturn {
   const plugin = require("eslint-plugin-jsx-a11y")
   const { rules, ...config } = plugin.configs.recommended
   return {
@@ -98,7 +98,7 @@ export async function getJSXRecommended(): Promise<RuleLoaderReturn> {
   }
 }
 
-export async function getReactHooksRecommended(): Promise<RuleLoaderReturn> {
+export function getReactHooksRecommended(): RuleLoaderReturn {
   const plugin = require("eslint-plugin-react-hooks")
   const { rules, ...config } = plugin.configs.recommended
   return { config, rules }
@@ -134,7 +134,7 @@ export async function getAirbnbReact(): Promise<RuleLoaderReturn> {
   return flattenExtends(plugin.extends)
 }
 
-export async function getUnicornRecommended(): Promise<RuleLoaderReturn> {
+export function getUnicornRecommended(): RuleLoaderReturn {
   const plugin = require("eslint-plugin-unicorn/configs/recommended")
   const { rules, ...config } = plugin
   return { config, rules }
@@ -148,7 +148,7 @@ function getTSOverride(overrides: Linter.ConfigOverride[]) {
   return { rules, config }
 }
 
-export async function getSatya164(): Promise<RuleLoaderReturn> {
+export function getSatya164(): RuleLoaderReturn {
   const config = require("eslint-config-satya164")
 
   const { rules, overrides, ...restConfig } = config
@@ -167,7 +167,7 @@ export async function getSatya164(): Promise<RuleLoaderReturn> {
   }
 }
 
-export async function getXo(): Promise<RuleLoaderReturn> {
+export function getXo(): RuleLoaderReturn {
   const { rules, ...config } = require("eslint-config-xo")
 
   return {
@@ -176,7 +176,7 @@ export async function getXo(): Promise<RuleLoaderReturn> {
   }
 }
 
-export async function getXoTypescript(): Promise<RuleLoaderReturn> {
+export function getXoTypescript(): RuleLoaderReturn {
   const { rules, ...config } = require("eslint-config-xo-typescript")
 
   return {
@@ -185,7 +185,7 @@ export async function getXoTypescript(): Promise<RuleLoaderReturn> {
   }
 }
 
-export async function getXoReact(): Promise<RuleLoaderReturn> {
+export function getXoReact(): RuleLoaderReturn {
   const { rules, ...config } = require("eslint-config-xo-react")
 
   return {

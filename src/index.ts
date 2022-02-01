@@ -387,7 +387,7 @@ export function getEqualValue(
   return last
 }
 
-async function simplify(source: KeyValue): Linter.RulesRecord {
+async function simplify(source: KeyValue): Promise<Linter.RulesRecord> {
   const result: Linter.RulesRecord = {}
 
   let forcedDisabledCount = 0
