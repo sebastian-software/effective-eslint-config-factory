@@ -712,5 +712,5 @@ export async function main(flags: CliOptions) {
   const outputFolder = "./config"
   const fileLists = await compileFiles()
 
-  writeFiles(fileLists, outputFolder)
+  await writeFiles(fileLists, outputFolder)
 }
