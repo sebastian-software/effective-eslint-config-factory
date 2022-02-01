@@ -50,10 +50,10 @@ interface CliOptions {
 
 function removeOutOfScopeRules(
   rules: KeyValue,
-  outOfScopePlugins = /^(vue|flowtype|standard|prettier|react-native|node|eslint-comments)\//
+  expr = /^(vue|flowtype|standard|prettier|react-native|node|eslint-comments)\//
 ) {
   const relevantRuleNames = Object.keys(rules).filter(
-    (ruleName) => !outOfScopePlugins.test(ruleName)
+    (ruleName) => !expr.test(ruleName)
   )
   const filteredRules: KeyValue = {}
   for (const ruleName of relevantRuleNames) {
