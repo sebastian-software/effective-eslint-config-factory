@@ -1,6 +1,5 @@
-import { getNamingConventionRule } from "../util/rule"
-
 import { Linter } from "eslint"
+import { getNamingConventionRule } from "../util/rule"
 
 const config: Linter.BaseConfig = {
   plugins: ["react", "jsx-a11y", "react-hooks"],

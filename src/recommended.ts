@@ -1,6 +1,4 @@
 export const recommended = {
   config: {},
-  rules: {
-
-  }
+  rules: {}
 }

@@ -1,6 +1,7 @@
 import { isEqual, mergeWith } from "lodash"
 import { Linter } from "eslint"
 import { getFixableRules } from "eslint-get-rules"
+import { rules as TSEnabledRules } from "@typescript-eslint/eslint-plugin"
 import {
   getAirbnbBase,
   getAirbnbReact,
@@ -28,11 +29,10 @@ import baseCore from "./base/core"
 import baseReact from "./base/react"
 import jestOverride from "./override/jest"
 import testingLibraryOverride from "./override/testinglib"
-import { rules as TSEnabledRules } from "@typescript-eslint/eslint-plugin"
 import {
   extractJestOverrideRules,
   extractReact,
-  extractTestingLibOverrideRules
+  extractTestingLibOverrideRules as extractTestingLibraryOverrideRules
 } from "./extract"
 import {
   KeyValue,
@@ -50,7 +50,7 @@ interface CliOptions {
 
 function removeOutOfScopeRules(
   rules: KeyValue,
-  expr = /^(vue|flowtype|standard|prettier|react-native|node|eslint-comments)\//
+  expr = /^(vue|flowtype|standard|prettier|react-native|node|eslint-comments|babel)\//
 ) {
   const relevantRuleNames = Object.keys(rules).filter(
     (ruleName) => !expr.test(ruleName)
@@ -212,7 +212,7 @@ async function simplify(source: KeyValue): Promise<Linter.RulesRecord> {
 
     if (unresolvedRules < 6) {
       console.log(
-        "#" + unresolvedRules + ": Needs resolution for: " + ruleName,
+        `#${unresolvedRules}: Needs resolution for: ${ruleName}`,
         JSON.stringify(ruleValues, null, 2)
       )
     }
@@ -255,7 +255,7 @@ async function simplify(source: KeyValue): Promise<Linter.RulesRecord> {
     }
   }
 
-  console.log("  - Warning Level: " + fixableCounter + " autofixable rules")
+  console.log(`  - Warning Level: ${fixableCounter} autofixable rules`)
 
   return result
 }
@@ -281,7 +281,8 @@ export async function compileFiles() {
 
   // Extracing specific parts
   const jestOverrideRules = extractJestOverrideRules(simplified)
-  const testingLibraryOverrideRules = extractTestingLibOverrideRules(simplified)
+  const testingLibraryOverrideRules =
+    extractTestingLibraryOverrideRules(simplified)
   const reactSpecific = extractReact(simplified)
 
   const baseCoreAndReact = mergeIntoNewConfig([baseCore, baseReact])

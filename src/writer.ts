@@ -1,7 +1,7 @@
 import path from "node:path"
+import { writeFile, mkdir } from "node:fs/promises"
 import { Linter } from "eslint"
 import prettier from "prettier"
-import { writeFile, mkdir } from "node:fs/promises"
 import { dump } from "js-yaml"
 
 type ConfigList = Record<string, Linter.BaseConfig>
@@ -16,7 +16,7 @@ function produce(object: any, format: SupportedFormats) {
   if (format === "js" || format === "json") {
     const fileContent = formatJSON(object)
     if (format === "js") {
-      return "module.exports = " + fileContent
+      return `module.exports = ${fileContent}`
     }
 
     return fileContent
@@ -26,7 +26,7 @@ function produce(object: any, format: SupportedFormats) {
     return dump(object)
   }
 
-  throw new Error("Invalid format:" + format)
+  throw new Error(`Invalid format:${format}`)
 }
 
 export async function writeFiles(
@@ -38,7 +38,7 @@ export async function writeFiles(
 
   const configNames = Object.keys(configs)
   const fileNames = configNames.map((baseName) =>
-    path.join(dist, baseName + "." + format)
+    path.join(dist, `${baseName}.${format}`)
   )
 
   await Promise.all(

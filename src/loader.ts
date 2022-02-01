@@ -1,7 +1,7 @@
-/* eslint-disable @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires, unicorn/prefer-module */
+/* eslint-disable @typescript-eslint/no-var-requires, unicorn/prefer-module */
 
-import pkgDir from "pkg-dir"
 import { join } from "node:path"
+import pkgDir from "pkg-dir"
 import { Linter } from "eslint"
 import { merge, assign } from "lodash"
 
