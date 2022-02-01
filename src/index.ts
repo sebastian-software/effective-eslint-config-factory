@@ -137,19 +137,6 @@ function getForcedDisabled(
   }
 }
 
-const sourcePriority = ["local"]
-
-function getPriorityValue(
-  ruleValues: KeyValue
-): SimplifiedRuleValue | undefined {
-  for (const sourceName of sourcePriority) {
-    const sourceValue = ruleValues[sourceName]
-    if (sourceValue) {
-      return sourceValue
-    }
-  }
-}
-
 /**
  * Return the value when all values are equal. Otherwise return undefined.
  *
@@ -204,13 +191,6 @@ async function simplify(source: KeyValue): Promise<Linter.RulesRecord> {
     if (equal) {
       result[ruleName] = equal
       uniformCount++
-      continue
-    }
-
-    const priorityValue = getPriorityValue(ruleValues)
-    if (priorityValue) {
-      result[ruleName] = priorityValue
-      solvedRulesCount++
       continue
     }
 

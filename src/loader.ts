@@ -6,6 +6,7 @@ import { Linter } from "eslint"
 import { merge, assign } from "lodash"
 
 import { RulesStructuredByOrigin, SimplifiedRuleValue } from "./types"
+import { recommended } from "./recommended"
 
 export interface RuleLoaderReturn {
   config?: any
@@ -93,7 +94,7 @@ export function getMerged(): RulesStructuredByOrigin {
   // TODO: https://github.com/epaew/eslint-plugin-filenames-simple
 
   // ==== ==== ==== ==== ==== ==== ====
-  // Cross-Plugin Recommendations
+  // Authored presets
   // ==== ==== ==== ==== ==== ==== ====
 
   mergeIntoStructure(getCreateReactAppRecommended(), "cra", dist)
@@ -106,7 +107,21 @@ export function getMerged(): RulesStructuredByOrigin {
   mergeIntoStructure(getXoTypescript(), "xo-typescript", dist)
   mergeIntoStructure(getKentDodds(), "kentdodds", dist)
 
+  // ==== ==== ==== ==== ==== ==== ====
+  // Effective
+  // ==== ==== ==== ==== ==== ==== ====
+
+  mergeIntoStructure(getEffectiveRecommended(), "effective", dist)
+
   return dist
+}
+
+export function getEffectiveRecommended(): RuleLoaderReturn {
+  const { rules, ...config } = recommended
+  return {
+    config,
+    rules
+  }
 }
 
 export function getESLintRecommended(): RuleLoaderReturn {
