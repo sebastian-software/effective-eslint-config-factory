@@ -2,3 +2,4 @@ extends:
   ./config/index.yaml
 rules:
   "@typescript-eslint/no-unsafe-member-access": off
+  guard-for-in: off
