@@ -33,8 +33,11 @@ interface CliOptions {
   typescript: boolean
 }
 
-type OriginRuleConfig = Record<string, Linter.RuleEntry>
-type OriginStructuredRules = Record<string, OriginRuleConfig>
+type SimplifiedRuleLevel = "off" | "warn" | "error";
+type SimplifiedRuleValue<Options extends any[] = any[]> = Prepend<Partial<Options>, SimplifiedRuleLevel>;
+
+type UnifiedRuleFormat = Record<string, SimplifiedRuleValue>
+type RulesStructuredByOrigin = Record<string, UnifiedRuleFormat>
 type KeyValue = Record<string, any>
 
 const ignoreRules =
@@ -42,7 +45,7 @@ const ignoreRules =
 
 const sourcePriority = ["local"]
 
-type SourcePriorityTable = Record<string, Linter.RuleEntry | string>
+type SourcePriorityTable = Record<string, SimplifiedRuleValue | string>
 
 const ruleBasedSourcePriority: SourcePriorityTable = {
   // Additional "except-parens" was used in some, but that's the default anyway
@@ -240,9 +243,9 @@ function humanizeRuleLevel(ruleLevel: 0 | 1 | 2) {
 function mergeIntoStructure(
   source: RuleLoaderReturn,
   originName: string,
-  dist: OriginStructuredRules
+  dist: RulesStructuredByOrigin
 ) {
-  const { rules, config } = source
+  const { rules } = source
 
   for (const ruleName in rules) {
     if (!dist[ruleName]) {
@@ -275,7 +278,7 @@ function mergeIntoStructure(
       ruleValue[0] = "error"
     }
 
-    dist[ruleName][originName] = ruleValue
+    dist[ruleName][originName] = ruleValue as SimplifiedRuleValue
   }
 }
 
@@ -353,7 +356,7 @@ function getForcedDisabled(
   }
 }
 
-function getPriorityValue(ruleValues: KeyValue): Linter.RuleEntry | undefined {
+function getPriorityValue(ruleValues: KeyValue): SimplifiedRuleValue | undefined {
   for (const sourceName of sourcePriority) {
     const sourceValue = ruleValues[sourceName]
     if (sourceValue) {
@@ -370,7 +373,7 @@ function getPriorityValue(ruleValues: KeyValue): Linter.RuleEntry | undefined {
  */
 export function getEqualValue(
   ruleValues: KeyValue
-): Linter.RuleEntry | undefined {
+): SimplifiedRuleValue | undefined {
   let last
   for (const sourceName in ruleValues) {
     const currentValue = ruleValues[sourceName]
@@ -388,7 +391,7 @@ export function getEqualValue(
 }
 
 async function simplify(source: KeyValue): Promise<Linter.RulesRecord> {
-  const result: Linter.RulesRecord = {}
+  const result: UnifiedRuleFormat = {}
 
   let forcedDisabledCount = 0
   let unresolvedRules = 0
@@ -466,7 +469,7 @@ async function simplify(source: KeyValue): Promise<Linter.RulesRecord> {
     }
   }
 
-  console.log("  - Entirely deleted: " + cleanupCounter + " disabled rules")
+  console.log(`  - Entirely deleted: ${cleanupCounter} disabled rules`)
 
   console.log("Relaxing...")
   const fixable = await getFixableRules({
@@ -573,7 +576,7 @@ function mergeIntoNewConfig(configs: Linter.BaseConfig[]): Linter.BaseConfig {
 }
 
 export async function compileFiles() {
-  const dist: OriginStructuredRules = {}
+  const dist: RulesStructuredByOrigin = {}
 
   // ==== ==== ==== ==== ==== ==== ====
   // Single Origin Recommendation
@@ -585,22 +588,22 @@ export async function compileFiles() {
   const reactRecommended = await getReactRecommended()
   mergeIntoStructure(reactRecommended, "react", dist)
 
-  const jestRecommended = await getJestRecommended()
+  const jestRecommended = getJestRecommended()
   mergeIntoStructure(jestRecommended, "jest", dist)
 
-  const testingLibraryRecommended = await getTestingLibraryRecommended()
+  const testingLibraryRecommended = getTestingLibraryRecommended()
   mergeIntoStructure(testingLibraryRecommended, "testinglib", dist)
 
-  const tsRecommended = await getTypeScriptRecommended()
+  const tsRecommended = getTypeScriptRecommended()
   mergeIntoStructure(tsRecommended, "ts", dist)
 
-  const jsxRecommended = await getJSXRecommended()
+  const jsxRecommended = getJSXRecommended()
   mergeIntoStructure(jsxRecommended, "jsx", dist)
 
-  const hooksRecommended = await getReactHooksRecommended()
+  const hooksRecommended = getReactHooksRecommended()
   mergeIntoStructure(hooksRecommended, "hooks", dist)
 
-  const unicornRecommended = await getUnicornRecommended()
+  const unicornRecommended = getUnicornRecommended()
   mergeIntoStructure(unicornRecommended, "unicorn", dist)
 
   // TODO: https://www.npmjs.com/package/eslint-plugin-cypress
@@ -615,10 +618,10 @@ export async function compileFiles() {
   // Cross-Plugin Recommendations
   // ==== ==== ==== ==== ==== ==== ====
 
-  const craRecommended = await getCreateReactAppRecommended()
+  const craRecommended = getCreateReactAppRecommended()
   mergeIntoStructure(craRecommended, "cra", dist)
 
-  const prettierDisabled = await getPrettierDisabledRules()
+  const prettierDisabled = getPrettierDisabledRules()
   mergeIntoStructure(prettierDisabled, "prettier", dist)
 
   const airbnbBase = await getAirbnbBase()
@@ -627,16 +630,16 @@ export async function compileFiles() {
   const airbnbReact = await getAirbnbReact()
   mergeIntoStructure(airbnbReact, "airbnb-react", dist)
 
-  const satya164 = await getSatya164()
+  const satya164 = getSatya164()
   mergeIntoStructure(satya164, "satya164", dist)
 
-  const xo = await getXo()
+  const xo = getXo()
   mergeIntoStructure(xo, "xo-typescript", dist)
 
-  const xoReact = await getXoReact()
+  const xoReact = getXoReact()
   mergeIntoStructure(xoReact, "xo-react", dist)
 
-  const xoTypescript = await getXoTypescript()
+  const xoTypescript = getXoTypescript()
   mergeIntoStructure(xoTypescript, "xo-typescript", dist)
 
   // ==== ==== ==== ==== ==== ==== ====
