@@ -75,7 +75,7 @@ Object {
             "selector": "interface",
           },
           Object {
-            "filter": "^T$|^[A-Z][a-zA-Z]+$",
+            "filter": "^T$|^[A-Z][A-Za-z]+$",
             "format": Array [
               "StrictPascalCase",
             ],
@@ -108,6 +108,9 @@ Object {
       ],
       "rules": Object {
         "jest/expect-expect": Array [
+          "error",
+        ],
+        "jest/no-alias-methods": Array [
           "error",
         ],
         "jest/no-commented-out-tests": Array [
@@ -152,6 +155,15 @@ Object {
         "jest/no-test-prefixes": Array [
           "error",
         ],
+        "jest/prefer-to-be": Array [
+          "error",
+        ],
+        "jest/prefer-to-contain": Array [
+          "error",
+        ],
+        "jest/prefer-to-have-length": Array [
+          "error",
+        ],
         "jest/valid-describe-callback": Array [
           "error",
         ],
@@ -177,6 +189,7 @@ Object {
   "plugins": Array [
     "@typescript-eslint",
     "import",
+    "unicorn",
   ],
   "reportUnusedDisableDirectives": true,
   "rules": Object {
@@ -754,27 +767,6 @@ Object {
       "warn",
       "smart",
     ],
-    "eslint-comments/disable-enable-pair": Array [
-      "error",
-      Object {
-        "allowWholeFile": true,
-      },
-    ],
-    "eslint-comments/no-aggregating-enable": Array [
-      "error",
-    ],
-    "eslint-comments/no-duplicate-disable": Array [
-      "error",
-    ],
-    "eslint-comments/no-unlimited-disable": Array [
-      "error",
-    ],
-    "eslint-comments/no-unused-disable": Array [
-      "error",
-    ],
-    "eslint-comments/no-unused-enable": Array [
-      "error",
-    ],
     "for-direction": Array [
       "error",
     ],
@@ -1271,9 +1263,6 @@ Object {
       "warn",
       "always",
     ],
-    "plugins": Array [
-      "jest",
-    ],
     "prefer-arrow-callback": Array [
       "warn",
       Object {
@@ -1332,12 +1321,6 @@ Object {
     "require-yield": Array [
       "error",
     ],
-    "rules": Object {
-      "jest/no-alias-methods": "warn",
-      "jest/prefer-to-be": "error",
-      "jest/prefer-to-contain": "error",
-      "jest/prefer-to-have-length": "error",
-    },
     "spaced-comment": Array [
       "warn",
       "always",
@@ -1740,7 +1723,7 @@ Object {
             "selector": "interface",
           },
           Object {
-            "filter": "^T$|^[A-Z][a-zA-Z]+$",
+            "filter": "^T$|^[A-Z][A-Za-z]+$",
             "format": Array [
               "StrictPascalCase",
             ],
@@ -1820,7 +1803,7 @@ Object {
             "selector": "interface",
           },
           Object {
-            "filter": "^T$|^[A-Z][a-zA-Z]+$",
+            "filter": "^T$|^[A-Z][A-Za-z]+$",
             "format": Array [
               "StrictPascalCase",
             ],
@@ -1922,6 +1905,7 @@ Object {
   "plugins": Array [
     "@typescript-eslint",
     "import",
+    "unicorn",
     "react",
     "jsx-a11y",
     "react-hooks",
@@ -2501,27 +2485,6 @@ Object {
     "eqeqeq": Array [
       "warn",
       "smart",
-    ],
-    "eslint-comments/disable-enable-pair": Array [
-      "error",
-      Object {
-        "allowWholeFile": true,
-      },
-    ],
-    "eslint-comments/no-aggregating-enable": Array [
-      "error",
-    ],
-    "eslint-comments/no-duplicate-disable": Array [
-      "error",
-    ],
-    "eslint-comments/no-unlimited-disable": Array [
-      "error",
-    ],
-    "eslint-comments/no-unused-disable": Array [
-      "error",
-    ],
-    "eslint-comments/no-unused-enable": Array [
-      "error",
     ],
     "for-direction": Array [
       "error",
@@ -3233,9 +3196,6 @@ Object {
       "warn",
       "always",
     ],
-    "plugins": Array [
-      "jest",
-    ],
     "prefer-arrow-callback": Array [
       "warn",
       Object {
@@ -3601,12 +3561,6 @@ Object {
     "require-yield": Array [
       "error",
     ],
-    "rules": Object {
-      "jest/no-alias-methods": "warn",
-      "jest/prefer-to-be": "error",
-      "jest/prefer-to-contain": "error",
-      "jest/prefer-to-have-length": "error",
-    },
     "spaced-comment": Array [
       "warn",
       "always",
