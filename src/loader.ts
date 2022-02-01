@@ -28,7 +28,6 @@ function humanizeRuleLevel(ruleLevel: 0 | 1 | 2) {
   throw new Error(`Invalid rule level: ${ruleLevel as string}!`)
 }
 
-
 function mergeIntoStructure(
   source: RuleLoaderReturn,
   originName: string,
@@ -107,7 +106,7 @@ export function getMerged(): RulesStructuredByOrigin {
   mergeIntoStructure(getXoTypescript(), "xo-typescript", dist)
   mergeIntoStructure(getKentDodds(), "kentdodds", dist)
 
-  return dist;
+  return dist
 }
 
 export function getESLintRecommended(): RuleLoaderReturn {

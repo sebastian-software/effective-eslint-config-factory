@@ -1,8 +1,6 @@
 import { SourcePriorityTable } from "./types"
 
-export const ruleBasedSourcePriority: SourcePriorityTable = {
-
-}
+export const ruleBasedSourcePriority: SourcePriorityTable = {}
 
 export const ruleBasedSourcePriorityOld: SourcePriorityTable = {
   // Additional "except-parens" was used in some, but that's the default anyway

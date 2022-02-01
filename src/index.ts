@@ -29,8 +29,17 @@ import baseReact from "./base/react"
 import jestOverride from "./override/jest"
 import testingLibraryOverride from "./override/testinglib"
 import { rules as TSEnabledRules } from "@typescript-eslint/eslint-plugin"
-import { extractJestOverrideRules, extractReact, extractTestingLibOverrideRules } from "./extract"
-import { KeyValue, RulesStructuredByOrigin, SimplifiedRuleValue, UnifiedRuleFormat } from "./types"
+import {
+  extractJestOverrideRules,
+  extractReact,
+  extractTestingLibOverrideRules
+} from "./extract"
+import {
+  KeyValue,
+  RulesStructuredByOrigin,
+  SimplifiedRuleValue,
+  UnifiedRuleFormat
+} from "./types"
 import { ruleBasedSourcePriority } from "./rules"
 
 interface CliOptions {
@@ -39,17 +48,15 @@ interface CliOptions {
   typescript: boolean
 }
 
-const ignoreRules =
-  /^(vue|flowtype|standard|prettier|react-native|node|eslint-comments)\//
-
-const sourcePriority = ["local"]
-
-function removedFilteredRules(rules: KeyValue) {
-  const ruleNames = Object.keys(rules).filter(
-    (ruleName) => !ignoreRules.test(ruleName)
+function removeOutOfScopeRules(
+  rules: KeyValue,
+  outOfScopePlugins = /^(vue|flowtype|standard|prettier|react-native|node|eslint-comments)\//
+) {
+  const relevantRuleNames = Object.keys(rules).filter(
+    (ruleName) => !outOfScopePlugins.test(ruleName)
   )
   const filteredRules: KeyValue = {}
-  for (const ruleName of ruleNames) {
+  for (const ruleName of relevantRuleNames) {
     filteredRules[ruleName] = rules[ruleName]
   }
 
@@ -129,6 +136,8 @@ function getForcedDisabled(
     return ruleValues.prettier
   }
 }
+
+const sourcePriority = ["local"]
 
 function getPriorityValue(
   ruleValues: KeyValue
@@ -287,7 +296,7 @@ export async function compileFiles() {
   const dist = getMerged()
 
   // Post-Processing
-  const result = sortRules(removedFilteredRules(dist))
+  const result = sortRules(removeOutOfScopeRules(dist))
   const simplified = await simplify(result)
 
   // Extracing specific parts
