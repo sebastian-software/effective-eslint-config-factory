@@ -65,8 +65,8 @@ export function getJestRecommended(): RuleLoaderReturn {
 }
 
 export function getTestingLibraryRecommended(): RuleLoaderReturn {
-  const testinglib = require("eslint-plugin-testing-library")
-  const { rules, ...config } = testinglib.configs.react
+  const testingLibrary = require("eslint-plugin-testing-library")
+  const { rules, ...config } = testingLibrary.configs.react
 
   return {
     config,
