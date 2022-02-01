@@ -32,6 +32,11 @@
     "email": "s.werner@sebastian-software.de",
     "url": "http://sebastian-software.de/werner"
   },
+  "files": [
+    "bin",
+    "dist",
+    "config"
+  ],
   "license": "Apache-2.0",
   "devDependencies": {
     "@types/eslint": "^8.4.1",
