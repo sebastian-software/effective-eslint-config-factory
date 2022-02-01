@@ -6,7 +6,7 @@ export function getNamingConventionRule({ isTsx = false }): Linter.RulesRecord {
     "@typescript-eslint/naming-convention": [
       "error",
       {
-        // selector: ['variableLike', 'memberLike', 'property', 'method'],
+        // Selector: ['variableLike', 'memberLike', 'property', 'method'],
         // Note: Leaving out `parameter` and `typeProperty` because of the mentioned known issues.
         // Note: We are intentionally leaving out `enumMember` as it's usually pascal-case or upper-snake-case.
         selector: [
@@ -51,7 +51,7 @@ export function getNamingConventionRule({ isTsx = false }): Linter.RulesRecord {
       {
         // Type parameter name should either be `T` or a descriptive name.
         selector: "typeParameter",
-        filter: /^T$|^[A-Z][a-zA-Z]+$/.source,
+        filter: /^T$|^[A-Z][A-Za-z]+$/.source,
         format: ["StrictPascalCase"]
       },
       // Allow these in non-camel-case when quoted.

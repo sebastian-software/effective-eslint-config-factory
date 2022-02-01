@@ -1,5 +1,5 @@
 import pkgDir from "pkg-dir"
-import { join } from "path"
+import { join } from "node:path"
 
 import { Linter } from "eslint"
 import { merge, assign } from "lodash"
@@ -14,6 +14,7 @@ export async function getESLintRecommended(): Promise<RuleLoaderReturn> {
   if (!root) {
     throw new Error("Installation Issue: ESLint package was not found!")
   }
+
   const recommendedPath = join(root, "conf/eslint-recommended")
   const { rules, ...config } = require(recommendedPath)
   return {
@@ -111,11 +112,11 @@ function flattenExtends(extendsBlock: string[]) {
   const allConfig = {}
   const allRules = {}
 
-  loader.forEach((fileContent) => {
+  for (const fileContent of loader) {
     const { rules, ...config } = fileContent
     assign(allRules, rules)
     merge(allConfig, config)
-  })
+  }
 
   return {
     config: allConfig,
@@ -140,10 +141,10 @@ export async function getUnicornRecommended(): Promise<RuleLoaderReturn> {
 }
 
 function getTSOverride(overrides: Linter.ConfigOverride[]) {
-  const { rules, ...config } = overrides.filter(
+  const { rules, ...config } = overrides.find(
     (overrideEntry: Linter.ConfigOverride) =>
       overrideEntry.files.toString().includes("*.ts")
-  )[0]
+  )
   return { rules, config }
 }
 

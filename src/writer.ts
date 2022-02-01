@@ -1,7 +1,7 @@
-import path from "path"
+import path from "node:path"
 import { Linter } from "eslint"
 import prettier from "prettier"
-import { writeFile, mkdir } from "fs/promises"
+import { writeFile, mkdir } from "node:fs/promises"
 import { dump } from "js-yaml"
 
 type ConfigList = Record<string, Linter.BaseConfig>
@@ -12,18 +12,19 @@ function formatJSON(json: any): string {
 
 type SupportedFormats = "json" | "yaml" | "js"
 
-function produce(obj: any, format: SupportedFormats) {
+function produce(object: any, format: SupportedFormats) {
   if (format === "js" || format === "json") {
-    const fileContent = formatJSON(obj)
+    const fileContent = formatJSON(object)
     if (format === "js") {
       return "module.exports = " + fileContent
-    } else {
-      return fileContent
     }
+ 
+      return fileContent
+    
   }
 
   if (format === "yaml") {
-    return dump(obj)
+    return dump(object)
   }
 
   throw new Error("Invalid format:" + format)

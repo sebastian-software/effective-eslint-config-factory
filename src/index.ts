@@ -12,7 +12,7 @@ import {
   getReactHooksRecommended,
   getReactRecommended,
   getSatya164,
-  getTestingLibRecommended,
+  getTestingLibRecommended as getTestingLibraryRecommended,
   getTypeScriptRecommended,
   getUnicornRecommended,
   getXo,
@@ -24,7 +24,7 @@ import { writeFiles } from "./writer"
 import baseCore from "./base/core"
 import baseReact from "./base/react"
 import jestOverrideBlock from "./base/jest"
-import testingLibOverrideBlock from "./base/testinglib"
+import testingLibraryOverrideBlock from "./base/testinglib"
 import { rules as TSEnabledRules } from "@typescript-eslint/eslint-plugin"
 
 interface CliOptions {
@@ -86,7 +86,7 @@ const ruleBasedSourcePriority: SourcePriorityTable = {
   // Very good extension and hints of different ban types
   "@typescript-eslint/ban-types": "xo-typescript",
 
-  // objectLiteralTypeAssertions is a win for sure
+  // ObjectLiteralTypeAssertions is a win for sure
   "@typescript-eslint/consistent-type-assertions": "xo-typescript",
 
   // Allow single extends
@@ -216,15 +216,20 @@ function removedFilteredRules(rules: KeyValue) {
   for (const ruleName of ruleNames) {
     filteredRules[ruleName] = rules[ruleName]
   }
+
   return filteredRules
 }
 
 function humanizeRuleLevel(ruleLevel: 0 | 1 | 2) {
   if (ruleLevel === 0) {
     return "off"
-  } else if (ruleLevel === 1) {
+  }
+
+ if (ruleLevel === 1) {
     return "warn"
-  } else if (ruleLevel === 2) {
+  }
+
+ if (ruleLevel === 2) {
     return "error"
   }
 
@@ -282,9 +287,11 @@ function sortRules(source: KeyValue) {
     ) {
       return first > second ? 1 : -1
     }
+
     if (first.includes("/")) {
       return 1
     }
+
     if (second.includes("/")) {
       return -1
     }
@@ -296,17 +303,19 @@ function sortRules(source: KeyValue) {
   for (const ruleName of ruleNames) {
     result[ruleName] = source[ruleName]
   }
+
   return result
 }
 
-export function getSingleSourceKey(object: KeyValue): string | null {
+export function getSingleSourceKey(object: KeyValue): string | undefined {
   let single = null
   for (const key in object) {
     if (single) {
       return null
-    } else {
-      single = key
     }
+ 
+      single = key
+    
   }
 
   return single
@@ -321,8 +330,8 @@ function getForcedDisabled(
     ruleName in TSEnabledRules
   ) {
     // Highest priority to rules from eslint builtin configured by TS preset to be disabled (replaced rules)
-    if (ruleValues["ts"] && ruleValues["ts"][0] === "off") {
-      return ruleValues["ts"]
+    if (ruleValues.ts && ruleValues.ts[0] === "off") {
+      return ruleValues.ts
     }
 
     // Highest priority to rules from eslint builtin configured by TS preset to be disabled (replaced rules)
@@ -369,6 +378,7 @@ export function getEqualValue(
       last = currentValue
       continue
     }
+
     if (!isEqual(last, currentValue)) {
       return
     }
@@ -450,7 +460,7 @@ async function simplify(source: KeyValue): Linter.RulesRecord {
   for (const ruleName in source) {
     const ruleValue = result[ruleName] as string[]
     if (ruleValue && ruleValue[0] === "off") {
-      // console.log("Dropping disabled:", ruleName)
+      // Console.log("Dropping disabled:", ruleName)
       delete result[ruleName]
       cleanupCounter++
     }
@@ -499,17 +509,17 @@ export function extractJestOverrideRules(source: KeyValue): Linter.RulesRecord {
 export function extractTestingLibOverrideRules(
   source: KeyValue
 ): Linter.RulesRecord {
-  const testingLibRules: Linter.RulesRecord = {}
+  const testingLibraryRules: Linter.RulesRecord = {}
   const ruleNames = Object.keys(source)
 
   for (const ruleName of ruleNames) {
     if (ruleName.startsWith("testing-library/")) {
-      testingLibRules[ruleName] = source[ruleName]
+      testingLibraryRules[ruleName] = source[ruleName]
       delete source[ruleName]
     }
   }
 
-  return testingLibRules
+  return testingLibraryRules
 }
 
 export function extractNode(source: KeyValue): Linter.BaseConfig {
@@ -552,13 +562,13 @@ export function extractReact(source: KeyValue): Linter.RulesRecord {
 
 function mergeIntoNewConfig(configs: Linter.BaseConfig[]): Linter.BaseConfig {
   const dist: Linter.BaseConfig = {}
-  configs.forEach((config) =>
-    mergeWith(dist, config, (objValue: any, srcValue: any) => {
-      if (Array.isArray(objValue) && Array.isArray(srcValue)) {
-        return [...new Set([...objValue, ...srcValue])]
+  for (const config of configs) 
+    mergeWith(dist, config, (objectValue: any, sourceValue: any) => {
+      if (Array.isArray(objectValue) && Array.isArray(sourceValue)) {
+        return [...new Set([...objectValue, ...sourceValue])]
       }
     })
-  )
+  
   return dist
 }
 
@@ -578,8 +588,8 @@ export async function compileFiles() {
   const jestRecommended = await getJestRecommended()
   mergeIntoStructure(jestRecommended, "jest", dist)
 
-  const testingLibRecommended = await getTestingLibRecommended()
-  mergeIntoStructure(testingLibRecommended, "testinglib", dist)
+  const testingLibraryRecommended = await getTestingLibraryRecommended()
+  mergeIntoStructure(testingLibraryRecommended, "testinglib", dist)
 
   const tsRecommended = await getTypeScriptRecommended()
   mergeIntoStructure(tsRecommended, "ts", dist)
@@ -645,7 +655,7 @@ export async function compileFiles() {
   // ==== ==== ==== ==== ==== ==== ====
 
   const jestOverrideRules = extractJestOverrideRules(simplified)
-  const testingLibOverrideRules = extractTestingLibOverrideRules(simplified)
+  const testingLibraryOverrideRules = extractTestingLibOverrideRules(simplified)
 
   const reactSpecific = extractReact(simplified)
 
@@ -679,8 +689,8 @@ export async function compileFiles() {
       overrides: [
         ...(baseCoreAndReact.overrides || []),
         {
-          ...testingLibOverrideBlock,
-          rules: testingLibOverrideRules
+          ...testingLibraryOverrideBlock,
+          rules: testingLibraryOverrideRules
         }
       ]
     }

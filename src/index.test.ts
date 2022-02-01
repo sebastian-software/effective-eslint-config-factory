@@ -2,7 +2,7 @@ import { getSingleSourceKey, getEqualValue, compileFiles } from "."
 
 describe("getSingleSourceKey()", () => {
   test("supports empty", () => {
-    expect(getSingleSourceKey({})).toBe(null)
+    expect(getSingleSourceKey({})).toBeNull()
   })
 
   test("supports with one entry", () => {
@@ -10,7 +10,7 @@ describe("getSingleSourceKey()", () => {
   })
 
   test("supports with two entries", () => {
-    expect(getSingleSourceKey({ first: 1, second: 2 })).toBe(null)
+    expect(getSingleSourceKey({ first: 1, second: 2 })).toBeNull()
   })
 })
 
