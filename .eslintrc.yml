@@ -1,2 +1,2 @@
 extends:
-  ./config/index.js
+  ./config/index.yaml

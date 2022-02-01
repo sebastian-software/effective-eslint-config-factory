@@ -18,7 +18,12 @@
     "format": "prettier --write src",
     "check": "npm run build -- --exec && npm run lint && npm run typecheck && npm run test"
   },
-  "keywords": ["eslint", "eslint-preset", "react", "jest"],
+  "keywords": [
+    "eslint",
+    "eslint-preset",
+    "react",
+    "jest"
+  ],
   "author": {
     "name": "Sebastian Werner",
     "email": "s.werner@sebastian-software.de",
@@ -29,6 +34,7 @@
     "@types/eslint": "^8.4.1",
     "@types/eslint-config-prettier": "^6.11.0",
     "@types/jest": "^27.4.0",
+    "@types/js-yaml": "^4.0.5",
     "@types/lodash": "^4.14.178",
     "@typescript-eslint/eslint-plugin": "^5.10.2",
     "confusing-browser-globals": "^1.0.11",
@@ -49,6 +55,7 @@
     "eslint-plugin-testing-library": "^5.0.4",
     "eslint-plugin-unicorn": "^40.1.0",
     "jest": "^27.4.7",
+    "js-yaml": "^4.1.0",
     "lodash": "^4.17.21",
     "meow": "^9.0.0",
     "pkg-dir": "^5.0.0",
