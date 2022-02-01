@@ -1,5 +1,5 @@
 {
-  "name": "eslint-generator",
+  "name": "@effective/eslint-config-factory",
   "version": "0.0.1",
   "description": "_Effective ESLint Factory_ is used to create an efficient flat ESLint config based on the established configs and plugins from Airbnb, Facebook, Sindre Sorhus and many more...",
   "bin": {
