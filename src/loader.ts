@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
+
 import pkgDir from "pkg-dir"
 import { join } from "node:path"
 
@@ -32,9 +34,7 @@ export async function getReactRecommended(): Promise<RuleLoaderReturn> {
   }
 }
 
-export function getTypeScriptRecommended(
-  typeChecks = true
-): RuleLoaderReturn {
+export function getTypeScriptRecommended(typeChecks = true): RuleLoaderReturn {
   const { configs } = require("@typescript-eslint/eslint-plugin")
   const config = configs.base
   const recommended = configs.recommended.rules as Linter.RulesRecord
@@ -141,9 +141,8 @@ export function getUnicornRecommended(): RuleLoaderReturn {
 }
 
 function getTypescriptOverride(overrides: Linter.ConfigOverride[]) {
-  const match = overrides.find(
-    (overrideEntry: Linter.ConfigOverride) =>
-      overrideEntry.files.toString().includes("*.ts")
+  const match = overrides.find((overrideEntry: Linter.ConfigOverride) =>
+    overrideEntry.files.toString().includes("*.ts")
   )
   const { rules, ...config } = match ?? {}
   return { rules, config }
@@ -192,5 +191,30 @@ export function getXoReact(): RuleLoaderReturn {
   return {
     config,
     rules
+  }
+}
+
+export function getKentDodds(): RuleLoaderReturn {
+  const core = require("eslint-config-kentcdodds")
+  const importPlugin = require("eslint-config-kentcdodds/import")
+  const reactPlugin = require("eslint-config-kentcdodds/react")
+  const a11yPlugin = require("eslint-config-kentcdodds/jsx-a11y")
+  const jestPlugin = require("eslint-config-kentcdodds/jest")
+
+  return {
+    config: {},
+
+    // Merge all into one. We filter e.g. jest-plugin related rules
+    // later on the process.
+    rules: {
+      ...core.rules,
+      ...core.overrides[0].rules,
+      ...importPlugin.rules,
+      ...importPlugin.overrides[0].rules,
+      ...reactPlugin.rules,
+      ...reactPlugin.overrides[0].rules,
+      ...a11yPlugin.rules,
+      ...jestPlugin.overrides[0].rules
+    }
   }
 }

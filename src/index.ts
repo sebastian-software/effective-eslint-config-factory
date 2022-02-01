@@ -8,6 +8,7 @@ import {
   getESLintRecommended,
   getJestRecommended,
   getJSXRecommended,
+  getKentDodds,
   getPrettierDisabledRules,
   getReactHooksRecommended,
   getReactRecommended,
@@ -33,8 +34,11 @@ interface CliOptions {
   typescript: boolean
 }
 
-type SimplifiedRuleLevel = "off" | "warn" | "error";
-type SimplifiedRuleValue<Options extends any[] = any[]> = Prepend<Partial<Options>, SimplifiedRuleLevel>;
+type SimplifiedRuleLevel = "off" | "warn" | "error"
+type SimplifiedRuleValue<Options extends any[] = any[]> = Prepend<
+  Partial<Options>,
+  SimplifiedRuleLevel
+>
 
 type UnifiedRuleFormat = Record<string, SimplifiedRuleValue>
 type RulesStructuredByOrigin = Record<string, UnifiedRuleFormat>
@@ -356,7 +360,9 @@ function getForcedDisabled(
   }
 }
 
-function getPriorityValue(ruleValues: KeyValue): SimplifiedRuleValue | undefined {
+function getPriorityValue(
+  ruleValues: KeyValue
+): SimplifiedRuleValue | undefined {
   for (const sourceName of sourcePriority) {
     const sourceValue = ruleValues[sourceName]
     if (sourceValue) {
@@ -641,6 +647,10 @@ export async function compileFiles() {
 
   const xoTypescript = getXoTypescript()
   mergeIntoStructure(xoTypescript, "xo-typescript", dist)
+
+  const kentDodds = getKentDodds()
+  console.log("KENT:", kentDodds)
+  //mergeIntoStructure(xoTypescript, "xo-typescript", dist)
 
   // ==== ==== ==== ==== ==== ==== ====
   // Post-Processing
