@@ -2,13 +2,112 @@
 
 import pkgDir from "pkg-dir"
 import { join } from "node:path"
-
 import { Linter } from "eslint"
 import { merge, assign } from "lodash"
+
+import { RulesStructuredByOrigin, SimplifiedRuleValue } from "./types"
 
 export interface RuleLoaderReturn {
   config?: any
   rules: Linter.RulesRecord
+}
+
+function humanizeRuleLevel(ruleLevel: 0 | 1 | 2) {
+  if (ruleLevel === 0) {
+    return "off"
+  }
+
+  if (ruleLevel === 1) {
+    return "warn"
+  }
+
+  if (ruleLevel === 2) {
+    return "error"
+  }
+
+  throw new Error(`Invalid rule level: ${ruleLevel as string}!`)
+}
+
+
+function mergeIntoStructure(
+  source: RuleLoaderReturn,
+  originName: string,
+  dist: RulesStructuredByOrigin
+) {
+  const { rules } = source
+
+  for (const ruleName in rules) {
+    if (!dist[ruleName]) {
+      dist[ruleName] = {}
+    }
+
+    let ruleValue = rules[ruleName]
+
+    // Human-readable values for level
+    if (typeof ruleValue === "number") {
+      ruleValue = humanizeRuleLevel(ruleValue)
+    } else if (Array.isArray(ruleValue) && typeof ruleValue[0] === "number") {
+      ruleValue[0] = humanizeRuleLevel(ruleValue[0])
+    }
+
+    // Unify level-only to be always array
+    if (typeof ruleValue === "string") {
+      ruleValue = [ruleValue]
+    }
+
+    // If a rule is disabled reduce it to just off
+    if (ruleValue[0] === "off" && ruleValue.length > 1) {
+      ruleValue = ["off"]
+    }
+
+    // If a ruleLevel is "warn", normalize it to "error"
+    // Indentions between different libraries vary here and need
+    // a different set-up approach in a merged configuration
+    if (ruleValue[0] === "warn") {
+      ruleValue[0] = "error"
+    }
+
+    dist[ruleName][originName] = ruleValue as SimplifiedRuleValue
+  }
+}
+
+export function getMerged(): RulesStructuredByOrigin {
+  const dist: RulesStructuredByOrigin = {}
+
+  // ==== ==== ==== ==== ==== ==== ====
+  // Single Origin Recommendation
+  // ==== ==== ==== ==== ==== ==== ====
+
+  mergeIntoStructure(getESLintRecommended(), "eslint", dist)
+  mergeIntoStructure(getReactRecommended(), "react", dist)
+  mergeIntoStructure(getJestRecommended(), "jest", dist)
+  mergeIntoStructure(getTestingLibraryRecommended(), "testinglib", dist)
+  mergeIntoStructure(getTypeScriptRecommended(), "ts", dist)
+  mergeIntoStructure(getJSXRecommended(), "jsx", dist)
+  mergeIntoStructure(getReactHooksRecommended(), "hooks", dist)
+  mergeIntoStructure(getUnicornRecommended(), "unicorn", dist)
+  mergeIntoStructure(getImportRecommended(), "import", dist)
+
+  // TODO: https://www.npmjs.com/package/eslint-plugin-shopify-lean
+  // TODO: https://www.npmjs.com/package/eslint-plugin-jsdoc
+  // TODO: https://www.npmjs.com/package/eslint-plugin-import + https://www.npmjs.com/package/eslint-import-resolver-babel-module
+  // TODO: https://github.com/epaew/eslint-plugin-filenames-simple
+
+  // ==== ==== ==== ==== ==== ==== ====
+  // Cross-Plugin Recommendations
+  // ==== ==== ==== ==== ==== ==== ====
+
+  mergeIntoStructure(getCreateReactAppRecommended(), "cra", dist)
+  mergeIntoStructure(getPrettierDisabledRules(), "prettier", dist)
+  mergeIntoStructure(getAirbnbBase(), "airbnb", dist)
+  mergeIntoStructure(getAirbnbReact(), "airbnb-react", dist)
+  mergeIntoStructure(getSatya164(), "satya164", dist)
+  mergeIntoStructure(getXo(), "xo", dist)
+  mergeIntoStructure(getXoReact(), "xo-react", dist)
+  mergeIntoStructure(getXoTypescript(), "xo-typescript", dist)
+  mergeIntoStructure(getKentDodds(), "kentdodds", dist)
+
+  return dist;
 }
 
 export function getESLintRecommended(): RuleLoaderReturn {
