@@ -140,11 +140,12 @@ export function getUnicornRecommended(): RuleLoaderReturn {
   return { config, rules }
 }
 
-function getTSOverride(overrides: Linter.ConfigOverride[]) {
-  const { rules, ...config } = overrides.find(
+function getTypescriptOverride(overrides: Linter.ConfigOverride[]) {
+  const match = overrides.find(
     (overrideEntry: Linter.ConfigOverride) =>
       overrideEntry.files.toString().includes("*.ts")
   )
+  const { rules, ...config } = match ?? {}
   return { rules, config }
 }
 
@@ -152,7 +153,7 @@ export function getSatya164(): RuleLoaderReturn {
   const config = require("eslint-config-satya164")
 
   const { rules, overrides, ...restConfig } = config
-  const tsOverride = getTSOverride(overrides)
+  const tsOverride = getTypescriptOverride(overrides)
 
   return {
     config: {
