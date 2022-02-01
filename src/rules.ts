@@ -44,7 +44,23 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
   "no-this-before-super": "eslint", // as in most presets
   "no-undef": "xo", // typeof is enabled in XO only, which is a valid use case
   "no-underscore-dangle": "off", // rarely used
-  "no-unreachable": "eslint" // as in most presets
+  "no-unreachable": "eslint", // as in most presets
+  "no-unsafe-negation": "eslint", // explicit is better, as in most presets
+  "no-unsafe-optional-chaining": "xo", // like in most presets, but only XO prevent arithmetic operations
+  "no-use-before-define": "off", // disabled in most presets (CRA only)
+  "no-useless-computed-key": "xo", // like in most presets, but only XO extends to classes
+  "no-useless-rename": "xo", // as in most presets
+  "no-void": "off", // as in most presets
+  "no-warning-comments": "off", // off in most presets, controversial, might help to mark future tasks as a valid reason
+  "no-with": "eslint", // as in most presets
+  "object-shorthand": "kentdodds", // properties only for Kent, XO enabled for all things incl. functions which might be hard to read, consistent-as-needed would also be a good candidate
+  "one-var": "xo", // prefer readability, controversial as mainly formatting related, but also helps code accessibility
+  "operator-assignment": "off", // mostly disabled, heavy on individual style
+  "prefer-arrow-callback": "xo", // Kent and XO effectively idential, both allow named functions
+
+
+
+
 }
 
 export const ruleBasedSourcePriorityOld: SourcePriorityTable = {
