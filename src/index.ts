@@ -589,32 +589,15 @@ export async function compileFiles() {
   // Single Origin Recommendation
   // ==== ==== ==== ==== ==== ==== ====
 
-  const eslintRecommended = getESLintRecommended()
-  mergeIntoStructure(eslintRecommended, "eslint", dist)
-
-  const reactRecommended = getReactRecommended()
-  mergeIntoStructure(reactRecommended, "react", dist)
-
-  const jestRecommended = getJestRecommended()
-  mergeIntoStructure(jestRecommended, "jest", dist)
-
-  const testingLibraryRecommended = getTestingLibraryRecommended()
-  mergeIntoStructure(testingLibraryRecommended, "testinglib", dist)
-
-  const tsRecommended = getTypeScriptRecommended()
-  mergeIntoStructure(tsRecommended, "ts", dist)
-
-  const jsxRecommended = getJSXRecommended()
-  mergeIntoStructure(jsxRecommended, "jsx", dist)
-
-  const hooksRecommended = getReactHooksRecommended()
-  mergeIntoStructure(hooksRecommended, "hooks", dist)
-
-  const unicornRecommended = getUnicornRecommended()
-  mergeIntoStructure(unicornRecommended, "unicorn", dist)
-
-  const importRecommended = getImportRecommended()
-  mergeIntoStructure(importRecommended, "import", dist)
+  mergeIntoStructure(getESLintRecommended(), "eslint", dist)
+  mergeIntoStructure(getReactRecommended(), "react", dist)
+  mergeIntoStructure(getJestRecommended(), "jest", dist)
+  mergeIntoStructure(getTestingLibraryRecommended(), "testinglib", dist)
+  mergeIntoStructure(getTypeScriptRecommended(), "ts", dist)
+  mergeIntoStructure(getJSXRecommended(), "jsx", dist)
+  mergeIntoStructure(getReactHooksRecommended(), "hooks", dist)
+  mergeIntoStructure(getUnicornRecommended(), "unicorn", dist)
+  mergeIntoStructure(getImportRecommended(), "import", dist)
 
   // TODO: https://www.npmjs.com/package/eslint-plugin-shopify-lean
   // TODO: https://www.npmjs.com/package/eslint-plugin-jsdoc
@@ -625,32 +608,15 @@ export async function compileFiles() {
   // Cross-Plugin Recommendations
   // ==== ==== ==== ==== ==== ==== ====
 
-  const craRecommended = getCreateReactAppRecommended()
-  mergeIntoStructure(craRecommended, "cra", dist)
-
-  const prettierDisabled = getPrettierDisabledRules()
-  mergeIntoStructure(prettierDisabled, "prettier", dist)
-
-  const airbnbBase = getAirbnbBase()
-  mergeIntoStructure(airbnbBase, "airbnb", dist)
-
-  const airbnbReact = getAirbnbReact()
-  mergeIntoStructure(airbnbReact, "airbnb-react", dist)
-
-  const satya164 = getSatya164()
-  mergeIntoStructure(satya164, "satya164", dist)
-
-  const xo = getXo()
-  mergeIntoStructure(xo, "xo-typescript", dist)
-
-  const xoReact = getXoReact()
-  mergeIntoStructure(xoReact, "xo-react", dist)
-
-  const xoTypescript = getXoTypescript()
-  mergeIntoStructure(xoTypescript, "xo-typescript", dist)
-
-  const kentDodds = getKentDodds()
-  mergeIntoStructure(kentDodds, "kentdodds", dist)
+  mergeIntoStructure(getCreateReactAppRecommended(), "cra", dist)
+  mergeIntoStructure(getPrettierDisabledRules(), "prettier", dist)
+  mergeIntoStructure(getAirbnbBase(), "airbnb", dist)
+  mergeIntoStructure(getAirbnbReact(), "airbnb-react", dist)
+  mergeIntoStructure(getSatya164(), "satya164", dist)
+  mergeIntoStructure(getXo(), "xo", dist)
+  mergeIntoStructure(getXoReact(), "xo-react", dist)
+  mergeIntoStructure(getXoTypescript(), "xo-typescript", dist)
+  mergeIntoStructure(getKentDodds(), "kentdodds", dist)
 
   // ==== ==== ==== ==== ==== ==== ====
   // Post-Processing
