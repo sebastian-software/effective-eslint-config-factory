@@ -11,8 +11,8 @@ export interface RuleLoaderReturn {
   rules: Linter.RulesRecord
 }
 
-export async function getESLintRecommended(): Promise<RuleLoaderReturn> {
-  const root = await pkgDir(require.resolve("eslint"))
+export function getESLintRecommended(): RuleLoaderReturn {
+  const root = pkgDir.sync(require.resolve("eslint"))
   if (!root) {
     throw new Error("Installation Issue: ESLint package was not found!")
   }
@@ -25,7 +25,7 @@ export async function getESLintRecommended(): Promise<RuleLoaderReturn> {
   }
 }
 
-export async function getReactRecommended(): Promise<RuleLoaderReturn> {
+export function getReactRecommended(): RuleLoaderReturn {
   const react = require("eslint-plugin-react")
   const { rules, ...config } = react.configs.recommended
   return {
@@ -125,7 +125,7 @@ function flattenExtends(extendsBlock: string[]) {
 }
 
 export function getAirbnbBase(): RuleLoaderReturn {
-  const plugin = require("eslint-config-airbnb-base") as Linter.BaseConfig
+  const plugin = require("eslint-config-airbnb-base")
   return flattenExtends(plugin.extends)
 }
 

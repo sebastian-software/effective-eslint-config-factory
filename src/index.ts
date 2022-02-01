@@ -589,10 +589,10 @@ export async function compileFiles() {
   // Single Origin Recommendation
   // ==== ==== ==== ==== ==== ==== ====
 
-  const eslintRecommended = await getESLintRecommended()
+  const eslintRecommended = getESLintRecommended()
   mergeIntoStructure(eslintRecommended, "eslint", dist)
 
-  const reactRecommended = await getReactRecommended()
+  const reactRecommended = getReactRecommended()
   mergeIntoStructure(reactRecommended, "react", dist)
 
   const jestRecommended = getJestRecommended()
@@ -658,10 +658,6 @@ export async function compileFiles() {
 
   const result = sortRules(removedFilteredRules(dist))
   const simplified = await simplify(result)
-
-  // ==== ==== ==== ==== ==== ==== ====
-  // Reducing levels
-  // ==== ==== ==== ==== ==== ==== ====
 
   // ==== ==== ==== ==== ==== ==== ====
   // Extracing specific parts
