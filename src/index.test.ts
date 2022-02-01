@@ -1,4 +1,4 @@
-import { getSingleSourceKey, getEqualValue } from "."
+import { getSingleSourceKey, getEqualValue, compileFiles } from "."
 
 describe("getSingleSourceKey()", () => {
   test("supports empty", () => {
@@ -66,5 +66,14 @@ describe("getEqualValue", () => {
         { second: 2, first: 1 }
       ])
     ).toEqual({ first: 1, second: 2 })
+  })
+})
+
+describe("compileFiles", () => {
+  test("Produces two files which match snapshots", async () => {
+    const fileLists = await compileFiles()
+
+    expect(fileLists.index).toMatchSnapshot()
+    expect(fileLists.react).toMatchSnapshot()
   })
 })
