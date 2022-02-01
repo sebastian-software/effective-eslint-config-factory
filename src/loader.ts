@@ -55,7 +55,7 @@ export async function getJestRecommended(): Promise<RuleLoaderReturn> {
 
   // Also import the style rules. These are not about formatting, but
   // more about sensible hints in my opinion
-  const allRules = { ...rules, ...jest.configs.style }
+  const allRules = { ...rules, ...jest.configs.style.rules }
 
   return {
     config,
