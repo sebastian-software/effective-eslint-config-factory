@@ -18,9 +18,8 @@ function produce(object: any, format: SupportedFormats) {
     if (format === "js") {
       return "module.exports = " + fileContent
     }
- 
-      return fileContent
-    
+
+    return fileContent
   }
 
   if (format === "yaml") {
@@ -30,7 +29,11 @@ function produce(object: any, format: SupportedFormats) {
   throw new Error("Invalid format:" + format)
 }
 
-export async function writeFiles(configs: ConfigList, dist: string, format: SupportedFormats = "yaml") {
+export async function writeFiles(
+  configs: ConfigList,
+  dist: string,
+  format: SupportedFormats = "yaml"
+) {
   mkdir(dist, { recursive: true })
 
   const configNames = Object.keys(configs)

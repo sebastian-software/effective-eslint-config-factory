@@ -37,7 +37,8 @@ type OriginRuleConfig = Record<string, Linter.RuleEntry>
 type OriginStructuredRules = Record<string, OriginRuleConfig>
 type KeyValue = Record<string, any>
 
-const ignoreRules = /^(vue|flowtype|standard|prettier|react-native|node|eslint-comments)\//
+const ignoreRules =
+  /^(vue|flowtype|standard|prettier|react-native|node|eslint-comments)\//
 
 const sourcePriority = ["local"]
 
@@ -225,11 +226,11 @@ function humanizeRuleLevel(ruleLevel: 0 | 1 | 2) {
     return "off"
   }
 
- if (ruleLevel === 1) {
+  if (ruleLevel === 1) {
     return "warn"
   }
 
- if (ruleLevel === 2) {
+  if (ruleLevel === 2) {
     return "error"
   }
 
@@ -702,8 +703,5 @@ export async function main(flags: CliOptions) {
   const outputFolder = "./config"
   const fileLists = await compileFiles()
 
-  writeFiles(
-    fileLists,
-    outputFolder
-  )
+  writeFiles(fileLists, outputFolder)
 }
