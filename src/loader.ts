@@ -140,6 +140,14 @@ export function getUnicornRecommended(): RuleLoaderReturn {
   return { config, rules }
 }
 
+export function getImportRecommended(): RuleLoaderReturn {
+  const recommendedConfig = require("eslint-plugin-import/config/recommended")
+  const typescriptConfig = require("eslint-plugin-import/config/typescript")
+
+  const { rules, ...config } = merge({}, recommendedConfig, typescriptConfig)
+  return { config, rules }
+}
+
 function getTypescriptOverride(overrides: Linter.ConfigOverride[]) {
   const match = overrides.find((overrideEntry: Linter.ConfigOverride) =>
     overrideEntry.files.toString().includes("*.ts")

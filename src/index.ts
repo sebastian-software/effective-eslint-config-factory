@@ -6,6 +6,7 @@ import {
   getAirbnbReact,
   getCreateReactAppRecommended,
   getESLintRecommended,
+  getImportRecommended,
   getJestRecommended,
   getJSXRecommended,
   getKentDodds,
@@ -612,6 +613,9 @@ export async function compileFiles() {
   const unicornRecommended = getUnicornRecommended()
   mergeIntoStructure(unicornRecommended, "unicorn", dist)
 
+  const importRecommended = getImportRecommended()
+  mergeIntoStructure(importRecommended, "import", dist)
+
   // TODO: https://www.npmjs.com/package/eslint-plugin-shopify-lean
   // TODO: https://www.npmjs.com/package/eslint-plugin-jsdoc
   // TODO: https://www.npmjs.com/package/eslint-plugin-import + https://www.npmjs.com/package/eslint-import-resolver-babel-module
@@ -665,12 +669,7 @@ export async function compileFiles() {
 
   const jestOverrideRules = extractJestOverrideRules(simplified)
   const testingLibraryOverrideRules = extractTestingLibOverrideRules(simplified)
-
   const reactSpecific = extractReact(simplified)
-
-  // ==== ==== ==== ==== ==== ==== ====
-  // Writing files
-  // ==== ==== ==== ==== ==== ==== ====
 
   const baseCoreAndReact = mergeIntoNewConfig([baseCore, baseReact])
 
