@@ -17,7 +17,7 @@ const core: Linter.BaseConfig = {
 
     project: "tsconfig.json"
   },
-  plugins: ["@typescript-eslint", "import"],
+  plugins: ["@typescript-eslint", "import", "unicorn"],
   env: { es2021: true, "shared-node-browser": true },
   reportUnusedDisableDirectives: true,
   settings: {
