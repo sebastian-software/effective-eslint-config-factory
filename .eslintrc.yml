@@ -1,6 +1,9 @@
 extends:
   ./config/index.yaml
+env:
+  node: true
 rules:
+  # Relax
   "@typescript-eslint/no-unsafe-member-access": off
   "@typescript-eslint/no-unsafe-assignment": off
-  guard-for-in: off
+  "@typescript-eslint/no-unsafe-argument": off
