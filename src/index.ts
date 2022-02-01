@@ -286,17 +286,11 @@ function mergeIntoNewConfig(configs: Linter.BaseConfig[]): Linter.BaseConfig {
 export async function compileFiles() {
   const dist = getMerged()
 
-  // ==== ==== ==== ==== ==== ==== ====
   // Post-Processing
-  // ==== ==== ==== ==== ==== ==== ====
-
   const result = sortRules(removedFilteredRules(dist))
   const simplified = await simplify(result)
 
-  // ==== ==== ==== ==== ==== ==== ====
   // Extracing specific parts
-  // ==== ==== ==== ==== ==== ==== ====
-
   const jestOverrideRules = extractJestOverrideRules(simplified)
   const testingLibraryOverrideRules = extractTestingLibOverrideRules(simplified)
   const reactSpecific = extractReact(simplified)
