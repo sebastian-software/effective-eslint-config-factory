@@ -1,11 +1,12 @@
 {
   "name": "eslint-generator",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "_Effective ESLint Factory_ is used to create an efficient flat ESLint config based on the established configs and plugins from Airbnb, Facebook, Sindre Sorhus and many more...",
   "bin": {
     "effective-eslint": "bin/effective-eslint"
   },
-  "main": "dist/index.esm.js",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "jest",
@@ -17,9 +18,13 @@
     "format": "prettier --write src",
     "check": "npm run lint && npm run typecheck && npm run test"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["eslint", "eslint-preset", "react", "jest"],
+  "author": {
+    "name": "Sebastian Werner",
+    "email": "s.werner@sebastian-software.de",
+    "url": "http://sebastian-software.de/werner"
+  },
+  "license": "Apache-2.0",
   "devDependencies": {
     "@types/eslint": "^8.4.1",
     "@types/eslint-config-prettier": "^6.11.0",
