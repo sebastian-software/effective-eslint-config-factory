@@ -627,10 +627,10 @@ export async function compileFiles() {
   const prettierDisabled = getPrettierDisabledRules()
   mergeIntoStructure(prettierDisabled, "prettier", dist)
 
-  const airbnbBase = await getAirbnbBase()
+  const airbnbBase = getAirbnbBase()
   mergeIntoStructure(airbnbBase, "airbnb", dist)
 
-  const airbnbReact = await getAirbnbReact()
+  const airbnbReact = getAirbnbReact()
   mergeIntoStructure(airbnbReact, "airbnb-react", dist)
 
   const satya164 = getSatya164()
@@ -681,7 +681,7 @@ export async function compileFiles() {
         ...simplified
       },
       overrides: [
-        ...(baseCore.overrides || []),
+        ...(baseCore.overrides ?? []),
         {
           ...jestOverrideBlock,
           rules: jestOverrideRules
@@ -696,7 +696,7 @@ export async function compileFiles() {
         ...reactSpecific
       },
       overrides: [
-        ...(baseCoreAndReact.overrides || []),
+        ...(baseCoreAndReact.overrides ?? []),
         {
           ...testingLibraryOverrideBlock,
           rules: testingLibraryOverrideRules

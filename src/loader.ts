@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
+/* eslint-disable @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires, unicorn/prefer-module */
 
 import pkgDir from "pkg-dir"
 import { join } from "node:path"
@@ -124,13 +124,13 @@ function flattenExtends(extendsBlock: string[]) {
   }
 }
 
-export async function getAirbnbBase(): Promise<RuleLoaderReturn> {
-  const plugin = await import("eslint-config-airbnb-base")
+export function getAirbnbBase(): RuleLoaderReturn {
+  const plugin = require("eslint-config-airbnb-base") as Linter.BaseConfig
   return flattenExtends(plugin.extends)
 }
 
-export async function getAirbnbReact(): Promise<RuleLoaderReturn> {
-  const plugin = await import("eslint-config-airbnb")
+export function getAirbnbReact(): RuleLoaderReturn {
+  const plugin = require("eslint-config-airbnb")
   return flattenExtends(plugin.extends)
 }
 
