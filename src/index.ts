@@ -649,8 +649,7 @@ export async function compileFiles() {
   mergeIntoStructure(xoTypescript, "xo-typescript", dist)
 
   const kentDodds = getKentDodds()
-  console.log("KENT:", kentDodds)
-  //mergeIntoStructure(xoTypescript, "xo-typescript", dist)
+  mergeIntoStructure(kentDodds, "kentdodds", dist)
 
   // ==== ==== ==== ==== ==== ==== ====
   // Post-Processing
