@@ -1,10 +1,8 @@
-# _Asset Hash_
+# _@Effective / ESLint Factory_
 
-[![Sponsored by][sponsor-img]][sponsor] [![Version][npm-version-img]][npm] [![M1 Ready][apple-img]][m1] [![WASM Powered][wasm-img]][wasm]
-<br/>
-[![Downloads][npm-downloads-img]][npm] [![Build Status][github-img]][github]
+[![Sponsored by][sponsor-img]][sponsor] [![Version][npm-version-img]][npm] [![Downloads][npm-downloads-img]][npm] [![Build Status][github-img]][github]
 
-_Effective ESLint Factory_ is used to create an efficient flat ESLint config (no extends at runtime) based on the established configs and plugins from Airbnb, Facebook (CRA, React, React Hooks), Sindre Sorhus (XO) and many more... A configuration to bundle everything important of these presets in one preset. Based on TypeScript. With support for Jest. And with a special extended set for React development.
+_@Effective / ESLint Factory_ is used to create an efficient flat ESLint config (no extends at runtime) based on the established configs and plugins from Airbnb, Facebook (CRA, React, React Hooks), Sindre Sorhus (XO) and many more... A configuration to bundle everything important of these presets in one preset. Based on TypeScript. With support for Jest. And with a special extended set for React development.
 
 [sponsor]: https://www.sebastian-software.de
 [sponsor-img]: https://badgen.net/badge/Sponsored%20by/Sebastian%20Software/c41e54
