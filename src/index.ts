@@ -37,7 +37,7 @@ type OriginRuleConfig = Record<string, Linter.RuleEntry>
 type OriginStructuredRules = Record<string, OriginRuleConfig>
 type KeyValue = Record<string, any>
 
-const ignoreRules = /^(vue|flowtype|standard|prettier|react-native|node)\//
+const ignoreRules = /^(vue|flowtype|standard|prettier|react-native|node|eslint-comments)\//
 
 const sourcePriority = ["local"]
 
