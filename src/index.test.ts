@@ -21,9 +21,7 @@ describe("getEqualValue", () => {
       second: 2
     })
   })
-})
 
-describe("getEqualValue", () => {
   test("return result when two equal", () => {
     expect(
       getEqualValue([
@@ -32,9 +30,7 @@ describe("getEqualValue", () => {
       ])
     ).toEqual({ first: 1, second: 2 })
   })
-})
 
-describe("getEqualValue", () => {
   test("return undefined when two equal and one different", () => {
     expect(
       getEqualValue([
@@ -44,9 +40,7 @@ describe("getEqualValue", () => {
       ])
     ).toBeUndefined()
   })
-})
 
-describe("getEqualValue", () => {
   test("return result when three equal", () => {
     expect(
       getEqualValue([
@@ -56,9 +50,7 @@ describe("getEqualValue", () => {
       ])
     ).toEqual({ first: 1, second: 2 })
   })
-})
 
-describe("getEqualValue", () => {
   test("return result when two equal but different order", () => {
     expect(
       getEqualValue([

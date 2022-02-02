@@ -34,7 +34,7 @@ export async function writeFiles(
   dist: string,
   format: SupportedFormats = "yaml"
 ) {
-  mkdir(dist, { recursive: true })
+  await mkdir(dist, { recursive: true })
 
   const configNames = Object.keys(configs)
   const fileNames = configNames.map((baseName) =>
@@ -42,8 +42,8 @@ export async function writeFiles(
   )
 
   await Promise.all(
-    fileNames.map((fileName, index) => {
+    fileNames.map(async (fileName, index) =>
       writeFile(fileName, produce(configs[configNames[index]], format))
-    })
+    )
   )
 }
