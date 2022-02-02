@@ -3,26 +3,7 @@ import { Linter } from "eslint"
 import { getFixableRules } from "eslint-get-rules"
 import { rules as TSEnabledRules } from "@typescript-eslint/eslint-plugin"
 import {
-  getAirbnbBase,
-  getAirbnbReact,
-  getCreateReactAppRecommended,
-  getESLintRecommended,
-  getImportRecommended,
-  getJestRecommended,
-  getJSXRecommended,
-  getKentDodds,
   getMerged,
-  getPrettierDisabledRules,
-  getReactHooksRecommended,
-  getReactRecommended,
-  getSatya164,
-  getTestingLibraryRecommended,
-  getTypeScriptRecommended,
-  getUnicornRecommended,
-  getXo,
-  getXoReact,
-  getXoTypescript,
-  RuleLoaderReturn
 } from "./loader"
 import { writeFiles } from "./writer"
 import baseCore from "./base/core"
@@ -36,7 +17,6 @@ import {
 } from "./extract"
 import {
   KeyValue,
-  RulesStructuredByOrigin,
   SimplifiedRuleValue,
   UnifiedRuleFormat
 } from "./types"
@@ -210,7 +190,7 @@ async function simplify(source: KeyValue): Promise<Linter.RulesRecord> {
 
     unresolvedRules++
 
-    if (unresolvedRules < 6) {
+    if (unresolvedRules < 4) {
       console.log(
         `#${unresolvedRules}: Needs resolution for: ${ruleName}`,
         JSON.stringify(ruleValues, null, 2)
