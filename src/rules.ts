@@ -1,72 +1,39 @@
 import { SourcePriorityTable } from "./types"
 
 export const ruleBasedSourcePriority: SourcePriorityTable = {
-  // "accessor-pairs": "kentdodds", // XO enforces classes as well which seems like a so-so idea as one might offer get-only accessors
-  // "array-callback-return": "cra", // common in most presets
-  // "arrow-body-style": "off", // possible conflict with prettier, off is most presets
-  // "camelcase": "xo", // XO enforces camelCase properties, style heavy and controversial, but good thing to follow in 95% of code.
-  // "class-methods-use-this": "off", // too limiting, same in most presets
-  // complexity: "kentdodds", // configured to 20, Kent only
-  // "constructor-super": "xo", // also: eslint, xo
-  // "default-case": "xo", // also: kentdodds
-  // "capitalized-comments": "off", // too limiting,
-  // eqeqeq: "cra", // smart mode enabled
-  // "func-name-matching": "kentdodds", // enabled but without property descriptor (rarely used)
-  // "func-names": "kentdodds", // prefer better debug-ability
-  // "getter-return": "eslint", // for what a getter if not for return, same in most presets
-  // "grouped-accessor-pairs": "xo", // get before set makes sense, rarely used rule
-  // "max-depth": "kentdodds", // configured to 4, Kent only
-  // "max-nested-callbacks": "xo", // in Kent and XO, stricter in XO
-  // "max-params": "xo", // in Kent and XO, stricter in XO
-  // "max-statements-per-line": "xo", // in Kent and XO, Kent defines a max=1 which is already the default
-  // "new-cap": "kentdodds", // in Kent and XO, XO defines options which are already the default
-  // "no-async-promise-executor": "eslint", // Typically an oversight. Also in XO.
-  // "no-cond-assign": "eslint", // as in most presets, except Kent
-  // "no-const-assign": "eslint", // as in most presets, except Kent
-  // "no-dupe-args": "eslint", // as in most presets, except Kent
-  // "no-dupe-keys": "eslint", // as in most presets, except Kentx^
-  // "no-else-return": "off", // only in XO, too strict
-  // "no-empty": "eslint", // as in most presets
-  // "no-eq-null": "off", // only in XO, too strict, better use eqeqeq rule
-  // "no-extra-boolean-cast": "eslint", // as in most presets, except Kent
-  // "no-func-assign": "eslint", // as in most presets, except Kent
-  // "no-implicit-coercion": "xo", // only in XO, but a good one to improve code accessibility
-  // "no-import-assign": "eslint", // do not work in ESM anyway and bad style
-  // "no-labels": "xo", // same for Kent, without exceptions for loops (enabled in CRA... for whatever reason)
-  // "no-misleading-character-class": "eslint", // as in most presets
-  // "no-new-symbol": "eslint", // as in most presets
-  // "no-obj-calls": "eslint", // as in most presets
-  // "no-promise-executor-return": "off", // unconfigured in most presets except XO
-  // "no-prototype-builtins": "eslint", // technique from the past, better omit
-  // "no-restricted-globals": "cra", // best richest set from CRA, others only enable it, without config
-  // "no-restricted-properties": "cra", // best richest set from CRA, others only enable it, without config
-  // "no-return-assign": "kentdodds", // same in XO, otherwise unconfigured
-  // "no-return-await": "off", // setting seems controversial with no clear benefits when enabling globally
-  // "no-self-assign": "eslint", // effectively same value in all presets
-  // "no-setter-return": "eslint", // same as XO
-  // "no-this-before-super": "eslint", // as in most presets
-  // "no-undef": "xo", // typeof is enabled in XO only, which is a valid use case
-  // "no-underscore-dangle": "off", // rarely used
-  // "no-unreachable": "eslint", // as in most presets
-  // "no-unsafe-negation": "eslint", // explicit is better, as in most presets
-  // "no-unsafe-optional-chaining": "xo", // like in most presets, but only XO prevent arithmetic operations
-  // "no-use-before-define": "off", // disabled in most presets (CRA only)
-  // "no-useless-computed-key": "xo", // like in most presets, but only XO extends to classes
-  // "no-useless-rename": "xo", // as in most presets
-  // "no-void": "off", // as in most presets
-  // "no-warning-comments": "off", // off in most presets, controversial, might help to mark future tasks as a valid reason
-  // "no-with": "eslint", // as in most presets
-  // "object-shorthand": "kentdodds", // properties only for Kent, XO enabled for all things incl. functions which might be hard to read, consistent-as-needed would also be a good candidate
-  // "one-var": "xo", // prefer readability, controversial as mainly formatting related, but also helps code accessibility
-  // "operator-assignment": "off", // mostly disabled, heavy on individual style
-  // "prefer-arrow-callback": "xo", // Kent and XO effectively idential, both allow named functions
-  // "prefer-const": "xo", // XO has fine tuned setting for destructing
-  // "prefer-destructuring": "off", // disabled by most presets, style focused
-  // "prefer-promise-reject-errors": "off", // disabled by most presets
-  // "prefer-regex-literals": "off", // style focused, disabled by most presets
-  // "spaced-comment": "xo", // fine tuned in XO, disabled in most presets, style heavy and therefor controversial (still pretty standard in the actual behavior)
-  // "strict": "kentdodds", // source format is ESM in most code bases, still useful as auto-detected
-  // "valid-typeof": "eslint", // common in most presets
+  "accessor-pairs": "kentdodds", // XO enforces classes as well which seems like a so-so idea as one might offer get-only accessors
+  "array-callback-return": "cra", // common in most presets
+  "camelcase": "xo", // XO enforces camelCase properties, style heavy and controversial, but good thing to follow in 95% of code.
+  complexity: "kentdodds", // configured to 20, Kent only
+  "default-case": "cra", // also: kentdodds, allows exception in CRA
+  eqeqeq: "cra", // smart mode enabled in CRA
+  "func-name-matching": "kentdodds", // enabled but without property descriptor (rarely used)
+  "func-names": "kentdodds", // prefer better debug-ability
+  "max-depth": "kentdodds", // configured to 4, Kent only
+  "max-nested-callbacks": "xo", // in Kent and XO, stricter in XO
+  "max-params": "xo", // in Kent and XO, stricter in XO
+  "max-statements-per-line": "xo", // in Kent and XO, Kent defines a max=1 which is already the default
+  "new-cap": "kentdodds", // in Kent and XO, XO defines options which are already the default
+  "no-cond-assign": "eslint", // as in most presets, except Kent
+  "no-empty": "eslint", // as in most presets
+  "no-labels": "xo", // same for Kent, without exceptions for loops (enabled in CRA... for whatever reason)
+  "no-restricted-globals": "cra", // best richest set from CRA, others only enable it, without config
+  "no-return-assign": "kentdodds", // same in XO, otherwise unconfigured
+  "no-self-assign": "eslint", // effectively same value in all presets
+  "no-undef": "xo", // typeof is enabled in XO only, which is a valid use case
+  "no-unsafe-negation": "eslint", // explicit is better, as in most presets
+  "no-unsafe-optional-chaining": "xo", // like in most presets, but only XO prevent arithmetic operations
+  "no-use-before-define": "off", // disabled in most presets (CRA only)
+  "no-useless-computed-key": "xo", // like in most presets, but only XO extends to classes
+  "no-useless-rename": "xo", // as in most presets
+  "no-void": "xo-typescript", // use undefined seems more accessible like in XO
+  "no-warning-comments": "off", // off in most presets, controversial, might help to mark future tasks as a valid reason
+  "object-shorthand": "kentdodds", // properties only for Kent, XO enabled for all things incl. functions which might be hard to read, consistent-as-needed would also be a good candidate
+  "one-var": "xo", // prefer readability, controversial as mainly formatting related, but also helps code accessibility
+  "prefer-arrow-callback": "xo", // Kent and XO effectively idential, both allow named functions
+  "prefer-const": "xo", // XO has fine tuned setting for destructing
+  "strict": "kentdodds", // source format is ESM in most code bases, still useful as auto-detected
+  "valid-typeof": "eslint", // common in most presets
 
   // "@typescript-eslint/ban-types": "xo-typescript", // best collection of types to ban is in XO
   // "@typescript-eslint/ban-ts-comment": "xo-typescript", // XO allows exceptions which are a good idea
