@@ -30,11 +30,11 @@ $ yarn add @effective/eslint-config-factory
 
 Put this into your e.g. `.eslintrc.yml`
 
-`yaml
+```yaml
 root: true
 extends:
   - @effective/eslint-config-factory
-`
+```
 
 Feel free to override single values while benefitting from the huge collection of fine-tuned settings.
 
