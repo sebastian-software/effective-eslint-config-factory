@@ -40,7 +40,11 @@ Feel free to override single values while benefitting from the huge collection o
 
 ## Merging Algorithm
 
-We would not call it magic but rather the devout study of the existing presets and the development of automatic merging strategies in spite of the most diverse ways in which specifications are feasible in ESLint.  Currently, over 400 rules are recognized as common and are therefore transferred virtually unchanged. Some rules have to be deactivated based on TypeScript ... these hints come partly already by the actual authors of the respective plugins (TypeScript, Unicorn, ...). Others are quasi identical, but differ in minor details. Here, the documentation of the rule was studied in each case and a decision was made. Here it turned out that some presets are simply very well gemaintained and discovered even small subtleties in the adjustability of the existing rules. This is certainly one of the reasons why this solution here relies on importing previous presets and plugin recommendations instead of copying everything. In our opinion, this is the only way to ensure that the data here in the preset always corresponds to the current state.
+We would not call it magic but rather the devout study of the existing presets and the development of automatic merging strategies in spite of the most diverse ways in which specifications are feasible in ESLint.  Currently, over 400 rules are recognized as common and are therefore transferred virtually unchanged.
+
+Some rules have to be deactivated based on TypeScript ... these hints come partly already by the actual authors of the respective plugins (TypeScript, Unicorn, ...). Others are quasi identical, but differ in minor details. Here, the documentation of the rule was studied in each case and a decision was made. It turned out that some presets are simply very well gemaintained and discovered even small subtleties in the adjustability of the existing rules.
+
+This is certainly one of the reasons why this solution here relies on importing previous presets and plugin recommendations instead of copying everything. In our opinion, this is the only way to ensure that the data here in the preset always corresponds to the current state.
 
 ## Topic specific Linting Plugins
 
