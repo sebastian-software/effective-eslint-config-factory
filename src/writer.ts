@@ -6,7 +6,7 @@ import { dump } from "js-yaml"
 
 type ConfigList = Record<string, Linter.BaseConfig>
 
-function formatJSON(json: any): string {
+function formatJson(json: JSON): string {
   return prettier.format(JSON.stringify(json), { parser: "json" })
 }
 
@@ -14,7 +14,7 @@ type SupportedFormats = "json" | "yaml" | "js"
 
 function produce(object: any, format: SupportedFormats) {
   if (format === "js" || format === "json") {
-    const fileContent = formatJSON(object)
+    const fileContent = formatJson(object)
     if (format === "js") {
       return `module.exports = ${fileContent}`
     }
