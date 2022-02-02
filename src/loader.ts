@@ -196,6 +196,9 @@ export function getPrettierDisabledRules(): RuleLoaderReturn {
 
 export function getCreateReactAppRecommended(): RuleLoaderReturn {
   const { rules, ...config } = require("eslint-config-react-app")
+
+  removeDisabledRules(rules)
+
   return {
     config,
     rules
@@ -217,6 +220,14 @@ export function getReactHooksRecommended(): RuleLoaderReturn {
   return { config, rules }
 }
 
+export function removeDisabledRules(rules: Linter.RulesRecord) {
+  Object.keys(rules).filter((ruleName) => {
+    const ruleEntry: Linter.RuleLevel | Linter.RuleLevelAndOptions = rules[ruleName]
+    const ruleLevel = Array.isArray(ruleEntry) ? ruleEntry[0] : ruleEntry
+    return ruleLevel === "off" || ruleLevel === 0
+  }).forEach((ruleName) => { delete rules[ruleName] })
+}
+
 function flattenAirbnbExtends(extendsBlock: string[]) {
   const loader: Linter.BaseConfig[] = extendsBlock
     .filter((importPath: string) => !importPath.includes("airbnb-base"))
@@ -230,6 +241,8 @@ function flattenAirbnbExtends(extendsBlock: string[]) {
     assign(allRules, rules)
     merge(allConfig, config)
   }
+
+  removeDisabledRules(allRules)
 
   return {
     config: allConfig,
@@ -322,20 +335,27 @@ export function getKentDodds(): RuleLoaderReturn {
   const a11yPlugin = require("eslint-config-kentcdodds/jsx-a11y")
   const jestPlugin = require("eslint-config-kentcdodds/jest")
 
+  const allRules = {
+    ...core.rules,
+    ...core.overrides[0].rules,
+    ...importPlugin.rules,
+    ...importPlugin.overrides[0].rules,
+    ...reactPlugin.rules,
+    ...reactPlugin.overrides[0].rules,
+    ...a11yPlugin.rules,
+    ...jestPlugin.overrides[0].rules
+  }
+
+  // Kent has a lot of rules explicitely disabled without
+  // any specific reason (e.g. TS replacement). By dropping these rules
+  // we reduce the conflicts number by nearly 100 rules through all rule sets.
+  removeDisabledRules(allRules)
+
   return {
     config: {},
 
     // Merge all into one. We filter e.g. jest-plugin related rules
     // later on the process.
-    rules: {
-      ...core.rules,
-      ...core.overrides[0].rules,
-      ...importPlugin.rules,
-      ...importPlugin.overrides[0].rules,
-      ...reactPlugin.rules,
-      ...reactPlugin.overrides[0].rules,
-      ...a11yPlugin.rules,
-      ...jestPlugin.overrides[0].rules
-    }
+    rules: allRules
   }
 }
