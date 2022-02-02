@@ -2,9 +2,7 @@ import { isEqual, mergeWith } from "lodash"
 import { Linter } from "eslint"
 import { getFixableRules } from "eslint-get-rules"
 import { rules as TSEnabledRules } from "@typescript-eslint/eslint-plugin"
-import {
-  getMerged,
-} from "./loader"
+import { getMerged } from "./loader"
 import { writeFiles } from "./writer"
 import baseCore from "./base/core"
 import baseReact from "./base/react"
@@ -15,11 +13,7 @@ import {
   extractReact,
   extractTestingLibOverrideRules as extractTestingLibraryOverrideRules
 } from "./extract"
-import {
-  KeyValue,
-  SimplifiedRuleValue,
-  UnifiedRuleFormat
-} from "./types"
+import { KeyValue, SimplifiedRuleValue, UnifiedRuleFormat } from "./types"
 import { ruleBasedSourcePriority } from "./rules"
 
 interface CliOptions {

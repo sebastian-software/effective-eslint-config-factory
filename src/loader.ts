@@ -221,11 +221,14 @@ export function getReactHooksRecommended(): RuleLoaderReturn {
 }
 
 export function removeDisabledRules(rules: Linter.RulesRecord) {
-  Object.keys(rules).filter((ruleName) => {
-    const ruleEntry: Linter.RuleLevel | Linter.RuleLevelAndOptions = rules[ruleName]
+  for (const ruleName of Object.keys(rules).filter((ruleName) => {
+    const ruleEntry: Linter.RuleLevel | Linter.RuleLevelAndOptions =
+      rules[ruleName]
     const ruleLevel = Array.isArray(ruleEntry) ? ruleEntry[0] : ruleEntry
     return ruleLevel === "off" || ruleLevel === 0
-  }).forEach((ruleName) => { delete rules[ruleName] })
+  })) {
+    delete rules[ruleName]
+  }
 }
 
 function flattenAirbnbExtends(extendsBlock: string[]) {
