@@ -9,8 +9,8 @@
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "exports": {
-    "config": "./config/index.yaml",
-    "react": "./config/react.yaml"
+    "./config": "./config/index.yaml",
+    "./react": "./config/react.yaml"
   },
   "scripts": {
     "test": "jest",
