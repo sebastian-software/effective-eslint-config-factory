@@ -566,7 +566,7 @@ Object {
       "error",
       Object {
         "allowThrowingAny": false,
-        "allowThrowingUnknown": false,
+        "allowThrowingUnknown": true,
       },
     ],
     "@typescript-eslint/no-unnecessary-boolean-literal-compare": Array [
@@ -1685,6 +1685,9 @@ Object {
     "unicorn/template-indent": Array [
       "warn",
     ],
+    "unicorn/text-encoding-identifier-case": Array [
+      "error",
+    ],
     "unicorn/throw-new-error": Array [
       "warn",
     ],
@@ -2342,7 +2345,7 @@ Object {
       "error",
       Object {
         "allowThrowingAny": false,
-        "allowThrowingUnknown": false,
+        "allowThrowingUnknown": true,
       },
     ],
     "@typescript-eslint/no-unnecessary-boolean-literal-compare": Array [
@@ -3924,6 +3927,9 @@ Object {
     ],
     "unicorn/template-indent": Array [
       "warn",
+    ],
+    "unicorn/text-encoding-identifier-case": Array [
+      "error",
     ],
     "unicorn/throw-new-error": Array [
       "warn",
