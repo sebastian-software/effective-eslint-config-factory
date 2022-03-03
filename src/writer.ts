@@ -10,7 +10,7 @@ function formatJson(json: JSON): string {
   return prettier.format(JSON.stringify(json), { parser: "json" })
 }
 
-type SupportedFormats = "json" | "yaml" | "js"
+type SupportedFormats = "json" | "yaml" | "js" | "html"
 
 function produce(object: any, format: SupportedFormats) {
   if (format === "js" || format === "json") {
@@ -24,6 +24,10 @@ function produce(object: any, format: SupportedFormats) {
 
   if (format === "yaml") {
     return dump(object)
+  }
+
+  if (format === "html") {
+    return prettier.format(object, { parser: "html" })
   }
 
   throw new Error(`Invalid format:${format}`)

@@ -37,26 +37,28 @@ function removeOutOfScopeRules(
   return filteredRules
 }
 
+export function ruleComparator(first: string, second: string) {
+  if (
+    (first.includes("/") && second.includes("/")) ||
+    (!first.includes("/") && !second.includes("/"))
+  ) {
+    return first > second ? 1 : -1
+  }
+
+  if (first.includes("/")) {
+    return 1
+  }
+
+  if (second.includes("/")) {
+    return -1
+  }
+
+  return 0
+}
+
 function sortRules(source: KeyValue) {
   const ruleNames = Object.keys(source)
-  ruleNames.sort((first: string, second: string) => {
-    if (
-      (first.includes("/") && second.includes("/")) ||
-      (!first.includes("/") && !second.includes("/"))
-    ) {
-      return first > second ? 1 : -1
-    }
-
-    if (first.includes("/")) {
-      return 1
-    }
-
-    if (second.includes("/")) {
-      return -1
-    }
-
-    return 0
-  })
+  ruleNames.sort(ruleComparator)
 
   const result: KeyValue = {}
   for (const ruleName of ruleNames) {
@@ -137,14 +139,7 @@ export function getEqualValue(
 }
 
 interface RuleMeta {
-  // Source
-  forcedDisabled?: boolean
-  uniformValue?: boolean
-  singleValue?: boolean
-  priorityValue?: boolean
-  unresolvedValue?: boolean
-
-  // Processing
+  source: 'disabled' | 'uniform' | 'single' | 'priority' | 'unresolved'
   resolution?: boolean
   droppedValue?: boolean
   relaxedLevel?: boolean
@@ -176,7 +171,7 @@ async function simplify(source: KeyValue): Promise<SimplifyResult> {
 
     const forcedDisabledValue = getForcedDisabled(ruleName, ruleValues)
     if (forcedDisabledValue) {
-      ruleMeta.forcedDisabled = true
+      ruleMeta.source = "disabled"
       continue
     }
 
@@ -184,8 +179,8 @@ async function simplify(source: KeyValue): Promise<SimplifyResult> {
     if (singleKey) {
       const singleValue = source[ruleName][singleKey]
       simplified[ruleName] = singleValue
-      ruleMeta.singleValue = true
-      ruleMeta.singleMeta = {
+      ruleMeta.source = "single"
+      ruleMeta.details = {
         value: singleValue,
         origin: singleKey
       }
@@ -195,8 +190,8 @@ async function simplify(source: KeyValue): Promise<SimplifyResult> {
     const equalValue = getEqualValue(ruleValues)
     if (equalValue) {
       simplified[ruleName] = equalValue
-      ruleMeta.uniformValue = true
-      ruleMeta.uniformMeta = {
+      ruleMeta.source = "uniform"
+      ruleMeta.details = {
         value: equalValue
       }
       continue
@@ -211,11 +206,11 @@ async function simplify(source: KeyValue): Promise<SimplifyResult> {
         simplified[ruleName] = ruleValues[resolutionSource]
       }
 
-      ruleMeta.priorityValue = true
+      ruleMeta.source = "priority"
       continue
     }
 
-    ruleMeta.unresolvedValue = true
+    ruleMeta.source = "unresolved"
   }
 
   console.log("Cleaning up...")
@@ -316,4 +311,45 @@ export async function main(flags: CliOptions) {
   const fileLists = await compileFiles()
 
   await writeFiles(fileLists, outputFolder)
+
+  const metaVisualized = await formatMeta(fileLists.meta)
+  await writeFiles({ meta: metaVisualized}, outputFolder, "html")
+}
+
+function formatRuleMeta(ruleMeta, ruleName: string) {
+  let cells = ``
+  cells += `<td>${ruleMeta.source}</td>`
+
+  return `<tr class="source-${ruleMeta.source}"><th>${ruleName}</th>${cells}</tr>`
+}
+
+export async function formatMeta(rulesMeta) {
+  const metaKeys = Object.keys(rulesMeta)
+  metaKeys.sort(ruleComparator)
+  const rowsHtml = metaKeys.map((ruleName) => formatRuleMeta(rulesMeta[ruleName], ruleName)).join("\n")
+  const styles = `
+  html {
+    font: 11px sans-serif;
+    background: white;
+    color: black;
+  }
+
+  th, td {
+    text-align: left;
+  }
+
+  .source-disabled{
+    text-decoration: line-through;
+    color: grey;
+  }
+
+  .source-priority{
+    color: orange;
+  }
+
+  `
+
+
+
+  return `<html><style>${styles}</style><table>${rowsHtml}</table></html>`
 }
