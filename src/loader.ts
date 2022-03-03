@@ -221,12 +221,14 @@ export function getReactHooksRecommended(): RuleLoaderReturn {
 }
 
 export function removeDisabledRules(rules: Linter.RulesRecord) {
-  for (const ruleName of Object.keys(rules).filter((ruleName) => {
+  const disabledRules = Object.keys(rules).filter((ruleName) => {
     const ruleEntry: Linter.RuleLevel | Linter.RuleLevelAndOptions =
       rules[ruleName]
     const ruleLevel = Array.isArray(ruleEntry) ? ruleEntry[0] : ruleEntry
     return ruleLevel === "off" || ruleLevel === 0
-  })) {
+  })
+
+  for (const ruleName of disabledRules) {
     delete rules[ruleName]
   }
 }
