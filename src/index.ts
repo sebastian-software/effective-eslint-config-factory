@@ -136,81 +136,97 @@ export function getEqualValue(
   return last
 }
 
-async function simplify(source: KeyValue): Promise<Linter.RulesRecord> {
-  const result: UnifiedRuleFormat = {}
+interface RuleMeta {
+  // Source
+  forcedDisabled?: boolean
+  uniformValue?: boolean
+  singleValue?: boolean
+  priorityValue?: boolean
+  unresolvedValue?: boolean
 
-  let forcedDisabledCount = 0
-  let unresolvedRules = 0
-  let uniformCount = 0
-  let solvedRulesCount = 0
+  // Processing
+  resolution?: boolean
+  droppedValue?: boolean
+  relaxedLevel?: boolean
+}
+
+interface SimplifyResult {
+  simplified: Linter.RulesRecord,
+  meta: Record<string, RuleMeta>
+}
+
+async function simplify(source: KeyValue): Promise<SimplifyResult> {
+  const simplified: UnifiedRuleFormat = {}
+  const meta: Record<string, RuleMeta> = {}
 
   console.log("Reducing...")
   for (const ruleName in source) {
     const ruleValues = source[ruleName]
+    const resolutionSource = ruleBasedSourcePriority[ruleName]
+
+    const ruleMeta: RuleMeta = {}
+    meta[ruleName] = ruleMeta
+
+    if (resolutionSource) {
+      ruleMeta.priorityMeta = {
+        source: resolutionSource,
+        alternatives: source[ruleName]
+      }
+    }
 
     const forcedDisabledValue = getForcedDisabled(ruleName, ruleValues)
     if (forcedDisabledValue) {
-      forcedDisabledCount++
+      ruleMeta.forcedDisabled = true
       continue
     }
 
     const singleKey = getSingleSourceKey(ruleValues)
     if (singleKey) {
-      result[ruleName] = source[ruleName][singleKey]
-      uniformCount++
+      const singleValue = source[ruleName][singleKey]
+      simplified[ruleName] = singleValue
+      ruleMeta.singleValue = true
+      ruleMeta.singleMeta = {
+        value: singleValue,
+        origin: singleKey
+      }
       continue
     }
 
-    const equal = getEqualValue(ruleValues)
-    if (equal) {
-      result[ruleName] = equal
-      uniformCount++
+    const equalValue = getEqualValue(ruleValues)
+    if (equalValue) {
+      simplified[ruleName] = equalValue
+      ruleMeta.uniformValue = true
+      ruleMeta.uniformMeta = {
+        value: equalValue
+      }
       continue
     }
 
-    const resolutionSource = ruleBasedSourcePriority[ruleName]
     if (resolutionSource) {
       if (Array.isArray(resolutionSource)) {
-        result[ruleName] = resolutionSource
+        simplified[ruleName] = resolutionSource
       } else if (resolutionSource === "off") {
-        result[ruleName] = ["off"]
+        simplified[ruleName] = ["off"]
       } else {
-        result[ruleName] = ruleValues[resolutionSource]
+        simplified[ruleName] = ruleValues[resolutionSource]
       }
 
-      solvedRulesCount++
+      ruleMeta.priorityValue = true
       continue
     }
 
-    unresolvedRules++
-
-    if (unresolvedRules < 4) {
-      console.log(
-        `#${unresolvedRules}: Needs resolution for: ${ruleName}`,
-        JSON.stringify(ruleValues, null, 2)
-      )
-    }
+    ruleMeta.unresolvedValue = true
   }
-
-  console.log("  - Disabled Rules:", forcedDisabledCount)
-  console.log("  - Uniform Rule Values:", uniformCount)
-  console.log("  - Priority Solved Rules:", solvedRulesCount)
-  console.log("  - Unresolved Rules:", unresolvedRules)
 
   console.log("Cleaning up...")
-  let cleanupCounter = 0
   for (const ruleName in source) {
-    const ruleValue = result[ruleName] as string[]
+    const ruleValue = simplified[ruleName] as string[]
     if (ruleValue && ruleValue[0] === "off") {
-      // Console.log("Dropping disabled:", ruleName)
-      delete result[ruleName]
-      cleanupCounter++
+      delete simplified[ruleName]
+      meta[ruleName].droppedValue = true
     }
   }
 
-  console.log(`  - Entirely deleted: ${cleanupCounter} disabled rules`)
-
-  console.log("Relaxing...")
   const fixable = await getFixableRules({
     plugins: [
       "react",
@@ -221,17 +237,15 @@ async function simplify(source: KeyValue): Promise<Linter.RulesRecord> {
       "import"
     ]
   })
-  let fixableCounter = 0
+
   for (const ruleName of fixable) {
-    if (ruleName in result) {
-      result[ruleName][0] = "warn"
-      fixableCounter++
+    if (ruleName in simplified) {
+      simplified[ruleName][0] = "warn"
+      meta[ruleName].relaxedLevel = true
     }
   }
 
-  console.log(`  - Warning Level: ${fixableCounter} autofixable rules`)
-
-  return result
+  return { simplified, meta }
 }
 
 function mergeIntoNewConfig(configs: Linter.BaseConfig[]): Linter.BaseConfig {
@@ -251,7 +265,7 @@ export async function compileFiles() {
 
   // Post-Processing
   const result = sortRules(removeOutOfScopeRules(dist))
-  const simplified = await simplify(result)
+  const { simplified, meta } = await simplify(result)
 
   // Extracing specific parts
   const jestOverrideRules = extractJestOverrideRules(simplified)
@@ -262,6 +276,8 @@ export async function compileFiles() {
   const baseCoreAndReact = mergeIntoNewConfig([baseCore, baseReact])
 
   return {
+    meta,
+
     index: {
       ...baseCore,
       rules: {
