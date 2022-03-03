@@ -8,3 +8,6 @@ rules:
   "@typescript-eslint/no-unsafe-assignment": off
   "@typescript-eslint/no-unsafe-argument": off
   "@typescript-eslint/no-require-imports": off
+
+  # Nobody extends Object.prototype anymore
+  guard-for-in: off
