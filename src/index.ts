@@ -211,12 +211,9 @@ async function simplify(source: KeyValue): Promise<SimplifyResult> {
     }
 
     if (resolutionSource) {
-      if (Array.isArray(resolutionSource)) {
-        simplified[ruleName] = resolutionSource
-      } else if (resolutionSource === "off") {
-        simplified[ruleName] = ["off"]
-      } else {
-        simplified[ruleName] = ruleValues[resolutionSource]
+      simplified[ruleName] = ruleValues[resolutionSource]
+      if (!simplified[ruleName]) {
+        console.warn(`Invalid resolution: ${resolutionSource} for rule ${ruleName}!`)
       }
 
       ruleMeta.source = "priority"
@@ -230,7 +227,6 @@ async function simplify(source: KeyValue): Promise<SimplifyResult> {
   for (const ruleName in source) {
     const ruleValue = simplified[ruleName] as string[]
     if (ruleValue && ruleValue[0] === "off") {
-      console.log("Clear:", ruleName)
       delete simplified[ruleName]
       meta[ruleName].droppedValue = true
     }
@@ -375,6 +371,10 @@ export async function formatMeta(rulesMeta) {
 
   .source-uniform{
     color: green;
+  }
+
+  .source-unresolved {
+    color: red;
   }
 
   `

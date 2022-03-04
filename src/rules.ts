@@ -23,11 +23,11 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
   "no-undef": "xo", // Typeof is enabled in XO only, which is a valid use case
   "no-unsafe-negation": "eslint", // Explicit is better, as in most presets
   "no-unsafe-optional-chaining": "xo", // Like in most presets, but only XO prevent arithmetic operations
-  "no-use-before-define": "off", // Disabled in most presets (CRA only)
+  //"no-use-before-define": "off", // Disabled in most presets (CRA only)
   "no-useless-computed-key": "xo", // Like in most presets, but only XO extends to classes
   "no-useless-rename": "xo", // As in most presets
   "no-void": "xo-typescript", // Use undefined seems more accessible like in XO
-  "no-warning-comments": "off", // Off in most presets, controversial, might help to mark future tasks as a valid reason
+  //"no-warning-comments": "off", // Off in most presets, controversial, might help to mark future tasks as a valid reason
   "object-shorthand": "kentdodds", // Properties only for Kent, XO enabled for all things incl. functions which might be hard to read, consistent-as-needed would also be a good candidate
   "one-var": "xo", // Prefer readability, controversial as mainly formatting related, but also helps code accessibility
   "prefer-arrow-callback": "xo", // Kent and XO effectively idential, both allow named functions
@@ -46,7 +46,7 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
   "@typescript-eslint/no-this-alias": "xo-typescript",
   "@typescript-eslint/no-throw-literal": "xo-typescript",
   "@typescript-eslint/no-unused-vars": "xo-typescript",
-  "@typescript-eslint/no-use-before-define": "off", // Not that relevant in todays world
+  // "@typescript-eslint/no-use-before-define": "off", // Not that relevant in todays world
   "@typescript-eslint/restrict-plus-operands": "xo-typescript",
   "@typescript-eslint/restrict-template-expressions": "xo-typescript",
   "@typescript-eslint/triple-slash-reference": "ts", // Effectively identical in all presets
@@ -58,12 +58,12 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
   "jsx-a11y/anchor-has-content": "jsx", // Effectively identical in all presets
   "jsx-a11y/anchor-is-valid": "cra", // Slightly adjusted version in CRA seems good
   "jsx-a11y/aria-role": "cra", // Slightly adjusted version in CRA seems good
-  "jsx-a11y/control-has-associated-label": "off", // Disabled in jsx, too, tricky with custom components
+  // "jsx-a11y/control-has-associated-label": "off", // Disabled in jsx, too, tricky with custom components
   "jsx-a11y/heading-has-content": "jsx", // Effectively identical in all presets
   "jsx-a11y/interactive-supports-focus": "jsx", // Follow plugin author recommendation
-  "jsx-a11y/label-has-associated-control": "off", // Disabled in cra, too, tricky with custom components
+  // "jsx-a11y/label-has-associated-control": "off", // Disabled in cra, too, tricky with custom components
   "jsx-a11y/media-has-caption": "jsx", // Effectively identical in all presets
-  "jsx-a11y/no-autofocus": "off", // Disabled in cra, too. Not that relevant I guess.
+  // "jsx-a11y/no-autofocus": "off", // Disabled in cra, too. Not that relevant I guess.
   "jsx-a11y/no-distracting-elements": "jsx", // Effectively identical in all presets
   "jsx-a11y/no-interactive-element-to-noninteractive-role": "jsx", // Follow plugin author recommendation
   "jsx-a11y/no-noninteractive-element-interactions": "jsx", // Follow plugin author recommendation
@@ -73,7 +73,7 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
 
   "react/button-has-type": "xo-react", // Effectively identical in all presets
   "react/function-component-definition": "airbnb-react", // Old school: prefer real inspectable functions
-  "react/default-props-match-prop-types": "off", // TS mode: Do not care about prop-types
+  // "react/default-props-match-prop-types": "off", // TS mode: Do not care about prop-types
   "react/jsx-boolean-value": "xo-react", // Effectively identical in all presets: the default value of this option is "never"
   "react/jsx-curly-brace-presence": "xo-react", // Reduce clutter, formatting related
   "react/jsx-filename-extension": "kentdodds", // Respect .ts/.tsx
@@ -86,13 +86,13 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
   "react/no-string-refs": "xo-react", // Fine-tuned in XO to prevent template strings as well
   "react/no-unsafe": "kentdodds", // Also disabled in strict-mode which should be standard for new developments
   "react/no-unstable-nested-components": "kentdodds", // That's indeed looking like a common issue in code bases. Good find.
-  "react/no-unused-prop-types": "off", // TS mode: Do not care about prop-types
-  "react/prefer-es6-class": "off", // Seems to be about old classes to ES6 classes, but we prefer functional components anyway
-  "react/prop-types": "off", // TS mode: Do not care about prop-types
-  "react/require-default-props": "off", // TS mode: Do not care about prop-types
-  "react/sort-comp": "off", // Relevant for traditional classes only... edge case in todays code bases
+  // "react/no-unused-prop-types": "off", // TS mode: Do not care about prop-types
+  // "react/prefer-es6-class": "off", // Seems to be about old classes to ES6 classes, but we prefer functional components anyway
+  // "react/prop-types": "off", // TS mode: Do not care about prop-types
+  // "react/require-default-props": "off", // TS mode: Do not care about prop-types
+  // "react/sort-comp": "off", // Relevant for traditional classes only... edge case in todays code bases
   "react/state-in-constructor": "xo-react", // Traditional classes, but pretty tricky if not detected... therefor enabled
-  "react/static-property-placement": "off", // Relevant for traditional classes only... edge case in todays code bases
+  // "react/static-property-placement": "off", // Relevant for traditional classes only... edge case in todays code bases
   "react/style-prop-object": "cra", // XO is right about FormattedNumber, but this might change in React-Intl as well... or one uses a different lib.
 
   "unicorn/no-null": "xo-typescript" // Disabled as not relevant in TS projects
@@ -244,7 +244,6 @@ export const ruleBasedSourcePriorityOld: SourcePriorityTable = {
 
   // Mostly focused on old API design of React
   "react/no-unsafe": "react",
-  "react/no-did-mount-set-state": "off",
 
   // Good style, good find by XO
   "react/prefer-read-only-props": "xo-react",
