@@ -1,4 +1,4 @@
-import { isEqual, mergeWith } from "lodash"
+import { isEqual, mergeWith, escape } from "lodash"
 import { Linter } from "eslint"
 import { getFixableRules } from "eslint-get-rules"
 import { rules as TSEnabledRules } from "@typescript-eslint/eslint-plugin"
@@ -157,6 +157,19 @@ interface SimplifyResult {
   meta: Record<string, RuleMeta>
 }
 
+function jsonToHtml(obj) {
+  return escape(JSON.stringify(obj, null, 2)).replaceAll("\n", "<br/>").replaceAll(" ", "&#160;")
+}
+
+function getReadableValue(entry) {
+  if (!entry) {
+    return ""
+  }
+
+  const config = entry.slice(1)
+  return config.length === 0 ? "" : jsonToHtml(config)
+}
+
 async function simplify(source: KeyValue): Promise<SimplifyResult> {
   const simplified: UnifiedRuleFormat = {}
   const meta: Record<string, RuleMeta> = {}
@@ -167,13 +180,6 @@ async function simplify(source: KeyValue): Promise<SimplifyResult> {
 
     const ruleMeta: RuleMeta = {}
     meta[ruleName] = ruleMeta
-
-    if (resolutionSource) {
-      ruleMeta.priorityMeta = {
-        source: resolutionSource,
-        alternatives: source[ruleName]
-      }
-    }
 
     const forcedDisabledOrigin = getForcedDisabledOrigin(ruleName, ruleValues)
     if (forcedDisabledOrigin) {
@@ -186,12 +192,12 @@ async function simplify(source: KeyValue): Promise<SimplifyResult> {
       continue
     }
 
-    const singleKey = getSingleSourceKey(ruleValues)
-    if (singleKey) {
-      const singleValue = source[ruleName][singleKey]
+    const singleSourceName = getSingleSourceKey(ruleValues)
+    if (singleSourceName) {
+      const singleValue = source[ruleName][singleSourceName]
       simplified[ruleName] = singleValue
       ruleMeta.source = "single"
-      ruleMeta.origin = singleKey
+      ruleMeta.origin = singleSourceName
       if (resolutionSource) {
         console.warn(`Useless resolution in ${ruleName}! #SingleKey`)
       }
@@ -221,6 +227,7 @@ async function simplify(source: KeyValue): Promise<SimplifyResult> {
       continue
     }
 
+    ruleMeta.alternatives = jsonToHtml(ruleValues)
     ruleMeta.source = "unresolved"
   }
 
@@ -229,6 +236,8 @@ async function simplify(source: KeyValue): Promise<SimplifyResult> {
     if (ruleValue && ruleValue[0] === "off") {
       delete simplified[ruleName]
       meta[ruleName].droppedValue = true
+    } else {
+      meta[ruleName].config = getReadableValue(simplified[ruleName])
     }
   }
 
@@ -332,6 +341,7 @@ function formatRuleMeta(ruleMeta, ruleName: string) {
   cells += `<td>${ruleMeta.source}</td>`
   cells += `<td>${ruleMeta.origin || ''}</td>`
   cells += `<td>${ruleMeta.droppedValue && "dropped" || ""}</td>`
+  cells += `<td>${ruleMeta.alternatives || ""}</td>`
 
 
   return `<tr class="source-${ruleMeta.source}"><th>${ruleName}</th>${cells}</tr>`
@@ -380,7 +390,7 @@ export async function formatMeta(rulesMeta) {
   `
 
   const header = `
-  <tr><th>Rule</th><td>Source</td><td>Origin</td></tr>
+  <tr><th>Rule</th><td>Source</td><td>Origin</td><td>Dropped?</td><td>Config</td></tr>
   `
 
 
