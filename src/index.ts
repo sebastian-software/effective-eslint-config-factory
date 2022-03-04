@@ -81,17 +81,17 @@ export function getSingleSourceKey(object: KeyValue): string | undefined {
   return single
 }
 
-function getForcedDisabled(
+function getForcedDisabledOrigin(
   ruleName: string,
   ruleValues: KeyValue
-): Linter.RuleEntry | undefined {
+): string | undefined {
   if (
     !ruleName.startsWith("@typescript-eslint/") &&
     ruleName in TSEnabledRules
   ) {
     // Highest priority to rules from eslint builtin configured by TS preset to be disabled (replaced rules)
     if (ruleValues.ts && ruleValues.ts[0] === "off") {
-      return ruleValues.ts
+      return "ts"
     }
 
     // Highest priority to rules from eslint builtin configured by TS preset to be disabled (replaced rules)
@@ -99,7 +99,7 @@ function getForcedDisabled(
       ruleValues["xo-typescript"] &&
       ruleValues["xo-typescript"][0] === "off"
     ) {
-      return ruleValues["xo-typescript"]
+      return "xo-typescript"
     }
   }
 
@@ -109,8 +109,13 @@ function getForcedDisabled(
     ruleValues.prettier[0] === "off" &&
     !ruleName.startsWith("prettier/")
   ) {
-    return ruleValues.prettier
+    return "prettier"
   }
+}
+
+interface EqualReturn {
+  value: SimplifiedRuleValue,
+  sources: string[]
 }
 
 /**
@@ -121,10 +126,12 @@ function getForcedDisabled(
  */
 export function getEqualValue(
   ruleValues: KeyValue
-): SimplifiedRuleValue | undefined {
+): undefined | EqualReturn {
   let last
+  const sources = []
   for (const sourceName in ruleValues) {
     const currentValue = ruleValues[sourceName]
+    sources.push(sourceName)
     if (!last) {
       last = currentValue
       continue
@@ -135,7 +142,7 @@ export function getEqualValue(
     }
   }
 
-  return last
+  return { value: last, sources }
 }
 
 interface RuleMeta {
@@ -169,9 +176,11 @@ async function simplify(source: KeyValue): Promise<SimplifyResult> {
       }
     }
 
-    const forcedDisabledValue = getForcedDisabled(ruleName, ruleValues)
-    if (forcedDisabledValue) {
+    const forcedDisabledOrigin = getForcedDisabledOrigin(ruleName, ruleValues)
+    if (forcedDisabledOrigin) {
       ruleMeta.source = "disabled"
+      ruleMeta.origin = forcedDisabledOrigin
+      ruleMeta.uselessResolution = Boolean(resolutionSource)
       continue
     }
 
@@ -180,20 +189,17 @@ async function simplify(source: KeyValue): Promise<SimplifyResult> {
       const singleValue = source[ruleName][singleKey]
       simplified[ruleName] = singleValue
       ruleMeta.source = "single"
-      ruleMeta.details = {
-        value: singleValue,
-        origin: singleKey
-      }
+      ruleMeta.origin = singleKey
+      ruleMeta.uselessResolution = Boolean(resolutionSource)
       continue
     }
 
     const equalValue = getEqualValue(ruleValues)
     if (equalValue) {
-      simplified[ruleName] = equalValue
+      simplified[ruleName] = equalValue.value
       ruleMeta.source = "uniform"
-      ruleMeta.details = {
-        value: equalValue
-      }
+      ruleMeta.origin = equalValue.sources.join(" | ")
+      ruleMeta.uselessResolution = Boolean(resolutionSource)
       continue
     }
 
@@ -207,6 +213,7 @@ async function simplify(source: KeyValue): Promise<SimplifyResult> {
       }
 
       ruleMeta.source = "priority"
+      ruleMeta.origin = resolutionSource
       continue
     }
 
@@ -311,6 +318,7 @@ export async function main(flags: CliOptions) {
   const fileLists = await compileFiles()
 
   await writeFiles(fileLists, outputFolder)
+  // await writeFiles({ meta: fileLists.meta }, outputFolder, "json")
 
   const metaVisualized = await formatMeta(fileLists.meta)
   await writeFiles({ meta: metaVisualized}, outputFolder, "html")
@@ -319,6 +327,7 @@ export async function main(flags: CliOptions) {
 function formatRuleMeta(ruleMeta, ruleName: string) {
   let cells = ``
   cells += `<td>${ruleMeta.source}</td>`
+  cells += `<td>${ruleMeta.origin || ''}</td>`
 
   return `<tr class="source-${ruleMeta.source}"><th>${ruleName}</th>${cells}</tr>`
 }
@@ -329,27 +338,43 @@ export async function formatMeta(rulesMeta) {
   const rowsHtml = metaKeys.map((ruleName) => formatRuleMeta(rulesMeta[ruleName], ruleName)).join("\n")
   const styles = `
   html {
-    font: 11px sans-serif;
+    font: 10px sans-serif;
     background: white;
     color: black;
   }
 
   th, td {
     text-align: left;
+    padding: 4px 10px;
+  }
+
+  tr:nth-child(even) {
+    background: #EEE;
   }
 
   .source-disabled{
-    text-decoration: line-through;
     color: grey;
+  }
+
+  .source-disabled th {
+    text-decoration: line-through;
   }
 
   .source-priority{
     color: orange;
   }
 
+  .source-uniform{
+    color: green;
+  }
+
+  `
+
+  const header = `
+  <tr><th>Rule</th><td>Source</td><td>Origin</td></tr>
   `
 
 
 
-  return `<html><style>${styles}</style><table>${rowsHtml}</table></html>`
+  return `<html><style>${styles}</style><table>${header}${rowsHtml}</table></html>`
 }
