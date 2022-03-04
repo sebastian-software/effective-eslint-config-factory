@@ -198,7 +198,7 @@ async function simplify(source: KeyValue): Promise<SimplifyResult> {
     if (equalValue) {
       simplified[ruleName] = equalValue.value
       ruleMeta.source = "uniform"
-      ruleMeta.origin = equalValue.sources.join(" | ")
+      ruleMeta.origin = equalValue.sources.sort().join(", ")
       ruleMeta.uselessResolution = Boolean(resolutionSource)
       continue
     }
@@ -328,6 +328,7 @@ function formatRuleMeta(ruleMeta, ruleName: string) {
   let cells = ``
   cells += `<td>${ruleMeta.source}</td>`
   cells += `<td>${ruleMeta.origin || ''}</td>`
+  cells += `<td>${ruleMeta.uselessResolution || ''}</td>`
 
   return `<tr class="source-${ruleMeta.source}"><th>${ruleName}</th>${cells}</tr>`
 }
@@ -371,7 +372,7 @@ export async function formatMeta(rulesMeta) {
   `
 
   const header = `
-  <tr><th>Rule</th><td>Source</td><td>Origin</td></tr>
+  <tr><th>Rule</th><td>Source</td><td>Origin</td><td>Useless Resolution</td></tr>
   `
 
 
