@@ -161,7 +161,6 @@ async function simplify(source: KeyValue): Promise<SimplifyResult> {
   const simplified: UnifiedRuleFormat = {}
   const meta: Record<string, RuleMeta> = {}
 
-  console.log("Reducing...")
   for (const ruleName in source) {
     const ruleValues = source[ruleName]
     const resolutionSource = ruleBasedSourcePriority[ruleName]
@@ -178,9 +177,12 @@ async function simplify(source: KeyValue): Promise<SimplifyResult> {
 
     const forcedDisabledOrigin = getForcedDisabledOrigin(ruleName, ruleValues)
     if (forcedDisabledOrigin) {
+      simplified[ruleName] = ["off"]
       ruleMeta.source = "disabled"
       ruleMeta.origin = forcedDisabledOrigin
-      ruleMeta.uselessResolution = Boolean(resolutionSource)
+      if (resolutionSource) {
+        console.warn(`Useless resolution in ${ruleName}! #ForcedDisabled`)
+      }
       continue
     }
 
@@ -190,7 +192,9 @@ async function simplify(source: KeyValue): Promise<SimplifyResult> {
       simplified[ruleName] = singleValue
       ruleMeta.source = "single"
       ruleMeta.origin = singleKey
-      ruleMeta.uselessResolution = Boolean(resolutionSource)
+      if (resolutionSource) {
+        console.warn(`Useless resolution in ${ruleName}! #SingleKey`)
+      }
       continue
     }
 
@@ -199,7 +203,10 @@ async function simplify(source: KeyValue): Promise<SimplifyResult> {
       simplified[ruleName] = equalValue.value
       ruleMeta.source = "uniform"
       ruleMeta.origin = equalValue.sources.sort().join(", ")
-      ruleMeta.uselessResolution = Boolean(resolutionSource)
+      if (resolutionSource) {
+        console.warn(`Useless resolution in ${ruleName}! #EqualValue`)
+      }
+
       continue
     }
 
@@ -220,10 +227,10 @@ async function simplify(source: KeyValue): Promise<SimplifyResult> {
     ruleMeta.source = "unresolved"
   }
 
-  console.log("Cleaning up...")
   for (const ruleName in source) {
     const ruleValue = simplified[ruleName] as string[]
     if (ruleValue && ruleValue[0] === "off") {
+      console.log("Clear:", ruleName)
       delete simplified[ruleName]
       meta[ruleName].droppedValue = true
     }
@@ -328,7 +335,8 @@ function formatRuleMeta(ruleMeta, ruleName: string) {
   let cells = ``
   cells += `<td>${ruleMeta.source}</td>`
   cells += `<td>${ruleMeta.origin || ''}</td>`
-  cells += `<td>${ruleMeta.uselessResolution || ''}</td>`
+  cells += `<td>${ruleMeta.droppedValue && "dropped" || ""}</td>`
+
 
   return `<tr class="source-${ruleMeta.source}"><th>${ruleName}</th>${cells}</tr>`
 }
@@ -372,7 +380,7 @@ export async function formatMeta(rulesMeta) {
   `
 
   const header = `
-  <tr><th>Rule</th><td>Source</td><td>Origin</td><td>Useless Resolution</td></tr>
+  <tr><th>Rule</th><td>Source</td><td>Origin</td></tr>
   `
 
 
