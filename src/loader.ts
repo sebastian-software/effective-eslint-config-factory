@@ -101,7 +101,6 @@ export function getMerged(): RulesStructuredByOrigin {
   mergeIntoStructure(getPrettierDisabledRules(), "prettier", dist)
   mergeIntoStructure(getAirbnbBase(), "airbnb", dist)
   mergeIntoStructure(getAirbnbReact(), "airbnb-react", dist)
-  mergeIntoStructure(getSatya164(), "satya164", dist)
   mergeIntoStructure(getXo(), "xo", dist)
   mergeIntoStructure(getXoReact(), "xo-react", dist)
   mergeIntoStructure(getXoTypescript(), "xo-typescript", dist)
@@ -285,25 +284,6 @@ function getTypescriptOverride(overrides: Linter.ConfigOverride[]) {
   )
   const { rules, ...config } = match ?? {}
   return { rules, config }
-}
-
-export function getSatya164(): RuleLoaderReturn {
-  const config = require("eslint-config-satya164")
-
-  const { rules, overrides, ...restConfig } = config
-  const tsOverride = getTypescriptOverride(overrides)
-
-  return {
-    config: {
-      ...restConfig,
-      ...tsOverride.config
-    },
-
-    rules: {
-      ...rules,
-      ...tsOverride.rules
-    }
-  }
 }
 
 export function getXo(): RuleLoaderReturn {
