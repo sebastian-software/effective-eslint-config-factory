@@ -122,6 +122,9 @@ Object {
         "jest/no-conditional-expect": Array [
           "error",
         ],
+        "jest/no-conditional-in-test": Array [
+          "error",
+        ],
         "jest/no-deprecated-functions": Array [
           "error",
         ],
@@ -170,7 +173,16 @@ Object {
         "jest/prefer-called-with": Array [
           "error",
         ],
+        "jest/prefer-comparison-matcher": Array [
+          "error",
+        ],
+        "jest/prefer-equality-matcher": Array [
+          "error",
+        ],
         "jest/prefer-hooks-on-top": Array [
+          "error",
+        ],
+        "jest/prefer-snapshot-hint": Array [
           "error",
         ],
         "jest/prefer-to-be": Array [
@@ -616,6 +628,10 @@ Object {
         "vars": "all",
       },
     ],
+    "@typescript-eslint/no-use-before-define": Array [
+      "error",
+      "nofunc",
+    ],
     "@typescript-eslint/no-useless-constructor": Array [
       "error",
     ],
@@ -820,17 +836,7 @@ Object {
     "import/export": Array [
       "error",
     ],
-    "import/extensions": Array [
-      "error",
-      Object {
-        "js": "never",
-        "json": "always",
-      },
-    ],
     "import/first": Array [
-      "warn",
-    ],
-    "import/imports-first": Array [
       "warn",
     ],
     "import/no-absolute-path": Array [
@@ -840,9 +846,6 @@ Object {
       "error",
     ],
     "import/no-anonymous-default-export": Array [
-      "error",
-    ],
-    "import/no-commonjs": Array [
       "error",
     ],
     "import/no-deprecated": Array [
@@ -1284,6 +1287,14 @@ Object {
     ],
     "no-unused-private-class-members": Array [
       "error",
+    ],
+    "no-use-before-define": Array [
+      "error",
+      Object {
+        "classes": false,
+        "functions": false,
+        "variables": false,
+      },
     ],
     "no-useless-backreference": Array [
       "error",
@@ -2395,6 +2406,10 @@ Object {
         "vars": "all",
       },
     ],
+    "@typescript-eslint/no-use-before-define": Array [
+      "error",
+      "nofunc",
+    ],
     "@typescript-eslint/no-useless-constructor": Array [
       "error",
     ],
@@ -2599,17 +2614,7 @@ Object {
     "import/export": Array [
       "error",
     ],
-    "import/extensions": Array [
-      "error",
-      Object {
-        "js": "never",
-        "json": "always",
-      },
-    ],
     "import/first": Array [
-      "warn",
-    ],
-    "import/imports-first": Array [
       "warn",
     ],
     "import/no-absolute-path": Array [
@@ -2619,9 +2624,6 @@ Object {
       "error",
     ],
     "import/no-anonymous-default-export": Array [
-      "error",
-    ],
-    "import/no-commonjs": Array [
       "error",
     ],
     "import/no-deprecated": Array [
@@ -3275,6 +3277,14 @@ Object {
     "no-unused-private-class-members": Array [
       "error",
     ],
+    "no-use-before-define": Array [
+      "error",
+      Object {
+        "classes": false,
+        "functions": false,
+        "variables": false,
+      },
+    ],
     "no-useless-backreference": Array [
       "error",
     ],
@@ -3437,12 +3447,22 @@ Object {
         "unnamedComponents": "function-expression",
       },
     ],
+    "react/hook-use-state": Array [
+      "error",
+    ],
+    "react/iframe-missing-sandbox": Array [
+      "error",
+    ],
     "react/jsx-boolean-value": Array [
       "warn",
     ],
     "react/jsx-curly-brace-presence": Array [
       "warn",
-      "never",
+      Object {
+        "children": "never",
+        "propElementValues": "always",
+        "props": "never",
+      },
     ],
     "react/jsx-filename-extension": Array [
       "error",
@@ -3462,6 +3482,7 @@ Object {
       Object {
         "checkFragmentShorthand": true,
         "checkKeyMustBeforeSpread": true,
+        "warnOnDuplicates": true,
       },
     ],
     "react/jsx-no-bind": Array [
@@ -3609,6 +3630,10 @@ Object {
     "react/no-will-update-set-state": Array [
       "error",
     ],
+    "react/prefer-es6-class": Array [
+      "error",
+      "always",
+    ],
     "react/prefer-exact-props": Array [
       "error",
     ],
@@ -3629,6 +3654,58 @@ Object {
     ],
     "react/self-closing-comp": Array [
       "warn",
+    ],
+    "react/sort-comp": Array [
+      "error",
+      Object {
+        "groups": Object {
+          "lifecycle": Array [
+            "displayName",
+            "propTypes",
+            "contextTypes",
+            "childContextTypes",
+            "mixins",
+            "statics",
+            "defaultProps",
+            "constructor",
+            "getDefaultProps",
+            "getInitialState",
+            "state",
+            "getChildContext",
+            "getDerivedStateFromProps",
+            "componentWillMount",
+            "UNSAFE_componentWillMount",
+            "componentDidMount",
+            "componentWillReceiveProps",
+            "UNSAFE_componentWillReceiveProps",
+            "shouldComponentUpdate",
+            "componentWillUpdate",
+            "UNSAFE_componentWillUpdate",
+            "getSnapshotBeforeUpdate",
+            "componentDidUpdate",
+            "componentDidCatch",
+            "componentWillUnmount",
+          ],
+          "rendering": Array [
+            "/^render.+$/",
+            "render",
+          ],
+        },
+        "order": Array [
+          "static-variables",
+          "static-methods",
+          "instance-variables",
+          "lifecycle",
+          "/^handle.+$/",
+          "/^on.+$/",
+          "getters",
+          "setters",
+          "/^(get|set)(?!(InitialState$|DefaultProps$|ChildContext$)).+$/",
+          "instance-methods",
+          "everything-else",
+          "rendering",
+        ],
+      },
     ],
     "react/state-in-constructor": Array [
       "error",
