@@ -35,10 +35,8 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
   strict: "kentdodds", // Source format is ESM in most code bases, still useful as auto-detected
   "valid-typeof": "eslint", // Common in most presets
 
-  "@typescript-eslint/array-type": "xo-typescript", // Prefer simple arrays as in XO
   "@typescript-eslint/ban-ts-comment": "xo-typescript", // XO allows exceptions which are a good idea
   "@typescript-eslint/ban-types": "xo-typescript", // Best collection of types to ban is in XO
-  "@typescript-eslint/consistent-type-assertions": "xo-typescript", // Enforcing 'as' type is standard nowadays
   "@typescript-eslint/no-empty-interface": "xo-typescript",
   "@typescript-eslint/no-extraneous-class": "xo-typescript",
   "@typescript-eslint/no-floating-promises": "xo-typescript",
