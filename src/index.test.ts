@@ -16,7 +16,7 @@ describe("getSingleSourceKey()", () => {
 
 describe("getEqualValue", () => {
   test("return result when one value", () => {
-    expect(getEqualValue([{ first: 1, second: 2 }])).toEqual({
+    expect(getEqualValue([{ first: 1, second: 2 }])?.value).toEqual({
       first: 1,
       second: 2
     })
@@ -27,7 +27,7 @@ describe("getEqualValue", () => {
       getEqualValue([
         { first: 1, second: 2 },
         { first: 1, second: 2 }
-      ])
+      ])?.value
     ).toEqual({ first: 1, second: 2 })
   })
 
@@ -37,7 +37,7 @@ describe("getEqualValue", () => {
         { first: 1, second: 2 },
         { first: 1, second: 2 },
         { first: 1, second: 3 }
-      ])
+      ])?.value
     ).toBeUndefined()
   })
 
@@ -47,7 +47,7 @@ describe("getEqualValue", () => {
         { first: 1, second: 2 },
         { first: 1, second: 2 },
         { first: 1, second: 2 }
-      ])
+      ])?.value
     ).toEqual({ first: 1, second: 2 })
   })
 
@@ -56,7 +56,7 @@ describe("getEqualValue", () => {
       getEqualValue([
         { first: 1, second: 2 },
         { second: 2, first: 1 }
-      ])
+      ])?.value
     ).toEqual({ first: 1, second: 2 })
   })
 })
