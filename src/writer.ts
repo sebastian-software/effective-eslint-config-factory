@@ -4,7 +4,7 @@ import { Linter } from "eslint"
 import prettier from "prettier"
 import { dump } from "js-yaml"
 
-type ConfigList = Record<string, Linter.BaseConfig>
+type ConfigList = Record<string, Linter.BaseConfig | string>
 
 function formatJson(json: JSON): string {
   return prettier.format(JSON.stringify(json), { parser: "json" })

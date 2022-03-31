@@ -350,7 +350,7 @@ function formatRuleMeta(ruleMeta: RuleMeta, ruleName: string) {
   return `<tr class="source-${ruleMeta.source}"><th>${ruleName}</th>${cells}</tr>`
 }
 
-export async function formatMeta(rulesMeta) {
+export async function formatMeta(rulesMeta: Record<string, RuleMeta>) {
   const metaKeys = Object.keys(rulesMeta)
   metaKeys.sort(ruleComparator)
   const rowsHtml = metaKeys.map((ruleName) => formatRuleMeta(rulesMeta[ruleName], ruleName)).join("\n")
