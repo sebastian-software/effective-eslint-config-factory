@@ -164,6 +164,33 @@ function jsonToHtml(obj: JSON | any[]): string {
   return escape(JSON.stringify(obj, null, 2)).replaceAll("\n", "<br/>").replaceAll(" ", "&#160;")
 }
 
+function formatAlternatives(sources: Record<string, SimplifiedRuleValue>, selectedSource: string | undefined): string {
+  let html = ""
+
+  for (const sourceName in sources) {
+    const sourceValue = sources[sourceName]
+    if (sourceName === selectedSource) {
+      html += "<strong>"
+    }
+
+    html += `${sourceName}: `
+
+    if (sourceValue.length === 1) {
+      html += "<em>defaults</em>"
+    } else {
+      html += sourceValue.slice(1).map(jsonToHtml).join("<br/><br/>")
+    }
+
+    if (sourceName === selectedSource) {
+      html += "</strong>"
+    }
+
+    html += "<br/><br/>"
+  }
+
+  return html
+}
+
 function getReadableValue(entry: undefined | SimplifiedRuleValue) {
   if (!entry) {
     return ""
@@ -219,6 +246,8 @@ async function simplify(source: KeyValue): Promise<SimplifyResult> {
       continue
     }
 
+    ruleMeta.alternatives = formatAlternatives(ruleValues, resolutionSource)
+
     if (resolutionSource) {
       simplified[ruleName] = ruleValues[resolutionSource]
       if (!simplified[ruleName]) {
@@ -230,7 +259,7 @@ async function simplify(source: KeyValue): Promise<SimplifyResult> {
       continue
     }
 
-    ruleMeta.alternatives = jsonToHtml(ruleValues)
+
     ruleMeta.source = "unresolved"
   }
 
@@ -379,7 +408,7 @@ export async function formatMeta(rulesMeta: Record<string, RuleMeta>) {
   }
 
   .source-priority{
-    color: orange;
+
   }
 
   .source-uniform{
