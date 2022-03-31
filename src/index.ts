@@ -146,7 +146,8 @@ export function getEqualValue(
 }
 
 interface RuleMeta {
-  source: 'disabled' | 'uniform' | 'single' | 'priority' | 'unresolved'
+  source?: 'disabled' | 'uniform' | 'single' | 'priority' | 'unresolved'
+  origin?: string
   resolution?: boolean
   droppedValue?: boolean
   relaxedLevel?: boolean
@@ -157,11 +158,11 @@ interface SimplifyResult {
   meta: Record<string, RuleMeta>
 }
 
-function jsonToHtml(obj) {
+function jsonToHtml(obj: JSON | any[]) {
   return escape(JSON.stringify(obj, null, 2)).replaceAll("\n", "<br/>").replaceAll(" ", "&#160;")
 }
 
-function getReadableValue(entry) {
+function getReadableValue(entry: undefined | SimplifiedRuleValue) {
   if (!entry) {
     return ""
   }
