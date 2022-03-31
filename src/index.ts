@@ -121,7 +121,7 @@ interface EqualReturn {
 /**
  * Return the value when all values are equal. Otherwise return undefined.
  *
- * @param ruleValues List of values
+ * @param ruleValues Map of values (key = source name)
  * @returns The detected equal value, otherwise undefined
  */
 export function getEqualValue(

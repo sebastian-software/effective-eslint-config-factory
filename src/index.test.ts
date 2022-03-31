@@ -16,48 +16,90 @@ describe("getSingleSourceKey()", () => {
 
 describe("getEqualValue", () => {
   test("return result when one value", () => {
-    expect(getEqualValue([{ first: 1, second: 2 }])?.value).toEqual({
-      first: 1,
-      second: 2
-    })
+    expect(getEqualValue({ foo: { first: 1, second: 2 } }))
+      .toMatchInlineSnapshot(`
+      Object {
+        "sources": Array [
+          "foo",
+        ],
+        "value": Object {
+          "first": 1,
+          "second": 2,
+        },
+      }
+    `)
   })
 
   test("return result when two equal", () => {
     expect(
-      getEqualValue([
-        { first: 1, second: 2 },
-        { first: 1, second: 2 }
-      ])?.value
-    ).toEqual({ first: 1, second: 2 })
+      getEqualValue({
+        foo: { first: 1, second: 2 },
+        bar: { first: 1, second: 2 }
+      })
+    ).toMatchInlineSnapshot(`
+      Object {
+        "sources": Array [
+          "foo",
+          "bar",
+        ],
+        "value": Object {
+          "first": 1,
+          "second": 2,
+        },
+      }
+    `)
   })
 
   test("return undefined when two equal and one different", () => {
     expect(
-      getEqualValue([
-        { first: 1, second: 2 },
-        { first: 1, second: 2 },
-        { first: 1, second: 3 }
-      ])?.value
+      getEqualValue({
+        foo: { first: 1, second: 2 },
+        bar: { first: 1, second: 2 },
+        hoo: { first: 1, second: 3 }
+      })
     ).toBeUndefined()
   })
 
   test("return result when three equal", () => {
     expect(
-      getEqualValue([
-        { first: 1, second: 2 },
-        { first: 1, second: 2 },
-        { first: 1, second: 2 }
-      ])?.value
-    ).toEqual({ first: 1, second: 2 })
+      getEqualValue({
+        foo: { first: 1, second: 2 },
+        bar: { first: 1, second: 2 },
+        hoo: { first: 1, second: 2 }
+      })
+    ).toMatchInlineSnapshot(`
+      Object {
+        "sources": Array [
+          "foo",
+          "bar",
+          "hoo",
+        ],
+        "value": Object {
+          "first": 1,
+          "second": 2,
+        },
+      }
+    `)
   })
 
   test("return result when two equal but different order", () => {
     expect(
-      getEqualValue([
-        { first: 1, second: 2 },
-        { second: 2, first: 1 }
-      ])?.value
-    ).toEqual({ first: 1, second: 2 })
+      getEqualValue({
+        foo: { first: 1, second: 2 },
+        bar: { second: 2, first: 1 }
+      })
+    ).toMatchInlineSnapshot(`
+      Object {
+        "sources": Array [
+          "foo",
+          "bar",
+        ],
+        "value": Object {
+          "first": 1,
+          "second": 2,
+        },
+      }
+    `)
   })
 })
 
