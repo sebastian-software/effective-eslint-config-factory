@@ -177,7 +177,7 @@ async function simplify(source: KeyValue): Promise<SimplifyResult> {
 
   for (const ruleName in source) {
     const ruleValues = source[ruleName]
-    const resolutionSource = ruleBasedSourcePriority[ruleName]
+    const resolutionSource: string = ruleBasedSourcePriority[ruleName]
 
     const ruleMeta: RuleMeta = {}
     meta[ruleName] = ruleMeta
