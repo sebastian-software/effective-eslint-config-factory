@@ -158,7 +158,7 @@ interface SimplifyResult {
   meta: Record<string, RuleMeta>
 }
 
-function jsonToHtml(obj: JSON | any[]) {
+function jsonToHtml(obj: JSON | any[]): string {
   return escape(JSON.stringify(obj, null, 2)).replaceAll("\n", "<br/>").replaceAll(" ", "&#160;")
 }
 
@@ -337,7 +337,7 @@ export async function main(flags: CliOptions) {
   await writeFiles({ meta: metaVisualized}, outputFolder, "html")
 }
 
-function formatRuleMeta(ruleMeta, ruleName: string) {
+function formatRuleMeta(ruleMeta: RuleMeta, ruleName: string) {
   let cells = ``
   cells += `<td>${ruleMeta.source}</td>`
   cells += `<td>${ruleMeta.origin || ''}</td>`
