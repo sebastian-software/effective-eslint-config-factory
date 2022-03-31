@@ -151,6 +151,8 @@ interface RuleMeta {
   resolution?: boolean
   droppedValue?: boolean
   relaxedLevel?: boolean
+  alternatives?: string
+  config?: string
 }
 
 interface SimplifyResult {
