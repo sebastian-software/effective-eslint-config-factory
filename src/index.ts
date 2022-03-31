@@ -1,4 +1,4 @@
-import { isEqual, mergeWith, escape } from "lodash"
+import { isEqual, mergeWith } from "lodash"
 import { Linter } from "eslint"
 import { getFixableRules } from "eslint-get-rules"
 import { rules as TSEnabledRules } from "@typescript-eslint/eslint-plugin"
@@ -13,8 +13,16 @@ import {
   extractReact,
   extractTestingLibOverrideRules as extractTestingLibraryOverrideRules
 } from "./extract"
-import { KeyValue, SimplifiedRuleValue, UnifiedRuleFormat } from "./types"
+import {
+  KeyValue,
+  RuleMeta,
+  SimplifiedRuleValue,
+  SimplifyResult,
+  UnifiedRuleFormat
+} from "./types"
 import { ruleBasedSourcePriority } from "./rules"
+import { formatMeta, formatAlternatives, getReadableValue } from "./html"
+import { sortRules } from "./util"
 
 interface CliOptions {
   nodejs: boolean
@@ -35,37 +43,6 @@ function removeOutOfScopeRules(
   }
 
   return filteredRules
-}
-
-export function ruleComparator(first: string, second: string) {
-  if (
-    (first.includes("/") && second.includes("/")) ||
-    (!first.includes("/") && !second.includes("/"))
-  ) {
-    return first > second ? 1 : -1
-  }
-
-  if (first.includes("/")) {
-    return 1
-  }
-
-  if (second.includes("/")) {
-    return -1
-  }
-
-  return 0
-}
-
-function sortRules(source: KeyValue) {
-  const ruleNames = Object.keys(source)
-  ruleNames.sort(ruleComparator)
-
-  const result: KeyValue = {}
-  for (const ruleName of ruleNames) {
-    result[ruleName] = source[ruleName]
-  }
-
-  return result
 }
 
 export function getSingleSourceKey(object: KeyValue): string | undefined {
@@ -141,66 +118,6 @@ export function getEqualValue(ruleValues: KeyValue): undefined | EqualReturn {
   }
 
   return { value: last, sources }
-}
-
-interface RuleMeta {
-  source?: "disabled" | "uniform" | "single" | "priority" | "unresolved"
-  origin?: string
-  resolution?: boolean
-  droppedValue?: boolean
-  relaxedLevel?: boolean
-  alternatives?: string
-  config?: string
-}
-
-interface SimplifyResult {
-  simplified: Linter.RulesRecord
-  meta: Record<string, RuleMeta>
-}
-
-function jsonToHtml(obj: JSON | any[]): string {
-  return escape(JSON.stringify(obj, null, 2))
-    .replaceAll("\n", "<br/>")
-    .replaceAll(" ", "&#160;")
-}
-
-function formatAlternatives(
-  sources: Record<string, SimplifiedRuleValue>,
-  selectedSource: string | undefined
-): string {
-  let html = ""
-
-  for (const sourceName in sources) {
-    const sourceValue = sources[sourceName]
-    if (sourceName === selectedSource) {
-      html += "<strong>"
-    }
-
-    html += `${sourceName}: `
-
-    if (sourceName === selectedSource) {
-      html += "</strong>"
-    }
-
-    if (sourceValue.length === 1) {
-      html += "<em>defaults</em>"
-    } else {
-      html += sourceValue.slice(1).map(jsonToHtml).join("<br/>")
-    }
-
-    html += "<br/>"
-  }
-
-  return html
-}
-
-function getReadableValue(entry: undefined | SimplifiedRuleValue) {
-  if (!entry) {
-    return ""
-  }
-
-  const config = entry.slice(1)
-  return config.length === 0 ? "" : jsonToHtml(config)
 }
 
 async function simplify(source: KeyValue): Promise<SimplifyResult> {
@@ -366,69 +283,7 @@ export async function main(flags: CliOptions) {
   const fileLists = await compileFiles()
 
   await writeFiles(fileLists, outputFolder)
-  // await writeFiles({ meta: fileLists.meta }, outputFolder, "json")
 
   const metaVisualized = await formatMeta(fileLists.meta)
   await writeFiles({ meta: metaVisualized }, outputFolder, "html")
-}
-
-function formatRuleMeta(ruleMeta: RuleMeta, ruleName: string) {
-  let cells = ``
-  cells += `<td>${ruleMeta.source}</td>`
-  cells += `<td>${ruleMeta.origin || ""}</td>`
-  cells += `<td>${(ruleMeta.droppedValue && "dropped") || ""}</td>`
-  cells += `<td>${ruleMeta.alternatives || ""}</td>`
-
-  return `<tr class="source-${ruleMeta.source}"><th>${ruleName}</th>${cells}</tr>`
-}
-
-export async function formatMeta(rulesMeta: Record<string, RuleMeta>) {
-  const metaKeys = Object.keys(rulesMeta)
-  metaKeys.sort(ruleComparator)
-  const rowsHtml = metaKeys
-    .map((ruleName) => formatRuleMeta(rulesMeta[ruleName], ruleName))
-    .join("\n")
-  const styles = `
-  html {
-    font: 10px sans-serif;
-    background: white;
-    color: black;
-  }
-
-  th, td {
-    text-align: left;
-    padding: 4px 10px;
-  }
-
-  tr:nth-child(even) {
-    background: #EEE;
-  }
-
-  .source-disabled{
-    color: grey;
-  }
-
-  .source-disabled th {
-    text-decoration: line-through;
-  }
-
-  .source-priority{
-
-  }
-
-  .source-uniform{
-    color: green;
-  }
-
-  .source-unresolved {
-    color: red;
-  }
-
-  `
-
-  const header = `
-  <tr><th>Rule</th><td>Source</td><td>Origin</td><td>Dropped?</td><td>Config</td></tr>
-  `
-
-  return `<html><style>${styles}</style><table>${header}${rowsHtml}</table></html>`
 }
