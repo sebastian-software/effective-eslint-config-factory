@@ -35,8 +35,10 @@ const cli = meow(
   }
 )
 
-main(cli.flags).then(() => {
-  console.log("Written files successfully!")
-}).catch((error) => {
-  console.error("Error during execution:", error)
-})
+main(cli.flags)
+  .then(() => {
+    console.log("Written files successfully!")
+  })
+  .catch((error) => {
+    console.error("Error during execution:", error)
+  })

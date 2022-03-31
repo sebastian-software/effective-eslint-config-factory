@@ -114,7 +114,7 @@ function getForcedDisabledOrigin(
 }
 
 interface EqualReturn {
-  value: SimplifiedRuleValue,
+  value: SimplifiedRuleValue
   sources: string[]
 }
 
@@ -124,9 +124,7 @@ interface EqualReturn {
  * @param ruleValues Map of values (key = source name)
  * @returns The detected equal value, otherwise undefined
  */
-export function getEqualValue(
-  ruleValues: KeyValue
-): undefined | EqualReturn {
+export function getEqualValue(ruleValues: KeyValue): undefined | EqualReturn {
   let last
   const sources = []
   for (const sourceName in ruleValues) {
@@ -146,7 +144,7 @@ export function getEqualValue(
 }
 
 interface RuleMeta {
-  source?: 'disabled' | 'uniform' | 'single' | 'priority' | 'unresolved'
+  source?: "disabled" | "uniform" | "single" | "priority" | "unresolved"
   origin?: string
   resolution?: boolean
   droppedValue?: boolean
@@ -156,15 +154,20 @@ interface RuleMeta {
 }
 
 interface SimplifyResult {
-  simplified: Linter.RulesRecord,
+  simplified: Linter.RulesRecord
   meta: Record<string, RuleMeta>
 }
 
 function jsonToHtml(obj: JSON | any[]): string {
-  return escape(JSON.stringify(obj, null, 2)).replaceAll("\n", "<br/>").replaceAll(" ", "&#160;")
+  return escape(JSON.stringify(obj, null, 2))
+    .replaceAll("\n", "<br/>")
+    .replaceAll(" ", "&#160;")
 }
 
-function formatAlternatives(sources: Record<string, SimplifiedRuleValue>, selectedSource: string | undefined): string {
+function formatAlternatives(
+  sources: Record<string, SimplifiedRuleValue>,
+  selectedSource: string | undefined
+): string {
   let html = ""
 
   for (const sourceName in sources) {
@@ -251,14 +254,15 @@ async function simplify(source: KeyValue): Promise<SimplifyResult> {
     if (resolutionSource) {
       simplified[ruleName] = ruleValues[resolutionSource]
       if (!simplified[ruleName]) {
-        console.warn(`Invalid resolution: ${resolutionSource} for rule ${ruleName}!`)
+        console.warn(
+          `Invalid resolution: ${resolutionSource} for rule ${ruleName}!`
+        )
       }
 
       ruleMeta.source = "priority"
       ruleMeta.origin = resolutionSource
       continue
     }
-
 
     ruleMeta.source = "unresolved"
   }
@@ -365,16 +369,15 @@ export async function main(flags: CliOptions) {
   // await writeFiles({ meta: fileLists.meta }, outputFolder, "json")
 
   const metaVisualized = await formatMeta(fileLists.meta)
-  await writeFiles({ meta: metaVisualized}, outputFolder, "html")
+  await writeFiles({ meta: metaVisualized }, outputFolder, "html")
 }
 
 function formatRuleMeta(ruleMeta: RuleMeta, ruleName: string) {
   let cells = ``
   cells += `<td>${ruleMeta.source}</td>`
-  cells += `<td>${ruleMeta.origin || ''}</td>`
-  cells += `<td>${ruleMeta.droppedValue && "dropped" || ""}</td>`
+  cells += `<td>${ruleMeta.origin || ""}</td>`
+  cells += `<td>${(ruleMeta.droppedValue && "dropped") || ""}</td>`
   cells += `<td>${ruleMeta.alternatives || ""}</td>`
-
 
   return `<tr class="source-${ruleMeta.source}"><th>${ruleName}</th>${cells}</tr>`
 }
@@ -382,7 +385,9 @@ function formatRuleMeta(ruleMeta: RuleMeta, ruleName: string) {
 export async function formatMeta(rulesMeta: Record<string, RuleMeta>) {
   const metaKeys = Object.keys(rulesMeta)
   metaKeys.sort(ruleComparator)
-  const rowsHtml = metaKeys.map((ruleName) => formatRuleMeta(rulesMeta[ruleName], ruleName)).join("\n")
+  const rowsHtml = metaKeys
+    .map((ruleName) => formatRuleMeta(rulesMeta[ruleName], ruleName))
+    .join("\n")
   const styles = `
   html {
     font: 10px sans-serif;
@@ -424,8 +429,6 @@ export async function formatMeta(rulesMeta: Record<string, RuleMeta>) {
   const header = `
   <tr><th>Rule</th><td>Source</td><td>Origin</td><td>Dropped?</td><td>Config</td></tr>
   `
-
-
 
   return `<html><style>${styles}</style><table>${header}${rowsHtml}</table></html>`
 }
