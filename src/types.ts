@@ -9,7 +9,13 @@ export type SimplifiedRuleValue<Options extends any[] = any[]> = Prepend<
 export type UnifiedRuleFormat = Record<string, SimplifiedRuleValue>
 export type RulesStructuredByOrigin = Record<string, UnifiedRuleFormat>
 export type KeyValue = Record<string, any>
-export type SourcePriorityTable = Record<string, string>
+
+export interface SourcePriorityValue {
+  use: string
+  comment?: string
+}
+
+export type SourcePriorityTable = Record<string, SourcePriorityValue>
 
 export interface RuleMeta {
   source?: "disabled" | "uniform" | "single" | "priority" | "unresolved"
@@ -19,6 +25,7 @@ export interface RuleMeta {
   relaxedLevel?: boolean
   alternatives?: string
   config?: string
+  comment?: string
 }
 
 export interface SimplifyResult {

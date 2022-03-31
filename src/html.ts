@@ -51,7 +51,7 @@ export function formatRuleMeta(ruleMeta: RuleMeta, ruleName: string) {
   let cells = ``
   cells += `<td>${ruleMeta.source}</td>`
   cells += `<td>${ruleMeta.origin || ""}</td>`
-  cells += `<td>${(ruleMeta.droppedValue && "dropped") || ""}</td>`
+  cells += `<td>${ruleMeta.comment || ""}</td>`
   cells += `<td>${ruleMeta.alternatives || ""}</td>`
 
   return `<tr class="source-${ruleMeta.source}"><th>${ruleName}</th>${cells}</tr>`
@@ -65,9 +65,31 @@ export async function formatMeta(rulesMeta: Record<string, RuleMeta>) {
     .join("\n")
   const styles = `
   html {
-    font: 10px sans-serif;
+    font: 12px sans-serif;
     background: white;
-    color: black;
+    color: #222;
+  }
+
+  html,
+  body{
+    padding: 0;
+    margin: 0;
+  }
+
+  table{
+    border-spacing: 0;
+    font: inherit;
+    width: 100%;
+  }
+
+  td, th{
+    vertical-align: top;
+  }
+
+  thead th{
+    background: lightskyblue;
+    padding: 6px 10px;
+    font-size: 14px;
   }
 
   th, td {
@@ -76,34 +98,61 @@ export async function formatMeta(rulesMeta: Record<string, RuleMeta>) {
   }
 
   tr:nth-child(even) {
-    background: #EEE;
+    background: #F4F8FA;
   }
 
-  .source-disabled{
-    color: grey;
+  th:first-child{
+    border-left: 8px solid transparent;
   }
 
-  .source-disabled th {
-    text-decoration: line-through;
+  tbody th::after {
+    font-size: 10px;
+    color: white;
+    display: inline-block;
+    border-radius: 50% 50%;
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 18px;
+    margin-left: 8px;
+    font-weight: normal;
   }
 
-  .source-priority{
-
+  .source-disabled th::after{
+    content: "✘";
+    background: darkgrey;
   }
 
-  .source-uniform{
-    color: green;
+  .source-priority th::after{
+    content: "♥";
+    background: orange;
   }
 
-  .source-unresolved {
-    color: red;
+  .source-single th::after,
+  .source-uniform th::after{
+    content: "✔";
+    background: green;
   }
 
+  .source-unresolved th{
+    border-color: #FF7276;
+  }
+
+  .source-unresolved th::after{
+    content: "➔";
+    background: orangered;
+  }
   `
 
   const header = `
-  <tr><th>Rule</th><td>Source</td><td>Origin</td><td>Dropped?</td><td>Config</td></tr>
+  <thead><tr><th>Rule</th><th>Source</th><th>Origin</th><th>Comment</th><th>Config</th></tr></thead>
   `
 
-  return `<html><style>${styles}</style><table>${header}${rowsHtml}</table></html>`
+  const meta=`
+  <title>Effective ESLint Factory</title>
+  <meta charset="utf-8"/>`
+
+
+  return `<html>${meta}<style>${styles}</style><table>${header}<tbody>${rowsHtml}</tbody></table></html>`
 }

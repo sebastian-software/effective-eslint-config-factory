@@ -18,6 +18,7 @@ import {
   RuleMeta,
   SimplifiedRuleValue,
   SimplifyResult,
+  SourcePriorityValue,
   UnifiedRuleFormat
 } from "./types"
 import { ruleBasedSourcePriority } from "./rules"
@@ -126,7 +127,7 @@ async function simplify(source: KeyValue): Promise<SimplifyResult> {
 
   for (const ruleName in source) {
     const ruleValues = source[ruleName]
-    const resolutionSource: string = ruleBasedSourcePriority[ruleName]
+    const resolutionValue: SourcePriorityValue = ruleBasedSourcePriority[ruleName]
 
     const ruleMeta: RuleMeta = {}
     meta[ruleName] = ruleMeta
@@ -136,13 +137,13 @@ async function simplify(source: KeyValue): Promise<SimplifyResult> {
       simplified[ruleName] = ["off"]
       ruleMeta.source = "disabled"
       ruleMeta.origin = forcedDisabledOrigin
-      if (resolutionSource) {
+      if (resolutionValue) {
         console.warn(`Useless resolution in ${ruleName}! #ForcedDisabled`)
       }
       continue
     }
 
-    ruleMeta.alternatives = formatAlternatives(ruleValues, resolutionSource)
+    ruleMeta.alternatives = formatAlternatives(ruleValues, resolutionValue?.use)
 
     const singleSourceName = getSingleSourceKey(ruleValues)
     if (singleSourceName) {
@@ -150,7 +151,7 @@ async function simplify(source: KeyValue): Promise<SimplifyResult> {
       simplified[ruleName] = singleValue
       ruleMeta.source = "single"
       ruleMeta.origin = singleSourceName
-      if (resolutionSource) {
+      if (resolutionValue) {
         console.warn(`Useless resolution in ${ruleName}! #SingleKey`)
       }
       continue
@@ -161,23 +162,26 @@ async function simplify(source: KeyValue): Promise<SimplifyResult> {
       simplified[ruleName] = equalValue.value
       ruleMeta.source = "uniform"
       ruleMeta.origin = equalValue.sources.sort().join(", ")
-      if (resolutionSource) {
+      if (resolutionValue) {
         console.warn(`Useless resolution in ${ruleName}! #EqualValue`)
       }
 
       continue
     }
 
-    if (resolutionSource) {
-      simplified[ruleName] = ruleValues[resolutionSource]
-      if (!simplified[ruleName]) {
-        console.warn(
-          `Invalid resolution: ${resolutionSource} for rule ${ruleName}!`
-        )
+    if (resolutionValue) {
+      if (resolutionValue.use !== "off") {
+        simplified[ruleName] = ruleValues[resolutionValue.use]
+        if (!simplified[ruleName]) {
+          console.warn(
+            `Invalid resolution: ${resolutionValue.use} for rule ${ruleName}!`
+          )
+        }
       }
 
       ruleMeta.source = "priority"
-      ruleMeta.origin = resolutionSource
+      ruleMeta.origin = resolutionValue.use
+      ruleMeta.comment = resolutionValue.comment
       continue
     }
 
