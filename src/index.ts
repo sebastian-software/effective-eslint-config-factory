@@ -175,17 +175,17 @@ function formatAlternatives(sources: Record<string, SimplifiedRuleValue>, select
 
     html += `${sourceName}: `
 
-    if (sourceValue.length === 1) {
-      html += "<em>defaults</em>"
-    } else {
-      html += sourceValue.slice(1).map(jsonToHtml).join("<br/><br/>")
-    }
-
     if (sourceName === selectedSource) {
       html += "</strong>"
     }
 
-    html += "<br/><br/>"
+    if (sourceValue.length === 1) {
+      html += "<em>defaults</em>"
+    } else {
+      html += sourceValue.slice(1).map(jsonToHtml).join("<br/>")
+    }
+
+    html += "<br/>"
   }
 
   return html
@@ -222,6 +222,8 @@ async function simplify(source: KeyValue): Promise<SimplifyResult> {
       continue
     }
 
+    ruleMeta.alternatives = formatAlternatives(ruleValues, resolutionSource)
+
     const singleSourceName = getSingleSourceKey(ruleValues)
     if (singleSourceName) {
       const singleValue = source[ruleName][singleSourceName]
@@ -245,8 +247,6 @@ async function simplify(source: KeyValue): Promise<SimplifyResult> {
 
       continue
     }
-
-    ruleMeta.alternatives = formatAlternatives(ruleValues, resolutionSource)
 
     if (resolutionSource) {
       simplified[ruleName] = ruleValues[resolutionSource]
