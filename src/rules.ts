@@ -12,23 +12,23 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
     comment:
       "XO enforces camelCase properties, style heavy and controversial, but good thing to follow in 95% of code."
   },
-  complexity: { use: "kentdodds", comment: "Configured to 20, Kent only, feels like a good default." },
+  complexity: { use: "xo", comment: "Configured to 20 (default), Kent/XO only, feels like a good default." },
   "default-case": {
     use: "cra",
-    comment: "Also: Kent, allows exception in CRA"
+    comment: "Allows exception in CRA - probably a good idea."
   },
   eqeqeq: { use: "cra", comment: "Smart mode enabled in CRA" },
   "func-name-matching": {
     use: "kentdodds",
     comment: "Enabled but without property descriptor (rarely used)"
   },
-  "func-names": { use: "kentdodds", comment: "Prefer better debug-ability" },
-  "max-depth": { use: "kentdodds", comment: "Configured to 4, Kent only" },
+  "func-names": { use: "kentdodds", comment: "Prefer better debug-ability when enabled" },
+  "max-depth": { use: "xo", comment: "Configured to 4 (default), Kent/XO effectively identical" },
   "max-nested-callbacks": {
     use: "xo",
-    comment: "In Kent and XO, stricter in XO"
+    comment: "In Kent (7) and XO (4), stricter in XO (4). Default is 10."
   },
-  "max-params": { use: "xo", comment: "In Kent and XO, stricter in XO" },
+  "max-params": { use: "xo", comment: "In Kent (7) and XO (4), stricter in XO (4). Default is 10." },
   "max-statements-per-line": {
     use: "xo",
     comment: "In Kent and XO, Kent defines a max=1 which is already the default"
@@ -39,17 +39,17 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
   },
   "no-cond-assign": {
     use: "eslint",
-    comment: "As in most presets, except Kent"
+    comment: "Effectively identical in most presets."
   },
-  "no-empty": { use: "eslint", comment: "As in most presets" },
+  "no-empty": { use: "eslint", comment: "Effectively identical in most presets." },
   "no-labels": {
     use: "xo",
     comment:
-      "Same for Kent, without exceptions for loops (enabled in CRA... for whatever reason)"
+      "Same for Kent, without exceptions for loops (enabled in CRA... for whatever reason)."
   },
   "no-restricted-globals": {
     use: "cra",
-    comment: "Best richest set from CRA, others only enable it, without config"
+    comment: "Richest collection in CRA, others only enable it, without any config."
   },
   "no-return-assign": {
     use: "kentdodds",
@@ -232,8 +232,8 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
     comment: "Reduce clutter, formatting related"
   },
   "react/jsx-filename-extension": {
-    use: "kentdodds",
-    comment: "Respect .ts/.tsx"
+    use: "off",
+    comment: "None of them really makes sense. It has to be .tsx in our cases, but that's enforced by TSC already I guess."
   },
   "react/jsx-key": {
     use: "xo-react",
@@ -247,11 +247,11 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
   "react/jsx-no-duplicate-props": {
     use: "xo-react",
     comment:
-      "Wrong casing is typically a typo... should be checked by TS anyway..."
+      "Wrong casing is typically a typo... should be checked by TS anyway... but the case-related issue is valid."
   },
   "react/jsx-no-script-url": {
-    use: "kentdodds",
-    comment: "Old style stuff... no place in modern FE development"
+    use: "off",
+    comment: "Old style stuff... no place in modern FE development. Natively prevented by ReactJS nowadays."
   },
   "react/jsx-no-target-blank": {
     use: "xo-react",
@@ -259,7 +259,7 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
   },
   "react/jsx-pascal-case": {
     use: "kentdodds",
-    comment: "Disabling all-caps like in XO as well"
+    comment: "Disabling all-caps like in XO. Formatting related. Wonder why one would use it e.g. `<URL>`?"
   },
   "react/no-string-refs": {
     use: "xo-react",
@@ -292,5 +292,5 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
       "XO is right about FormattedNumber, but this might change in React-Intl as well... or one uses a different lib."
   },
 
-  "unicorn/no-null": { use: "xo-typescript", comment: "" }
+  "unicorn/no-null": { use: "unicorn", comment: "" }
 }

@@ -49,10 +49,10 @@ export function getReadableValue(entry: undefined | SimplifiedRuleValue) {
 
 export function formatRuleMeta(ruleMeta: RuleMeta, ruleName: string) {
   let cells = ``
-  cells += `<td>${ruleMeta.source}</td>`
-  cells += `<td>${ruleMeta.origin || ""}</td>`
-  cells += `<td>${ruleMeta.comment || ""}</td>`
-  cells += `<td>${ruleMeta.alternatives || ""}</td>`
+  cells += `<td class="source">${ruleMeta.source}</td>`
+  cells += `<td class="origin">${ruleMeta.origin || ""}</td>`
+  cells += `<td class="comment">${ruleMeta.comment || ""}</td>`
+  cells += `<td class="alternatives">${ruleMeta.alternatives || ""}</td>`
 
   return `<tr class="source-${ruleMeta.source}"><th>${ruleName}</th>${cells}</tr>`
 }
@@ -102,6 +102,7 @@ export async function formatMeta(rulesMeta: Record<string, RuleMeta>) {
   }
 
   th:first-child{
+    white-space: nowrap;
     border-left: 8px solid transparent;
   }
 
