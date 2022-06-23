@@ -259,7 +259,7 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
   },
   "react/jsx-pascal-case": {
     use: "kentdodds",
-    comment: "Disabling all-caps like in XO. Formatting related. Wonder why one would use it e.g. `<URL>`?"
+    comment: "Disabling all-caps like in XO. Formatting related. Wonder why one would use it e.g. `URL`?"
   },
   "react/no-string-refs": {
     use: "xo-react",
@@ -276,10 +276,8 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
       "That's indeed looking like a common issue in code bases. Good find."
   },
   "react/no-unused-prop-types":{use:"off", comment: "TS mode: Do not care about prop-types"},
-  "react/prefer-es6-class":{use:"off", comment: "Seems to be about old classes to ES6 classes, but we prefer functional components anyway"},
   "react/prop-types":{use:"off", comment: "TS mode: Do not care about prop-types"},
   "react/require-default-props":{use:"off", comment: "TS mode: Do not care about prop-types"},
-  "react/sort-comp":{use:"off", comment: "Relevant for traditional classes only... edge case in todays code bases"},
   "react/state-in-constructor": {
     use: "xo-react",
     comment:
