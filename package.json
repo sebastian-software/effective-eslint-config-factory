@@ -21,7 +21,7 @@
     "typecheck:watch": "tsc --noEmit --watch",
     "format": "prettier --write src",
     "check": "npm run build && npm run typecheck && npm run test",
-    "prepare": "npm run build",
+    "xprepare": "npm run build",
     "release": "git push && release-it --ci patch",
     "release:minor": "git push && release-it --ci minor",
     "release:major": "git push && release-it --ci major"
@@ -46,11 +46,11 @@
   "dependencies": {
     "eslint-plugin-filenames-simple": "^0.7.0",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jest": "^26.1.5",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-react": "^7.29.4",
-    "eslint-plugin-react-hooks": "^4.5.0",
-    "eslint-plugin-testing-library": "^5.3.1",
+    "eslint-plugin-jest": "^26.5.3",
+    "eslint-plugin-jsx-a11y": "^6.6.0",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-testing-library": "^5.5.1",
     "eslint-plugin-unicorn": "^42.0.0",
     "@typescript-eslint/eslint-plugin": "^5.30.0",
     "@typescript-eslint/parser": "^5.30.0"
