@@ -63,7 +63,7 @@
     "@types/lodash": "^4.14.182",
     "confusing-browser-globals": "^1.0.11",
     "enhanced-resolve": "^5.10.0",
-    "eslint": "^8.14.0",
+    "eslint": "^8.18.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-kentcdodds": "^20.2.0",
