@@ -150,10 +150,9 @@ export async function formatMeta(rulesMeta: Record<string, RuleMeta>) {
   <thead><tr><th>Rule</th><th>Source</th><th>Origin</th><th>Comment</th><th>Config</th></tr></thead>
   `
 
-  const meta=`
+  const meta = `
   <title>Effective ESLint Factory</title>
   <meta charset="utf-8"/>`
-
 
   return `<html>${meta}<style>${styles}</style><table>${header}<tbody>${rowsHtml}</tbody></table></html>`
 }

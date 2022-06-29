@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/no-var-requires, unicorn/prefer-module */
 
 import { join } from "node:path"
+import { readFileSync } from "node:fs"
 import pkgDir from "pkg-dir"
 import { Linter } from "eslint"
 import { merge, assign } from "lodash"
+import requireFromString from "require-from-string"
 
 import { RulesStructuredByOrigin, SimplifiedRuleValue } from "./types"
 import { recommended } from "./recommended"
@@ -313,12 +315,29 @@ export function getXoReact(): RuleLoaderReturn {
   }
 }
 
+function loadAndPatchPackage(packagePath: string): any {
+  const content = readFileSync(packagePath, "utf-8")
+
+  const patched = content.replace(
+    /require\(('|")@rushstack\/eslint-patch\/modern-module-resolution('|")\)/,
+    ""
+  )
+
+  return requireFromString(patched)
+}
+
 export function getKentDodds(): RuleLoaderReturn {
-  const core = require("eslint-config-kentcdodds")
-  const importPlugin = require("eslint-config-kentcdodds/import")
-  const reactPlugin = require("eslint-config-kentcdodds/react")
-  const a11yPlugin = require("eslint-config-kentcdodds/jsx-a11y")
-  const jestPlugin = require("eslint-config-kentcdodds/jest")
+  const corePath = require.resolve("eslint-config-kentcdodds")
+  const importPluginPath = require.resolve("eslint-config-kentcdodds/import")
+  const reactPluginPath = require.resolve("eslint-config-kentcdodds/react")
+  const a11yPluginPath = require.resolve("eslint-config-kentcdodds/jsx-a11y")
+  const jestPluginPath = require.resolve("eslint-config-kentcdodds/jest")
+
+  const core = loadAndPatchPackage(corePath)
+  const importPlugin = loadAndPatchPackage(importPluginPath)
+  const reactPlugin = loadAndPatchPackage(reactPluginPath)
+  const a11yPlugin = loadAndPatchPackage(a11yPluginPath)
+  const jestPlugin = loadAndPatchPackage(jestPluginPath)
 
   const allRules = {
     ...core.rules,

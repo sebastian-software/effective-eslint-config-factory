@@ -12,7 +12,11 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
     comment:
       "XO enforces camelCase properties, style heavy and controversial, but good thing to follow in 95% of code."
   },
-  complexity: { use: "xo", comment: "Configured to 20 (default), Kent/XO only, feels like a good default." },
+  complexity: {
+    use: "xo",
+    comment:
+      "Configured to 20 (default), Kent/XO only, feels like a good default."
+  },
   "default-case": {
     use: "cra",
     comment: "Allows exception in CRA - probably a good idea."
@@ -22,13 +26,22 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
     use: "kentdodds",
     comment: "Enabled but without property descriptor (rarely used)"
   },
-  "func-names": { use: "kentdodds", comment: "Prefer better debug-ability when enabled" },
-  "max-depth": { use: "xo", comment: "Configured to 4 (default), Kent/XO effectively identical" },
+  "func-names": {
+    use: "kentdodds",
+    comment: "Prefer better debug-ability when enabled"
+  },
+  "max-depth": {
+    use: "xo",
+    comment: "Configured to 4 (default), Kent/XO effectively identical"
+  },
   "max-nested-callbacks": {
     use: "xo",
     comment: "In Kent (7) and XO (4), stricter in XO (4). Default is 10."
   },
-  "max-params": { use: "xo", comment: "In Kent (7) and XO (4), stricter in XO (4). Default is 10." },
+  "max-params": {
+    use: "xo",
+    comment: "In Kent (7) and XO (4), stricter in XO (4). Default is 10."
+  },
   "max-statements-per-line": {
     use: "xo",
     comment: "In Kent and XO, Kent defines a max=1 which is already the default"
@@ -41,7 +54,10 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
     use: "eslint",
     comment: "Effectively identical in most presets."
   },
-  "no-empty": { use: "eslint", comment: "Effectively identical in most presets." },
+  "no-empty": {
+    use: "eslint",
+    comment: "Effectively identical in most presets."
+  },
   "no-labels": {
     use: "xo",
     comment:
@@ -49,7 +65,8 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
   },
   "no-restricted-globals": {
     use: "cra",
-    comment: "Richest collection in CRA, others only enable it, without any config."
+    comment:
+      "Richest collection in CRA, others only enable it, without any config."
   },
   "no-return-assign": {
     use: "kentdodds",
@@ -81,7 +98,11 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
     use: "xo-typescript",
     comment: "Use undefined seems more accessible like in XO"
   },
-  "no-warning-comments":{use:"off", comment: "Off in most presets, controversial, might help to mark future tasks as a valid reason"},
+  "no-warning-comments": {
+    use: "off",
+    comment:
+      "Off in most presets, controversial, might help to mark future tasks as a valid reason"
+  },
   "object-shorthand": {
     use: "kentdodds",
     comment:
@@ -133,7 +154,6 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
   },
   "@typescript-eslint/no-this-alias": { use: "xo-typescript", comment: "" },
   "@typescript-eslint/no-throw-literal": { use: "xo-typescript", comment: "" },
-  "@typescript-eslint/no-unused-vars": { use: "xo-typescript", comment: "" },
   // "@typescript-eslint/no-use-before-define":{use:"off", comment: "Not that relevant in todays world"},
   "@typescript-eslint/restrict-plus-operands": {
     use: "xo-typescript",
@@ -173,7 +193,10 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
     use: "cra",
     comment: "Slightly adjusted version in CRA seems good"
   },
-  "jsx-a11y/control-has-associated-label":{use:"off", comment: "Disabled in JSX-A11Y, too, tricky with custom components"},
+  "jsx-a11y/control-has-associated-label": {
+    use: "off",
+    comment: "Disabled in JSX-A11Y, too, tricky with custom components"
+  },
   "jsx-a11y/heading-has-content": {
     use: "jsx",
     comment: "Effectively identical in all presets"
@@ -182,12 +205,18 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
     use: "jsx",
     comment: "Follow plugin author recommendation"
   },
-  "jsx-a11y/label-has-associated-control":{use:"off", comment: "Disabled in CRA, too, tricky with custom components"},
+  "jsx-a11y/label-has-associated-control": {
+    use: "off",
+    comment: "Disabled in CRA, too, tricky with custom components"
+  },
   "jsx-a11y/media-has-caption": {
     use: "jsx",
     comment: "Effectively identical in all presets"
   },
-  "jsx-a11y/no-autofocus":{use:"off", comment: "Disabled in CRA, too. Not that relevant I guess."},
+  "jsx-a11y/no-autofocus": {
+    use: "off",
+    comment: "Disabled in CRA, too. Not that relevant I guess."
+  },
   "jsx-a11y/no-distracting-elements": {
     use: "jsx",
     comment: "Effectively identical in all presets"
@@ -221,7 +250,10 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
     use: "airbnb-react",
     comment: "Old school: prefer real inspectable functions"
   },
-  "react/default-props-match-prop-types":{use:"off", comment: "TS mode: Do not care about prop-types"},
+  "react/default-props-match-prop-types": {
+    use: "off",
+    comment: "TS mode: Do not care about prop-types"
+  },
   "react/jsx-boolean-value": {
     use: "xo-react",
     comment:
@@ -233,7 +265,8 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
   },
   "react/jsx-filename-extension": {
     use: "off",
-    comment: "None of them really makes sense. It has to be .tsx in our cases, but that's enforced by TSC already I guess."
+    comment:
+      "None of them really makes sense. It has to be .tsx in our cases, but that's enforced by TSC already I guess."
   },
   "react/jsx-key": {
     use: "xo-react",
@@ -251,7 +284,8 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
   },
   "react/jsx-no-script-url": {
     use: "off",
-    comment: "Old style stuff... no place in modern FE development. Natively prevented by ReactJS nowadays."
+    comment:
+      "Old style stuff... no place in modern FE development. Natively prevented by ReactJS nowadays."
   },
   "react/jsx-no-target-blank": {
     use: "xo-react",
@@ -259,7 +293,8 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
   },
   "react/jsx-pascal-case": {
     use: "kentdodds",
-    comment: "Disabling all-caps like in XO. Formatting related. Wonder why one would use it e.g. `URL`?"
+    comment:
+      "Disabling all-caps like in XO. Formatting related. Wonder why one would use it e.g. `URL`?"
   },
   "react/no-string-refs": {
     use: "xo-react",
@@ -275,15 +310,28 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
     comment:
       "That's indeed looking like a common issue in code bases. Good find."
   },
-  "react/no-unused-prop-types":{use:"off", comment: "TS mode: Do not care about prop-types"},
-  "react/prop-types":{use:"off", comment: "TS mode: Do not care about prop-types"},
-  "react/require-default-props":{use:"off", comment: "TS mode: Do not care about prop-types"},
+  "react/no-unused-prop-types": {
+    use: "off",
+    comment: "TS mode: Do not care about prop-types"
+  },
+  "react/prop-types": {
+    use: "off",
+    comment: "TS mode: Do not care about prop-types"
+  },
+  "react/require-default-props": {
+    use: "off",
+    comment: "TS mode: Do not care about prop-types"
+  },
   "react/state-in-constructor": {
     use: "xo-react",
     comment:
       "Traditional classes, but pretty tricky if not detected... therefor enabled"
   },
-  "react/static-property-placement":{use:"off", comment: "Relevant for traditional classes only... edge case in todays code bases"},
+  "react/static-property-placement": {
+    use: "off",
+    comment:
+      "Relevant for traditional classes only... edge case in todays code bases"
+  },
   "react/style-prop-object": {
     use: "cra",
     comment:
