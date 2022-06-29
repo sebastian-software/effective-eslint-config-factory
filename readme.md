@@ -2,7 +2,7 @@
 
 [![Sponsored by][sponsor-img]][sponsor] [![Version][npm-version-img]][npm] [![Downloads][npm-downloads-img]][npm] [![Build Status][github-img]][github]
 
-_@Effective / ESLint Factory_ is used to create an efficient flat ESLint config (no extends at runtime) based on the established configs and plugins from Airbnb, Facebook (CRA, React, React Hooks), Sindre Sorhus (XO), Kent C Dodds, and many more... A configuration to bundle everything important of these presets in one preset. Based on TypeScript. With support for Jest. And with a special extended set for React development.
+_@Effective / ESLint Factory_ is used to create an efficient flat ESLint config (no extends at runtime) based on the established configs and plugins from Airbnb, Facebook (CRA, React, React Hooks), Sindre Sorhus (XO), Kent C Dodds, and many more... A configuration to bundle everything important of these presets in one preset. Based on TypeScript. With support for Jest/TestingLibrary. And with a special extended set for React development.
 
 [sponsor]: https://www.sebastian-software.de
 [sponsor-img]: https://badgen.net/badge/Sponsored%20by/Sebastian%20Software/c41e54
@@ -38,13 +38,16 @@ extends:
 
 Feel free to override single values while benefitting from the huge collection of fine-tuned settings.
 
-## Customization
+## Variations
 
-TODO
+The factory generates a few different configuration for usage:
+
+- `index.yaml`: Core configuration without any hints of React (or TestingLibrary)
+- `react.yaml`: Enhanced core configuration with React specific rules and testing support includes TestingLibrary rules.
 
 ## Merging Algorithm
 
-We would not call it magic but rather the devout study of the existing presets and the development of automatic merging strategies in spite of the most diverse ways in which specifications are feasible in ESLint.  Currently, over 400 rules are recognized as common and are therefore transferred virtually unchanged.
+We would not call it magic but rather the devout study of the existing presets and the development of automatic merging strategies in spite of the most diverse ways in which specifications are feasible in ESLint. Currently, over 400 rules are recognized as common and are therefore transferred virtually unchanged.
 
 Some rules have to be deactivated based on TypeScript ... these hints come partly already by the actual authors of the respective plugins (TypeScript, Unicorn, ...). Others are pretty much identical, but differ in minor details. Here, the documentation of the rule was studied in each case and a decision was made. It turned out that some presets are simply very well maintained and discovered even small subtleties in the adjustability of the existing rules.
 

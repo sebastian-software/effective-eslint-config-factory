@@ -6,8 +6,7 @@ import { getMerged } from "./loader"
 import { writeFiles } from "./writer"
 import baseCore from "./base/core"
 import baseReact from "./base/react"
-import jestOverride from "./override/jest"
-import testingLibraryOverride from "./override/testinglib"
+import testingOverrideCore from "./override/testing"
 import {
   extractJestOverrideRules,
   extractReact,
@@ -259,7 +258,7 @@ export async function compileFiles() {
       overrides: [
         ...(baseCore.overrides ?? []),
         {
-          ...jestOverride,
+          ...testingOverrideCore,
           rules: jestOverrideRules
         }
       ]
@@ -274,8 +273,11 @@ export async function compileFiles() {
       overrides: [
         ...(baseCoreAndReact.overrides ?? []),
         {
-          ...testingLibraryOverride,
-          rules: testingLibraryOverrideRules
+          ...testingOverrideCore,
+          rules: {
+            ...jestOverrideRules,
+            ...testingLibraryOverrideRules
+          }
         }
       ]
     }

@@ -105,6 +105,7 @@ Object {
       ],
       "plugins": Array [
         "jest",
+        "testing-library",
       ],
       "rules": Object {
         "jest/expect-expect": Array [
@@ -218,7 +219,6 @@ Object {
   "parser": "@typescript-eslint/parser",
   "parserOptions": Object {
     "ecmaVersion": "latest",
-    "project": "tsconfig.json",
     "sourceType": "module",
     "warnOnUnsupportedTypeScriptVersion": false,
   },
@@ -1936,14 +1936,124 @@ Object {
       },
     },
     Object {
+      "env": Object {
+        "jest": true,
+        "jest/globals": true,
+      },
       "files": Array [
         "*.{spec,test}.{js,jsx,ts,tsx}",
         "**/__tests__/**/*.{js,jsx,ts,tsx}",
       ],
       "plugins": Array [
+        "jest",
         "testing-library",
       ],
       "rules": Object {
+        "jest/expect-expect": Array [
+          "error",
+        ],
+        "jest/max-nested-describe": Array [
+          "error",
+        ],
+        "jest/no-alias-methods": Array [
+          "error",
+        ],
+        "jest/no-commented-out-tests": Array [
+          "error",
+        ],
+        "jest/no-conditional-expect": Array [
+          "error",
+        ],
+        "jest/no-conditional-in-test": Array [
+          "error",
+        ],
+        "jest/no-deprecated-functions": Array [
+          "error",
+        ],
+        "jest/no-disabled-tests": Array [
+          "error",
+        ],
+        "jest/no-done-callback": Array [
+          "error",
+        ],
+        "jest/no-export": Array [
+          "error",
+        ],
+        "jest/no-focused-tests": Array [
+          "error",
+        ],
+        "jest/no-identical-title": Array [
+          "error",
+        ],
+        "jest/no-if": Array [
+          "error",
+        ],
+        "jest/no-interpolation-in-snapshots": Array [
+          "error",
+        ],
+        "jest/no-jasmine-globals": Array [
+          "error",
+        ],
+        "jest/no-jest-import": Array [
+          "error",
+        ],
+        "jest/no-large-snapshots": Array [
+          "error",
+          Object {
+            "maxSize": 300,
+          },
+        ],
+        "jest/no-mocks-import": Array [
+          "error",
+        ],
+        "jest/no-standalone-expect": Array [
+          "error",
+        ],
+        "jest/no-test-prefixes": Array [
+          "error",
+        ],
+        "jest/prefer-called-with": Array [
+          "error",
+        ],
+        "jest/prefer-comparison-matcher": Array [
+          "error",
+        ],
+        "jest/prefer-equality-matcher": Array [
+          "error",
+        ],
+        "jest/prefer-hooks-in-order": Array [
+          "error",
+        ],
+        "jest/prefer-hooks-on-top": Array [
+          "error",
+        ],
+        "jest/prefer-snapshot-hint": Array [
+          "error",
+        ],
+        "jest/prefer-to-be": Array [
+          "error",
+        ],
+        "jest/prefer-to-contain": Array [
+          "error",
+        ],
+        "jest/prefer-to-have-length": Array [
+          "error",
+        ],
+        "jest/prefer-todo": Array [
+          "error",
+        ],
+        "jest/valid-describe-callback": Array [
+          "error",
+        ],
+        "jest/valid-expect": Array [
+          "error",
+        ],
+        "jest/valid-expect-in-promise": Array [
+          "error",
+        ],
+        "jest/valid-title": Array [
+          "error",
+        ],
         "testing-library/await-async-query": Array [
           "error",
         ],
@@ -2011,7 +2121,6 @@ Object {
       "jsx": true,
     },
     "ecmaVersion": "latest",
-    "project": "tsconfig.json",
     "sourceType": "module",
     "warnOnUnsupportedTypeScriptVersion": false,
   },
