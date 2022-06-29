@@ -186,6 +186,7 @@ async function simplify(source: KeyValue): Promise<SimplifyResult> {
       continue
     }
 
+    console.warn(`Unresolved rule: ${ruleName}!`)
     ruleMeta.source = "unresolved"
   }
 

@@ -167,6 +167,14 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
     use: "ts",
     comment: "Effectively identical in all presets"
   },
+  "@typescript-eslint/no-unused-vars": {
+    use: "kentdodds",
+    comment: "Seemingly good relaxation of the standard behavior."
+  },
+  "@typescript-eslint/unified-signatures": {
+    use: "xo-typescript",
+    comment: "Allow relaxed behavior offered by XO."
+  },
 
   "import/named": {
     use: "import",
@@ -175,6 +183,10 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
   "import/namespace": {
     use: "xo-typescript",
     comment: "Should be solved by TS compiler already"
+  },
+  "import/no-duplicates": {
+    use: "xo-typescript",
+    comment: "Solved by @typescript-eslint/no-duplicate-imports already!"
   },
 
   "jsx-a11y/alt-text": {

@@ -26,7 +26,9 @@ export function formatAlternatives(
       html += "</strong>"
     }
 
-    if (sourceValue.length === 1) {
+    if (sourceValue[0] === "off") {
+      html += "<em>off</em>"
+    } else if (sourceValue.length === 1) {
       html += "<em>defaults</em>"
     } else {
       html += sourceValue.slice(1).map(jsonToHtml).join("<br/>")
