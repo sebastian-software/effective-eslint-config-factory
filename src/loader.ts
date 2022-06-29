@@ -197,12 +197,18 @@ export function getPrettierDisabledRules(): RuleLoaderReturn {
 
 export function getCreateReactAppRecommended(): RuleLoaderReturn {
   const { rules, ...config } = require("eslint-config-react-app")
+  const base = loadAndPatchPackage(require.resolve("eslint-config-react-app/base.js"))
+  const jest = loadAndPatchPackage(require.resolve("eslint-config-react-app/jest.js"))
 
   removeDisabledRules(rules)
 
   return {
     config,
-    rules
+    rules: {
+      ...rules,
+      ...base.rules,
+      ...jest.overrides[0].rules
+    }
   }
 }
 
