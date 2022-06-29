@@ -331,7 +331,7 @@ export function getKentDodds(): RuleLoaderReturn {
     ...jestPlugin.overrides[0].rules
   }
 
-  // Kent has a lot of rules explicitely disabled without
+  // Kent has a lot of rules explicitly disabled without
   // any specific reason (e.g. TS replacement). By dropping these rules
   // we reduce the conflicts number by nearly 100 rules through all rule sets.
   removeDisabledRules(allRules)
