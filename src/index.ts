@@ -11,7 +11,7 @@ import testingLibraryOverride from "./override/testinglib"
 import {
   extractJestOverrideRules,
   extractReact,
-  extractTestingLibOverrideRules as extractTestingLibraryOverrideRules
+  extractTestingLibraryOverrideRules
 } from "./extract"
 import {
   KeyValue,

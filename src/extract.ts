@@ -16,7 +16,7 @@ export function extractJestOverrideRules(source: KeyValue): Linter.RulesRecord {
   return jestRules
 }
 
-export function extractTestingLibOverrideRules(
+export function extractTestingLibraryOverrideRules(
   source: KeyValue
 ): Linter.RulesRecord {
   const testingLibraryRules: Linter.RulesRecord = {}

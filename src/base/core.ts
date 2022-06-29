@@ -15,7 +15,8 @@ const core: Linter.BaseConfig = {
     // Babel specific to disable config file requirement
     // requireConfigFile: false,
 
-    project: "tsconfig.json"
+    // Do not define to improve support for mono repositories and pure JS files
+    // project: "tsconfig.json"
   },
   plugins: ["@typescript-eslint", "import", "unicorn"],
   env: { es2021: true, "shared-node-browser": true },
