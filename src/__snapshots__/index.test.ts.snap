@@ -179,6 +179,9 @@ Object {
         "jest/prefer-equality-matcher": Array [
           "error",
         ],
+        "jest/prefer-hooks-in-order": Array [
+          "error",
+        ],
         "jest/prefer-hooks-on-top": Array [
           "error",
         ],
@@ -253,6 +256,10 @@ Object {
       Object {
         "extendDefaults": false,
         "types": Object {
+          "BigInt": Object {
+            "fixWith": "bigint",
+            "message": "Use \`bigint\` instead.",
+          },
           "Boolean": Object {
             "fixWith": "boolean",
             "message": "Use \`boolean\` instead.",
@@ -457,6 +464,9 @@ Object {
     "@typescript-eslint/no-dupe-class-members": Array [
       "error",
     ],
+    "@typescript-eslint/no-duplicate-enum-values": Array [
+      "error",
+    ],
     "@typescript-eslint/no-duplicate-imports": Array [
       "error",
     ],
@@ -549,6 +559,9 @@ Object {
     "@typescript-eslint/no-redeclare": Array [
       "error",
     ],
+    "@typescript-eslint/no-redundant-type-constituents": Array [
+      "error",
+    ],
     "@typescript-eslint/no-require-imports": Array [
       "error",
     ],
@@ -597,7 +610,7 @@ Object {
       "warn",
     ],
     "@typescript-eslint/no-unnecessary-type-constraint": Array [
-      "warn",
+      "error",
     ],
     "@typescript-eslint/no-unsafe-argument": Array [
       "error",
@@ -622,10 +635,8 @@ Object {
       Object {
         "args": "after-used",
         "argsIgnorePattern": "^_",
-        "caughtErrors": "all",
-        "caughtErrorsIgnorePattern": "^_$",
         "ignoreRestSiblings": true,
-        "vars": "all",
+        "varsIgnorePattern": "^ignored",
       },
     ],
     "@typescript-eslint/no-use-before-define": Array [
@@ -634,6 +645,9 @@ Object {
     ],
     "@typescript-eslint/no-useless-constructor": Array [
       "error",
+    ],
+    "@typescript-eslint/no-useless-empty-export": Array [
+      "warn",
     ],
     "@typescript-eslint/no-var-requires": Array [
       "error",
@@ -647,6 +661,12 @@ Object {
         "blankLine": "always",
         "next": "*",
         "prev": "multiline-block-like",
+      },
+    ],
+    "@typescript-eslint/parameter-properties": Array [
+      "error",
+      Object {
+        "prefer": "parameter-property",
       },
     ],
     "@typescript-eslint/prefer-as-const": Array [
@@ -733,6 +753,9 @@ Object {
     ],
     "@typescript-eslint/unified-signatures": Array [
       "error",
+      Object {
+        "ignoreDifferentlyNamedParameters": true,
+      },
     ],
     "accessor-pairs": Array [
       "error",
@@ -745,12 +768,6 @@ Object {
     ],
     "block-scoped-var": Array [
       "error",
-    ],
-    "camelcase": Array [
-      "error",
-      Object {
-        "properties": "always",
-      },
     ],
     "capitalized-comments": Array [
       "warn",
@@ -786,7 +803,6 @@ Object {
     ],
     "complexity": Array [
       "error",
-      20,
     ],
     "constructor-super": Array [
       "error",
@@ -851,9 +867,6 @@ Object {
     "import/no-deprecated": Array [
       "error",
     ],
-    "import/no-duplicates": Array [
-      "warn",
-    ],
     "import/no-extraneous-dependencies": Array [
       "error",
     ],
@@ -873,7 +886,7 @@ Object {
       "error",
     ],
     "import/no-relative-packages": Array [
-      "error",
+      "warn",
     ],
     "import/no-self-import": Array [
       "error",
@@ -903,7 +916,6 @@ Object {
     ],
     "max-depth": Array [
       "error",
-      4,
     ],
     "max-lines": Array [
       "error",
@@ -960,6 +972,9 @@ Object {
       "error",
     ],
     "no-const-assign": Array [
+      "error",
+    ],
+    "no-constant-binary-expression": Array [
       "error",
     ],
     "no-constant-condition": Array [
@@ -1079,13 +1094,7 @@ Object {
     "no-multi-str": Array [
       "error",
     ],
-    "no-native-reassign": Array [
-      "error",
-    ],
     "no-negated-condition": Array [
-      "error",
-    ],
-    "no-negated-in-lhs": Array [
       "error",
     ],
     "no-new": Array [
@@ -1531,6 +1540,9 @@ Object {
     "unicorn/no-new-buffer": Array [
       "warn",
     ],
+    "unicorn/no-null": Array [
+      "warn",
+    ],
     "unicorn/no-object-as-default-parameter": Array [
       "error",
     ],
@@ -1549,6 +1561,9 @@ Object {
     "unicorn/no-unreadable-array-destructuring": Array [
       "warn",
     ],
+    "unicorn/no-unreadable-iife": Array [
+      "error",
+    ],
     "unicorn/no-useless-fallback-in-spread": Array [
       "warn",
     ],
@@ -1560,6 +1575,9 @@ Object {
     ],
     "unicorn/no-useless-spread": Array [
       "warn",
+    ],
+    "unicorn/no-useless-switch-case": Array [
+      "error",
     ],
     "unicorn/no-useless-undefined": Array [
       "warn",
@@ -1615,9 +1633,6 @@ Object {
     "unicorn/prefer-includes": Array [
       "warn",
     ],
-    "unicorn/prefer-json-parse-buffer": Array [
-      "warn",
-    ],
     "unicorn/prefer-keyboard-event-key": Array [
       "warn",
     ],
@@ -1627,7 +1642,13 @@ Object {
     "unicorn/prefer-modern-dom-apis": Array [
       "warn",
     ],
+    "unicorn/prefer-modern-math-apis": Array [
+      "warn",
+    ],
     "unicorn/prefer-module": Array [
+      "warn",
+    ],
+    "unicorn/prefer-native-coercion-functions": Array [
       "warn",
     ],
     "unicorn/prefer-negative-index": Array [
@@ -1697,7 +1718,7 @@ Object {
       "warn",
     ],
     "unicorn/text-encoding-identifier-case": Array [
-      "error",
+      "warn",
     ],
     "unicorn/throw-new-error": Array [
       "warn",
@@ -2031,6 +2052,10 @@ Object {
       Object {
         "extendDefaults": false,
         "types": Object {
+          "BigInt": Object {
+            "fixWith": "bigint",
+            "message": "Use \`bigint\` instead.",
+          },
           "Boolean": Object {
             "fixWith": "boolean",
             "message": "Use \`boolean\` instead.",
@@ -2235,6 +2260,9 @@ Object {
     "@typescript-eslint/no-dupe-class-members": Array [
       "error",
     ],
+    "@typescript-eslint/no-duplicate-enum-values": Array [
+      "error",
+    ],
     "@typescript-eslint/no-duplicate-imports": Array [
       "error",
     ],
@@ -2327,6 +2355,9 @@ Object {
     "@typescript-eslint/no-redeclare": Array [
       "error",
     ],
+    "@typescript-eslint/no-redundant-type-constituents": Array [
+      "error",
+    ],
     "@typescript-eslint/no-require-imports": Array [
       "error",
     ],
@@ -2375,7 +2406,7 @@ Object {
       "warn",
     ],
     "@typescript-eslint/no-unnecessary-type-constraint": Array [
-      "warn",
+      "error",
     ],
     "@typescript-eslint/no-unsafe-argument": Array [
       "error",
@@ -2400,10 +2431,8 @@ Object {
       Object {
         "args": "after-used",
         "argsIgnorePattern": "^_",
-        "caughtErrors": "all",
-        "caughtErrorsIgnorePattern": "^_$",
         "ignoreRestSiblings": true,
-        "vars": "all",
+        "varsIgnorePattern": "^ignored",
       },
     ],
     "@typescript-eslint/no-use-before-define": Array [
@@ -2412,6 +2441,9 @@ Object {
     ],
     "@typescript-eslint/no-useless-constructor": Array [
       "error",
+    ],
+    "@typescript-eslint/no-useless-empty-export": Array [
+      "warn",
     ],
     "@typescript-eslint/no-var-requires": Array [
       "error",
@@ -2425,6 +2457,12 @@ Object {
         "blankLine": "always",
         "next": "*",
         "prev": "multiline-block-like",
+      },
+    ],
+    "@typescript-eslint/parameter-properties": Array [
+      "error",
+      Object {
+        "prefer": "parameter-property",
       },
     ],
     "@typescript-eslint/prefer-as-const": Array [
@@ -2511,6 +2549,9 @@ Object {
     ],
     "@typescript-eslint/unified-signatures": Array [
       "error",
+      Object {
+        "ignoreDifferentlyNamedParameters": true,
+      },
     ],
     "accessor-pairs": Array [
       "error",
@@ -2523,12 +2564,6 @@ Object {
     ],
     "block-scoped-var": Array [
       "error",
-    ],
-    "camelcase": Array [
-      "error",
-      Object {
-        "properties": "always",
-      },
     ],
     "capitalized-comments": Array [
       "warn",
@@ -2564,7 +2599,6 @@ Object {
     ],
     "complexity": Array [
       "error",
-      20,
     ],
     "constructor-super": Array [
       "error",
@@ -2629,9 +2663,6 @@ Object {
     "import/no-deprecated": Array [
       "error",
     ],
-    "import/no-duplicates": Array [
-      "warn",
-    ],
     "import/no-extraneous-dependencies": Array [
       "error",
     ],
@@ -2651,7 +2682,7 @@ Object {
       "error",
     ],
     "import/no-relative-packages": Array [
-      "error",
+      "warn",
     ],
     "import/no-self-import": Array [
       "error",
@@ -2892,7 +2923,6 @@ Object {
     ],
     "max-depth": Array [
       "error",
-      4,
     ],
     "max-lines": Array [
       "error",
@@ -2949,6 +2979,9 @@ Object {
       "error",
     ],
     "no-const-assign": Array [
+      "error",
+    ],
+    "no-constant-binary-expression": Array [
       "error",
     ],
     "no-constant-condition": Array [
@@ -3068,13 +3101,7 @@ Object {
     "no-multi-str": Array [
       "error",
     ],
-    "no-native-reassign": Array [
-      "error",
-    ],
     "no-negated-condition": Array [
-      "error",
-    ],
-    "no-negated-in-lhs": Array [
       "error",
     ],
     "no-new": Array [
@@ -3413,7 +3440,7 @@ Object {
       "error",
     ],
     "react/destructuring-assignment": Array [
-      "error",
+      "warn",
       "always",
     ],
     "react/display-name": Array [
@@ -3464,15 +3491,6 @@ Object {
         "props": "never",
       },
     ],
-    "react/jsx-filename-extension": Array [
-      "error",
-      Object {
-        "extensions": Array [
-          ".ts",
-          ".tsx",
-        ],
-      },
-    ],
     "react/jsx-fragments": Array [
       "warn",
       "syntax",
@@ -3503,8 +3521,13 @@ Object {
         "ignoreCase": true,
       },
     ],
-    "react/jsx-no-script-url": Array [
-      "error",
+    "react/jsx-no-leaked-render": Array [
+      "warn",
+      Object {
+        "validStrategies": Array [
+          "ternary",
+        ],
+      },
     ],
     "react/jsx-no-target-blank": Array [
       "warn",
@@ -3840,6 +3863,9 @@ Object {
     "unicorn/no-new-buffer": Array [
       "warn",
     ],
+    "unicorn/no-null": Array [
+      "warn",
+    ],
     "unicorn/no-object-as-default-parameter": Array [
       "error",
     ],
@@ -3858,6 +3884,9 @@ Object {
     "unicorn/no-unreadable-array-destructuring": Array [
       "warn",
     ],
+    "unicorn/no-unreadable-iife": Array [
+      "error",
+    ],
     "unicorn/no-useless-fallback-in-spread": Array [
       "warn",
     ],
@@ -3869,6 +3898,9 @@ Object {
     ],
     "unicorn/no-useless-spread": Array [
       "warn",
+    ],
+    "unicorn/no-useless-switch-case": Array [
+      "error",
     ],
     "unicorn/no-useless-undefined": Array [
       "warn",
@@ -3924,9 +3956,6 @@ Object {
     "unicorn/prefer-includes": Array [
       "warn",
     ],
-    "unicorn/prefer-json-parse-buffer": Array [
-      "warn",
-    ],
     "unicorn/prefer-keyboard-event-key": Array [
       "warn",
     ],
@@ -3936,7 +3965,13 @@ Object {
     "unicorn/prefer-modern-dom-apis": Array [
       "warn",
     ],
+    "unicorn/prefer-modern-math-apis": Array [
+      "warn",
+    ],
     "unicorn/prefer-module": Array [
+      "warn",
+    ],
+    "unicorn/prefer-native-coercion-functions": Array [
       "warn",
     ],
     "unicorn/prefer-negative-index": Array [
@@ -4006,7 +4041,7 @@ Object {
       "warn",
     ],
     "unicorn/text-encoding-identifier-case": Array [
-      "error",
+      "warn",
     ],
     "unicorn/throw-new-error": Array [
       "warn",
