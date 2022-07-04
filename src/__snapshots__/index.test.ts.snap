@@ -100,8 +100,7 @@ Object {
         "jest/globals": true,
       },
       "files": Array [
-        "*.{spec,test}.{js,jsx,ts,tsx}",
-        "**/__tests__/**/*.{js,jsx,ts,tsx}",
+        "src/*.{spec,test}.{js,jsx,ts,tsx}",
       ],
       "plugins": Array [
         "jest",
@@ -1627,6 +1626,9 @@ Object {
     "unicorn/prefer-dom-node-text-content": Array [
       "error",
     ],
+    "unicorn/prefer-event-target": Array [
+      "error",
+    ],
     "unicorn/prefer-export-from": Array [
       "warn",
     ],
@@ -1635,6 +1637,9 @@ Object {
     ],
     "unicorn/prefer-keyboard-event-key": Array [
       "warn",
+    ],
+    "unicorn/prefer-logical-operator-over-ternary": Array [
+      "error",
     ],
     "unicorn/prefer-math-trunc": Array [
       "warn",
@@ -1698,6 +1703,9 @@ Object {
     ],
     "unicorn/prefer-ternary": Array [
       "warn",
+    ],
+    "unicorn/prefer-top-level-await": Array [
+      "error",
     ],
     "unicorn/prefer-type-error": Array [
       "warn",
@@ -1941,8 +1949,7 @@ Object {
         "jest/globals": true,
       },
       "files": Array [
-        "*.{spec,test}.{js,jsx,ts,tsx}",
-        "**/__tests__/**/*.{js,jsx,ts,tsx}",
+        "src/*.{spec,test}.{js,jsx,ts,tsx}",
       ],
       "plugins": Array [
         "jest",
@@ -4059,6 +4066,9 @@ Object {
     "unicorn/prefer-dom-node-text-content": Array [
       "error",
     ],
+    "unicorn/prefer-event-target": Array [
+      "error",
+    ],
     "unicorn/prefer-export-from": Array [
       "warn",
     ],
@@ -4067,6 +4077,9 @@ Object {
     ],
     "unicorn/prefer-keyboard-event-key": Array [
       "warn",
+    ],
+    "unicorn/prefer-logical-operator-over-ternary": Array [
+      "error",
     ],
     "unicorn/prefer-math-trunc": Array [
       "warn",
@@ -4130,6 +4143,9 @@ Object {
     ],
     "unicorn/prefer-ternary": Array [
       "warn",
+    ],
+    "unicorn/prefer-top-level-await": Array [
+      "error",
     ],
     "unicorn/prefer-type-error": Array [
       "warn",
