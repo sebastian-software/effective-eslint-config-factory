@@ -21,7 +21,7 @@
     "typecheck:watch": "tsc --noEmit --watch",
     "format": "prettier --write src",
     "check": "npm run build && npm run typecheck && npm run test",
-    "xprepare": "npm run build",
+    "prepare": "npm run build",
     "release": "git push && release-it --ci patch",
     "release:minor": "git push && release-it --ci minor",
     "release:major": "git push && release-it --ci major"
