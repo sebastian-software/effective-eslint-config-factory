@@ -1,7 +1,9 @@
 import { Linter } from "eslint"
 
 const override: Linter.ConfigOverride = {
-  files: ["*.{spec,test}.{js,jsx,ts,tsx}", "**/__tests__/**/*.{js,jsx,ts,tsx}"],
+  // Explicitly use `/src/*` as we might have e2e tests (Cypress/Playwright)
+  // in another root-level folder and do not like to risk compatibility.
+  files: ["src/*.{spec,test}.{js,jsx,ts,tsx}"],
   plugins: ["jest", "testing-library"],
   env: {
     jest: true,
