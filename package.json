@@ -45,8 +45,8 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@types/require-from-string": "^1.2.1",
-    "@typescript-eslint/eslint-plugin": "^5.30.4",
-    "@typescript-eslint/parser": "^5.30.4",
+    "@typescript-eslint/eslint-plugin": "^5.30.5",
+    "@typescript-eslint/parser": "^5.30.5",
     "eslint-plugin-filenames-simple": "^0.7.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jest": "^26.5.3",
