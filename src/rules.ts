@@ -250,12 +250,12 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
     comment: "Good practise. Kind of suprising that this is not part of eslint/recommended."
   },
   "prefer-regex-literals": {
-    use: "",
-    comment: ""
+    use: "xo",
+    comment: "Agree with XO here that regex literals are easier (no escaping) and should be preferred"
   },
   "spaced-comment": {
-    use: "",
-    comment: ""
+    use: "xo",
+    comment: "Stylistic but improves code unification. Not offered by Prettier."
   },
   strict: {
     use: "kentdodds",
@@ -264,6 +264,14 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
   },
   "valid-typeof": { use: "eslint", comment: "Common in most presets" },
 
+  //
+  //
+  //
+
+  "@typescript-eslint/array-type": {
+    use: "xo-typescript",
+    comment: "Prefer setting this over not setting it. Simple typings should be preferred where feasible."
+  },
   "@typescript-eslint/ban-ts-comment": {
     use: "xo-typescript",
     comment: "XO allows exceptions which are a good idea"
@@ -271,6 +279,22 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
   "@typescript-eslint/ban-types": {
     use: "xo-typescript",
     comment: "Best collection of types to ban is in XO"
+  },
+  "@typescript-eslint/class-literal-property-style": {
+    use: "xo-typescript",
+    comment: ""
+  },
+  "@typescript-eslint/consistent-indexed-object-style": {
+    use: "xo-typescript",
+    comment: ""
+  },
+  "@typescript-eslint/consistent-type-assertions": {
+    use: "xo-typescript",
+    comment: ""
+  },
+  "@typescript-eslint/default-param-last": {
+    use: "xo-typescript",
+    comment: ""
   },
   "@typescript-eslint/no-empty-interface": {
     use: "xo-typescript",
