@@ -1,5 +1,6 @@
-extends:
-  ./config/index.yaml
+extends: ./config/index.yaml
+parserOptions:
+  project: ./tsconfig.json
 env:
   node: true
 rules:
