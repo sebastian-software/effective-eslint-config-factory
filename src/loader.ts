@@ -85,6 +85,7 @@ export function getMerged(): RulesStructuredByOrigin {
   mergeIntoStructure(getJestRecommended(), "jest", dist)
   mergeIntoStructure(getTestingLibraryRecommended(), "testinglib", dist)
   mergeIntoStructure(getTypeScriptRecommended(), "ts", dist)
+  mergeIntoStructure(getTypeScriptStrict(), "ts", dist)
   mergeIntoStructure(getJSXRecommended(), "jsx", dist)
   mergeIntoStructure(getReactHooksRecommended(), "hooks", dist)
   mergeIntoStructure(getImportRecommended(), "import", dist)
@@ -147,19 +148,31 @@ export function getReactRecommended(): RuleLoaderReturn {
   }
 }
 
-export function getTypeScriptRecommended(typeChecks = true): RuleLoaderReturn {
+export function getTypeScriptRecommended(enableTypeChecks = true): RuleLoaderReturn {
   const { configs } = require("@typescript-eslint/eslint-plugin")
   const config = configs.base
-  const recommended = configs.recommended.rules as Linter.RulesRecord
-  const tsc = typeChecks
+
+  const loaded = configs.recommended.rules as Linter.RulesRecord
+
+  const tsc = enableTypeChecks
     ? (configs["recommended-requiring-type-checking"]
         .rules as Linter.RulesRecord)
     : {}
-  const rules: Linter.RulesRecord = { ...recommended, ...tsc }
+  const rules: Linter.RulesRecord = { ...loaded, ...tsc }
 
   return {
     config,
     rules
+  }
+}
+
+export function getTypeScriptStrict(): RuleLoaderReturn {
+  const { configs } = require("@typescript-eslint/eslint-plugin")
+
+  const loaded = configs.strict.rules as Linter.RulesRecord
+
+  return {
+    rules: loaded
   }
 }
 
