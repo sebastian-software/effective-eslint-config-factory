@@ -298,14 +298,6 @@ export function getImportRecommended(): RuleLoaderReturn {
   return { config, rules }
 }
 
-function getTypescriptOverride(overrides: Linter.ConfigOverride[]) {
-  const match = overrides.find((overrideEntry: Linter.ConfigOverride) =>
-    overrideEntry.files.toString().includes("*.ts")
-  )
-  const { rules, ...config } = match ?? {}
-  return { rules, config }
-}
-
 export function getXo(): RuleLoaderReturn {
   const { rules, ...config } = require("eslint-config-xo")
 
