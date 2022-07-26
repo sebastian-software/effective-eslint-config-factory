@@ -40,7 +40,7 @@ export function blockModernModuleResolution() {
     filename: basename(fullPath),
     path: dirname(fullPath),
     isPreloading: false,
-    require: require,
+    require,
     exports: '{}',
     loaded: true,
     children: [],
