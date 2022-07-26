@@ -22,7 +22,7 @@ import {
 } from "./types"
 import { ruleBasedSourcePriority } from "./rules"
 import { formatMeta, formatAlternatives, getReadableValue } from "./html"
-import { sortRules } from "./util"
+import { blockModernModuleResolution, sortRules } from "./util"
 
 interface CliOptions {
   nodejs: boolean
@@ -286,6 +286,8 @@ export async function compileFiles() {
 
 export async function main(flags: CliOptions) {
   console.log("Effective ESLint...", flags)
+
+  blockModernModuleResolution()
 
   const outputFolder = "./config"
   const fileLists = await compileFiles()

@@ -1,3 +1,4 @@
+import { dirname, basename } from "node:path"
 import { KeyValue } from "./types"
 
 export function ruleComparator(first: string, second: string) {
@@ -29,4 +30,21 @@ export function sortRules(source: KeyValue) {
   }
 
   return result
+}
+
+export function blockModernModuleResolution() {
+  const fullPath = require.resolve("@rushstack/eslint-patch/modern-module-resolution")
+
+  require.cache[fullPath] = {
+    id: fullPath,
+    filename: basename(fullPath),
+    path: dirname(fullPath),
+    isPreloading: false,
+    require: require,
+    exports: '{}',
+    loaded: true,
+    children: [],
+    paths: [],
+    parent: null
+  }
 }
