@@ -9,6 +9,7 @@ rules:
   "@typescript-eslint/no-unsafe-assignment": off
   "@typescript-eslint/no-unsafe-argument": off
   "@typescript-eslint/no-require-imports": off
+  "@typescript-eslint/naming-convention": off
 
   # Nobody extends Object.prototype anymore
   guard-for-in: off
