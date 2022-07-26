@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires, unicorn/prefer-module */
 
-import { join } from "node:path"
+import { join, dirname } from "node:path"
 import { readFileSync } from "node:fs"
 import pkgDir from "pkg-dir"
 import { Linter } from "eslint"
@@ -84,6 +84,7 @@ export function getMerged(): RulesStructuredByOrigin {
   mergeIntoStructure(getReactRecommended(), "react", dist)
   mergeIntoStructure(getJestRecommended(), "jest", dist)
   mergeIntoStructure(getTestingLibraryRecommended(), "testinglib", dist)
+  mergeIntoStructure(getRemixRecommended(), "remix", dist)
   mergeIntoStructure(getTypeScriptRecommended(), "ts", dist)
   mergeIntoStructure(getTypeScriptStrict(), "ts", dist)
   mergeIntoStructure(getJSXRecommended(), "jsx", dist)
@@ -197,6 +198,19 @@ export function getTestingLibraryRecommended(): RuleLoaderReturn {
   return {
     config,
     rules
+  }
+}
+
+export function getRemixRecommended(): RuleLoaderReturn {
+  const base = require("@remix-run/eslint-config/index.js")
+  const testing = require("@remix-run/eslint-config/jest-testing-library.js")
+
+  const { rules, ...config } = base
+  const testRules = testing.overrides[0].rules
+
+  return {
+    config,
+    rules: { ...rules, ...testRules }
   }
 }
 
