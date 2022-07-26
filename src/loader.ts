@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires, unicorn/prefer-module */
 
-import { join, dirname } from "node:path"
+import { join } from "node:path"
 import { readFileSync } from "node:fs"
 import pkgDir from "pkg-dir"
 import { Linter } from "eslint"
@@ -84,7 +84,6 @@ export function getMerged(): RulesStructuredByOrigin {
   mergeIntoStructure(getReactRecommended(), "react", dist)
   mergeIntoStructure(getJestRecommended(), "jest", dist)
   mergeIntoStructure(getTestingLibraryRecommended(), "testinglib", dist)
-  mergeIntoStructure(getRemixRecommended(), "remix", dist)
   mergeIntoStructure(getTypeScriptRecommended(), "ts", dist)
   mergeIntoStructure(getTypeScriptStrict(), "ts-strict", dist)
   mergeIntoStructure(getJSXRecommended(), "jsx", dist)
@@ -104,10 +103,11 @@ export function getMerged(): RulesStructuredByOrigin {
   mergeIntoStructure(getPrettierDisabledRules(), "prettier", dist)
   mergeIntoStructure(getAirbnbBase(), "airbnb", dist)
   mergeIntoStructure(getAirbnbReact(), "airbnb-react", dist)
+  mergeIntoStructure(getRemixRecommended(), "remix", dist)
   mergeIntoStructure(getXo(), "xo", dist)
   mergeIntoStructure(getXoReact(), "xo-react", dist)
   mergeIntoStructure(getXoTypescript(), "xo-typescript", dist)
-  mergeIntoStructure(getKentDodds(), "kentdodds", dist)
+  mergeIntoStructure(getKentDodds(), "kentcdodds", dist)
 
   // ==== ==== ==== ==== ==== ==== ====
   // Effective
@@ -226,8 +226,6 @@ export function getCreateReactAppRecommended(): RuleLoaderReturn {
   const base = loadAndPatchPackage(require.resolve("eslint-config-react-app/base.js"))
   const jest = loadAndPatchPackage(require.resolve("eslint-config-react-app/jest.js"))
 
-  removeDisabledRules(rules)
-
   return {
     config,
     rules: {
@@ -253,19 +251,6 @@ export function getReactHooksRecommended(): RuleLoaderReturn {
   return { config, rules }
 }
 
-export function removeDisabledRules(rules: Linter.RulesRecord) {
-  const disabledRules = Object.keys(rules).filter((ruleName) => {
-    const ruleEntry: Linter.RuleLevel | Linter.RuleLevelAndOptions =
-      rules[ruleName]
-    const ruleLevel = Array.isArray(ruleEntry) ? ruleEntry[0] : ruleEntry
-    return ruleLevel === "off" || ruleLevel === 0
-  })
-
-  for (const ruleName of disabledRules) {
-    delete rules[ruleName]
-  }
-}
-
 function flattenAirbnbExtends(extendsBlock: string[]) {
   const loader: Linter.BaseConfig[] = extendsBlock
     .filter((importPath: string) => !importPath.includes("airbnb-base"))
@@ -279,8 +264,6 @@ function flattenAirbnbExtends(extendsBlock: string[]) {
     assign(allRules, rules)
     merge(allConfig, config)
   }
-
-  removeDisabledRules(allRules)
 
   return {
     config: allConfig,

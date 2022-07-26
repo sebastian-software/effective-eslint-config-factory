@@ -2,7 +2,7 @@ import { SourcePriorityTable } from "./types"
 
 export const ruleBasedSourcePriority: SourcePriorityTable = {
   "accessor-pairs": {
-    use: "kentdodds",
+    use: "kentcdodds",
     comment:
       "Class member checks are enabled by default. Effectively both XO and Kent are identical."
   },
@@ -17,11 +17,11 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
     comment: "It's actually good to keep parens - mostly more code accessibility."
   },
   "capitalized-comments": {
-    use: "kentdodds",
+    use: "kentcdodds",
     comment: "There are definitely more important things than formatting in comments."
   },
   "class-methods-use-this": {
-    use: "kentdodds",
+    use: "kentcdodds",
     comment: "The exception list for Airbnb shows that this might make sense in some cases. Better trust the individual developer."
   },
   complexity: {
@@ -39,11 +39,11 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
   },
   eqeqeq: { use: "cra", comment: "Smart mode enabled in CRA" },
   "func-name-matching": {
-    use: "kentdodds",
+    use: "kentcdodds",
     comment: "Enabled but without property descriptor (rarely used)"
   },
   "func-names": {
-    use: "kentdodds",
+    use: "kentcdodds",
     comment: "Prefer better debug-ability when enabled"
   },
   "getter-return": {
@@ -51,7 +51,7 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
     comment: "Most commonly enabled to prevent accidential issues."
   },
   "grouped-accessor-pairs": {
-    use: "kentdodds",
+    use: "kentcdodds",
     comment: "Not used in most presets."
   },
   "max-depth": {
@@ -75,7 +75,7 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
     comment: "Enabled for eslint recommended and XO. Makes sense to catch that."
   },
   "new-cap": {
-    use: "kentdodds",
+    use: "kentcdodds",
     comment: "In Kent and XO, XO defines options which are already the default"
   },
   "no-cond-assign": {
@@ -83,19 +83,19 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
     comment: "Effectively identical in most presets."
   },
   "no-const-assign": {
-    use: "kentdodds",
+    use: "kentcdodds",
     comment: "Easily solved by TypeScript and the execution runtime."
   },
   "no-dupe-args": {
-    use: "kentdodds",
+    use: "kentcdodds",
     comment: "Easily solved by TypeScript and the execution runtime."
   },
   "no-dupe-keys": {
-    use: "kentdodds",
+    use: "kentcdodds",
     comment: "Easily solved by TypeScript and the execution runtime."
   },
   "no-else-return": {
-    use: "kentdodds",
+    use: "kentcdodds",
     comment: "Mostly stylistic, no functional reason. Therefor a bad default choice in a preset."
   },
   "no-empty": {
@@ -103,7 +103,7 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
     comment: "Effectively identical in most presets."
   },
   "no-eq-null": {
-    use: "kentdodds",
+    use: "kentcdodds",
     comment: "Generally okay. Type issues are also way better catched by TS anyway."
   },
   "no-extra-boolean-cast": {
@@ -153,11 +153,11 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
       "Richest collection in CRA, others only enable it, without any config."
   },
   "no-restricted-properties": {
-    use: "kentdodds",
+    use: "kentcdodds",
     comment: "Very edge case stuff in CRA. Not worth keeping that rule alive for."
   },
   "no-return-assign": {
-    use: "kentdodds",
+    use: "kentcdodds",
     comment: "Same in XO, otherwise unconfigured"
   },
   "no-return-await": {
@@ -181,7 +181,7 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
     comment: "Typeof is enabled in XO only, which is a valid use case"
   },
   "no-underscore-dangle": {
-    use: "kentdodds",
+    use: "kentcdodds",
     comment: "Style only. Not worth for a presets default set."
   },
   "no-unreachable": {
@@ -189,7 +189,7 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
     comment: "Disallowed in most presets for a reason: reports accidental issues."
   },
   "no-use-before-define": {
-    use: "kentdodds",
+    use: "kentcdodds",
     comment: "Better let report these kind of issues by TS."
   },
   "no-unsafe-negation": {
@@ -220,7 +220,7 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
     comment: "Disallowed by most presets. Hard to grasp in all consequences + tricky to optimize by a JIT."
   },
   "object-shorthand": {
-    use: "kentdodds",
+    use: "kentcdodds",
     comment:
       "Properties only for Kent, XO enabled for all things incl. functions which might be hard to read, consistent-as-needed would also be a good candidate"
   },
@@ -238,11 +238,11 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
     comment: "XO has fine tuned setting for destructing"
   },
   "prefer-destructuring": {
-    use: "kentdodds",
+    use: "kentcdodds",
     comment: "Mostly stylistic with not clear benefit in doing so. Drop it like Kent does."
   },
   "operator-assignment": {
-    use: "kentdodds",
+    use: "kentcdodds",
     comment: "Only stylistic and += is used that often in loops that it might hurt quite a bit."
   },
   "prefer-promise-reject-errors": {
@@ -258,7 +258,7 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
     comment: "Stylistic but improves code unification. Not offered by Prettier."
   },
   strict: {
-    use: "kentdodds",
+    use: "kentcdodds",
     comment:
       "Source format is ESM in most code bases, still useful as auto-detected"
   },
@@ -327,7 +327,7 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
     comment: "Effectively identical in all presets"
   },
   "@typescript-eslint/no-unused-vars": {
-    use: "kentdodds",
+    use: "kentcdodds",
     comment: "Seemingly good relaxation of the standard behavior."
   },
   "@typescript-eslint/unified-signatures": {
@@ -459,7 +459,7 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
     comment: "Fine-tuned in XO to check spreads as well"
   },
   "react/jsx-pascal-case": {
-    use: "kentdodds",
+    use: "kentcdodds",
     comment:
       "Disabling all-caps like in XO. Formatting related. Wonder why one would use it e.g. `URL`?"
   },
@@ -468,12 +468,12 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
     comment: "Fine-tuned in XO to prevent template strings as well"
   },
   "react/no-unsafe": {
-    use: "kentdodds",
+    use: "kentcdodds",
     comment:
       "Also disabled in strict-mode which should be standard for new developments"
   },
   "react/no-unstable-nested-components": {
-    use: "kentdodds",
+    use: "kentcdodds",
     comment:
       "That's indeed looking like a common issue in code bases. Good find."
   },
