@@ -103,11 +103,12 @@ export function getMerged(): RulesStructuredByOrigin {
   mergeIntoStructure(getPrettierDisabledRules(), "prettier", dist)
   mergeIntoStructure(getAirbnbBase(), "airbnb", dist)
   mergeIntoStructure(getAirbnbReact(), "airbnb-react", dist)
-  mergeIntoStructure(getRemixRecommended(), "remix", dist)
   mergeIntoStructure(getXo(), "xo", dist)
   mergeIntoStructure(getXoReact(), "xo-react", dist)
   mergeIntoStructure(getXoTypescript(), "xo-typescript", dist)
   mergeIntoStructure(getKentDodds(), "kentcdodds", dist)
+  mergeIntoStructure(getRemixRecommended(), "remix", dist)
+  mergeIntoStructure(getNextJS(), "nextjs", dist)
 
   // ==== ==== ==== ==== ==== ==== ====
   // Effective
@@ -346,5 +347,22 @@ export function getKentDodds(): RuleLoaderReturn {
     // Merge all into one. We filter e.g. jest-plugin related rules
     // later on the process.
     rules: allRules
+  }
+}
+
+export function getNextJS(): RuleLoaderReturn {
+  const base = require("eslint-config-next")
+  const plugin = require("@next/eslint-plugin-next")
+
+  const config = {}
+  const rules = {
+    ...base.rules,
+    ...plugin.configs.recommended.rules,
+    ...plugin.configs["core-web-vitals"].rules
+  }
+
+  return {
+    config,
+    rules
   }
 }
