@@ -83,6 +83,7 @@ export function getMerged(): RulesStructuredByOrigin {
   mergeIntoStructure(getESLintRecommended(), "eslint", dist)
   mergeIntoStructure(getReactRecommended(), "react", dist)
   mergeIntoStructure(getJestRecommended(), "jest", dist)
+  mergeIntoStructure(getJestDomRecommended(), "jest-dom", dist)
   mergeIntoStructure(getTestingLibraryRecommended(), "testinglib", dist)
   mergeIntoStructure(getTypeScriptRecommended(), "ts", dist)
   mergeIntoStructure(getTypeScriptStrict(), "ts-strict", dist)
@@ -183,12 +184,23 @@ export function getJestRecommended(): RuleLoaderReturn {
   const { rules, ...config } = jest.configs.recommended
 
   // Also import the style rules. These are not about formatting, but
-  // more about sensible hints in my opinion
+  // more about sensible hints. By not leaving them out we make
+  // them visible. Could be disabled later anyway.
   const allRules = { ...rules, ...jest.configs.style.rules }
 
   return {
     config,
     rules: allRules
+  }
+}
+
+export function getJestDomRecommended(): RuleLoaderReturn {
+  const jest = require("eslint-plugin-jest-dom")
+  const { rules, ...config } = jest.configs.recommended
+
+  return {
+    config,
+    rules
   }
 }
 
