@@ -9,11 +9,14 @@ const core: Linter.BaseConfig = {
     ecmaVersion: "latest",
     sourceType: "module",
 
+    // Inspired by NextJS
+    allowImportExportEverywhere: true,
+
     // Typescript specific
     warnOnUnsupportedTypeScriptVersion: false,
 
     // Babel specific to disable config file requirement
-    // requireConfigFile: false,
+    requireConfigFile: false,
 
     // Do not define to improve support for mono repositories and pure JS files
     // project: "tsconfig.json"
@@ -23,8 +26,15 @@ const core: Linter.BaseConfig = {
   reportUnusedDisableDirectives: true,
   settings: {
     "import/extensions": [".js", ".ts"],
-    "import/parsers": { "@typescript-eslint/parser": [".ts", ".tsx"] },
-    "import/resolver": { node: { extensions: [".js", ".jsx", ".ts", ".tsx"] } }
+    "import/parsers": { "@typescript-eslint/parser": [".ts", ".tsx", ".d.ts"] },
+    "import/resolver": {
+      [require.resolve('eslint-import-resolver-node')]: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+      [require.resolve('eslint-import-resolver-typescript')]: {
+        alwaysTryTypes: true,
+      },
+    }
   },
   overrides: [
     {
