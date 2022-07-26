@@ -86,7 +86,7 @@ export function getMerged(): RulesStructuredByOrigin {
   mergeIntoStructure(getTestingLibraryRecommended(), "testinglib", dist)
   mergeIntoStructure(getRemixRecommended(), "remix", dist)
   mergeIntoStructure(getTypeScriptRecommended(), "ts", dist)
-  mergeIntoStructure(getTypeScriptStrict(), "ts", dist)
+  mergeIntoStructure(getTypeScriptStrict(), "ts-strict", dist)
   mergeIntoStructure(getJSXRecommended(), "jsx", dist)
   mergeIntoStructure(getReactHooksRecommended(), "hooks", dist)
   mergeIntoStructure(getImportRecommended(), "import", dist)
