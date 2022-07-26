@@ -87,7 +87,6 @@ export function getMerged(): RulesStructuredByOrigin {
   mergeIntoStructure(getTypeScriptRecommended(), "ts", dist)
   mergeIntoStructure(getJSXRecommended(), "jsx", dist)
   mergeIntoStructure(getReactHooksRecommended(), "hooks", dist)
-  mergeIntoStructure(getUnicornRecommended(), "unicorn", dist)
   mergeIntoStructure(getImportRecommended(), "import", dist)
 
   // TODO: https://www.npmjs.com/package/eslint-plugin-shopify-lean

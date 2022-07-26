@@ -343,10 +343,6 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
     use: "xo-typescript",
     comment: "Should be solved by TS compiler already"
   },
-  "import/no-duplicates": {
-    use: "xo-typescript",
-    comment: "Solved by @typescript-eslint/no-duplicate-imports already!"
-  },
 
   "jsx-a11y/alt-text": {
     use: "jsx",
@@ -507,7 +503,5 @@ export const ruleBasedSourcePriority: SourcePriorityTable = {
     use: "cra",
     comment:
       "XO is right about FormattedNumber, but this might change in React-Intl as well... or one uses a different lib."
-  },
-
-  "unicorn/no-null": { use: "unicorn", comment: "" }
+  }
 }

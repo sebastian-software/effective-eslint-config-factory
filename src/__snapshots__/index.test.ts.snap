@@ -107,13 +107,7 @@ Object {
         "testing-library",
       ],
       "rules": Object {
-        "jest/expect-expect": Array [
-          "error",
-        ],
         "jest/max-nested-describe": Array [
-          "error",
-        ],
-        "jest/no-alias-methods": Array [
           "error",
         ],
         "jest/no-commented-out-tests": Array [
@@ -149,9 +143,6 @@ Object {
         "jest/no-interpolation-in-snapshots": Array [
           "error",
         ],
-        "jest/no-jasmine-globals": Array [
-          "error",
-        ],
         "jest/no-jest-import": Array [
           "error",
         ],
@@ -162,9 +153,6 @@ Object {
           },
         ],
         "jest/no-mocks-import": Array [
-          "error",
-        ],
-        "jest/no-standalone-expect": Array [
           "error",
         ],
         "jest/no-test-prefixes": Array [
@@ -186,9 +174,6 @@ Object {
           "error",
         ],
         "jest/prefer-snapshot-hint": Array [
-          "error",
-        ],
-        "jest/prefer-to-be": Array [
           "error",
         ],
         "jest/prefer-to-contain": Array [
@@ -304,6 +289,10 @@ Object {
       "warn",
       "getters",
     ],
+    "@typescript-eslint/consistent-generic-constructors": Array [
+      "warn",
+      "constructor",
+    ],
     "@typescript-eslint/consistent-indexed-object-style": Array [
       "warn",
     ],
@@ -320,147 +309,10 @@ Object {
     "@typescript-eslint/dot-notation": Array [
       "warn",
     ],
-    "@typescript-eslint/lines-between-class-members": Array [
-      "warn",
-      "always",
-      Object {
-        "exceptAfterSingleLine": true,
-      },
-    ],
-    "@typescript-eslint/member-ordering": Array [
-      "error",
-      Object {
-        "default": Array [
-          "signature",
-          "public-static-field",
-          "public-static-method",
-          "protected-static-field",
-          "protected-static-method",
-          "private-static-field",
-          "private-static-method",
-          "static-field",
-          "static-method",
-          "public-decorated-field",
-          "public-instance-field",
-          "public-abstract-field",
-          "public-field",
-          "protected-decorated-field",
-          "protected-instance-field",
-          "protected-abstract-field",
-          "protected-field",
-          "private-decorated-field",
-          "private-instance-field",
-          "private-abstract-field",
-          "private-field",
-          "instance-field",
-          "abstract-field",
-          "decorated-field",
-          "field",
-          "public-constructor",
-          "protected-constructor",
-          "private-constructor",
-          "constructor",
-          "public-decorated-method",
-          "public-instance-method",
-          "public-abstract-method",
-          "public-method",
-          "protected-decorated-method",
-          "protected-instance-method",
-          "protected-abstract-method",
-          "protected-method",
-          "private-decorated-method",
-          "private-instance-method",
-          "private-abstract-method",
-          "private-method",
-          "instance-method",
-          "abstract-method",
-          "decorated-method",
-          "method",
-        ],
-      },
-    ],
-    "@typescript-eslint/naming-convention": Array [
-      "error",
-      Object {
-        "filter": Object {
-          "match": false,
-          "regex": "[- ]",
-        },
-        "format": Array [
-          "strictCamelCase",
-        ],
-        "leadingUnderscore": "allowSingleOrDouble",
-        "selector": Array [
-          "variable",
-          "function",
-          "classProperty",
-          "objectLiteralProperty",
-          "parameterProperty",
-          "classMethod",
-          "objectLiteralMethod",
-          "typeMethod",
-          "accessor",
-        ],
-        "trailingUnderscore": "allow",
-      },
-      Object {
-        "format": Array [
-          "StrictPascalCase",
-        ],
-        "selector": "typeLike",
-      },
-      Object {
-        "format": Array [
-          "StrictPascalCase",
-        ],
-        "prefix": Array [
-          "is",
-          "has",
-          "can",
-          "should",
-          "will",
-          "did",
-        ],
-        "selector": "variable",
-        "types": Array [
-          "boolean",
-        ],
-      },
-      Object {
-        "filter": "^(?!I)[A-Z]",
-        "format": Array [
-          "StrictPascalCase",
-        ],
-        "selector": "interface",
-      },
-      Object {
-        "filter": "^T$|^[A-Z][a-zA-Z]+$",
-        "format": Array [
-          "StrictPascalCase",
-        ],
-        "selector": "typeParameter",
-      },
-      Object {
-        "format": null,
-        "modifiers": Array [
-          "requiresQuotes",
-        ],
-        "selector": Array [
-          "classProperty",
-          "objectLiteralProperty",
-        ],
-      },
-    ],
     "@typescript-eslint/no-array-constructor": Array [
       "warn",
     ],
     "@typescript-eslint/no-base-to-string": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-confusing-void-expression": Array [
-      "warn",
-    ],
-    "@typescript-eslint/no-dupe-class-members": Array [
       "error",
     ],
     "@typescript-eslint/no-duplicate-enum-values": Array [
@@ -471,9 +323,6 @@ Object {
     ],
     "@typescript-eslint/no-dynamic-delete": Array [
       "warn",
-    ],
-    "@typescript-eslint/no-empty-function": Array [
-      "error",
     ],
     "@typescript-eslint/no-empty-interface": Array [
       "warn",
@@ -511,9 +360,6 @@ Object {
     ],
     "@typescript-eslint/no-implied-eval": Array [
       "error",
-    ],
-    "@typescript-eslint/no-inferrable-types": Array [
-      "warn",
     ],
     "@typescript-eslint/no-invalid-this": Array [
       "error",
@@ -555,13 +401,7 @@ Object {
     "@typescript-eslint/no-parameter-properties": Array [
       "error",
     ],
-    "@typescript-eslint/no-redeclare": Array [
-      "error",
-    ],
     "@typescript-eslint/no-redundant-type-constituents": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-require-imports": Array [
       "error",
     ],
     "@typescript-eslint/no-restricted-imports": Array [
@@ -602,9 +442,6 @@ Object {
     "@typescript-eslint/no-unnecessary-qualifier": Array [
       "warn",
     ],
-    "@typescript-eslint/no-unnecessary-type-arguments": Array [
-      "warn",
-    ],
     "@typescript-eslint/no-unnecessary-type-assertion": Array [
       "warn",
     ],
@@ -621,12 +458,6 @@ Object {
       "error",
     ],
     "@typescript-eslint/no-unsafe-member-access": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-unsafe-return": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-unused-expressions": Array [
       "error",
     ],
     "@typescript-eslint/no-unused-vars": Array [
@@ -651,9 +482,6 @@ Object {
     "@typescript-eslint/no-var-requires": Array [
       "error",
     ],
-    "@typescript-eslint/non-nullable-type-assertion-style": Array [
-      "warn",
-    ],
     "@typescript-eslint/padding-line-between-statements": Array [
       "warn",
       Object {
@@ -674,12 +502,6 @@ Object {
     "@typescript-eslint/prefer-enum-initializers": Array [
       "error",
     ],
-    "@typescript-eslint/prefer-for-of": Array [
-      "error",
-    ],
-    "@typescript-eslint/prefer-function-type": Array [
-      "warn",
-    ],
     "@typescript-eslint/prefer-includes": Array [
       "warn",
     ],
@@ -695,13 +517,7 @@ Object {
     "@typescript-eslint/prefer-optional-chain": Array [
       "error",
     ],
-    "@typescript-eslint/prefer-readonly": Array [
-      "warn",
-    ],
     "@typescript-eslint/prefer-reduce-type-parameter": Array [
-      "warn",
-    ],
-    "@typescript-eslint/prefer-regexp-exec": Array [
       "warn",
     ],
     "@typescript-eslint/prefer-return-this-type": Array [
@@ -712,18 +528,6 @@ Object {
     ],
     "@typescript-eslint/prefer-ts-expect-error": Array [
       "warn",
-    ],
-    "@typescript-eslint/promise-function-async": Array [
-      "warn",
-    ],
-    "@typescript-eslint/require-array-sort-compare": Array [
-      "error",
-      Object {
-        "ignoreStringArrays": true,
-      },
-    ],
-    "@typescript-eslint/require-await": Array [
-      "error",
     ],
     "@typescript-eslint/restrict-plus-operands": Array [
       "error",
@@ -768,38 +572,6 @@ Object {
     "block-scoped-var": Array [
       "error",
     ],
-    "capitalized-comments": Array [
-      "warn",
-      "always",
-      Object {
-        "ignoreConsecutiveComments": true,
-        "ignoreInlineComments": true,
-        "ignorePattern": "pragma|ignore|prettier-ignore|webpack\\\\w+:|c8",
-      },
-    ],
-    "class-methods-use-this": Array [
-      "error",
-      Object {
-        "exceptMethods": Array [
-          "render",
-          "getInitialState",
-          "getDefaultProps",
-          "getChildContext",
-          "componentWillMount",
-          "UNSAFE_componentWillMount",
-          "componentDidMount",
-          "componentWillReceiveProps",
-          "UNSAFE_componentWillReceiveProps",
-          "shouldComponentUpdate",
-          "componentWillUpdate",
-          "UNSAFE_componentWillUpdate",
-          "componentDidUpdate",
-          "componentWillUnmount",
-          "componentDidCatch",
-          "getSnapshotBeforeUpdate",
-        ],
-      },
-    ],
     "complexity": Array [
       "error",
     ],
@@ -831,10 +603,6 @@ Object {
     "getter-return": Array [
       "error",
     ],
-    "grouped-accessor-pairs": Array [
-      "error",
-      "getBeforeSet",
-    ],
     "guard-for-in": Array [
       "error",
     ],
@@ -860,11 +628,11 @@ Object {
     "import/no-amd": Array [
       "error",
     ],
-    "import/no-anonymous-default-export": Array [
-      "error",
-    ],
     "import/no-deprecated": Array [
       "error",
+    ],
+    "import/no-duplicates": Array [
+      "warn",
     ],
     "import/no-extraneous-dependencies": Array [
       "error",
@@ -888,9 +656,6 @@ Object {
       "warn",
     ],
     "import/no-self-import": Array [
-      "error",
-    ],
-    "import/no-unresolved": Array [
       "error",
     ],
     "import/no-webpack-loader-syntax": Array [
@@ -970,9 +735,6 @@ Object {
     "no-cond-assign": Array [
       "error",
     ],
-    "no-const-assign": Array [
-      "error",
-    ],
     "no-constant-binary-expression": Array [
       "error",
     ],
@@ -994,23 +756,11 @@ Object {
     "no-div-regex": Array [
       "warn",
     ],
-    "no-dupe-args": Array [
-      "error",
-    ],
     "no-dupe-else-if": Array [
-      "error",
-    ],
-    "no-dupe-keys": Array [
       "error",
     ],
     "no-duplicate-case": Array [
       "error",
-    ],
-    "no-else-return": Array [
-      "warn",
-      Object {
-        "allowElseIf": false,
-      },
     ],
     "no-empty": Array [
       "error",
@@ -1019,9 +769,6 @@ Object {
       "error",
     ],
     "no-empty-pattern": Array [
-      "error",
-    ],
-    "no-eq-null": Array [
       "error",
     ],
     "no-eval": Array [
@@ -1196,19 +943,6 @@ Object {
       "toolbar",
       "top",
     ],
-    "no-restricted-properties": Array [
-      "error",
-      Object {
-        "message": "Please use import() instead. More info: https://facebook.github.io/create-react-app/docs/code-splitting",
-        "object": "require",
-        "property": "ensure",
-      },
-      Object {
-        "message": "Please use import() instead. More info: https://facebook.github.io/create-react-app/docs/code-splitting",
-        "object": "System",
-        "property": "import",
-      },
-    ],
     "no-restricted-syntax": Array [
       "error",
       "WithStatement",
@@ -1255,17 +989,6 @@ Object {
     "no-undef-init": Array [
       "warn",
     ],
-    "no-underscore-dangle": Array [
-      "error",
-      Object {
-        "allow": Array [
-          "__REDUX_DEVTOOLS_EXTENSION_COMPOSE__",
-        ],
-        "allowAfterSuper": false,
-        "allowAfterThis": false,
-        "enforceInMethodNames": true,
-      },
-    ],
     "no-unmodified-loop-condition": Array [
       "error",
     ],
@@ -1295,14 +1018,6 @@ Object {
     ],
     "no-unused-private-class-members": Array [
       "error",
-    ],
-    "no-use-before-define": Array [
-      "error",
-      Object {
-        "classes": false,
-        "functions": false,
-        "variables": false,
-      },
     ],
     "no-useless-backreference": Array [
       "error",
@@ -1351,10 +1066,6 @@ Object {
       "warn",
       "never",
     ],
-    "operator-assignment": Array [
-      "warn",
-      "always",
-    ],
     "prefer-arrow-callback": Array [
       "warn",
       Object {
@@ -1365,22 +1076,6 @@ Object {
       "warn",
       Object {
         "destructuring": "all",
-      },
-    ],
-    "prefer-destructuring": Array [
-      "warn",
-      Object {
-        "AssignmentExpression": Object {
-          "array": false,
-          "object": false,
-        },
-        "VariableDeclarator": Object {
-          "array": false,
-          "object": true,
-        },
-      },
-      Object {
-        "enforceForRenamedProperties": false,
       },
     ],
     "prefer-exponentiation-operator": Array [
@@ -1454,282 +1149,6 @@ Object {
     ],
     "symbol-description": Array [
       "error",
-    ],
-    "unicorn/better-regex": Array [
-      "warn",
-    ],
-    "unicorn/catch-error-name": Array [
-      "warn",
-    ],
-    "unicorn/consistent-destructuring": Array [
-      "warn",
-    ],
-    "unicorn/consistent-function-scoping": Array [
-      "error",
-    ],
-    "unicorn/error-message": Array [
-      "error",
-    ],
-    "unicorn/escape-case": Array [
-      "warn",
-    ],
-    "unicorn/expiring-todo-comments": Array [
-      "error",
-    ],
-    "unicorn/explicit-length-check": Array [
-      "warn",
-    ],
-    "unicorn/filename-case": Array [
-      "error",
-    ],
-    "unicorn/import-style": Array [
-      "error",
-    ],
-    "unicorn/new-for-builtins": Array [
-      "warn",
-    ],
-    "unicorn/no-abusive-eslint-disable": Array [
-      "error",
-    ],
-    "unicorn/no-array-callback-reference": Array [
-      "error",
-    ],
-    "unicorn/no-array-for-each": Array [
-      "warn",
-    ],
-    "unicorn/no-array-method-this-argument": Array [
-      "warn",
-    ],
-    "unicorn/no-array-push-push": Array [
-      "warn",
-    ],
-    "unicorn/no-array-reduce": Array [
-      "error",
-    ],
-    "unicorn/no-await-expression-member": Array [
-      "warn",
-    ],
-    "unicorn/no-console-spaces": Array [
-      "warn",
-    ],
-    "unicorn/no-document-cookie": Array [
-      "error",
-    ],
-    "unicorn/no-empty-file": Array [
-      "error",
-    ],
-    "unicorn/no-for-loop": Array [
-      "warn",
-    ],
-    "unicorn/no-hex-escape": Array [
-      "warn",
-    ],
-    "unicorn/no-instanceof-array": Array [
-      "warn",
-    ],
-    "unicorn/no-invalid-remove-event-listener": Array [
-      "error",
-    ],
-    "unicorn/no-lonely-if": Array [
-      "warn",
-    ],
-    "unicorn/no-new-array": Array [
-      "warn",
-    ],
-    "unicorn/no-new-buffer": Array [
-      "warn",
-    ],
-    "unicorn/no-null": Array [
-      "warn",
-    ],
-    "unicorn/no-object-as-default-parameter": Array [
-      "error",
-    ],
-    "unicorn/no-process-exit": Array [
-      "error",
-    ],
-    "unicorn/no-static-only-class": Array [
-      "warn",
-    ],
-    "unicorn/no-thenable": Array [
-      "error",
-    ],
-    "unicorn/no-this-assignment": Array [
-      "error",
-    ],
-    "unicorn/no-unreadable-array-destructuring": Array [
-      "warn",
-    ],
-    "unicorn/no-unreadable-iife": Array [
-      "error",
-    ],
-    "unicorn/no-useless-fallback-in-spread": Array [
-      "warn",
-    ],
-    "unicorn/no-useless-length-check": Array [
-      "warn",
-    ],
-    "unicorn/no-useless-promise-resolve-reject": Array [
-      "warn",
-    ],
-    "unicorn/no-useless-spread": Array [
-      "warn",
-    ],
-    "unicorn/no-useless-switch-case": Array [
-      "error",
-    ],
-    "unicorn/no-useless-undefined": Array [
-      "warn",
-    ],
-    "unicorn/no-zero-fractions": Array [
-      "warn",
-    ],
-    "unicorn/numeric-separators-style": Array [
-      "warn",
-    ],
-    "unicorn/prefer-add-event-listener": Array [
-      "warn",
-    ],
-    "unicorn/prefer-array-find": Array [
-      "warn",
-    ],
-    "unicorn/prefer-array-flat": Array [
-      "warn",
-    ],
-    "unicorn/prefer-array-flat-map": Array [
-      "warn",
-    ],
-    "unicorn/prefer-array-index-of": Array [
-      "warn",
-    ],
-    "unicorn/prefer-array-some": Array [
-      "warn",
-    ],
-    "unicorn/prefer-code-point": Array [
-      "error",
-    ],
-    "unicorn/prefer-date-now": Array [
-      "warn",
-    ],
-    "unicorn/prefer-default-parameters": Array [
-      "warn",
-    ],
-    "unicorn/prefer-dom-node-append": Array [
-      "warn",
-    ],
-    "unicorn/prefer-dom-node-dataset": Array [
-      "warn",
-    ],
-    "unicorn/prefer-dom-node-remove": Array [
-      "warn",
-    ],
-    "unicorn/prefer-dom-node-text-content": Array [
-      "error",
-    ],
-    "unicorn/prefer-event-target": Array [
-      "error",
-    ],
-    "unicorn/prefer-export-from": Array [
-      "warn",
-    ],
-    "unicorn/prefer-includes": Array [
-      "warn",
-    ],
-    "unicorn/prefer-keyboard-event-key": Array [
-      "warn",
-    ],
-    "unicorn/prefer-logical-operator-over-ternary": Array [
-      "error",
-    ],
-    "unicorn/prefer-math-trunc": Array [
-      "warn",
-    ],
-    "unicorn/prefer-modern-dom-apis": Array [
-      "warn",
-    ],
-    "unicorn/prefer-modern-math-apis": Array [
-      "warn",
-    ],
-    "unicorn/prefer-module": Array [
-      "warn",
-    ],
-    "unicorn/prefer-native-coercion-functions": Array [
-      "warn",
-    ],
-    "unicorn/prefer-negative-index": Array [
-      "warn",
-    ],
-    "unicorn/prefer-node-protocol": Array [
-      "warn",
-    ],
-    "unicorn/prefer-number-properties": Array [
-      "warn",
-    ],
-    "unicorn/prefer-object-from-entries": Array [
-      "warn",
-    ],
-    "unicorn/prefer-optional-catch-binding": Array [
-      "warn",
-    ],
-    "unicorn/prefer-prototype-methods": Array [
-      "warn",
-    ],
-    "unicorn/prefer-query-selector": Array [
-      "warn",
-    ],
-    "unicorn/prefer-reflect-apply": Array [
-      "warn",
-    ],
-    "unicorn/prefer-regexp-test": Array [
-      "warn",
-    ],
-    "unicorn/prefer-set-has": Array [
-      "warn",
-    ],
-    "unicorn/prefer-spread": Array [
-      "warn",
-    ],
-    "unicorn/prefer-string-slice": Array [
-      "warn",
-    ],
-    "unicorn/prefer-string-starts-ends-with": Array [
-      "warn",
-    ],
-    "unicorn/prefer-string-trim-start-end": Array [
-      "warn",
-    ],
-    "unicorn/prefer-switch": Array [
-      "warn",
-    ],
-    "unicorn/prefer-ternary": Array [
-      "warn",
-    ],
-    "unicorn/prefer-top-level-await": Array [
-      "error",
-    ],
-    "unicorn/prefer-type-error": Array [
-      "warn",
-    ],
-    "unicorn/prevent-abbreviations": Array [
-      "warn",
-    ],
-    "unicorn/relative-url-style": Array [
-      "warn",
-    ],
-    "unicorn/require-array-join-separator": Array [
-      "warn",
-    ],
-    "unicorn/require-number-to-fixed-digits-argument": Array [
-      "warn",
-    ],
-    "unicorn/template-indent": Array [
-      "warn",
-    ],
-    "unicorn/text-encoding-identifier-case": Array [
-      "warn",
-    ],
-    "unicorn/throw-new-error": Array [
-      "warn",
     ],
     "use-isnan": Array [
       "error",
@@ -1956,13 +1375,7 @@ Object {
         "testing-library",
       ],
       "rules": Object {
-        "jest/expect-expect": Array [
-          "error",
-        ],
         "jest/max-nested-describe": Array [
-          "error",
-        ],
-        "jest/no-alias-methods": Array [
           "error",
         ],
         "jest/no-commented-out-tests": Array [
@@ -1998,9 +1411,6 @@ Object {
         "jest/no-interpolation-in-snapshots": Array [
           "error",
         ],
-        "jest/no-jasmine-globals": Array [
-          "error",
-        ],
         "jest/no-jest-import": Array [
           "error",
         ],
@@ -2011,9 +1421,6 @@ Object {
           },
         ],
         "jest/no-mocks-import": Array [
-          "error",
-        ],
-        "jest/no-standalone-expect": Array [
           "error",
         ],
         "jest/no-test-prefixes": Array [
@@ -2035,9 +1442,6 @@ Object {
           "error",
         ],
         "jest/prefer-snapshot-hint": Array [
-          "error",
-        ],
-        "jest/prefer-to-be": Array [
           "error",
         ],
         "jest/prefer-to-contain": Array [
@@ -2217,6 +1621,10 @@ Object {
       "warn",
       "getters",
     ],
+    "@typescript-eslint/consistent-generic-constructors": Array [
+      "warn",
+      "constructor",
+    ],
     "@typescript-eslint/consistent-indexed-object-style": Array [
       "warn",
     ],
@@ -2233,147 +1641,10 @@ Object {
     "@typescript-eslint/dot-notation": Array [
       "warn",
     ],
-    "@typescript-eslint/lines-between-class-members": Array [
-      "warn",
-      "always",
-      Object {
-        "exceptAfterSingleLine": true,
-      },
-    ],
-    "@typescript-eslint/member-ordering": Array [
-      "error",
-      Object {
-        "default": Array [
-          "signature",
-          "public-static-field",
-          "public-static-method",
-          "protected-static-field",
-          "protected-static-method",
-          "private-static-field",
-          "private-static-method",
-          "static-field",
-          "static-method",
-          "public-decorated-field",
-          "public-instance-field",
-          "public-abstract-field",
-          "public-field",
-          "protected-decorated-field",
-          "protected-instance-field",
-          "protected-abstract-field",
-          "protected-field",
-          "private-decorated-field",
-          "private-instance-field",
-          "private-abstract-field",
-          "private-field",
-          "instance-field",
-          "abstract-field",
-          "decorated-field",
-          "field",
-          "public-constructor",
-          "protected-constructor",
-          "private-constructor",
-          "constructor",
-          "public-decorated-method",
-          "public-instance-method",
-          "public-abstract-method",
-          "public-method",
-          "protected-decorated-method",
-          "protected-instance-method",
-          "protected-abstract-method",
-          "protected-method",
-          "private-decorated-method",
-          "private-instance-method",
-          "private-abstract-method",
-          "private-method",
-          "instance-method",
-          "abstract-method",
-          "decorated-method",
-          "method",
-        ],
-      },
-    ],
-    "@typescript-eslint/naming-convention": Array [
-      "error",
-      Object {
-        "filter": Object {
-          "match": false,
-          "regex": "[- ]",
-        },
-        "format": Array [
-          "strictCamelCase",
-        ],
-        "leadingUnderscore": "allowSingleOrDouble",
-        "selector": Array [
-          "variable",
-          "function",
-          "classProperty",
-          "objectLiteralProperty",
-          "parameterProperty",
-          "classMethod",
-          "objectLiteralMethod",
-          "typeMethod",
-          "accessor",
-        ],
-        "trailingUnderscore": "allow",
-      },
-      Object {
-        "format": Array [
-          "StrictPascalCase",
-        ],
-        "selector": "typeLike",
-      },
-      Object {
-        "format": Array [
-          "StrictPascalCase",
-        ],
-        "prefix": Array [
-          "is",
-          "has",
-          "can",
-          "should",
-          "will",
-          "did",
-        ],
-        "selector": "variable",
-        "types": Array [
-          "boolean",
-        ],
-      },
-      Object {
-        "filter": "^(?!I)[A-Z]",
-        "format": Array [
-          "StrictPascalCase",
-        ],
-        "selector": "interface",
-      },
-      Object {
-        "filter": "^T$|^[A-Z][a-zA-Z]+$",
-        "format": Array [
-          "StrictPascalCase",
-        ],
-        "selector": "typeParameter",
-      },
-      Object {
-        "format": null,
-        "modifiers": Array [
-          "requiresQuotes",
-        ],
-        "selector": Array [
-          "classProperty",
-          "objectLiteralProperty",
-        ],
-      },
-    ],
     "@typescript-eslint/no-array-constructor": Array [
       "warn",
     ],
     "@typescript-eslint/no-base-to-string": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-confusing-void-expression": Array [
-      "warn",
-    ],
-    "@typescript-eslint/no-dupe-class-members": Array [
       "error",
     ],
     "@typescript-eslint/no-duplicate-enum-values": Array [
@@ -2384,9 +1655,6 @@ Object {
     ],
     "@typescript-eslint/no-dynamic-delete": Array [
       "warn",
-    ],
-    "@typescript-eslint/no-empty-function": Array [
-      "error",
     ],
     "@typescript-eslint/no-empty-interface": Array [
       "warn",
@@ -2424,9 +1692,6 @@ Object {
     ],
     "@typescript-eslint/no-implied-eval": Array [
       "error",
-    ],
-    "@typescript-eslint/no-inferrable-types": Array [
-      "warn",
     ],
     "@typescript-eslint/no-invalid-this": Array [
       "error",
@@ -2468,13 +1733,7 @@ Object {
     "@typescript-eslint/no-parameter-properties": Array [
       "error",
     ],
-    "@typescript-eslint/no-redeclare": Array [
-      "error",
-    ],
     "@typescript-eslint/no-redundant-type-constituents": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-require-imports": Array [
       "error",
     ],
     "@typescript-eslint/no-restricted-imports": Array [
@@ -2515,9 +1774,6 @@ Object {
     "@typescript-eslint/no-unnecessary-qualifier": Array [
       "warn",
     ],
-    "@typescript-eslint/no-unnecessary-type-arguments": Array [
-      "warn",
-    ],
     "@typescript-eslint/no-unnecessary-type-assertion": Array [
       "warn",
     ],
@@ -2534,12 +1790,6 @@ Object {
       "error",
     ],
     "@typescript-eslint/no-unsafe-member-access": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-unsafe-return": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-unused-expressions": Array [
       "error",
     ],
     "@typescript-eslint/no-unused-vars": Array [
@@ -2564,9 +1814,6 @@ Object {
     "@typescript-eslint/no-var-requires": Array [
       "error",
     ],
-    "@typescript-eslint/non-nullable-type-assertion-style": Array [
-      "warn",
-    ],
     "@typescript-eslint/padding-line-between-statements": Array [
       "warn",
       Object {
@@ -2587,12 +1834,6 @@ Object {
     "@typescript-eslint/prefer-enum-initializers": Array [
       "error",
     ],
-    "@typescript-eslint/prefer-for-of": Array [
-      "error",
-    ],
-    "@typescript-eslint/prefer-function-type": Array [
-      "warn",
-    ],
     "@typescript-eslint/prefer-includes": Array [
       "warn",
     ],
@@ -2608,13 +1849,7 @@ Object {
     "@typescript-eslint/prefer-optional-chain": Array [
       "error",
     ],
-    "@typescript-eslint/prefer-readonly": Array [
-      "warn",
-    ],
     "@typescript-eslint/prefer-reduce-type-parameter": Array [
-      "warn",
-    ],
-    "@typescript-eslint/prefer-regexp-exec": Array [
       "warn",
     ],
     "@typescript-eslint/prefer-return-this-type": Array [
@@ -2625,18 +1860,6 @@ Object {
     ],
     "@typescript-eslint/prefer-ts-expect-error": Array [
       "warn",
-    ],
-    "@typescript-eslint/promise-function-async": Array [
-      "warn",
-    ],
-    "@typescript-eslint/require-array-sort-compare": Array [
-      "error",
-      Object {
-        "ignoreStringArrays": true,
-      },
-    ],
-    "@typescript-eslint/require-await": Array [
-      "error",
     ],
     "@typescript-eslint/restrict-plus-operands": Array [
       "error",
@@ -2681,38 +1904,6 @@ Object {
     "block-scoped-var": Array [
       "error",
     ],
-    "capitalized-comments": Array [
-      "warn",
-      "always",
-      Object {
-        "ignoreConsecutiveComments": true,
-        "ignoreInlineComments": true,
-        "ignorePattern": "pragma|ignore|prettier-ignore|webpack\\\\w+:|c8",
-      },
-    ],
-    "class-methods-use-this": Array [
-      "error",
-      Object {
-        "exceptMethods": Array [
-          "render",
-          "getInitialState",
-          "getDefaultProps",
-          "getChildContext",
-          "componentWillMount",
-          "UNSAFE_componentWillMount",
-          "componentDidMount",
-          "componentWillReceiveProps",
-          "UNSAFE_componentWillReceiveProps",
-          "shouldComponentUpdate",
-          "componentWillUpdate",
-          "UNSAFE_componentWillUpdate",
-          "componentDidUpdate",
-          "componentWillUnmount",
-          "componentDidCatch",
-          "getSnapshotBeforeUpdate",
-        ],
-      },
-    ],
     "complexity": Array [
       "error",
     ],
@@ -2744,10 +1935,6 @@ Object {
     "getter-return": Array [
       "error",
     ],
-    "grouped-accessor-pairs": Array [
-      "error",
-      "getBeforeSet",
-    ],
     "guard-for-in": Array [
       "error",
     ],
@@ -2773,11 +1960,11 @@ Object {
     "import/no-amd": Array [
       "error",
     ],
-    "import/no-anonymous-default-export": Array [
-      "error",
-    ],
     "import/no-deprecated": Array [
       "error",
+    ],
+    "import/no-duplicates": Array [
+      "warn",
     ],
     "import/no-extraneous-dependencies": Array [
       "error",
@@ -2801,9 +1988,6 @@ Object {
       "warn",
     ],
     "import/no-self-import": Array [
-      "error",
-    ],
-    "import/no-unresolved": Array [
       "error",
     ],
     "import/no-webpack-loader-syntax": Array [
@@ -3094,9 +2278,6 @@ Object {
     "no-cond-assign": Array [
       "error",
     ],
-    "no-const-assign": Array [
-      "error",
-    ],
     "no-constant-binary-expression": Array [
       "error",
     ],
@@ -3118,23 +2299,11 @@ Object {
     "no-div-regex": Array [
       "warn",
     ],
-    "no-dupe-args": Array [
-      "error",
-    ],
     "no-dupe-else-if": Array [
-      "error",
-    ],
-    "no-dupe-keys": Array [
       "error",
     ],
     "no-duplicate-case": Array [
       "error",
-    ],
-    "no-else-return": Array [
-      "warn",
-      Object {
-        "allowElseIf": false,
-      },
     ],
     "no-empty": Array [
       "error",
@@ -3143,9 +2312,6 @@ Object {
       "error",
     ],
     "no-empty-pattern": Array [
-      "error",
-    ],
-    "no-eq-null": Array [
       "error",
     ],
     "no-eval": Array [
@@ -3320,19 +2486,6 @@ Object {
       "toolbar",
       "top",
     ],
-    "no-restricted-properties": Array [
-      "error",
-      Object {
-        "message": "Please use import() instead. More info: https://facebook.github.io/create-react-app/docs/code-splitting",
-        "object": "require",
-        "property": "ensure",
-      },
-      Object {
-        "message": "Please use import() instead. More info: https://facebook.github.io/create-react-app/docs/code-splitting",
-        "object": "System",
-        "property": "import",
-      },
-    ],
     "no-restricted-syntax": Array [
       "error",
       "WithStatement",
@@ -3379,17 +2532,6 @@ Object {
     "no-undef-init": Array [
       "warn",
     ],
-    "no-underscore-dangle": Array [
-      "error",
-      Object {
-        "allow": Array [
-          "__REDUX_DEVTOOLS_EXTENSION_COMPOSE__",
-        ],
-        "allowAfterSuper": false,
-        "allowAfterThis": false,
-        "enforceInMethodNames": true,
-      },
-    ],
     "no-unmodified-loop-condition": Array [
       "error",
     ],
@@ -3419,14 +2561,6 @@ Object {
     ],
     "no-unused-private-class-members": Array [
       "error",
-    ],
-    "no-use-before-define": Array [
-      "error",
-      Object {
-        "classes": false,
-        "functions": false,
-        "variables": false,
-      },
     ],
     "no-useless-backreference": Array [
       "error",
@@ -3475,10 +2609,6 @@ Object {
       "warn",
       "never",
     ],
-    "operator-assignment": Array [
-      "warn",
-      "always",
-    ],
     "prefer-arrow-callback": Array [
       "warn",
       Object {
@@ -3489,22 +2619,6 @@ Object {
       "warn",
       Object {
         "destructuring": "all",
-      },
-    ],
-    "prefer-destructuring": Array [
-      "warn",
-      Object {
-        "AssignmentExpression": Object {
-          "array": false,
-          "object": false,
-        },
-        "VariableDeclarator": Object {
-          "array": false,
-          "object": true,
-        },
-      },
-      Object {
-        "enforceForRenamedProperties": false,
       },
     ],
     "prefer-exponentiation-operator": Array [
@@ -3546,39 +2660,8 @@ Object {
     "react-hooks/rules-of-hooks": Array [
       "error",
     ],
-    "react/boolean-prop-naming": Array [
-      "error",
-      Object {
-        "validateNested": true,
-      },
-    ],
     "react/button-has-type": Array [
       "error",
-    ],
-    "react/destructuring-assignment": Array [
-      "warn",
-      "always",
-    ],
-    "react/display-name": Array [
-      "error",
-    ],
-    "react/forbid-foreign-prop-types": Array [
-      "error",
-      Object {
-        "allowInPropTypes": true,
-      },
-    ],
-    "react/forbid-prop-types": Array [
-      "error",
-      Object {
-        "checkChildContextTypes": true,
-        "checkContextTypes": true,
-        "forbid": Array [
-          "any",
-          "array",
-          "object",
-        ],
-      },
     ],
     "react/function-component-definition": Array [
       "warn",
@@ -3589,9 +2672,6 @@ Object {
         ],
         "unnamedComponents": "function-expression",
       },
-    ],
-    "react/hook-use-state": Array [
-      "error",
     ],
     "react/iframe-missing-sandbox": Array [
       "error",
@@ -3606,10 +2686,6 @@ Object {
         "propElementValues": "always",
         "props": "never",
       },
-    ],
-    "react/jsx-fragments": Array [
-      "warn",
-      "syntax",
     ],
     "react/jsx-key": Array [
       "error",
@@ -3626,9 +2702,6 @@ Object {
       },
     ],
     "react/jsx-no-comment-textnodes": Array [
-      "error",
-    ],
-    "react/jsx-no-constructed-context-values": Array [
       "error",
     ],
     "react/jsx-no-duplicate-props": Array [
@@ -3661,24 +2734,6 @@ Object {
     "react/jsx-pascal-case": Array [
       "error",
     ],
-    "react/jsx-props-no-spreading": Array [
-      "error",
-      Object {
-        "custom": "enforce",
-        "exceptions": Array [],
-        "explicitSpread": "ignore",
-        "html": "enforce",
-      },
-    ],
-    "react/jsx-sort-props": Array [
-      "warn",
-      Object {
-        "callbacksLast": true,
-        "noSortAlphabetically": true,
-        "reservedFirst": true,
-        "shorthandFirst": true,
-      },
-    ],
     "react/jsx-uses-react": Array [
       "error",
     ],
@@ -3688,17 +2743,8 @@ Object {
     "react/no-access-state-in-setstate": Array [
       "error",
     ],
-    "react/no-array-index-key": Array [
-      "error",
-    ],
     "react/no-arrow-function-lifecycle": Array [
       "warn",
-    ],
-    "react/no-children-prop": Array [
-      "error",
-    ],
-    "react/no-danger": Array [
-      "error",
     ],
     "react/no-danger-with-children": Array [
       "error",
@@ -3769,22 +2815,6 @@ Object {
     "react/no-will-update-set-state": Array [
       "error",
     ],
-    "react/prefer-es6-class": Array [
-      "error",
-      "always",
-    ],
-    "react/prefer-exact-props": Array [
-      "error",
-    ],
-    "react/prefer-read-only-props": Array [
-      "warn",
-    ],
-    "react/prefer-stateless-function": Array [
-      "error",
-      Object {
-        "ignorePureComponents": true,
-      },
-    ],
     "react/react-in-jsx-scope": Array [
       "error",
     ],
@@ -3793,58 +2823,6 @@ Object {
     ],
     "react/self-closing-comp": Array [
       "warn",
-    ],
-    "react/sort-comp": Array [
-      "error",
-      Object {
-        "groups": Object {
-          "lifecycle": Array [
-            "displayName",
-            "propTypes",
-            "contextTypes",
-            "childContextTypes",
-            "mixins",
-            "statics",
-            "defaultProps",
-            "constructor",
-            "getDefaultProps",
-            "getInitialState",
-            "state",
-            "getChildContext",
-            "getDerivedStateFromProps",
-            "componentWillMount",
-            "UNSAFE_componentWillMount",
-            "componentDidMount",
-            "componentWillReceiveProps",
-            "UNSAFE_componentWillReceiveProps",
-            "shouldComponentUpdate",
-            "componentWillUpdate",
-            "UNSAFE_componentWillUpdate",
-            "getSnapshotBeforeUpdate",
-            "componentDidUpdate",
-            "componentDidCatch",
-            "componentWillUnmount",
-          ],
-          "rendering": Array [
-            "/^render.+$/",
-            "render",
-          ],
-        },
-        "order": Array [
-          "static-variables",
-          "static-methods",
-          "instance-variables",
-          "lifecycle",
-          "/^handle.+$/",
-          "/^on.+$/",
-          "getters",
-          "setters",
-          "/^(get|set)(?!(InitialState$|DefaultProps$|ChildContext$)).+$/",
-          "instance-methods",
-          "everything-else",
-          "rendering",
-        ],
-      },
     ],
     "react/state-in-constructor": Array [
       "error",
@@ -3894,282 +2872,6 @@ Object {
     ],
     "symbol-description": Array [
       "error",
-    ],
-    "unicorn/better-regex": Array [
-      "warn",
-    ],
-    "unicorn/catch-error-name": Array [
-      "warn",
-    ],
-    "unicorn/consistent-destructuring": Array [
-      "warn",
-    ],
-    "unicorn/consistent-function-scoping": Array [
-      "error",
-    ],
-    "unicorn/error-message": Array [
-      "error",
-    ],
-    "unicorn/escape-case": Array [
-      "warn",
-    ],
-    "unicorn/expiring-todo-comments": Array [
-      "error",
-    ],
-    "unicorn/explicit-length-check": Array [
-      "warn",
-    ],
-    "unicorn/filename-case": Array [
-      "error",
-    ],
-    "unicorn/import-style": Array [
-      "error",
-    ],
-    "unicorn/new-for-builtins": Array [
-      "warn",
-    ],
-    "unicorn/no-abusive-eslint-disable": Array [
-      "error",
-    ],
-    "unicorn/no-array-callback-reference": Array [
-      "error",
-    ],
-    "unicorn/no-array-for-each": Array [
-      "warn",
-    ],
-    "unicorn/no-array-method-this-argument": Array [
-      "warn",
-    ],
-    "unicorn/no-array-push-push": Array [
-      "warn",
-    ],
-    "unicorn/no-array-reduce": Array [
-      "error",
-    ],
-    "unicorn/no-await-expression-member": Array [
-      "warn",
-    ],
-    "unicorn/no-console-spaces": Array [
-      "warn",
-    ],
-    "unicorn/no-document-cookie": Array [
-      "error",
-    ],
-    "unicorn/no-empty-file": Array [
-      "error",
-    ],
-    "unicorn/no-for-loop": Array [
-      "warn",
-    ],
-    "unicorn/no-hex-escape": Array [
-      "warn",
-    ],
-    "unicorn/no-instanceof-array": Array [
-      "warn",
-    ],
-    "unicorn/no-invalid-remove-event-listener": Array [
-      "error",
-    ],
-    "unicorn/no-lonely-if": Array [
-      "warn",
-    ],
-    "unicorn/no-new-array": Array [
-      "warn",
-    ],
-    "unicorn/no-new-buffer": Array [
-      "warn",
-    ],
-    "unicorn/no-null": Array [
-      "warn",
-    ],
-    "unicorn/no-object-as-default-parameter": Array [
-      "error",
-    ],
-    "unicorn/no-process-exit": Array [
-      "error",
-    ],
-    "unicorn/no-static-only-class": Array [
-      "warn",
-    ],
-    "unicorn/no-thenable": Array [
-      "error",
-    ],
-    "unicorn/no-this-assignment": Array [
-      "error",
-    ],
-    "unicorn/no-unreadable-array-destructuring": Array [
-      "warn",
-    ],
-    "unicorn/no-unreadable-iife": Array [
-      "error",
-    ],
-    "unicorn/no-useless-fallback-in-spread": Array [
-      "warn",
-    ],
-    "unicorn/no-useless-length-check": Array [
-      "warn",
-    ],
-    "unicorn/no-useless-promise-resolve-reject": Array [
-      "warn",
-    ],
-    "unicorn/no-useless-spread": Array [
-      "warn",
-    ],
-    "unicorn/no-useless-switch-case": Array [
-      "error",
-    ],
-    "unicorn/no-useless-undefined": Array [
-      "warn",
-    ],
-    "unicorn/no-zero-fractions": Array [
-      "warn",
-    ],
-    "unicorn/numeric-separators-style": Array [
-      "warn",
-    ],
-    "unicorn/prefer-add-event-listener": Array [
-      "warn",
-    ],
-    "unicorn/prefer-array-find": Array [
-      "warn",
-    ],
-    "unicorn/prefer-array-flat": Array [
-      "warn",
-    ],
-    "unicorn/prefer-array-flat-map": Array [
-      "warn",
-    ],
-    "unicorn/prefer-array-index-of": Array [
-      "warn",
-    ],
-    "unicorn/prefer-array-some": Array [
-      "warn",
-    ],
-    "unicorn/prefer-code-point": Array [
-      "error",
-    ],
-    "unicorn/prefer-date-now": Array [
-      "warn",
-    ],
-    "unicorn/prefer-default-parameters": Array [
-      "warn",
-    ],
-    "unicorn/prefer-dom-node-append": Array [
-      "warn",
-    ],
-    "unicorn/prefer-dom-node-dataset": Array [
-      "warn",
-    ],
-    "unicorn/prefer-dom-node-remove": Array [
-      "warn",
-    ],
-    "unicorn/prefer-dom-node-text-content": Array [
-      "error",
-    ],
-    "unicorn/prefer-event-target": Array [
-      "error",
-    ],
-    "unicorn/prefer-export-from": Array [
-      "warn",
-    ],
-    "unicorn/prefer-includes": Array [
-      "warn",
-    ],
-    "unicorn/prefer-keyboard-event-key": Array [
-      "warn",
-    ],
-    "unicorn/prefer-logical-operator-over-ternary": Array [
-      "error",
-    ],
-    "unicorn/prefer-math-trunc": Array [
-      "warn",
-    ],
-    "unicorn/prefer-modern-dom-apis": Array [
-      "warn",
-    ],
-    "unicorn/prefer-modern-math-apis": Array [
-      "warn",
-    ],
-    "unicorn/prefer-module": Array [
-      "warn",
-    ],
-    "unicorn/prefer-native-coercion-functions": Array [
-      "warn",
-    ],
-    "unicorn/prefer-negative-index": Array [
-      "warn",
-    ],
-    "unicorn/prefer-node-protocol": Array [
-      "warn",
-    ],
-    "unicorn/prefer-number-properties": Array [
-      "warn",
-    ],
-    "unicorn/prefer-object-from-entries": Array [
-      "warn",
-    ],
-    "unicorn/prefer-optional-catch-binding": Array [
-      "warn",
-    ],
-    "unicorn/prefer-prototype-methods": Array [
-      "warn",
-    ],
-    "unicorn/prefer-query-selector": Array [
-      "warn",
-    ],
-    "unicorn/prefer-reflect-apply": Array [
-      "warn",
-    ],
-    "unicorn/prefer-regexp-test": Array [
-      "warn",
-    ],
-    "unicorn/prefer-set-has": Array [
-      "warn",
-    ],
-    "unicorn/prefer-spread": Array [
-      "warn",
-    ],
-    "unicorn/prefer-string-slice": Array [
-      "warn",
-    ],
-    "unicorn/prefer-string-starts-ends-with": Array [
-      "warn",
-    ],
-    "unicorn/prefer-string-trim-start-end": Array [
-      "warn",
-    ],
-    "unicorn/prefer-switch": Array [
-      "warn",
-    ],
-    "unicorn/prefer-ternary": Array [
-      "warn",
-    ],
-    "unicorn/prefer-top-level-await": Array [
-      "error",
-    ],
-    "unicorn/prefer-type-error": Array [
-      "warn",
-    ],
-    "unicorn/prevent-abbreviations": Array [
-      "warn",
-    ],
-    "unicorn/relative-url-style": Array [
-      "warn",
-    ],
-    "unicorn/require-array-join-separator": Array [
-      "warn",
-    ],
-    "unicorn/require-number-to-fixed-digits-argument": Array [
-      "warn",
-    ],
-    "unicorn/template-indent": Array [
-      "warn",
-    ],
-    "unicorn/text-encoding-identifier-case": Array [
-      "warn",
-    ],
-    "unicorn/throw-new-error": Array [
-      "warn",
     ],
     "use-isnan": Array [
       "error",
