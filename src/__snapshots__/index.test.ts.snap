@@ -1,3057 +1,3057 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`compileFiles Produces two files which match snapshots: Core Configuration 1`] = `
-Object {
-  "env": Object {
-    "es2021": true,
-    "shared-node-browser": true,
+"{
+  \\"parser\\": \\"@typescript-eslint/parser\\",
+  \\"parserOptions\\": {
+    \\"ecmaVersion\\": \\"latest\\",
+    \\"sourceType\\": \\"module\\",
+    \\"allowImportExportEverywhere\\": true,
+    \\"warnOnUnsupportedTypeScriptVersion\\": false,
+    \\"requireConfigFile\\": false
   },
-  "overrides": Array [
-    Object {
-      "files": Array [
-        "**/*.d.ts",
-      ],
-      "rules": Object {
-        "@typescript-eslint/no-unused-vars": "off",
-      },
-    },
-    Object {
-      "files": Array [
-        "**/*.ts",
-      ],
-      "rules": Object {
-        "@typescript-eslint/naming-convention": Array [
-          "error",
-          Object {
-            "filter": Object {
-              "match": false,
-              "regex": "[- ]",
-            },
-            "format": Array [
-              "strictCamelCase",
-            ],
-            "leadingUnderscore": "allowSingleOrDouble",
-            "selector": Array [
-              "variable",
-              "function",
-              "classProperty",
-              "objectLiteralProperty",
-              "parameterProperty",
-              "classMethod",
-              "objectLiteralMethod",
-              "typeMethod",
-              "accessor",
-            ],
-            "trailingUnderscore": "allow",
-          },
-          Object {
-            "format": Array [
-              "StrictPascalCase",
-            ],
-            "selector": "typeLike",
-          },
-          Object {
-            "format": Array [
-              "StrictPascalCase",
-            ],
-            "prefix": Array [
-              "is",
-              "has",
-              "can",
-              "should",
-              "will",
-              "did",
-            ],
-            "selector": "variable",
-            "types": Array [
-              "boolean",
-            ],
-          },
-          Object {
-            "filter": "^(?!I)[A-Z]",
-            "format": Array [
-              "StrictPascalCase",
-            ],
-            "selector": "interface",
-          },
-          Object {
-            "filter": "^T$|^[A-Z][A-Za-z]+$",
-            "format": Array [
-              "StrictPascalCase",
-            ],
-            "selector": "typeParameter",
-          },
-          Object {
-            "format": null,
-            "modifiers": Array [
-              "requiresQuotes",
-            ],
-            "selector": Array [
-              "classProperty",
-              "objectLiteralProperty",
-            ],
-          },
-        ],
-      },
-    },
-    Object {
-      "env": Object {
-        "jest/globals": true,
-      },
-      "files": Array [
-        "src/*.{spec,test}.{js,jsx,ts,tsx}",
-      ],
-      "plugins": Array [
-        "jest",
-        "testing-library",
-      ],
-      "rules": Object {
-        "jest/max-nested-describe": Array [
-          "error",
-        ],
-        "jest/no-commented-out-tests": Array [
-          "error",
-        ],
-        "jest/no-conditional-expect": Array [
-          "error",
-        ],
-        "jest/no-conditional-in-test": Array [
-          "error",
-        ],
-        "jest/no-deprecated-functions": Array [
-          "error",
-        ],
-        "jest/no-disabled-tests": Array [
-          "error",
-        ],
-        "jest/no-done-callback": Array [
-          "error",
-        ],
-        "jest/no-export": Array [
-          "error",
-        ],
-        "jest/no-focused-tests": Array [
-          "error",
-        ],
-        "jest/no-identical-title": Array [
-          "error",
-        ],
-        "jest/no-if": Array [
-          "error",
-        ],
-        "jest/no-interpolation-in-snapshots": Array [
-          "error",
-        ],
-        "jest/no-jest-import": Array [
-          "error",
-        ],
-        "jest/no-large-snapshots": Array [
-          "error",
-          Object {
-            "maxSize": 300,
-          },
-        ],
-        "jest/no-mocks-import": Array [
-          "error",
-        ],
-        "jest/no-test-prefixes": Array [
-          "error",
-        ],
-        "jest/prefer-called-with": Array [
-          "error",
-        ],
-        "jest/prefer-comparison-matcher": Array [
-          "error",
-        ],
-        "jest/prefer-equality-matcher": Array [
-          "error",
-        ],
-        "jest/prefer-hooks-in-order": Array [
-          "error",
-        ],
-        "jest/prefer-hooks-on-top": Array [
-          "error",
-        ],
-        "jest/prefer-snapshot-hint": Array [
-          "error",
-        ],
-        "jest/prefer-to-contain": Array [
-          "error",
-        ],
-        "jest/prefer-to-have-length": Array [
-          "error",
-        ],
-        "jest/prefer-todo": Array [
-          "error",
-        ],
-        "jest/valid-describe-callback": Array [
-          "error",
-        ],
-        "jest/valid-expect": Array [
-          "error",
-        ],
-        "jest/valid-expect-in-promise": Array [
-          "error",
-        ],
-        "jest/valid-title": Array [
-          "error",
-        ],
-      },
-      "settings": Object {
-        "version": "28.1.3",
-      },
-    },
+  \\"plugins\\": [
+    \\"@typescript-eslint\\",
+    \\"import\\",
+    \\"unicorn\\"
   ],
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": Object {
-    "allowImportExportEverywhere": true,
-    "ecmaVersion": "latest",
-    "requireConfigFile": false,
-    "sourceType": "module",
-    "warnOnUnsupportedTypeScriptVersion": false,
+  \\"env\\": {
+    \\"es2021\\": true,
+    \\"shared-node-browser\\": true
   },
-  "plugins": Array [
-    "@typescript-eslint",
-    "import",
-    "unicorn",
-  ],
-  "reportUnusedDisableDirectives": true,
-  "rules": Object {
-    "@next/next/google-font-display": Array [
-      "error",
-    ],
-    "@next/next/google-font-preconnect": Array [
-      "error",
-    ],
-    "@next/next/inline-script-id": Array [
-      "error",
-    ],
-    "@next/next/next-script-for-ga": Array [
-      "error",
-    ],
-    "@next/next/no-assign-module-variable": Array [
-      "error",
-    ],
-    "@next/next/no-before-interactive-script-outside-document": Array [
-      "error",
-    ],
-    "@next/next/no-css-tags": Array [
-      "error",
-    ],
-    "@next/next/no-document-import-in-page": Array [
-      "error",
-    ],
-    "@next/next/no-duplicate-head": Array [
-      "error",
-    ],
-    "@next/next/no-head-element": Array [
-      "error",
-    ],
-    "@next/next/no-head-import-in-document": Array [
-      "error",
-    ],
-    "@next/next/no-html-link-for-pages": Array [
-      "error",
-    ],
-    "@next/next/no-img-element": Array [
-      "error",
-    ],
-    "@next/next/no-page-custom-font": Array [
-      "error",
-    ],
-    "@next/next/no-script-component-in-head": Array [
-      "error",
-    ],
-    "@next/next/no-styled-jsx-in-document": Array [
-      "error",
-    ],
-    "@next/next/no-sync-scripts": Array [
-      "error",
-    ],
-    "@next/next/no-title-in-document-head": Array [
-      "error",
-    ],
-    "@next/next/no-typos": Array [
-      "error",
-    ],
-    "@next/next/no-unwanted-polyfillio": Array [
-      "error",
-    ],
-    "@typescript-eslint/adjacent-overload-signatures": Array [
-      "error",
-    ],
-    "@typescript-eslint/array-type": Array [
-      "warn",
-      Object {
-        "default": "array-simple",
-      },
-    ],
-    "@typescript-eslint/await-thenable": Array [
-      "error",
-    ],
-    "@typescript-eslint/ban-ts-comment": Array [
-      "error",
-      Object {
-        "minimumDescriptionLength": 4,
-        "ts-expect-error": "allow-with-description",
-      },
-    ],
-    "@typescript-eslint/ban-tslint-comment": Array [
-      "warn",
-    ],
-    "@typescript-eslint/ban-types": Array [
-      "warn",
-      Object {
-        "extendDefaults": false,
-        "types": Object {
-          "BigInt": Object {
-            "fixWith": "bigint",
-            "message": "Use \`bigint\` instead.",
-          },
-          "Boolean": Object {
-            "fixWith": "boolean",
-            "message": "Use \`boolean\` instead.",
-          },
-          "Function": "Use a specific function type instead, like \`() => void\`.",
-          "Number": Object {
-            "fixWith": "number",
-            "message": "Use \`number\` instead.",
-          },
-          "Object": Object {
-            "fixWith": "Record<string, unknown>",
-            "message": "The \`Object\` type is mostly the same as \`unknown\`. You probably want \`Record<string, unknown>\` instead. See https://github.com/typescript-eslint/typescript-eslint/pull/848",
-          },
-          "String": Object {
-            "fixWith": "string",
-            "message": "Use \`string\` instead.",
-          },
-          "Symbol": Object {
-            "fixWith": "symbol",
-            "message": "Use \`symbol\` instead.",
-          },
-          "[[[[[]]]]]": "🦄💥",
-          "[[[[]]]]": "ur drunk 🤡",
-          "[[[]]]": "Don't use \`[[[]]]\`. Use \`SomeType[][][]\` instead.",
-          "[[]]": "Don't use \`[[]]\`. It only allows an array with a single element which is an empty array. Use \`SomeType[][]\` instead.",
-          "[]": "Don't use the empty array type \`[]\`. It only allows empty arrays. Use \`SomeType[]\` instead.",
-          "null": Object {
-            "fixWith": "undefined",
-            "message": "Use \`undefined\` instead. See: https://github.com/sindresorhus/meta/issues/7",
-          },
-          "object": Object {
-            "fixWith": "Record<string, unknown>",
-            "message": "The \`object\` type is hard to use. Use \`Record<string, unknown>\` instead. See: https://github.com/typescript-eslint/typescript-eslint/pull/848",
-          },
-          "{}": Object {
-            "fixWith": "Record<string, unknown>",
-            "message": "The \`{}\` type is mostly the same as \`unknown\`. You probably want \`Record<string, unknown>\` instead.",
-          },
-        },
-      },
-    ],
-    "@typescript-eslint/class-literal-property-style": Array [
-      "warn",
-      "getters",
-    ],
-    "@typescript-eslint/consistent-indexed-object-style": Array [
-      "warn",
-    ],
-    "@typescript-eslint/consistent-type-assertions": Array [
-      "error",
-      Object {
-        "assertionStyle": "as",
-        "objectLiteralTypeAssertions": "allow-as-parameter",
-      },
-    ],
-    "@typescript-eslint/default-param-last": Array [
-      "error",
-    ],
-    "@typescript-eslint/dot-notation": Array [
-      "warn",
-    ],
-    "@typescript-eslint/no-array-constructor": Array [
-      "warn",
-    ],
-    "@typescript-eslint/no-base-to-string": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-duplicate-enum-values": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-duplicate-imports": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-dynamic-delete": Array [
-      "warn",
-    ],
-    "@typescript-eslint/no-empty-interface": Array [
-      "warn",
-      Object {
-        "allowSingleExtends": true,
-      },
-    ],
-    "@typescript-eslint/no-explicit-any": Array [
-      "warn",
-    ],
-    "@typescript-eslint/no-extra-non-null-assertion": Array [
-      "warn",
-    ],
-    "@typescript-eslint/no-extraneous-class": Array [
-      "error",
-      Object {
-        "allowConstructorOnly": false,
-        "allowEmpty": false,
-        "allowStaticOnly": false,
-        "allowWithDecorator": true,
-      },
-    ],
-    "@typescript-eslint/no-floating-promises": Array [
-      "error",
-      Object {
-        "ignoreIIFE": true,
-        "ignoreVoid": true,
-      },
-    ],
-    "@typescript-eslint/no-for-in-array": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-implicit-any-catch": Array [
-      "warn",
-    ],
-    "@typescript-eslint/no-implied-eval": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-invalid-this": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-invalid-void-type": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-loop-func": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-loss-of-precision": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-meaningless-void-operator": Array [
-      "warn",
-    ],
-    "@typescript-eslint/no-misused-new": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-misused-promises": Array [
-      "error",
-      Object {
-        "checksConditionals": true,
-        "checksVoidReturn": false,
-      },
-    ],
-    "@typescript-eslint/no-namespace": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-non-null-asserted-nullish-coalescing": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-non-null-asserted-optional-chain": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-non-null-assertion": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-parameter-properties": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-redundant-type-constituents": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-restricted-imports": Array [
-      "error",
-      Array [
-        "error",
-        "domain",
-        "freelist",
-        "smalloc",
-        "punycode",
-        "sys",
-        "querystring",
-        "colors",
-      ],
-    ],
-    "@typescript-eslint/no-shadow": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-this-alias": Array [
-      "error",
-      Object {
-        "allowDestructuring": true,
-      },
-    ],
-    "@typescript-eslint/no-throw-literal": Array [
-      "error",
-      Object {
-        "allowThrowingAny": false,
-        "allowThrowingUnknown": true,
-      },
-    ],
-    "@typescript-eslint/no-unnecessary-boolean-literal-compare": Array [
-      "warn",
-    ],
-    "@typescript-eslint/no-unnecessary-condition": Array [
-      "warn",
-    ],
-    "@typescript-eslint/no-unnecessary-qualifier": Array [
-      "warn",
-    ],
-    "@typescript-eslint/no-unnecessary-type-assertion": Array [
-      "warn",
-    ],
-    "@typescript-eslint/no-unnecessary-type-constraint": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-unsafe-argument": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-unsafe-assignment": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-unsafe-call": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-unsafe-member-access": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-unused-vars": Array [
-      "error",
-      Object {
-        "args": "after-used",
-        "argsIgnorePattern": "^_",
-        "ignoreRestSiblings": true,
-        "varsIgnorePattern": "^ignored",
-      },
-    ],
-    "@typescript-eslint/no-useless-constructor": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-useless-empty-export": Array [
-      "warn",
-    ],
-    "@typescript-eslint/padding-line-between-statements": Array [
-      "warn",
-      Object {
-        "blankLine": "always",
-        "next": "*",
-        "prev": "multiline-block-like",
-      },
-    ],
-    "@typescript-eslint/parameter-properties": Array [
-      "error",
-      Object {
-        "prefer": "parameter-property",
-      },
-    ],
-    "@typescript-eslint/prefer-as-const": Array [
-      "warn",
-    ],
-    "@typescript-eslint/prefer-enum-initializers": Array [
-      "error",
-    ],
-    "@typescript-eslint/prefer-includes": Array [
-      "warn",
-    ],
-    "@typescript-eslint/prefer-literal-enum-member": Array [
-      "error",
-    ],
-    "@typescript-eslint/prefer-namespace-keyword": Array [
-      "warn",
-    ],
-    "@typescript-eslint/prefer-nullish-coalescing": Array [
-      "error",
-    ],
-    "@typescript-eslint/prefer-optional-chain": Array [
-      "error",
-    ],
-    "@typescript-eslint/prefer-reduce-type-parameter": Array [
-      "warn",
-    ],
-    "@typescript-eslint/prefer-return-this-type": Array [
-      "warn",
-    ],
-    "@typescript-eslint/prefer-string-starts-ends-with": Array [
-      "warn",
-    ],
-    "@typescript-eslint/prefer-ts-expect-error": Array [
-      "warn",
-    ],
-    "@typescript-eslint/restrict-plus-operands": Array [
-      "error",
-      Object {
-        "allowAny": false,
-        "checkCompoundAssignments": true,
-      },
-    ],
-    "@typescript-eslint/restrict-template-expressions": Array [
-      "error",
-      Object {
-        "allowNumber": true,
-      },
-    ],
-    "@typescript-eslint/return-await": Array [
-      "warn",
-    ],
-    "@typescript-eslint/switch-exhaustiveness-check": Array [
-      "error",
-    ],
-    "@typescript-eslint/triple-slash-reference": Array [
-      "error",
-    ],
-    "@typescript-eslint/unbound-method": Array [
-      "error",
-    ],
-    "@typescript-eslint/unified-signatures": Array [
-      "error",
-      Object {
-        "ignoreDifferentlyNamedParameters": true,
-      },
-    ],
-    "accessor-pairs": Array [
-      "error",
-    ],
-    "array-callback-return": Array [
-      "error",
-    ],
-    "arrow-body-style": Array [
-      "warn",
-    ],
-    "block-scoped-var": Array [
-      "error",
-    ],
-    "complexity": Array [
-      "error",
-    ],
-    "constructor-super": Array [
-      "error",
-    ],
-    "default-case": Array [
-      "error",
-      Object {
-        "commentPattern": "^no default$",
-      },
-    ],
-    "default-case-last": Array [
-      "error",
-    ],
-    "eqeqeq": Array [
-      "warn",
-      "smart",
-    ],
-    "for-direction": Array [
-      "error",
-    ],
-    "func-name-matching": Array [
-      "error",
-    ],
-    "func-names": Array [
-      "error",
-    ],
-    "getter-return": Array [
-      "error",
-    ],
-    "guard-for-in": Array [
-      "error",
-    ],
-    "id-denylist": Array [
-      "error",
-    ],
-    "id-match": Array [
-      "error",
-      "^\\\\$?(__)?(([A-Z]|[a-z]|[0-9]+)|([A-Z_]))*\\\\$?$",
-    ],
-    "import/default": Array [
-      "error",
-    ],
-    "import/export": Array [
-      "error",
-    ],
-    "import/first": Array [
-      "warn",
-    ],
-    "import/no-absolute-path": Array [
-      "error",
-    ],
-    "import/no-amd": Array [
-      "error",
-    ],
-    "import/no-deprecated": Array [
-      "error",
-    ],
-    "import/no-duplicates": Array [
-      "warn",
-    ],
-    "import/no-extraneous-dependencies": Array [
-      "error",
-    ],
-    "import/no-import-module-exports": Array [
-      "warn",
-    ],
-    "import/no-mutable-exports": Array [
-      "error",
-    ],
-    "import/no-named-as-default": Array [
-      "error",
-    ],
-    "import/no-named-as-default-member": Array [
-      "error",
-    ],
-    "import/no-named-default": Array [
-      "error",
-    ],
-    "import/no-relative-packages": Array [
-      "warn",
-    ],
-    "import/no-self-import": Array [
-      "error",
-    ],
-    "import/no-webpack-loader-syntax": Array [
-      "error",
-    ],
-    "jest-dom/prefer-checked": Array [
-      "error",
-    ],
-    "jest-dom/prefer-empty": Array [
-      "error",
-    ],
-    "jest-dom/prefer-enabled-disabled": Array [
-      "error",
-    ],
-    "jest-dom/prefer-focus": Array [
-      "error",
-    ],
-    "jest-dom/prefer-in-document": Array [
-      "error",
-    ],
-    "jest-dom/prefer-required": Array [
-      "error",
-    ],
-    "jest-dom/prefer-to-have-attribute": Array [
-      "error",
-    ],
-    "jest-dom/prefer-to-have-class": Array [
-      "error",
-    ],
-    "jest-dom/prefer-to-have-style": Array [
-      "error",
-    ],
-    "jest-dom/prefer-to-have-text-content": Array [
-      "error",
-    ],
-    "jest-dom/prefer-to-have-value": Array [
-      "error",
-    ],
-    "max-depth": Array [
-      "error",
-    ],
-    "max-lines": Array [
-      "error",
-      Object {
-        "max": 2500,
-        "skipBlankLines": false,
-        "skipComments": false,
-      },
-    ],
-    "max-nested-callbacks": Array [
-      "error",
-      4,
-    ],
-    "max-params": Array [
-      "error",
-      Object {
-        "max": 4,
-      },
-    ],
-    "max-statements-per-line": Array [
-      "error",
-    ],
-    "new-cap": Array [
-      "error",
-    ],
-    "no-alert": Array [
-      "error",
-    ],
-    "no-async-promise-executor": Array [
-      "error",
-    ],
-    "no-await-in-loop": Array [
-      "error",
-    ],
-    "no-bitwise": Array [
-      "error",
-    ],
-    "no-buffer-constructor": Array [
-      "error",
-    ],
-    "no-caller": Array [
-      "error",
-    ],
-    "no-case-declarations": Array [
-      "error",
-    ],
-    "no-class-assign": Array [
-      "error",
-    ],
-    "no-compare-neg-zero": Array [
-      "error",
-    ],
-    "no-cond-assign": Array [
-      "error",
-    ],
-    "no-constant-binary-expression": Array [
-      "error",
-    ],
-    "no-constant-condition": Array [
-      "error",
-    ],
-    "no-constructor-return": Array [
-      "error",
-    ],
-    "no-control-regex": Array [
-      "error",
-    ],
-    "no-debugger": Array [
-      "error",
-    ],
-    "no-delete-var": Array [
-      "error",
-    ],
-    "no-div-regex": Array [
-      "warn",
-    ],
-    "no-dupe-else-if": Array [
-      "error",
-    ],
-    "no-duplicate-case": Array [
-      "error",
-    ],
-    "no-empty": Array [
-      "error",
-    ],
-    "no-empty-character-class": Array [
-      "error",
-    ],
-    "no-empty-pattern": Array [
-      "error",
-    ],
-    "no-eval": Array [
-      "error",
-    ],
-    "no-ex-assign": Array [
-      "error",
-    ],
-    "no-extend-native": Array [
-      "error",
-    ],
-    "no-extra-bind": Array [
-      "warn",
-    ],
-    "no-extra-boolean-cast": Array [
-      "warn",
-    ],
-    "no-extra-label": Array [
-      "warn",
-    ],
-    "no-fallthrough": Array [
-      "error",
-    ],
-    "no-func-assign": Array [
-      "error",
-    ],
-    "no-global-assign": Array [
-      "error",
-    ],
-    "no-implicit-coercion": Array [
-      "warn",
-    ],
-    "no-implicit-globals": Array [
-      "error",
-    ],
-    "no-import-assign": Array [
-      "error",
-    ],
-    "no-inner-declarations": Array [
-      "error",
-    ],
-    "no-invalid-regexp": Array [
-      "error",
-    ],
-    "no-irregular-whitespace": Array [
-      "error",
-    ],
-    "no-iterator": Array [
-      "error",
-    ],
-    "no-label-var": Array [
-      "error",
-    ],
-    "no-labels": Array [
-      "error",
-    ],
-    "no-lone-blocks": Array [
-      "error",
-    ],
-    "no-lonely-if": Array [
-      "warn",
-    ],
-    "no-misleading-character-class": Array [
-      "error",
-    ],
-    "no-multi-assign": Array [
-      "error",
-    ],
-    "no-multi-str": Array [
-      "error",
-    ],
-    "no-negated-condition": Array [
-      "error",
-    ],
-    "no-new": Array [
-      "error",
-    ],
-    "no-new-func": Array [
-      "error",
-    ],
-    "no-new-object": Array [
-      "error",
-    ],
-    "no-new-symbol": Array [
-      "error",
-    ],
-    "no-new-wrappers": Array [
-      "error",
-    ],
-    "no-nonoctal-decimal-escape": Array [
-      "error",
-    ],
-    "no-obj-calls": Array [
-      "error",
-    ],
-    "no-octal": Array [
-      "error",
-    ],
-    "no-octal-escape": Array [
-      "error",
-    ],
-    "no-promise-executor-return": Array [
-      "error",
-    ],
-    "no-proto": Array [
-      "error",
-    ],
-    "no-prototype-builtins": Array [
-      "error",
-    ],
-    "no-regex-spaces": Array [
-      "warn",
-    ],
-    "no-restricted-globals": Array [
-      "error",
-      "addEventListener",
-      "blur",
-      "close",
-      "closed",
-      "confirm",
-      "defaultStatus",
-      "defaultstatus",
-      "event",
-      "external",
-      "find",
-      "focus",
-      "frameElement",
-      "frames",
-      "history",
-      "innerHeight",
-      "innerWidth",
-      "length",
-      "location",
-      "locationbar",
-      "menubar",
-      "moveBy",
-      "moveTo",
-      "name",
-      "onblur",
-      "onerror",
-      "onfocus",
-      "onload",
-      "onresize",
-      "onunload",
-      "open",
-      "opener",
-      "opera",
-      "outerHeight",
-      "outerWidth",
-      "pageXOffset",
-      "pageYOffset",
-      "parent",
-      "print",
-      "removeEventListener",
-      "resizeBy",
-      "resizeTo",
-      "screen",
-      "screenLeft",
-      "screenTop",
-      "screenX",
-      "screenY",
-      "scroll",
-      "scrollbars",
-      "scrollBy",
-      "scrollTo",
-      "scrollX",
-      "scrollY",
-      "self",
-      "status",
-      "statusbar",
-      "stop",
-      "toolbar",
-      "top",
-    ],
-    "no-restricted-syntax": Array [
-      "error",
-      "WithStatement",
-    ],
-    "no-return-assign": Array [
-      "error",
-    ],
-    "no-return-await": Array [
-      "error",
-    ],
-    "no-script-url": Array [
-      "error",
-    ],
-    "no-self-assign": Array [
-      "error",
-    ],
-    "no-self-compare": Array [
-      "error",
-    ],
-    "no-sequences": Array [
-      "error",
-    ],
-    "no-setter-return": Array [
-      "error",
-    ],
-    "no-shadow-restricted-names": Array [
-      "error",
-    ],
-    "no-sparse-arrays": Array [
-      "error",
-    ],
-    "no-template-curly-in-string": Array [
-      "error",
-    ],
-    "no-this-before-super": Array [
-      "error",
-    ],
-    "no-undef": Array [
-      "error",
-      Object {
-        "typeof": true,
-      },
-    ],
-    "no-undef-init": Array [
-      "warn",
-    ],
-    "no-unmodified-loop-condition": Array [
-      "error",
-    ],
-    "no-unneeded-ternary": Array [
-      "warn",
-    ],
-    "no-unreachable": Array [
-      "error",
-    ],
-    "no-unreachable-loop": Array [
-      "error",
-    ],
-    "no-unsafe-finally": Array [
-      "error",
-    ],
-    "no-unsafe-negation": Array [
-      "error",
-    ],
-    "no-unsafe-optional-chaining": Array [
-      "error",
-      Object {
-        "disallowArithmeticOperators": true,
-      },
-    ],
-    "no-unused-labels": Array [
-      "warn",
-    ],
-    "no-unused-private-class-members": Array [
-      "error",
-    ],
-    "no-useless-backreference": Array [
-      "error",
-    ],
-    "no-useless-call": Array [
-      "error",
-    ],
-    "no-useless-catch": Array [
-      "error",
-    ],
-    "no-useless-computed-key": Array [
-      "warn",
-      Object {
-        "enforceForClassMembers": true,
-      },
-    ],
-    "no-useless-concat": Array [
-      "error",
-    ],
-    "no-useless-rename": Array [
-      "warn",
-    ],
-    "no-useless-return": Array [
-      "warn",
-    ],
-    "no-var": Array [
-      "warn",
-    ],
-    "no-void": Array [
-      "error",
-      Object {
-        "allowAsStatement": true,
-      },
-    ],
-    "no-with": Array [
-      "error",
-    ],
-    "object-shorthand": Array [
-      "warn",
-      "properties",
-    ],
-    "one-var": Array [
-      "warn",
-      "never",
-    ],
-    "prefer-arrow-callback": Array [
-      "warn",
-      Object {
-        "allowNamedFunctions": true,
-      },
-    ],
-    "prefer-const": Array [
-      "warn",
-      Object {
-        "destructuring": "all",
-      },
-    ],
-    "prefer-exponentiation-operator": Array [
-      "warn",
-    ],
-    "prefer-numeric-literals": Array [
-      "warn",
-    ],
-    "prefer-object-has-own": Array [
-      "warn",
-    ],
-    "prefer-object-spread": Array [
-      "warn",
-    ],
-    "prefer-promise-reject-errors": Array [
-      "error",
-      Object {
-        "allowEmptyReject": true,
-      },
-    ],
-    "prefer-regex-literals": Array [
-      "error",
-    ],
-    "prefer-rest-params": Array [
-      "error",
-    ],
-    "prefer-spread": Array [
-      "error",
-    ],
-    "prefer-template": Array [
-      "warn",
-    ],
-    "radix": Array [
-      "error",
-    ],
-    "require-yield": Array [
-      "error",
-    ],
-    "spaced-comment": Array [
-      "warn",
-      "always",
-      Object {
-        "block": Object {
-          "balanced": true,
-          "exceptions": Array [
-            "-",
-            "+",
-            "*",
-          ],
-          "markers": Array [
-            "!",
-            "*",
-          ],
-        },
-        "line": Object {
-          "exceptions": Array [
-            "-",
-            "+",
-            "*",
-          ],
-          "markers": Array [
-            "!",
-            "/",
-            "=>",
-          ],
-        },
-      },
-    ],
-    "strict": Array [
-      "warn",
-    ],
-    "symbol-description": Array [
-      "error",
-    ],
-    "use-isnan": Array [
-      "error",
-    ],
-    "valid-typeof": Array [
-      "error",
-    ],
-    "vars-on-top": Array [
-      "error",
-    ],
-    "yoda": Array [
-      "warn",
-    ],
-  },
-  "settings": Object {
-    "import/extensions": Array [
-      ".js",
-      ".ts",
-    ],
-    "import/parsers": Object {
-      "@typescript-eslint/parser": Array [
-        ".ts",
-        ".tsx",
-        ".d.ts",
-      ],
+  \\"reportUnusedDisableDirectives\\": true,
+  \\"settings\\": {
+    \\"import/extensions\\": [
+      \\".js\\",
+      \\".ts\\"
+    ],
+    \\"import/parsers\\": {
+      \\"@typescript-eslint/parser\\": [
+        \\".ts\\",
+        \\".tsx\\",
+        \\".d.ts\\"
+      ]
     },
-    "import/resolver": Object {
-      "/Users/sebastian/Workspace/sebastian-software/effective-eslint-config-factory/node_modules/eslint-import-resolver-node/index.js": Object {
-        "extensions": Array [
-          ".js",
-          ".jsx",
-          ".ts",
-          ".tsx",
+    \\"import/resolver\\": {
+      \\"~/node_modules/eslint-import-resolver-node/index.js\\": {
+        \\"extensions\\": [
+          \\".js\\",
+          \\".jsx\\",
+          \\".ts\\",
+          \\".tsx\\"
+        ]
+      },
+      \\"~/node_modules/eslint-import-resolver-typescript/lib/index.cjs\\": {
+        \\"alwaysTryTypes\\": true
+      }
+    }
+  },
+  \\"overrides\\": [
+    {
+      \\"files\\": [
+        \\"**/*.d.ts\\"
+      ],
+      \\"rules\\": {
+        \\"@typescript-eslint/no-unused-vars\\": \\"off\\"
+      }
+    },
+    {
+      \\"files\\": [
+        \\"**/*.ts\\"
+      ],
+      \\"rules\\": {
+        \\"@typescript-eslint/naming-convention\\": [
+          \\"error\\",
+          {
+            \\"selector\\": [
+              \\"variable\\",
+              \\"function\\",
+              \\"classProperty\\",
+              \\"objectLiteralProperty\\",
+              \\"parameterProperty\\",
+              \\"classMethod\\",
+              \\"objectLiteralMethod\\",
+              \\"typeMethod\\",
+              \\"accessor\\"
+            ],
+            \\"format\\": [
+              \\"strictCamelCase\\"
+            ],
+            \\"leadingUnderscore\\": \\"allowSingleOrDouble\\",
+            \\"trailingUnderscore\\": \\"allow\\",
+            \\"filter\\": {
+              \\"regex\\": \\"[- ]\\",
+              \\"match\\": false
+            }
+          },
+          {
+            \\"selector\\": \\"typeLike\\",
+            \\"format\\": [
+              \\"StrictPascalCase\\"
+            ]
+          },
+          {
+            \\"selector\\": \\"variable\\",
+            \\"types\\": [
+              \\"boolean\\"
+            ],
+            \\"format\\": [
+              \\"StrictPascalCase\\"
+            ],
+            \\"prefix\\": [
+              \\"is\\",
+              \\"has\\",
+              \\"can\\",
+              \\"should\\",
+              \\"will\\",
+              \\"did\\"
+            ]
+          },
+          {
+            \\"selector\\": \\"interface\\",
+            \\"filter\\": \\"^(?!I)[A-Z]\\",
+            \\"format\\": [
+              \\"StrictPascalCase\\"
+            ]
+          },
+          {
+            \\"selector\\": \\"typeParameter\\",
+            \\"filter\\": \\"^T$|^[A-Z][A-Za-z]+$\\",
+            \\"format\\": [
+              \\"StrictPascalCase\\"
+            ]
+          },
+          {
+            \\"selector\\": [
+              \\"classProperty\\",
+              \\"objectLiteralProperty\\"
+            ],
+            \\"format\\": null,
+            \\"modifiers\\": [
+              \\"requiresQuotes\\"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      \\"files\\": [
+        \\"src/*.{spec,test}.{js,jsx,ts,tsx}\\"
+      ],
+      \\"plugins\\": [
+        \\"jest\\",
+        \\"testing-library\\"
+      ],
+      \\"env\\": {
+        \\"jest/globals\\": true
+      },
+      \\"settings\\": {
+        \\"version\\": \\"28.1.3\\"
+      },
+      \\"rules\\": {
+        \\"jest/max-nested-describe\\": [
+          \\"error\\"
         ],
-      },
-      "/Users/sebastian/Workspace/sebastian-software/effective-eslint-config-factory/node_modules/eslint-import-resolver-typescript/lib/index.cjs": Object {
-        "alwaysTryTypes": true,
-      },
-    },
-  },
-}
+        \\"jest/no-commented-out-tests\\": [
+          \\"error\\"
+        ],
+        \\"jest/no-conditional-expect\\": [
+          \\"error\\"
+        ],
+        \\"jest/no-conditional-in-test\\": [
+          \\"error\\"
+        ],
+        \\"jest/no-deprecated-functions\\": [
+          \\"error\\"
+        ],
+        \\"jest/no-disabled-tests\\": [
+          \\"error\\"
+        ],
+        \\"jest/no-done-callback\\": [
+          \\"error\\"
+        ],
+        \\"jest/no-export\\": [
+          \\"error\\"
+        ],
+        \\"jest/no-focused-tests\\": [
+          \\"error\\"
+        ],
+        \\"jest/no-identical-title\\": [
+          \\"error\\"
+        ],
+        \\"jest/no-if\\": [
+          \\"error\\"
+        ],
+        \\"jest/no-interpolation-in-snapshots\\": [
+          \\"error\\"
+        ],
+        \\"jest/no-jest-import\\": [
+          \\"error\\"
+        ],
+        \\"jest/no-large-snapshots\\": [
+          \\"error\\",
+          {
+            \\"maxSize\\": 300
+          }
+        ],
+        \\"jest/no-mocks-import\\": [
+          \\"error\\"
+        ],
+        \\"jest/no-test-prefixes\\": [
+          \\"error\\"
+        ],
+        \\"jest/prefer-called-with\\": [
+          \\"error\\"
+        ],
+        \\"jest/prefer-comparison-matcher\\": [
+          \\"error\\"
+        ],
+        \\"jest/prefer-equality-matcher\\": [
+          \\"error\\"
+        ],
+        \\"jest/prefer-hooks-in-order\\": [
+          \\"error\\"
+        ],
+        \\"jest/prefer-hooks-on-top\\": [
+          \\"error\\"
+        ],
+        \\"jest/prefer-snapshot-hint\\": [
+          \\"error\\"
+        ],
+        \\"jest/prefer-to-contain\\": [
+          \\"error\\"
+        ],
+        \\"jest/prefer-to-have-length\\": [
+          \\"error\\"
+        ],
+        \\"jest/prefer-todo\\": [
+          \\"error\\"
+        ],
+        \\"jest/valid-describe-callback\\": [
+          \\"error\\"
+        ],
+        \\"jest/valid-expect\\": [
+          \\"error\\"
+        ],
+        \\"jest/valid-expect-in-promise\\": [
+          \\"error\\"
+        ],
+        \\"jest/valid-title\\": [
+          \\"error\\"
+        ]
+      }
+    }
+  ],
+  \\"rules\\": {
+    \\"accessor-pairs\\": [
+      \\"error\\"
+    ],
+    \\"array-callback-return\\": [
+      \\"error\\"
+    ],
+    \\"arrow-body-style\\": [
+      \\"warn\\"
+    ],
+    \\"block-scoped-var\\": [
+      \\"error\\"
+    ],
+    \\"complexity\\": [
+      \\"error\\"
+    ],
+    \\"constructor-super\\": [
+      \\"error\\"
+    ],
+    \\"default-case\\": [
+      \\"error\\",
+      {
+        \\"commentPattern\\": \\"^no default$\\"
+      }
+    ],
+    \\"default-case-last\\": [
+      \\"error\\"
+    ],
+    \\"eqeqeq\\": [
+      \\"warn\\",
+      \\"smart\\"
+    ],
+    \\"for-direction\\": [
+      \\"error\\"
+    ],
+    \\"func-name-matching\\": [
+      \\"error\\"
+    ],
+    \\"func-names\\": [
+      \\"error\\"
+    ],
+    \\"getter-return\\": [
+      \\"error\\"
+    ],
+    \\"guard-for-in\\": [
+      \\"error\\"
+    ],
+    \\"id-denylist\\": [
+      \\"error\\"
+    ],
+    \\"id-match\\": [
+      \\"error\\",
+      \\"^\\\\\\\\$?(__)?(([A-Z]|[a-z]|[0-9]+)|([A-Z_]))*\\\\\\\\$?$\\"
+    ],
+    \\"max-depth\\": [
+      \\"error\\"
+    ],
+    \\"max-lines\\": [
+      \\"error\\",
+      {
+        \\"max\\": 2500,
+        \\"skipBlankLines\\": false,
+        \\"skipComments\\": false
+      }
+    ],
+    \\"max-nested-callbacks\\": [
+      \\"error\\",
+      4
+    ],
+    \\"max-params\\": [
+      \\"error\\",
+      {
+        \\"max\\": 4
+      }
+    ],
+    \\"max-statements-per-line\\": [
+      \\"error\\"
+    ],
+    \\"new-cap\\": [
+      \\"error\\"
+    ],
+    \\"no-alert\\": [
+      \\"error\\"
+    ],
+    \\"no-async-promise-executor\\": [
+      \\"error\\"
+    ],
+    \\"no-await-in-loop\\": [
+      \\"error\\"
+    ],
+    \\"no-bitwise\\": [
+      \\"error\\"
+    ],
+    \\"no-buffer-constructor\\": [
+      \\"error\\"
+    ],
+    \\"no-caller\\": [
+      \\"error\\"
+    ],
+    \\"no-case-declarations\\": [
+      \\"error\\"
+    ],
+    \\"no-class-assign\\": [
+      \\"error\\"
+    ],
+    \\"no-compare-neg-zero\\": [
+      \\"error\\"
+    ],
+    \\"no-cond-assign\\": [
+      \\"error\\"
+    ],
+    \\"no-constant-binary-expression\\": [
+      \\"error\\"
+    ],
+    \\"no-constant-condition\\": [
+      \\"error\\"
+    ],
+    \\"no-constructor-return\\": [
+      \\"error\\"
+    ],
+    \\"no-control-regex\\": [
+      \\"error\\"
+    ],
+    \\"no-debugger\\": [
+      \\"error\\"
+    ],
+    \\"no-delete-var\\": [
+      \\"error\\"
+    ],
+    \\"no-div-regex\\": [
+      \\"warn\\"
+    ],
+    \\"no-dupe-else-if\\": [
+      \\"error\\"
+    ],
+    \\"no-duplicate-case\\": [
+      \\"error\\"
+    ],
+    \\"no-empty\\": [
+      \\"error\\"
+    ],
+    \\"no-empty-character-class\\": [
+      \\"error\\"
+    ],
+    \\"no-empty-pattern\\": [
+      \\"error\\"
+    ],
+    \\"no-eval\\": [
+      \\"error\\"
+    ],
+    \\"no-ex-assign\\": [
+      \\"error\\"
+    ],
+    \\"no-extend-native\\": [
+      \\"error\\"
+    ],
+    \\"no-extra-bind\\": [
+      \\"warn\\"
+    ],
+    \\"no-extra-boolean-cast\\": [
+      \\"warn\\"
+    ],
+    \\"no-extra-label\\": [
+      \\"warn\\"
+    ],
+    \\"no-fallthrough\\": [
+      \\"error\\"
+    ],
+    \\"no-func-assign\\": [
+      \\"error\\"
+    ],
+    \\"no-global-assign\\": [
+      \\"error\\"
+    ],
+    \\"no-implicit-coercion\\": [
+      \\"warn\\"
+    ],
+    \\"no-implicit-globals\\": [
+      \\"error\\"
+    ],
+    \\"no-import-assign\\": [
+      \\"error\\"
+    ],
+    \\"no-inner-declarations\\": [
+      \\"error\\"
+    ],
+    \\"no-invalid-regexp\\": [
+      \\"error\\"
+    ],
+    \\"no-irregular-whitespace\\": [
+      \\"error\\"
+    ],
+    \\"no-iterator\\": [
+      \\"error\\"
+    ],
+    \\"no-label-var\\": [
+      \\"error\\"
+    ],
+    \\"no-labels\\": [
+      \\"error\\"
+    ],
+    \\"no-lone-blocks\\": [
+      \\"error\\"
+    ],
+    \\"no-lonely-if\\": [
+      \\"warn\\"
+    ],
+    \\"no-misleading-character-class\\": [
+      \\"error\\"
+    ],
+    \\"no-multi-assign\\": [
+      \\"error\\"
+    ],
+    \\"no-multi-str\\": [
+      \\"error\\"
+    ],
+    \\"no-negated-condition\\": [
+      \\"error\\"
+    ],
+    \\"no-new\\": [
+      \\"error\\"
+    ],
+    \\"no-new-func\\": [
+      \\"error\\"
+    ],
+    \\"no-new-object\\": [
+      \\"error\\"
+    ],
+    \\"no-new-symbol\\": [
+      \\"error\\"
+    ],
+    \\"no-new-wrappers\\": [
+      \\"error\\"
+    ],
+    \\"no-nonoctal-decimal-escape\\": [
+      \\"error\\"
+    ],
+    \\"no-obj-calls\\": [
+      \\"error\\"
+    ],
+    \\"no-octal\\": [
+      \\"error\\"
+    ],
+    \\"no-octal-escape\\": [
+      \\"error\\"
+    ],
+    \\"no-promise-executor-return\\": [
+      \\"error\\"
+    ],
+    \\"no-proto\\": [
+      \\"error\\"
+    ],
+    \\"no-prototype-builtins\\": [
+      \\"error\\"
+    ],
+    \\"no-regex-spaces\\": [
+      \\"warn\\"
+    ],
+    \\"no-restricted-globals\\": [
+      \\"error\\",
+      \\"addEventListener\\",
+      \\"blur\\",
+      \\"close\\",
+      \\"closed\\",
+      \\"confirm\\",
+      \\"defaultStatus\\",
+      \\"defaultstatus\\",
+      \\"event\\",
+      \\"external\\",
+      \\"find\\",
+      \\"focus\\",
+      \\"frameElement\\",
+      \\"frames\\",
+      \\"history\\",
+      \\"innerHeight\\",
+      \\"innerWidth\\",
+      \\"length\\",
+      \\"location\\",
+      \\"locationbar\\",
+      \\"menubar\\",
+      \\"moveBy\\",
+      \\"moveTo\\",
+      \\"name\\",
+      \\"onblur\\",
+      \\"onerror\\",
+      \\"onfocus\\",
+      \\"onload\\",
+      \\"onresize\\",
+      \\"onunload\\",
+      \\"open\\",
+      \\"opener\\",
+      \\"opera\\",
+      \\"outerHeight\\",
+      \\"outerWidth\\",
+      \\"pageXOffset\\",
+      \\"pageYOffset\\",
+      \\"parent\\",
+      \\"print\\",
+      \\"removeEventListener\\",
+      \\"resizeBy\\",
+      \\"resizeTo\\",
+      \\"screen\\",
+      \\"screenLeft\\",
+      \\"screenTop\\",
+      \\"screenX\\",
+      \\"screenY\\",
+      \\"scroll\\",
+      \\"scrollbars\\",
+      \\"scrollBy\\",
+      \\"scrollTo\\",
+      \\"scrollX\\",
+      \\"scrollY\\",
+      \\"self\\",
+      \\"status\\",
+      \\"statusbar\\",
+      \\"stop\\",
+      \\"toolbar\\",
+      \\"top\\"
+    ],
+    \\"no-restricted-syntax\\": [
+      \\"error\\",
+      \\"WithStatement\\"
+    ],
+    \\"no-return-assign\\": [
+      \\"error\\"
+    ],
+    \\"no-return-await\\": [
+      \\"error\\"
+    ],
+    \\"no-script-url\\": [
+      \\"error\\"
+    ],
+    \\"no-self-assign\\": [
+      \\"error\\"
+    ],
+    \\"no-self-compare\\": [
+      \\"error\\"
+    ],
+    \\"no-sequences\\": [
+      \\"error\\"
+    ],
+    \\"no-setter-return\\": [
+      \\"error\\"
+    ],
+    \\"no-shadow-restricted-names\\": [
+      \\"error\\"
+    ],
+    \\"no-sparse-arrays\\": [
+      \\"error\\"
+    ],
+    \\"no-template-curly-in-string\\": [
+      \\"error\\"
+    ],
+    \\"no-this-before-super\\": [
+      \\"error\\"
+    ],
+    \\"no-undef\\": [
+      \\"error\\",
+      {
+        \\"typeof\\": true
+      }
+    ],
+    \\"no-undef-init\\": [
+      \\"warn\\"
+    ],
+    \\"no-unmodified-loop-condition\\": [
+      \\"error\\"
+    ],
+    \\"no-unneeded-ternary\\": [
+      \\"warn\\"
+    ],
+    \\"no-unreachable\\": [
+      \\"error\\"
+    ],
+    \\"no-unreachable-loop\\": [
+      \\"error\\"
+    ],
+    \\"no-unsafe-finally\\": [
+      \\"error\\"
+    ],
+    \\"no-unsafe-negation\\": [
+      \\"error\\"
+    ],
+    \\"no-unsafe-optional-chaining\\": [
+      \\"error\\",
+      {
+        \\"disallowArithmeticOperators\\": true
+      }
+    ],
+    \\"no-unused-labels\\": [
+      \\"warn\\"
+    ],
+    \\"no-unused-private-class-members\\": [
+      \\"error\\"
+    ],
+    \\"no-useless-backreference\\": [
+      \\"error\\"
+    ],
+    \\"no-useless-call\\": [
+      \\"error\\"
+    ],
+    \\"no-useless-catch\\": [
+      \\"error\\"
+    ],
+    \\"no-useless-computed-key\\": [
+      \\"warn\\",
+      {
+        \\"enforceForClassMembers\\": true
+      }
+    ],
+    \\"no-useless-concat\\": [
+      \\"error\\"
+    ],
+    \\"no-useless-rename\\": [
+      \\"warn\\"
+    ],
+    \\"no-useless-return\\": [
+      \\"warn\\"
+    ],
+    \\"no-var\\": [
+      \\"warn\\"
+    ],
+    \\"no-void\\": [
+      \\"error\\",
+      {
+        \\"allowAsStatement\\": true
+      }
+    ],
+    \\"no-with\\": [
+      \\"error\\"
+    ],
+    \\"object-shorthand\\": [
+      \\"warn\\",
+      \\"properties\\"
+    ],
+    \\"one-var\\": [
+      \\"warn\\",
+      \\"never\\"
+    ],
+    \\"prefer-arrow-callback\\": [
+      \\"warn\\",
+      {
+        \\"allowNamedFunctions\\": true
+      }
+    ],
+    \\"prefer-const\\": [
+      \\"warn\\",
+      {
+        \\"destructuring\\": \\"all\\"
+      }
+    ],
+    \\"prefer-exponentiation-operator\\": [
+      \\"warn\\"
+    ],
+    \\"prefer-numeric-literals\\": [
+      \\"warn\\"
+    ],
+    \\"prefer-object-has-own\\": [
+      \\"warn\\"
+    ],
+    \\"prefer-object-spread\\": [
+      \\"warn\\"
+    ],
+    \\"prefer-promise-reject-errors\\": [
+      \\"error\\",
+      {
+        \\"allowEmptyReject\\": true
+      }
+    ],
+    \\"prefer-regex-literals\\": [
+      \\"error\\"
+    ],
+    \\"prefer-rest-params\\": [
+      \\"error\\"
+    ],
+    \\"prefer-spread\\": [
+      \\"error\\"
+    ],
+    \\"prefer-template\\": [
+      \\"warn\\"
+    ],
+    \\"radix\\": [
+      \\"error\\"
+    ],
+    \\"require-yield\\": [
+      \\"error\\"
+    ],
+    \\"spaced-comment\\": [
+      \\"warn\\",
+      \\"always\\",
+      {
+        \\"line\\": {
+          \\"exceptions\\": [
+            \\"-\\",
+            \\"+\\",
+            \\"*\\"
+          ],
+          \\"markers\\": [
+            \\"!\\",
+            \\"/\\",
+            \\"=>\\"
+          ]
+        },
+        \\"block\\": {
+          \\"exceptions\\": [
+            \\"-\\",
+            \\"+\\",
+            \\"*\\"
+          ],
+          \\"markers\\": [
+            \\"!\\",
+            \\"*\\"
+          ],
+          \\"balanced\\": true
+        }
+      }
+    ],
+    \\"strict\\": [
+      \\"warn\\"
+    ],
+    \\"symbol-description\\": [
+      \\"error\\"
+    ],
+    \\"use-isnan\\": [
+      \\"error\\"
+    ],
+    \\"valid-typeof\\": [
+      \\"error\\"
+    ],
+    \\"vars-on-top\\": [
+      \\"error\\"
+    ],
+    \\"yoda\\": [
+      \\"warn\\"
+    ],
+    \\"@next/next/google-font-display\\": [
+      \\"error\\"
+    ],
+    \\"@next/next/google-font-preconnect\\": [
+      \\"error\\"
+    ],
+    \\"@next/next/inline-script-id\\": [
+      \\"error\\"
+    ],
+    \\"@next/next/next-script-for-ga\\": [
+      \\"error\\"
+    ],
+    \\"@next/next/no-assign-module-variable\\": [
+      \\"error\\"
+    ],
+    \\"@next/next/no-before-interactive-script-outside-document\\": [
+      \\"error\\"
+    ],
+    \\"@next/next/no-css-tags\\": [
+      \\"error\\"
+    ],
+    \\"@next/next/no-document-import-in-page\\": [
+      \\"error\\"
+    ],
+    \\"@next/next/no-duplicate-head\\": [
+      \\"error\\"
+    ],
+    \\"@next/next/no-head-element\\": [
+      \\"error\\"
+    ],
+    \\"@next/next/no-head-import-in-document\\": [
+      \\"error\\"
+    ],
+    \\"@next/next/no-html-link-for-pages\\": [
+      \\"error\\"
+    ],
+    \\"@next/next/no-img-element\\": [
+      \\"error\\"
+    ],
+    \\"@next/next/no-page-custom-font\\": [
+      \\"error\\"
+    ],
+    \\"@next/next/no-script-component-in-head\\": [
+      \\"error\\"
+    ],
+    \\"@next/next/no-styled-jsx-in-document\\": [
+      \\"error\\"
+    ],
+    \\"@next/next/no-sync-scripts\\": [
+      \\"error\\"
+    ],
+    \\"@next/next/no-title-in-document-head\\": [
+      \\"error\\"
+    ],
+    \\"@next/next/no-typos\\": [
+      \\"error\\"
+    ],
+    \\"@next/next/no-unwanted-polyfillio\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/adjacent-overload-signatures\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/array-type\\": [
+      \\"warn\\",
+      {
+        \\"default\\": \\"array-simple\\"
+      }
+    ],
+    \\"@typescript-eslint/await-thenable\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/ban-ts-comment\\": [
+      \\"error\\",
+      {
+        \\"ts-expect-error\\": \\"allow-with-description\\",
+        \\"minimumDescriptionLength\\": 4
+      }
+    ],
+    \\"@typescript-eslint/ban-tslint-comment\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/ban-types\\": [
+      \\"warn\\",
+      {
+        \\"extendDefaults\\": false,
+        \\"types\\": {
+          \\"String\\": {
+            \\"message\\": \\"Use \`string\` instead.\\",
+            \\"fixWith\\": \\"string\\"
+          },
+          \\"Number\\": {
+            \\"message\\": \\"Use \`number\` instead.\\",
+            \\"fixWith\\": \\"number\\"
+          },
+          \\"Boolean\\": {
+            \\"message\\": \\"Use \`boolean\` instead.\\",
+            \\"fixWith\\": \\"boolean\\"
+          },
+          \\"Symbol\\": {
+            \\"message\\": \\"Use \`symbol\` instead.\\",
+            \\"fixWith\\": \\"symbol\\"
+          },
+          \\"BigInt\\": {
+            \\"message\\": \\"Use \`bigint\` instead.\\",
+            \\"fixWith\\": \\"bigint\\"
+          },
+          \\"Object\\": {
+            \\"message\\": \\"The \`Object\` type is mostly the same as \`unknown\`. You probably want \`Record<string, unknown>\` instead. See https://github.com/typescript-eslint/typescript-eslint/pull/848\\",
+            \\"fixWith\\": \\"Record<string, unknown>\\"
+          },
+          \\"{}\\": {
+            \\"message\\": \\"The \`{}\` type is mostly the same as \`unknown\`. You probably want \`Record<string, unknown>\` instead.\\",
+            \\"fixWith\\": \\"Record<string, unknown>\\"
+          },
+          \\"object\\": {
+            \\"message\\": \\"The \`object\` type is hard to use. Use \`Record<string, unknown>\` instead. See: https://github.com/typescript-eslint/typescript-eslint/pull/848\\",
+            \\"fixWith\\": \\"Record<string, unknown>\\"
+          },
+          \\"Function\\": \\"Use a specific function type instead, like \`() => void\`.\\",
+          \\"null\\": {
+            \\"message\\": \\"Use \`undefined\` instead. See: https://github.com/sindresorhus/meta/issues/7\\",
+            \\"fixWith\\": \\"undefined\\"
+          },
+          \\"[]\\": \\"Don't use the empty array type \`[]\`. It only allows empty arrays. Use \`SomeType[]\` instead.\\",
+          \\"[[]]\\": \\"Don't use \`[[]]\`. It only allows an array with a single element which is an empty array. Use \`SomeType[][]\` instead.\\",
+          \\"[[[]]]\\": \\"Don't use \`[[[]]]\`. Use \`SomeType[][][]\` instead.\\",
+          \\"[[[[]]]]\\": \\"ur drunk 🤡\\",
+          \\"[[[[[]]]]]\\": \\"🦄💥\\"
+        }
+      }
+    ],
+    \\"@typescript-eslint/class-literal-property-style\\": [
+      \\"warn\\",
+      \\"getters\\"
+    ],
+    \\"@typescript-eslint/consistent-indexed-object-style\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/consistent-type-assertions\\": [
+      \\"error\\",
+      {
+        \\"assertionStyle\\": \\"as\\",
+        \\"objectLiteralTypeAssertions\\": \\"allow-as-parameter\\"
+      }
+    ],
+    \\"@typescript-eslint/default-param-last\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/dot-notation\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/no-array-constructor\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/no-base-to-string\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-duplicate-enum-values\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-duplicate-imports\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-dynamic-delete\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/no-empty-interface\\": [
+      \\"warn\\",
+      {
+        \\"allowSingleExtends\\": true
+      }
+    ],
+    \\"@typescript-eslint/no-explicit-any\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/no-extra-non-null-assertion\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/no-extraneous-class\\": [
+      \\"error\\",
+      {
+        \\"allowConstructorOnly\\": false,
+        \\"allowEmpty\\": false,
+        \\"allowStaticOnly\\": false,
+        \\"allowWithDecorator\\": true
+      }
+    ],
+    \\"@typescript-eslint/no-floating-promises\\": [
+      \\"error\\",
+      {
+        \\"ignoreVoid\\": true,
+        \\"ignoreIIFE\\": true
+      }
+    ],
+    \\"@typescript-eslint/no-for-in-array\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-implicit-any-catch\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/no-implied-eval\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-invalid-this\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-invalid-void-type\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-loop-func\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-loss-of-precision\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-meaningless-void-operator\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/no-misused-new\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-misused-promises\\": [
+      \\"error\\",
+      {
+        \\"checksConditionals\\": true,
+        \\"checksVoidReturn\\": false
+      }
+    ],
+    \\"@typescript-eslint/no-namespace\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-non-null-asserted-nullish-coalescing\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-non-null-asserted-optional-chain\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-non-null-assertion\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-parameter-properties\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-redundant-type-constituents\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-restricted-imports\\": [
+      \\"error\\",
+      [
+        \\"error\\",
+        \\"domain\\",
+        \\"freelist\\",
+        \\"smalloc\\",
+        \\"punycode\\",
+        \\"sys\\",
+        \\"querystring\\",
+        \\"colors\\"
+      ]
+    ],
+    \\"@typescript-eslint/no-shadow\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-this-alias\\": [
+      \\"error\\",
+      {
+        \\"allowDestructuring\\": true
+      }
+    ],
+    \\"@typescript-eslint/no-throw-literal\\": [
+      \\"error\\",
+      {
+        \\"allowThrowingUnknown\\": true,
+        \\"allowThrowingAny\\": false
+      }
+    ],
+    \\"@typescript-eslint/no-unnecessary-boolean-literal-compare\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/no-unnecessary-condition\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/no-unnecessary-qualifier\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/no-unnecessary-type-assertion\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/no-unnecessary-type-constraint\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-unsafe-argument\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-unsafe-assignment\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-unsafe-call\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-unsafe-member-access\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-unused-vars\\": [
+      \\"error\\",
+      {
+        \\"args\\": \\"after-used\\",
+        \\"argsIgnorePattern\\": \\"^_\\",
+        \\"ignoreRestSiblings\\": true,
+        \\"varsIgnorePattern\\": \\"^ignored\\"
+      }
+    ],
+    \\"@typescript-eslint/no-useless-constructor\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-useless-empty-export\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/padding-line-between-statements\\": [
+      \\"warn\\",
+      {
+        \\"blankLine\\": \\"always\\",
+        \\"prev\\": \\"multiline-block-like\\",
+        \\"next\\": \\"*\\"
+      }
+    ],
+    \\"@typescript-eslint/parameter-properties\\": [
+      \\"error\\",
+      {
+        \\"prefer\\": \\"parameter-property\\"
+      }
+    ],
+    \\"@typescript-eslint/prefer-as-const\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/prefer-enum-initializers\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/prefer-includes\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/prefer-literal-enum-member\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/prefer-namespace-keyword\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/prefer-nullish-coalescing\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/prefer-optional-chain\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/prefer-reduce-type-parameter\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/prefer-return-this-type\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/prefer-string-starts-ends-with\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/prefer-ts-expect-error\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/restrict-plus-operands\\": [
+      \\"error\\",
+      {
+        \\"checkCompoundAssignments\\": true,
+        \\"allowAny\\": false
+      }
+    ],
+    \\"@typescript-eslint/restrict-template-expressions\\": [
+      \\"error\\",
+      {
+        \\"allowNumber\\": true
+      }
+    ],
+    \\"@typescript-eslint/return-await\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/switch-exhaustiveness-check\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/triple-slash-reference\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/unbound-method\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/unified-signatures\\": [
+      \\"error\\",
+      {
+        \\"ignoreDifferentlyNamedParameters\\": true
+      }
+    ],
+    \\"import/default\\": [
+      \\"error\\"
+    ],
+    \\"import/export\\": [
+      \\"error\\"
+    ],
+    \\"import/first\\": [
+      \\"warn\\"
+    ],
+    \\"import/no-absolute-path\\": [
+      \\"error\\"
+    ],
+    \\"import/no-amd\\": [
+      \\"error\\"
+    ],
+    \\"import/no-deprecated\\": [
+      \\"error\\"
+    ],
+    \\"import/no-duplicates\\": [
+      \\"warn\\"
+    ],
+    \\"import/no-extraneous-dependencies\\": [
+      \\"error\\"
+    ],
+    \\"import/no-import-module-exports\\": [
+      \\"warn\\"
+    ],
+    \\"import/no-mutable-exports\\": [
+      \\"error\\"
+    ],
+    \\"import/no-named-as-default\\": [
+      \\"error\\"
+    ],
+    \\"import/no-named-as-default-member\\": [
+      \\"error\\"
+    ],
+    \\"import/no-named-default\\": [
+      \\"error\\"
+    ],
+    \\"import/no-relative-packages\\": [
+      \\"warn\\"
+    ],
+    \\"import/no-self-import\\": [
+      \\"error\\"
+    ],
+    \\"import/no-webpack-loader-syntax\\": [
+      \\"error\\"
+    ],
+    \\"jest-dom/prefer-checked\\": [
+      \\"error\\"
+    ],
+    \\"jest-dom/prefer-empty\\": [
+      \\"error\\"
+    ],
+    \\"jest-dom/prefer-enabled-disabled\\": [
+      \\"error\\"
+    ],
+    \\"jest-dom/prefer-focus\\": [
+      \\"error\\"
+    ],
+    \\"jest-dom/prefer-in-document\\": [
+      \\"error\\"
+    ],
+    \\"jest-dom/prefer-required\\": [
+      \\"error\\"
+    ],
+    \\"jest-dom/prefer-to-have-attribute\\": [
+      \\"error\\"
+    ],
+    \\"jest-dom/prefer-to-have-class\\": [
+      \\"error\\"
+    ],
+    \\"jest-dom/prefer-to-have-style\\": [
+      \\"error\\"
+    ],
+    \\"jest-dom/prefer-to-have-text-content\\": [
+      \\"error\\"
+    ],
+    \\"jest-dom/prefer-to-have-value\\": [
+      \\"error\\"
+    ]
+  }
+}"
 `;
 
 exports[`compileFiles Produces two files which match snapshots: React Configuration 1`] = `
-Object {
-  "env": Object {
-    "es2021": true,
-    "shared-node-browser": true,
+"{
+  \\"parser\\": \\"@typescript-eslint/parser\\",
+  \\"parserOptions\\": {
+    \\"ecmaVersion\\": \\"latest\\",
+    \\"sourceType\\": \\"module\\",
+    \\"allowImportExportEverywhere\\": true,
+    \\"warnOnUnsupportedTypeScriptVersion\\": false,
+    \\"requireConfigFile\\": false,
+    \\"ecmaFeatures\\": {
+      \\"jsx\\": true
+    }
   },
-  "overrides": Array [
-    Object {
-      "files": Array [
-        "**/*.d.ts",
-      ],
-      "rules": Object {
-        "@typescript-eslint/no-unused-vars": "off",
-      },
-    },
-    Object {
-      "files": Array [
-        "**/*.ts",
-      ],
-      "rules": Object {
-        "@typescript-eslint/naming-convention": Array [
-          "error",
-          Object {
-            "filter": Object {
-              "match": false,
-              "regex": "[- ]",
-            },
-            "format": Array [
-              "strictCamelCase",
-            ],
-            "leadingUnderscore": "allowSingleOrDouble",
-            "selector": Array [
-              "variable",
-              "function",
-              "classProperty",
-              "objectLiteralProperty",
-              "parameterProperty",
-              "classMethod",
-              "objectLiteralMethod",
-              "typeMethod",
-              "accessor",
-            ],
-            "trailingUnderscore": "allow",
-          },
-          Object {
-            "format": Array [
-              "StrictPascalCase",
-            ],
-            "selector": "typeLike",
-          },
-          Object {
-            "format": Array [
-              "StrictPascalCase",
-            ],
-            "prefix": Array [
-              "is",
-              "has",
-              "can",
-              "should",
-              "will",
-              "did",
-            ],
-            "selector": "variable",
-            "types": Array [
-              "boolean",
-            ],
-          },
-          Object {
-            "filter": "^(?!I)[A-Z]",
-            "format": Array [
-              "StrictPascalCase",
-            ],
-            "selector": "interface",
-          },
-          Object {
-            "filter": "^T$|^[A-Z][A-Za-z]+$",
-            "format": Array [
-              "StrictPascalCase",
-            ],
-            "selector": "typeParameter",
-          },
-          Object {
-            "format": null,
-            "modifiers": Array [
-              "requiresQuotes",
-            ],
-            "selector": Array [
-              "classProperty",
-              "objectLiteralProperty",
-            ],
-          },
-        ],
-      },
-    },
-    Object {
-      "files": Array [
-        "**/*.tsx",
-      ],
-      "rules": Object {
-        "@typescript-eslint/naming-convention": Array [
-          "error",
-          Object {
-            "filter": Object {
-              "match": false,
-              "regex": "[- ]",
-            },
-            "format": Array [
-              "strictCamelCase",
-              "StrictPascalCase",
-            ],
-            "leadingUnderscore": "allowSingleOrDouble",
-            "selector": Array [
-              "variable",
-              "function",
-              "classProperty",
-              "objectLiteralProperty",
-              "parameterProperty",
-              "classMethod",
-              "objectLiteralMethod",
-              "typeMethod",
-              "accessor",
-            ],
-            "trailingUnderscore": "allow",
-          },
-          Object {
-            "format": Array [
-              "StrictPascalCase",
-            ],
-            "selector": "typeLike",
-          },
-          Object {
-            "format": Array [
-              "StrictPascalCase",
-            ],
-            "prefix": Array [
-              "is",
-              "has",
-              "can",
-              "should",
-              "will",
-              "did",
-            ],
-            "selector": "variable",
-            "types": Array [
-              "boolean",
-            ],
-          },
-          Object {
-            "filter": "^(?!I)[A-Z]",
-            "format": Array [
-              "StrictPascalCase",
-            ],
-            "selector": "interface",
-          },
-          Object {
-            "filter": "^T$|^[A-Z][A-Za-z]+$",
-            "format": Array [
-              "StrictPascalCase",
-            ],
-            "selector": "typeParameter",
-          },
-          Object {
-            "format": null,
-            "modifiers": Array [
-              "requiresQuotes",
-            ],
-            "selector": Array [
-              "classProperty",
-              "objectLiteralProperty",
-            ],
-          },
-        ],
-      },
-    },
-    Object {
-      "env": Object {
-        "jest/globals": true,
-      },
-      "files": Array [
-        "src/*.{spec,test}.{js,jsx,ts,tsx}",
-      ],
-      "plugins": Array [
-        "jest",
-        "testing-library",
-      ],
-      "rules": Object {
-        "jest/max-nested-describe": Array [
-          "error",
-        ],
-        "jest/no-commented-out-tests": Array [
-          "error",
-        ],
-        "jest/no-conditional-expect": Array [
-          "error",
-        ],
-        "jest/no-conditional-in-test": Array [
-          "error",
-        ],
-        "jest/no-deprecated-functions": Array [
-          "error",
-        ],
-        "jest/no-disabled-tests": Array [
-          "error",
-        ],
-        "jest/no-done-callback": Array [
-          "error",
-        ],
-        "jest/no-export": Array [
-          "error",
-        ],
-        "jest/no-focused-tests": Array [
-          "error",
-        ],
-        "jest/no-identical-title": Array [
-          "error",
-        ],
-        "jest/no-if": Array [
-          "error",
-        ],
-        "jest/no-interpolation-in-snapshots": Array [
-          "error",
-        ],
-        "jest/no-jest-import": Array [
-          "error",
-        ],
-        "jest/no-large-snapshots": Array [
-          "error",
-          Object {
-            "maxSize": 300,
-          },
-        ],
-        "jest/no-mocks-import": Array [
-          "error",
-        ],
-        "jest/no-test-prefixes": Array [
-          "error",
-        ],
-        "jest/prefer-called-with": Array [
-          "error",
-        ],
-        "jest/prefer-comparison-matcher": Array [
-          "error",
-        ],
-        "jest/prefer-equality-matcher": Array [
-          "error",
-        ],
-        "jest/prefer-hooks-in-order": Array [
-          "error",
-        ],
-        "jest/prefer-hooks-on-top": Array [
-          "error",
-        ],
-        "jest/prefer-snapshot-hint": Array [
-          "error",
-        ],
-        "jest/prefer-to-contain": Array [
-          "error",
-        ],
-        "jest/prefer-to-have-length": Array [
-          "error",
-        ],
-        "jest/prefer-todo": Array [
-          "error",
-        ],
-        "jest/valid-describe-callback": Array [
-          "error",
-        ],
-        "jest/valid-expect": Array [
-          "error",
-        ],
-        "jest/valid-expect-in-promise": Array [
-          "error",
-        ],
-        "jest/valid-title": Array [
-          "error",
-        ],
-        "testing-library/await-async-query": Array [
-          "error",
-        ],
-        "testing-library/await-async-utils": Array [
-          "error",
-        ],
-        "testing-library/no-await-sync-events": Array [
-          "error",
-        ],
-        "testing-library/no-await-sync-query": Array [
-          "error",
-        ],
-        "testing-library/no-container": Array [
-          "error",
-        ],
-        "testing-library/no-debugging-utils": Array [
-          "error",
-        ],
-        "testing-library/no-dom-import": Array [
-          "error",
-          "react",
-        ],
-        "testing-library/no-node-access": Array [
-          "error",
-        ],
-        "testing-library/no-promise-in-fire-event": Array [
-          "error",
-        ],
-        "testing-library/no-render-in-setup": Array [
-          "error",
-        ],
-        "testing-library/no-unnecessary-act": Array [
-          "error",
-        ],
-        "testing-library/no-wait-for-empty-callback": Array [
-          "error",
-        ],
-        "testing-library/no-wait-for-multiple-assertions": Array [
-          "error",
-        ],
-        "testing-library/no-wait-for-side-effects": Array [
-          "error",
-        ],
-        "testing-library/no-wait-for-snapshot": Array [
-          "error",
-        ],
-        "testing-library/prefer-find-by": Array [
-          "error",
-        ],
-        "testing-library/prefer-presence-queries": Array [
-          "error",
-        ],
-        "testing-library/prefer-query-by-disappearance": Array [
-          "error",
-        ],
-        "testing-library/prefer-screen-queries": Array [
-          "error",
-        ],
-        "testing-library/prefer-user-event": Array [
-          "error",
-        ],
-        "testing-library/prefer-wait-for": Array [
-          "error",
-        ],
-        "testing-library/render-result-naming-convention": Array [
-          "error",
-        ],
-      },
-      "settings": Object {
-        "version": "28.1.3",
-      },
-    },
+  \\"plugins\\": [
+    \\"@typescript-eslint\\",
+    \\"import\\",
+    \\"unicorn\\",
+    \\"react\\",
+    \\"jsx-a11y\\",
+    \\"react-hooks\\"
   ],
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": Object {
-    "allowImportExportEverywhere": true,
-    "ecmaFeatures": Object {
-      "jsx": true,
-    },
-    "ecmaVersion": "latest",
-    "requireConfigFile": false,
-    "sourceType": "module",
-    "warnOnUnsupportedTypeScriptVersion": false,
+  \\"env\\": {
+    \\"es2021\\": true,
+    \\"shared-node-browser\\": true
   },
-  "plugins": Array [
-    "@typescript-eslint",
-    "import",
-    "unicorn",
-    "react",
-    "jsx-a11y",
-    "react-hooks",
+  \\"reportUnusedDisableDirectives\\": true,
+  \\"settings\\": {
+    \\"import/extensions\\": [
+      \\".js\\",
+      \\".ts\\",
+      \\".jsx\\",
+      \\".tsx\\"
+    ],
+    \\"import/parsers\\": {
+      \\"@typescript-eslint/parser\\": [
+        \\".ts\\",
+        \\".tsx\\",
+        \\".d.ts\\"
+      ]
+    },
+    \\"import/resolver\\": {
+      \\"~/node_modules/eslint-import-resolver-node/index.js\\": {
+        \\"extensions\\": [
+          \\".js\\",
+          \\".jsx\\",
+          \\".ts\\",
+          \\".tsx\\"
+        ]
+      },
+      \\"~/node_modules/eslint-import-resolver-typescript/lib/index.cjs\\": {
+        \\"alwaysTryTypes\\": true
+      }
+    },
+    \\"react\\": {
+      \\"pragma\\": \\"React\\",
+      \\"version\\": \\"detect\\"
+    },
+    \\"propWrapperFunctions\\": [
+      \\"forbidExtraProps\\",
+      \\"exact\\",
+      \\"Object.freeze\\"
+    ]
+  },
+  \\"overrides\\": [
+    {
+      \\"files\\": [
+        \\"**/*.d.ts\\"
+      ],
+      \\"rules\\": {
+        \\"@typescript-eslint/no-unused-vars\\": \\"off\\"
+      }
+    },
+    {
+      \\"files\\": [
+        \\"**/*.ts\\"
+      ],
+      \\"rules\\": {
+        \\"@typescript-eslint/naming-convention\\": [
+          \\"error\\",
+          {
+            \\"selector\\": [
+              \\"variable\\",
+              \\"function\\",
+              \\"classProperty\\",
+              \\"objectLiteralProperty\\",
+              \\"parameterProperty\\",
+              \\"classMethod\\",
+              \\"objectLiteralMethod\\",
+              \\"typeMethod\\",
+              \\"accessor\\"
+            ],
+            \\"format\\": [
+              \\"strictCamelCase\\"
+            ],
+            \\"leadingUnderscore\\": \\"allowSingleOrDouble\\",
+            \\"trailingUnderscore\\": \\"allow\\",
+            \\"filter\\": {
+              \\"regex\\": \\"[- ]\\",
+              \\"match\\": false
+            }
+          },
+          {
+            \\"selector\\": \\"typeLike\\",
+            \\"format\\": [
+              \\"StrictPascalCase\\"
+            ]
+          },
+          {
+            \\"selector\\": \\"variable\\",
+            \\"types\\": [
+              \\"boolean\\"
+            ],
+            \\"format\\": [
+              \\"StrictPascalCase\\"
+            ],
+            \\"prefix\\": [
+              \\"is\\",
+              \\"has\\",
+              \\"can\\",
+              \\"should\\",
+              \\"will\\",
+              \\"did\\"
+            ]
+          },
+          {
+            \\"selector\\": \\"interface\\",
+            \\"filter\\": \\"^(?!I)[A-Z]\\",
+            \\"format\\": [
+              \\"StrictPascalCase\\"
+            ]
+          },
+          {
+            \\"selector\\": \\"typeParameter\\",
+            \\"filter\\": \\"^T$|^[A-Z][A-Za-z]+$\\",
+            \\"format\\": [
+              \\"StrictPascalCase\\"
+            ]
+          },
+          {
+            \\"selector\\": [
+              \\"classProperty\\",
+              \\"objectLiteralProperty\\"
+            ],
+            \\"format\\": null,
+            \\"modifiers\\": [
+              \\"requiresQuotes\\"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      \\"files\\": [
+        \\"**/*.tsx\\"
+      ],
+      \\"rules\\": {
+        \\"@typescript-eslint/naming-convention\\": [
+          \\"error\\",
+          {
+            \\"selector\\": [
+              \\"variable\\",
+              \\"function\\",
+              \\"classProperty\\",
+              \\"objectLiteralProperty\\",
+              \\"parameterProperty\\",
+              \\"classMethod\\",
+              \\"objectLiteralMethod\\",
+              \\"typeMethod\\",
+              \\"accessor\\"
+            ],
+            \\"format\\": [
+              \\"strictCamelCase\\",
+              \\"StrictPascalCase\\"
+            ],
+            \\"leadingUnderscore\\": \\"allowSingleOrDouble\\",
+            \\"trailingUnderscore\\": \\"allow\\",
+            \\"filter\\": {
+              \\"regex\\": \\"[- ]\\",
+              \\"match\\": false
+            }
+          },
+          {
+            \\"selector\\": \\"typeLike\\",
+            \\"format\\": [
+              \\"StrictPascalCase\\"
+            ]
+          },
+          {
+            \\"selector\\": \\"variable\\",
+            \\"types\\": [
+              \\"boolean\\"
+            ],
+            \\"format\\": [
+              \\"StrictPascalCase\\"
+            ],
+            \\"prefix\\": [
+              \\"is\\",
+              \\"has\\",
+              \\"can\\",
+              \\"should\\",
+              \\"will\\",
+              \\"did\\"
+            ]
+          },
+          {
+            \\"selector\\": \\"interface\\",
+            \\"filter\\": \\"^(?!I)[A-Z]\\",
+            \\"format\\": [
+              \\"StrictPascalCase\\"
+            ]
+          },
+          {
+            \\"selector\\": \\"typeParameter\\",
+            \\"filter\\": \\"^T$|^[A-Z][A-Za-z]+$\\",
+            \\"format\\": [
+              \\"StrictPascalCase\\"
+            ]
+          },
+          {
+            \\"selector\\": [
+              \\"classProperty\\",
+              \\"objectLiteralProperty\\"
+            ],
+            \\"format\\": null,
+            \\"modifiers\\": [
+              \\"requiresQuotes\\"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      \\"files\\": [
+        \\"src/*.{spec,test}.{js,jsx,ts,tsx}\\"
+      ],
+      \\"plugins\\": [
+        \\"jest\\",
+        \\"testing-library\\"
+      ],
+      \\"env\\": {
+        \\"jest/globals\\": true
+      },
+      \\"settings\\": {
+        \\"version\\": \\"28.1.3\\"
+      },
+      \\"rules\\": {
+        \\"jest/max-nested-describe\\": [
+          \\"error\\"
+        ],
+        \\"jest/no-commented-out-tests\\": [
+          \\"error\\"
+        ],
+        \\"jest/no-conditional-expect\\": [
+          \\"error\\"
+        ],
+        \\"jest/no-conditional-in-test\\": [
+          \\"error\\"
+        ],
+        \\"jest/no-deprecated-functions\\": [
+          \\"error\\"
+        ],
+        \\"jest/no-disabled-tests\\": [
+          \\"error\\"
+        ],
+        \\"jest/no-done-callback\\": [
+          \\"error\\"
+        ],
+        \\"jest/no-export\\": [
+          \\"error\\"
+        ],
+        \\"jest/no-focused-tests\\": [
+          \\"error\\"
+        ],
+        \\"jest/no-identical-title\\": [
+          \\"error\\"
+        ],
+        \\"jest/no-if\\": [
+          \\"error\\"
+        ],
+        \\"jest/no-interpolation-in-snapshots\\": [
+          \\"error\\"
+        ],
+        \\"jest/no-jest-import\\": [
+          \\"error\\"
+        ],
+        \\"jest/no-large-snapshots\\": [
+          \\"error\\",
+          {
+            \\"maxSize\\": 300
+          }
+        ],
+        \\"jest/no-mocks-import\\": [
+          \\"error\\"
+        ],
+        \\"jest/no-test-prefixes\\": [
+          \\"error\\"
+        ],
+        \\"jest/prefer-called-with\\": [
+          \\"error\\"
+        ],
+        \\"jest/prefer-comparison-matcher\\": [
+          \\"error\\"
+        ],
+        \\"jest/prefer-equality-matcher\\": [
+          \\"error\\"
+        ],
+        \\"jest/prefer-hooks-in-order\\": [
+          \\"error\\"
+        ],
+        \\"jest/prefer-hooks-on-top\\": [
+          \\"error\\"
+        ],
+        \\"jest/prefer-snapshot-hint\\": [
+          \\"error\\"
+        ],
+        \\"jest/prefer-to-contain\\": [
+          \\"error\\"
+        ],
+        \\"jest/prefer-to-have-length\\": [
+          \\"error\\"
+        ],
+        \\"jest/prefer-todo\\": [
+          \\"error\\"
+        ],
+        \\"jest/valid-describe-callback\\": [
+          \\"error\\"
+        ],
+        \\"jest/valid-expect\\": [
+          \\"error\\"
+        ],
+        \\"jest/valid-expect-in-promise\\": [
+          \\"error\\"
+        ],
+        \\"jest/valid-title\\": [
+          \\"error\\"
+        ],
+        \\"testing-library/await-async-query\\": [
+          \\"error\\"
+        ],
+        \\"testing-library/await-async-utils\\": [
+          \\"error\\"
+        ],
+        \\"testing-library/no-await-sync-events\\": [
+          \\"error\\"
+        ],
+        \\"testing-library/no-await-sync-query\\": [
+          \\"error\\"
+        ],
+        \\"testing-library/no-container\\": [
+          \\"error\\"
+        ],
+        \\"testing-library/no-debugging-utils\\": [
+          \\"error\\"
+        ],
+        \\"testing-library/no-dom-import\\": [
+          \\"error\\",
+          \\"react\\"
+        ],
+        \\"testing-library/no-node-access\\": [
+          \\"error\\"
+        ],
+        \\"testing-library/no-promise-in-fire-event\\": [
+          \\"error\\"
+        ],
+        \\"testing-library/no-render-in-setup\\": [
+          \\"error\\"
+        ],
+        \\"testing-library/no-unnecessary-act\\": [
+          \\"error\\"
+        ],
+        \\"testing-library/no-wait-for-empty-callback\\": [
+          \\"error\\"
+        ],
+        \\"testing-library/no-wait-for-multiple-assertions\\": [
+          \\"error\\"
+        ],
+        \\"testing-library/no-wait-for-side-effects\\": [
+          \\"error\\"
+        ],
+        \\"testing-library/no-wait-for-snapshot\\": [
+          \\"error\\"
+        ],
+        \\"testing-library/prefer-find-by\\": [
+          \\"error\\"
+        ],
+        \\"testing-library/prefer-presence-queries\\": [
+          \\"error\\"
+        ],
+        \\"testing-library/prefer-query-by-disappearance\\": [
+          \\"error\\"
+        ],
+        \\"testing-library/prefer-screen-queries\\": [
+          \\"error\\"
+        ],
+        \\"testing-library/prefer-user-event\\": [
+          \\"error\\"
+        ],
+        \\"testing-library/prefer-wait-for\\": [
+          \\"error\\"
+        ],
+        \\"testing-library/render-result-naming-convention\\": [
+          \\"error\\"
+        ]
+      }
+    }
   ],
-  "reportUnusedDisableDirectives": true,
-  "rules": Object {
-    "@next/next/google-font-display": Array [
-      "error",
+  \\"rules\\": {
+    \\"accessor-pairs\\": [
+      \\"error\\"
     ],
-    "@next/next/google-font-preconnect": Array [
-      "error",
+    \\"array-callback-return\\": [
+      \\"error\\"
     ],
-    "@next/next/inline-script-id": Array [
-      "error",
+    \\"arrow-body-style\\": [
+      \\"warn\\"
     ],
-    "@next/next/next-script-for-ga": Array [
-      "error",
+    \\"block-scoped-var\\": [
+      \\"error\\"
     ],
-    "@next/next/no-assign-module-variable": Array [
-      "error",
+    \\"complexity\\": [
+      \\"error\\"
     ],
-    "@next/next/no-before-interactive-script-outside-document": Array [
-      "error",
+    \\"constructor-super\\": [
+      \\"error\\"
     ],
-    "@next/next/no-css-tags": Array [
-      "error",
+    \\"default-case\\": [
+      \\"error\\",
+      {
+        \\"commentPattern\\": \\"^no default$\\"
+      }
     ],
-    "@next/next/no-document-import-in-page": Array [
-      "error",
+    \\"default-case-last\\": [
+      \\"error\\"
     ],
-    "@next/next/no-duplicate-head": Array [
-      "error",
+    \\"eqeqeq\\": [
+      \\"warn\\",
+      \\"smart\\"
     ],
-    "@next/next/no-head-element": Array [
-      "error",
+    \\"for-direction\\": [
+      \\"error\\"
     ],
-    "@next/next/no-head-import-in-document": Array [
-      "error",
+    \\"func-name-matching\\": [
+      \\"error\\"
     ],
-    "@next/next/no-html-link-for-pages": Array [
-      "error",
+    \\"func-names\\": [
+      \\"error\\"
     ],
-    "@next/next/no-img-element": Array [
-      "error",
+    \\"getter-return\\": [
+      \\"error\\"
     ],
-    "@next/next/no-page-custom-font": Array [
-      "error",
+    \\"guard-for-in\\": [
+      \\"error\\"
     ],
-    "@next/next/no-script-component-in-head": Array [
-      "error",
+    \\"id-denylist\\": [
+      \\"error\\"
     ],
-    "@next/next/no-styled-jsx-in-document": Array [
-      "error",
+    \\"id-match\\": [
+      \\"error\\",
+      \\"^\\\\\\\\$?(__)?(([A-Z]|[a-z]|[0-9]+)|([A-Z_]))*\\\\\\\\$?$\\"
     ],
-    "@next/next/no-sync-scripts": Array [
-      "error",
+    \\"max-depth\\": [
+      \\"error\\"
     ],
-    "@next/next/no-title-in-document-head": Array [
-      "error",
+    \\"max-lines\\": [
+      \\"error\\",
+      {
+        \\"max\\": 2500,
+        \\"skipBlankLines\\": false,
+        \\"skipComments\\": false
+      }
     ],
-    "@next/next/no-typos": Array [
-      "error",
+    \\"max-nested-callbacks\\": [
+      \\"error\\",
+      4
     ],
-    "@next/next/no-unwanted-polyfillio": Array [
-      "error",
+    \\"max-params\\": [
+      \\"error\\",
+      {
+        \\"max\\": 4
+      }
     ],
-    "@typescript-eslint/adjacent-overload-signatures": Array [
-      "error",
+    \\"max-statements-per-line\\": [
+      \\"error\\"
     ],
-    "@typescript-eslint/array-type": Array [
-      "warn",
-      Object {
-        "default": "array-simple",
-      },
+    \\"new-cap\\": [
+      \\"error\\"
     ],
-    "@typescript-eslint/await-thenable": Array [
-      "error",
+    \\"no-alert\\": [
+      \\"error\\"
     ],
-    "@typescript-eslint/ban-ts-comment": Array [
-      "error",
-      Object {
-        "minimumDescriptionLength": 4,
-        "ts-expect-error": "allow-with-description",
-      },
+    \\"no-async-promise-executor\\": [
+      \\"error\\"
     ],
-    "@typescript-eslint/ban-tslint-comment": Array [
-      "warn",
+    \\"no-await-in-loop\\": [
+      \\"error\\"
     ],
-    "@typescript-eslint/ban-types": Array [
-      "warn",
-      Object {
-        "extendDefaults": false,
-        "types": Object {
-          "BigInt": Object {
-            "fixWith": "bigint",
-            "message": "Use \`bigint\` instead.",
-          },
-          "Boolean": Object {
-            "fixWith": "boolean",
-            "message": "Use \`boolean\` instead.",
-          },
-          "Function": "Use a specific function type instead, like \`() => void\`.",
-          "Number": Object {
-            "fixWith": "number",
-            "message": "Use \`number\` instead.",
-          },
-          "Object": Object {
-            "fixWith": "Record<string, unknown>",
-            "message": "The \`Object\` type is mostly the same as \`unknown\`. You probably want \`Record<string, unknown>\` instead. See https://github.com/typescript-eslint/typescript-eslint/pull/848",
-          },
-          "String": Object {
-            "fixWith": "string",
-            "message": "Use \`string\` instead.",
-          },
-          "Symbol": Object {
-            "fixWith": "symbol",
-            "message": "Use \`symbol\` instead.",
-          },
-          "[[[[[]]]]]": "🦄💥",
-          "[[[[]]]]": "ur drunk 🤡",
-          "[[[]]]": "Don't use \`[[[]]]\`. Use \`SomeType[][][]\` instead.",
-          "[[]]": "Don't use \`[[]]\`. It only allows an array with a single element which is an empty array. Use \`SomeType[][]\` instead.",
-          "[]": "Don't use the empty array type \`[]\`. It only allows empty arrays. Use \`SomeType[]\` instead.",
-          "null": Object {
-            "fixWith": "undefined",
-            "message": "Use \`undefined\` instead. See: https://github.com/sindresorhus/meta/issues/7",
-          },
-          "object": Object {
-            "fixWith": "Record<string, unknown>",
-            "message": "The \`object\` type is hard to use. Use \`Record<string, unknown>\` instead. See: https://github.com/typescript-eslint/typescript-eslint/pull/848",
-          },
-          "{}": Object {
-            "fixWith": "Record<string, unknown>",
-            "message": "The \`{}\` type is mostly the same as \`unknown\`. You probably want \`Record<string, unknown>\` instead.",
-          },
+    \\"no-bitwise\\": [
+      \\"error\\"
+    ],
+    \\"no-buffer-constructor\\": [
+      \\"error\\"
+    ],
+    \\"no-caller\\": [
+      \\"error\\"
+    ],
+    \\"no-case-declarations\\": [
+      \\"error\\"
+    ],
+    \\"no-class-assign\\": [
+      \\"error\\"
+    ],
+    \\"no-compare-neg-zero\\": [
+      \\"error\\"
+    ],
+    \\"no-cond-assign\\": [
+      \\"error\\"
+    ],
+    \\"no-constant-binary-expression\\": [
+      \\"error\\"
+    ],
+    \\"no-constant-condition\\": [
+      \\"error\\"
+    ],
+    \\"no-constructor-return\\": [
+      \\"error\\"
+    ],
+    \\"no-control-regex\\": [
+      \\"error\\"
+    ],
+    \\"no-debugger\\": [
+      \\"error\\"
+    ],
+    \\"no-delete-var\\": [
+      \\"error\\"
+    ],
+    \\"no-div-regex\\": [
+      \\"warn\\"
+    ],
+    \\"no-dupe-else-if\\": [
+      \\"error\\"
+    ],
+    \\"no-duplicate-case\\": [
+      \\"error\\"
+    ],
+    \\"no-empty\\": [
+      \\"error\\"
+    ],
+    \\"no-empty-character-class\\": [
+      \\"error\\"
+    ],
+    \\"no-empty-pattern\\": [
+      \\"error\\"
+    ],
+    \\"no-eval\\": [
+      \\"error\\"
+    ],
+    \\"no-ex-assign\\": [
+      \\"error\\"
+    ],
+    \\"no-extend-native\\": [
+      \\"error\\"
+    ],
+    \\"no-extra-bind\\": [
+      \\"warn\\"
+    ],
+    \\"no-extra-boolean-cast\\": [
+      \\"warn\\"
+    ],
+    \\"no-extra-label\\": [
+      \\"warn\\"
+    ],
+    \\"no-fallthrough\\": [
+      \\"error\\"
+    ],
+    \\"no-func-assign\\": [
+      \\"error\\"
+    ],
+    \\"no-global-assign\\": [
+      \\"error\\"
+    ],
+    \\"no-implicit-coercion\\": [
+      \\"warn\\"
+    ],
+    \\"no-implicit-globals\\": [
+      \\"error\\"
+    ],
+    \\"no-import-assign\\": [
+      \\"error\\"
+    ],
+    \\"no-inner-declarations\\": [
+      \\"error\\"
+    ],
+    \\"no-invalid-regexp\\": [
+      \\"error\\"
+    ],
+    \\"no-irregular-whitespace\\": [
+      \\"error\\"
+    ],
+    \\"no-iterator\\": [
+      \\"error\\"
+    ],
+    \\"no-label-var\\": [
+      \\"error\\"
+    ],
+    \\"no-labels\\": [
+      \\"error\\"
+    ],
+    \\"no-lone-blocks\\": [
+      \\"error\\"
+    ],
+    \\"no-lonely-if\\": [
+      \\"warn\\"
+    ],
+    \\"no-misleading-character-class\\": [
+      \\"error\\"
+    ],
+    \\"no-multi-assign\\": [
+      \\"error\\"
+    ],
+    \\"no-multi-str\\": [
+      \\"error\\"
+    ],
+    \\"no-negated-condition\\": [
+      \\"error\\"
+    ],
+    \\"no-new\\": [
+      \\"error\\"
+    ],
+    \\"no-new-func\\": [
+      \\"error\\"
+    ],
+    \\"no-new-object\\": [
+      \\"error\\"
+    ],
+    \\"no-new-symbol\\": [
+      \\"error\\"
+    ],
+    \\"no-new-wrappers\\": [
+      \\"error\\"
+    ],
+    \\"no-nonoctal-decimal-escape\\": [
+      \\"error\\"
+    ],
+    \\"no-obj-calls\\": [
+      \\"error\\"
+    ],
+    \\"no-octal\\": [
+      \\"error\\"
+    ],
+    \\"no-octal-escape\\": [
+      \\"error\\"
+    ],
+    \\"no-promise-executor-return\\": [
+      \\"error\\"
+    ],
+    \\"no-proto\\": [
+      \\"error\\"
+    ],
+    \\"no-prototype-builtins\\": [
+      \\"error\\"
+    ],
+    \\"no-regex-spaces\\": [
+      \\"warn\\"
+    ],
+    \\"no-restricted-globals\\": [
+      \\"error\\",
+      \\"addEventListener\\",
+      \\"blur\\",
+      \\"close\\",
+      \\"closed\\",
+      \\"confirm\\",
+      \\"defaultStatus\\",
+      \\"defaultstatus\\",
+      \\"event\\",
+      \\"external\\",
+      \\"find\\",
+      \\"focus\\",
+      \\"frameElement\\",
+      \\"frames\\",
+      \\"history\\",
+      \\"innerHeight\\",
+      \\"innerWidth\\",
+      \\"length\\",
+      \\"location\\",
+      \\"locationbar\\",
+      \\"menubar\\",
+      \\"moveBy\\",
+      \\"moveTo\\",
+      \\"name\\",
+      \\"onblur\\",
+      \\"onerror\\",
+      \\"onfocus\\",
+      \\"onload\\",
+      \\"onresize\\",
+      \\"onunload\\",
+      \\"open\\",
+      \\"opener\\",
+      \\"opera\\",
+      \\"outerHeight\\",
+      \\"outerWidth\\",
+      \\"pageXOffset\\",
+      \\"pageYOffset\\",
+      \\"parent\\",
+      \\"print\\",
+      \\"removeEventListener\\",
+      \\"resizeBy\\",
+      \\"resizeTo\\",
+      \\"screen\\",
+      \\"screenLeft\\",
+      \\"screenTop\\",
+      \\"screenX\\",
+      \\"screenY\\",
+      \\"scroll\\",
+      \\"scrollbars\\",
+      \\"scrollBy\\",
+      \\"scrollTo\\",
+      \\"scrollX\\",
+      \\"scrollY\\",
+      \\"self\\",
+      \\"status\\",
+      \\"statusbar\\",
+      \\"stop\\",
+      \\"toolbar\\",
+      \\"top\\"
+    ],
+    \\"no-restricted-syntax\\": [
+      \\"error\\",
+      \\"WithStatement\\"
+    ],
+    \\"no-return-assign\\": [
+      \\"error\\"
+    ],
+    \\"no-return-await\\": [
+      \\"error\\"
+    ],
+    \\"no-script-url\\": [
+      \\"error\\"
+    ],
+    \\"no-self-assign\\": [
+      \\"error\\"
+    ],
+    \\"no-self-compare\\": [
+      \\"error\\"
+    ],
+    \\"no-sequences\\": [
+      \\"error\\"
+    ],
+    \\"no-setter-return\\": [
+      \\"error\\"
+    ],
+    \\"no-shadow-restricted-names\\": [
+      \\"error\\"
+    ],
+    \\"no-sparse-arrays\\": [
+      \\"error\\"
+    ],
+    \\"no-template-curly-in-string\\": [
+      \\"error\\"
+    ],
+    \\"no-this-before-super\\": [
+      \\"error\\"
+    ],
+    \\"no-undef\\": [
+      \\"error\\",
+      {
+        \\"typeof\\": true
+      }
+    ],
+    \\"no-undef-init\\": [
+      \\"warn\\"
+    ],
+    \\"no-unmodified-loop-condition\\": [
+      \\"error\\"
+    ],
+    \\"no-unneeded-ternary\\": [
+      \\"warn\\"
+    ],
+    \\"no-unreachable\\": [
+      \\"error\\"
+    ],
+    \\"no-unreachable-loop\\": [
+      \\"error\\"
+    ],
+    \\"no-unsafe-finally\\": [
+      \\"error\\"
+    ],
+    \\"no-unsafe-negation\\": [
+      \\"error\\"
+    ],
+    \\"no-unsafe-optional-chaining\\": [
+      \\"error\\",
+      {
+        \\"disallowArithmeticOperators\\": true
+      }
+    ],
+    \\"no-unused-labels\\": [
+      \\"warn\\"
+    ],
+    \\"no-unused-private-class-members\\": [
+      \\"error\\"
+    ],
+    \\"no-useless-backreference\\": [
+      \\"error\\"
+    ],
+    \\"no-useless-call\\": [
+      \\"error\\"
+    ],
+    \\"no-useless-catch\\": [
+      \\"error\\"
+    ],
+    \\"no-useless-computed-key\\": [
+      \\"warn\\",
+      {
+        \\"enforceForClassMembers\\": true
+      }
+    ],
+    \\"no-useless-concat\\": [
+      \\"error\\"
+    ],
+    \\"no-useless-rename\\": [
+      \\"warn\\"
+    ],
+    \\"no-useless-return\\": [
+      \\"warn\\"
+    ],
+    \\"no-var\\": [
+      \\"warn\\"
+    ],
+    \\"no-void\\": [
+      \\"error\\",
+      {
+        \\"allowAsStatement\\": true
+      }
+    ],
+    \\"no-with\\": [
+      \\"error\\"
+    ],
+    \\"object-shorthand\\": [
+      \\"warn\\",
+      \\"properties\\"
+    ],
+    \\"one-var\\": [
+      \\"warn\\",
+      \\"never\\"
+    ],
+    \\"prefer-arrow-callback\\": [
+      \\"warn\\",
+      {
+        \\"allowNamedFunctions\\": true
+      }
+    ],
+    \\"prefer-const\\": [
+      \\"warn\\",
+      {
+        \\"destructuring\\": \\"all\\"
+      }
+    ],
+    \\"prefer-exponentiation-operator\\": [
+      \\"warn\\"
+    ],
+    \\"prefer-numeric-literals\\": [
+      \\"warn\\"
+    ],
+    \\"prefer-object-has-own\\": [
+      \\"warn\\"
+    ],
+    \\"prefer-object-spread\\": [
+      \\"warn\\"
+    ],
+    \\"prefer-promise-reject-errors\\": [
+      \\"error\\",
+      {
+        \\"allowEmptyReject\\": true
+      }
+    ],
+    \\"prefer-regex-literals\\": [
+      \\"error\\"
+    ],
+    \\"prefer-rest-params\\": [
+      \\"error\\"
+    ],
+    \\"prefer-spread\\": [
+      \\"error\\"
+    ],
+    \\"prefer-template\\": [
+      \\"warn\\"
+    ],
+    \\"radix\\": [
+      \\"error\\"
+    ],
+    \\"require-yield\\": [
+      \\"error\\"
+    ],
+    \\"spaced-comment\\": [
+      \\"warn\\",
+      \\"always\\",
+      {
+        \\"line\\": {
+          \\"exceptions\\": [
+            \\"-\\",
+            \\"+\\",
+            \\"*\\"
+          ],
+          \\"markers\\": [
+            \\"!\\",
+            \\"/\\",
+            \\"=>\\"
+          ]
         },
-      },
-    ],
-    "@typescript-eslint/class-literal-property-style": Array [
-      "warn",
-      "getters",
-    ],
-    "@typescript-eslint/consistent-indexed-object-style": Array [
-      "warn",
-    ],
-    "@typescript-eslint/consistent-type-assertions": Array [
-      "error",
-      Object {
-        "assertionStyle": "as",
-        "objectLiteralTypeAssertions": "allow-as-parameter",
-      },
-    ],
-    "@typescript-eslint/default-param-last": Array [
-      "error",
-    ],
-    "@typescript-eslint/dot-notation": Array [
-      "warn",
-    ],
-    "@typescript-eslint/no-array-constructor": Array [
-      "warn",
-    ],
-    "@typescript-eslint/no-base-to-string": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-duplicate-enum-values": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-duplicate-imports": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-dynamic-delete": Array [
-      "warn",
-    ],
-    "@typescript-eslint/no-empty-interface": Array [
-      "warn",
-      Object {
-        "allowSingleExtends": true,
-      },
-    ],
-    "@typescript-eslint/no-explicit-any": Array [
-      "warn",
-    ],
-    "@typescript-eslint/no-extra-non-null-assertion": Array [
-      "warn",
-    ],
-    "@typescript-eslint/no-extraneous-class": Array [
-      "error",
-      Object {
-        "allowConstructorOnly": false,
-        "allowEmpty": false,
-        "allowStaticOnly": false,
-        "allowWithDecorator": true,
-      },
-    ],
-    "@typescript-eslint/no-floating-promises": Array [
-      "error",
-      Object {
-        "ignoreIIFE": true,
-        "ignoreVoid": true,
-      },
-    ],
-    "@typescript-eslint/no-for-in-array": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-implicit-any-catch": Array [
-      "warn",
-    ],
-    "@typescript-eslint/no-implied-eval": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-invalid-this": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-invalid-void-type": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-loop-func": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-loss-of-precision": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-meaningless-void-operator": Array [
-      "warn",
-    ],
-    "@typescript-eslint/no-misused-new": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-misused-promises": Array [
-      "error",
-      Object {
-        "checksConditionals": true,
-        "checksVoidReturn": false,
-      },
-    ],
-    "@typescript-eslint/no-namespace": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-non-null-asserted-nullish-coalescing": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-non-null-asserted-optional-chain": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-non-null-assertion": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-parameter-properties": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-redundant-type-constituents": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-restricted-imports": Array [
-      "error",
-      Array [
-        "error",
-        "domain",
-        "freelist",
-        "smalloc",
-        "punycode",
-        "sys",
-        "querystring",
-        "colors",
-      ],
-    ],
-    "@typescript-eslint/no-shadow": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-this-alias": Array [
-      "error",
-      Object {
-        "allowDestructuring": true,
-      },
-    ],
-    "@typescript-eslint/no-throw-literal": Array [
-      "error",
-      Object {
-        "allowThrowingAny": false,
-        "allowThrowingUnknown": true,
-      },
-    ],
-    "@typescript-eslint/no-unnecessary-boolean-literal-compare": Array [
-      "warn",
-    ],
-    "@typescript-eslint/no-unnecessary-condition": Array [
-      "warn",
-    ],
-    "@typescript-eslint/no-unnecessary-qualifier": Array [
-      "warn",
-    ],
-    "@typescript-eslint/no-unnecessary-type-assertion": Array [
-      "warn",
-    ],
-    "@typescript-eslint/no-unnecessary-type-constraint": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-unsafe-argument": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-unsafe-assignment": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-unsafe-call": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-unsafe-member-access": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-unused-vars": Array [
-      "error",
-      Object {
-        "args": "after-used",
-        "argsIgnorePattern": "^_",
-        "ignoreRestSiblings": true,
-        "varsIgnorePattern": "^ignored",
-      },
-    ],
-    "@typescript-eslint/no-useless-constructor": Array [
-      "error",
-    ],
-    "@typescript-eslint/no-useless-empty-export": Array [
-      "warn",
-    ],
-    "@typescript-eslint/padding-line-between-statements": Array [
-      "warn",
-      Object {
-        "blankLine": "always",
-        "next": "*",
-        "prev": "multiline-block-like",
-      },
-    ],
-    "@typescript-eslint/parameter-properties": Array [
-      "error",
-      Object {
-        "prefer": "parameter-property",
-      },
-    ],
-    "@typescript-eslint/prefer-as-const": Array [
-      "warn",
-    ],
-    "@typescript-eslint/prefer-enum-initializers": Array [
-      "error",
-    ],
-    "@typescript-eslint/prefer-includes": Array [
-      "warn",
-    ],
-    "@typescript-eslint/prefer-literal-enum-member": Array [
-      "error",
-    ],
-    "@typescript-eslint/prefer-namespace-keyword": Array [
-      "warn",
-    ],
-    "@typescript-eslint/prefer-nullish-coalescing": Array [
-      "error",
-    ],
-    "@typescript-eslint/prefer-optional-chain": Array [
-      "error",
-    ],
-    "@typescript-eslint/prefer-reduce-type-parameter": Array [
-      "warn",
-    ],
-    "@typescript-eslint/prefer-return-this-type": Array [
-      "warn",
-    ],
-    "@typescript-eslint/prefer-string-starts-ends-with": Array [
-      "warn",
-    ],
-    "@typescript-eslint/prefer-ts-expect-error": Array [
-      "warn",
-    ],
-    "@typescript-eslint/restrict-plus-operands": Array [
-      "error",
-      Object {
-        "allowAny": false,
-        "checkCompoundAssignments": true,
-      },
-    ],
-    "@typescript-eslint/restrict-template-expressions": Array [
-      "error",
-      Object {
-        "allowNumber": true,
-      },
-    ],
-    "@typescript-eslint/return-await": Array [
-      "warn",
-    ],
-    "@typescript-eslint/switch-exhaustiveness-check": Array [
-      "error",
-    ],
-    "@typescript-eslint/triple-slash-reference": Array [
-      "error",
-    ],
-    "@typescript-eslint/unbound-method": Array [
-      "error",
-    ],
-    "@typescript-eslint/unified-signatures": Array [
-      "error",
-      Object {
-        "ignoreDifferentlyNamedParameters": true,
-      },
-    ],
-    "accessor-pairs": Array [
-      "error",
-    ],
-    "array-callback-return": Array [
-      "error",
-    ],
-    "arrow-body-style": Array [
-      "warn",
-    ],
-    "block-scoped-var": Array [
-      "error",
-    ],
-    "complexity": Array [
-      "error",
-    ],
-    "constructor-super": Array [
-      "error",
-    ],
-    "default-case": Array [
-      "error",
-      Object {
-        "commentPattern": "^no default$",
-      },
-    ],
-    "default-case-last": Array [
-      "error",
-    ],
-    "eqeqeq": Array [
-      "warn",
-      "smart",
-    ],
-    "for-direction": Array [
-      "error",
-    ],
-    "func-name-matching": Array [
-      "error",
-    ],
-    "func-names": Array [
-      "error",
-    ],
-    "getter-return": Array [
-      "error",
-    ],
-    "guard-for-in": Array [
-      "error",
-    ],
-    "id-denylist": Array [
-      "error",
-    ],
-    "id-match": Array [
-      "error",
-      "^\\\\$?(__)?(([A-Z]|[a-z]|[0-9]+)|([A-Z_]))*\\\\$?$",
-    ],
-    "import/default": Array [
-      "error",
-    ],
-    "import/export": Array [
-      "error",
-    ],
-    "import/first": Array [
-      "warn",
-    ],
-    "import/no-absolute-path": Array [
-      "error",
-    ],
-    "import/no-amd": Array [
-      "error",
-    ],
-    "import/no-deprecated": Array [
-      "error",
-    ],
-    "import/no-duplicates": Array [
-      "warn",
-    ],
-    "import/no-extraneous-dependencies": Array [
-      "error",
-    ],
-    "import/no-import-module-exports": Array [
-      "warn",
-    ],
-    "import/no-mutable-exports": Array [
-      "error",
-    ],
-    "import/no-named-as-default": Array [
-      "error",
-    ],
-    "import/no-named-as-default-member": Array [
-      "error",
-    ],
-    "import/no-named-default": Array [
-      "error",
-    ],
-    "import/no-relative-packages": Array [
-      "warn",
-    ],
-    "import/no-self-import": Array [
-      "error",
-    ],
-    "import/no-webpack-loader-syntax": Array [
-      "error",
-    ],
-    "jest-dom/prefer-checked": Array [
-      "error",
-    ],
-    "jest-dom/prefer-empty": Array [
-      "error",
-    ],
-    "jest-dom/prefer-enabled-disabled": Array [
-      "error",
-    ],
-    "jest-dom/prefer-focus": Array [
-      "error",
-    ],
-    "jest-dom/prefer-in-document": Array [
-      "error",
-    ],
-    "jest-dom/prefer-required": Array [
-      "error",
-    ],
-    "jest-dom/prefer-to-have-attribute": Array [
-      "error",
-    ],
-    "jest-dom/prefer-to-have-class": Array [
-      "error",
-    ],
-    "jest-dom/prefer-to-have-style": Array [
-      "error",
-    ],
-    "jest-dom/prefer-to-have-text-content": Array [
-      "error",
-    ],
-    "jest-dom/prefer-to-have-value": Array [
-      "error",
-    ],
-    "jsx-a11y/alt-text": Array [
-      "error",
-    ],
-    "jsx-a11y/anchor-has-content": Array [
-      "error",
-    ],
-    "jsx-a11y/anchor-is-valid": Array [
-      "error",
-      Object {
-        "aspects": Array [
-          "noHref",
-          "invalidHref",
-        ],
-      },
-    ],
-    "jsx-a11y/aria-activedescendant-has-tabindex": Array [
-      "error",
-    ],
-    "jsx-a11y/aria-props": Array [
-      "error",
-    ],
-    "jsx-a11y/aria-proptypes": Array [
-      "error",
-    ],
-    "jsx-a11y/aria-role": Array [
-      "error",
-      Object {
-        "ignoreNonDOM": true,
-      },
-    ],
-    "jsx-a11y/aria-unsupported-elements": Array [
-      "error",
-    ],
-    "jsx-a11y/click-events-have-key-events": Array [
-      "error",
-    ],
-    "jsx-a11y/heading-has-content": Array [
-      "error",
-    ],
-    "jsx-a11y/html-has-lang": Array [
-      "error",
-    ],
-    "jsx-a11y/iframe-has-title": Array [
-      "error",
-    ],
-    "jsx-a11y/img-redundant-alt": Array [
-      "error",
-    ],
-    "jsx-a11y/interactive-supports-focus": Array [
-      "error",
-      Object {
-        "tabbable": Array [
-          "button",
-          "checkbox",
-          "link",
-          "searchbox",
-          "spinbutton",
-          "switch",
-          "textbox",
-        ],
-      },
-    ],
-    "jsx-a11y/lang": Array [
-      "error",
-    ],
-    "jsx-a11y/media-has-caption": Array [
-      "error",
-    ],
-    "jsx-a11y/mouse-events-have-key-events": Array [
-      "error",
-    ],
-    "jsx-a11y/no-access-key": Array [
-      "error",
-    ],
-    "jsx-a11y/no-distracting-elements": Array [
-      "error",
-    ],
-    "jsx-a11y/no-interactive-element-to-noninteractive-role": Array [
-      "error",
-      Object {
-        "canvas": Array [
-          "img",
-        ],
-        "tr": Array [
-          "none",
-          "presentation",
-        ],
-      },
-    ],
-    "jsx-a11y/no-noninteractive-element-interactions": Array [
-      "error",
-      Object {
-        "alert": Array [
-          "onKeyUp",
-          "onKeyDown",
-          "onKeyPress",
-        ],
-        "body": Array [
-          "onError",
-          "onLoad",
-        ],
-        "dialog": Array [
-          "onKeyUp",
-          "onKeyDown",
-          "onKeyPress",
-        ],
-        "handlers": Array [
-          "onClick",
-          "onError",
-          "onLoad",
-          "onMouseDown",
-          "onMouseUp",
-          "onKeyPress",
-          "onKeyDown",
-          "onKeyUp",
-        ],
-        "iframe": Array [
-          "onError",
-          "onLoad",
-        ],
-        "img": Array [
-          "onError",
-          "onLoad",
-        ],
-      },
-    ],
-    "jsx-a11y/no-noninteractive-element-to-interactive-role": Array [
-      "error",
-      Object {
-        "fieldset": Array [
-          "radiogroup",
-          "presentation",
-        ],
-        "li": Array [
-          "menuitem",
-          "option",
-          "row",
-          "tab",
-          "treeitem",
-        ],
-        "ol": Array [
-          "listbox",
-          "menu",
-          "menubar",
-          "radiogroup",
-          "tablist",
-          "tree",
-          "treegrid",
-        ],
-        "table": Array [
-          "grid",
-        ],
-        "td": Array [
-          "gridcell",
-        ],
-        "ul": Array [
-          "listbox",
-          "menu",
-          "menubar",
-          "radiogroup",
-          "tablist",
-          "tree",
-          "treegrid",
-        ],
-      },
-    ],
-    "jsx-a11y/no-noninteractive-tabindex": Array [
-      "error",
-      Object {
-        "allowExpressionValues": true,
-        "roles": Array [
-          "tabpanel",
-        ],
-        "tags": Array [],
-      },
-    ],
-    "jsx-a11y/no-redundant-roles": Array [
-      "error",
-    ],
-    "jsx-a11y/no-static-element-interactions": Array [
-      "error",
-      Object {
-        "allowExpressionValues": true,
-        "handlers": Array [
-          "onClick",
-          "onMouseDown",
-          "onMouseUp",
-          "onKeyPress",
-          "onKeyDown",
-          "onKeyUp",
-        ],
-      },
-    ],
-    "jsx-a11y/role-has-required-aria-props": Array [
-      "error",
-    ],
-    "jsx-a11y/role-supports-aria-props": Array [
-      "error",
-    ],
-    "jsx-a11y/scope": Array [
-      "error",
-    ],
-    "jsx-a11y/tabindex-no-positive": Array [
-      "error",
-    ],
-    "max-depth": Array [
-      "error",
-    ],
-    "max-lines": Array [
-      "error",
-      Object {
-        "max": 2500,
-        "skipBlankLines": false,
-        "skipComments": false,
-      },
-    ],
-    "max-nested-callbacks": Array [
-      "error",
-      4,
-    ],
-    "max-params": Array [
-      "error",
-      Object {
-        "max": 4,
-      },
-    ],
-    "max-statements-per-line": Array [
-      "error",
-    ],
-    "new-cap": Array [
-      "error",
-    ],
-    "no-alert": Array [
-      "error",
-    ],
-    "no-async-promise-executor": Array [
-      "error",
-    ],
-    "no-await-in-loop": Array [
-      "error",
-    ],
-    "no-bitwise": Array [
-      "error",
-    ],
-    "no-buffer-constructor": Array [
-      "error",
-    ],
-    "no-caller": Array [
-      "error",
-    ],
-    "no-case-declarations": Array [
-      "error",
-    ],
-    "no-class-assign": Array [
-      "error",
-    ],
-    "no-compare-neg-zero": Array [
-      "error",
-    ],
-    "no-cond-assign": Array [
-      "error",
-    ],
-    "no-constant-binary-expression": Array [
-      "error",
-    ],
-    "no-constant-condition": Array [
-      "error",
-    ],
-    "no-constructor-return": Array [
-      "error",
-    ],
-    "no-control-regex": Array [
-      "error",
-    ],
-    "no-debugger": Array [
-      "error",
-    ],
-    "no-delete-var": Array [
-      "error",
-    ],
-    "no-div-regex": Array [
-      "warn",
-    ],
-    "no-dupe-else-if": Array [
-      "error",
-    ],
-    "no-duplicate-case": Array [
-      "error",
-    ],
-    "no-empty": Array [
-      "error",
-    ],
-    "no-empty-character-class": Array [
-      "error",
-    ],
-    "no-empty-pattern": Array [
-      "error",
-    ],
-    "no-eval": Array [
-      "error",
-    ],
-    "no-ex-assign": Array [
-      "error",
-    ],
-    "no-extend-native": Array [
-      "error",
-    ],
-    "no-extra-bind": Array [
-      "warn",
-    ],
-    "no-extra-boolean-cast": Array [
-      "warn",
-    ],
-    "no-extra-label": Array [
-      "warn",
-    ],
-    "no-fallthrough": Array [
-      "error",
-    ],
-    "no-func-assign": Array [
-      "error",
-    ],
-    "no-global-assign": Array [
-      "error",
-    ],
-    "no-implicit-coercion": Array [
-      "warn",
-    ],
-    "no-implicit-globals": Array [
-      "error",
-    ],
-    "no-import-assign": Array [
-      "error",
-    ],
-    "no-inner-declarations": Array [
-      "error",
-    ],
-    "no-invalid-regexp": Array [
-      "error",
-    ],
-    "no-irregular-whitespace": Array [
-      "error",
-    ],
-    "no-iterator": Array [
-      "error",
-    ],
-    "no-label-var": Array [
-      "error",
-    ],
-    "no-labels": Array [
-      "error",
-    ],
-    "no-lone-blocks": Array [
-      "error",
-    ],
-    "no-lonely-if": Array [
-      "warn",
-    ],
-    "no-misleading-character-class": Array [
-      "error",
-    ],
-    "no-multi-assign": Array [
-      "error",
-    ],
-    "no-multi-str": Array [
-      "error",
-    ],
-    "no-negated-condition": Array [
-      "error",
-    ],
-    "no-new": Array [
-      "error",
-    ],
-    "no-new-func": Array [
-      "error",
-    ],
-    "no-new-object": Array [
-      "error",
-    ],
-    "no-new-symbol": Array [
-      "error",
-    ],
-    "no-new-wrappers": Array [
-      "error",
-    ],
-    "no-nonoctal-decimal-escape": Array [
-      "error",
-    ],
-    "no-obj-calls": Array [
-      "error",
-    ],
-    "no-octal": Array [
-      "error",
-    ],
-    "no-octal-escape": Array [
-      "error",
-    ],
-    "no-promise-executor-return": Array [
-      "error",
-    ],
-    "no-proto": Array [
-      "error",
-    ],
-    "no-prototype-builtins": Array [
-      "error",
-    ],
-    "no-regex-spaces": Array [
-      "warn",
-    ],
-    "no-restricted-globals": Array [
-      "error",
-      "addEventListener",
-      "blur",
-      "close",
-      "closed",
-      "confirm",
-      "defaultStatus",
-      "defaultstatus",
-      "event",
-      "external",
-      "find",
-      "focus",
-      "frameElement",
-      "frames",
-      "history",
-      "innerHeight",
-      "innerWidth",
-      "length",
-      "location",
-      "locationbar",
-      "menubar",
-      "moveBy",
-      "moveTo",
-      "name",
-      "onblur",
-      "onerror",
-      "onfocus",
-      "onload",
-      "onresize",
-      "onunload",
-      "open",
-      "opener",
-      "opera",
-      "outerHeight",
-      "outerWidth",
-      "pageXOffset",
-      "pageYOffset",
-      "parent",
-      "print",
-      "removeEventListener",
-      "resizeBy",
-      "resizeTo",
-      "screen",
-      "screenLeft",
-      "screenTop",
-      "screenX",
-      "screenY",
-      "scroll",
-      "scrollbars",
-      "scrollBy",
-      "scrollTo",
-      "scrollX",
-      "scrollY",
-      "self",
-      "status",
-      "statusbar",
-      "stop",
-      "toolbar",
-      "top",
-    ],
-    "no-restricted-syntax": Array [
-      "error",
-      "WithStatement",
-    ],
-    "no-return-assign": Array [
-      "error",
-    ],
-    "no-return-await": Array [
-      "error",
-    ],
-    "no-script-url": Array [
-      "error",
-    ],
-    "no-self-assign": Array [
-      "error",
-    ],
-    "no-self-compare": Array [
-      "error",
-    ],
-    "no-sequences": Array [
-      "error",
-    ],
-    "no-setter-return": Array [
-      "error",
-    ],
-    "no-shadow-restricted-names": Array [
-      "error",
-    ],
-    "no-sparse-arrays": Array [
-      "error",
-    ],
-    "no-template-curly-in-string": Array [
-      "error",
-    ],
-    "no-this-before-super": Array [
-      "error",
-    ],
-    "no-undef": Array [
-      "error",
-      Object {
-        "typeof": true,
-      },
-    ],
-    "no-undef-init": Array [
-      "warn",
-    ],
-    "no-unmodified-loop-condition": Array [
-      "error",
-    ],
-    "no-unneeded-ternary": Array [
-      "warn",
-    ],
-    "no-unreachable": Array [
-      "error",
-    ],
-    "no-unreachable-loop": Array [
-      "error",
-    ],
-    "no-unsafe-finally": Array [
-      "error",
-    ],
-    "no-unsafe-negation": Array [
-      "error",
-    ],
-    "no-unsafe-optional-chaining": Array [
-      "error",
-      Object {
-        "disallowArithmeticOperators": true,
-      },
-    ],
-    "no-unused-labels": Array [
-      "warn",
-    ],
-    "no-unused-private-class-members": Array [
-      "error",
-    ],
-    "no-useless-backreference": Array [
-      "error",
-    ],
-    "no-useless-call": Array [
-      "error",
-    ],
-    "no-useless-catch": Array [
-      "error",
-    ],
-    "no-useless-computed-key": Array [
-      "warn",
-      Object {
-        "enforceForClassMembers": true,
-      },
-    ],
-    "no-useless-concat": Array [
-      "error",
-    ],
-    "no-useless-rename": Array [
-      "warn",
-    ],
-    "no-useless-return": Array [
-      "warn",
-    ],
-    "no-var": Array [
-      "warn",
-    ],
-    "no-void": Array [
-      "error",
-      Object {
-        "allowAsStatement": true,
-      },
-    ],
-    "no-with": Array [
-      "error",
-    ],
-    "object-shorthand": Array [
-      "warn",
-      "properties",
-    ],
-    "one-var": Array [
-      "warn",
-      "never",
-    ],
-    "prefer-arrow-callback": Array [
-      "warn",
-      Object {
-        "allowNamedFunctions": true,
-      },
-    ],
-    "prefer-const": Array [
-      "warn",
-      Object {
-        "destructuring": "all",
-      },
-    ],
-    "prefer-exponentiation-operator": Array [
-      "warn",
-    ],
-    "prefer-numeric-literals": Array [
-      "warn",
-    ],
-    "prefer-object-has-own": Array [
-      "warn",
-    ],
-    "prefer-object-spread": Array [
-      "warn",
-    ],
-    "prefer-promise-reject-errors": Array [
-      "error",
-      Object {
-        "allowEmptyReject": true,
-      },
-    ],
-    "prefer-regex-literals": Array [
-      "error",
-    ],
-    "prefer-rest-params": Array [
-      "error",
-    ],
-    "prefer-spread": Array [
-      "error",
-    ],
-    "prefer-template": Array [
-      "warn",
-    ],
-    "radix": Array [
-      "error",
-    ],
-    "react-hooks/exhaustive-deps": Array [
-      "warn",
-    ],
-    "react-hooks/rules-of-hooks": Array [
-      "error",
-    ],
-    "react/button-has-type": Array [
-      "error",
-    ],
-    "react/function-component-definition": Array [
-      "warn",
-      Object {
-        "namedComponents": Array [
-          "function-declaration",
-          "function-expression",
-        ],
-        "unnamedComponents": "function-expression",
-      },
-    ],
-    "react/iframe-missing-sandbox": Array [
-      "error",
-    ],
-    "react/jsx-boolean-value": Array [
-      "warn",
-    ],
-    "react/jsx-curly-brace-presence": Array [
-      "warn",
-      Object {
-        "children": "never",
-        "propElementValues": "always",
-        "props": "never",
-      },
-    ],
-    "react/jsx-key": Array [
-      "error",
-      Object {
-        "checkFragmentShorthand": true,
-        "checkKeyMustBeforeSpread": true,
-        "warnOnDuplicates": true,
-      },
-    ],
-    "react/jsx-no-bind": Array [
-      "error",
-      Object {
-        "allowArrowFunctions": true,
-      },
-    ],
-    "react/jsx-no-comment-textnodes": Array [
-      "error",
-    ],
-    "react/jsx-no-duplicate-props": Array [
-      "error",
-      Object {
-        "ignoreCase": true,
-      },
-    ],
-    "react/jsx-no-leaked-render": Array [
-      "warn",
-      Object {
-        "validStrategies": Array [
-          "ternary",
-        ],
-      },
-    ],
-    "react/jsx-no-target-blank": Array [
-      "warn",
-      Object {
-        "forms": true,
-        "warnOnSpreadAttributes": true,
-      },
-    ],
-    "react/jsx-no-undef": Array [
-      "error",
-    ],
-    "react/jsx-no-useless-fragment": Array [
-      "warn",
-    ],
-    "react/jsx-pascal-case": Array [
-      "error",
-    ],
-    "react/jsx-uses-react": Array [
-      "error",
-    ],
-    "react/jsx-uses-vars": Array [
-      "error",
-    ],
-    "react/no-access-state-in-setstate": Array [
-      "error",
-    ],
-    "react/no-arrow-function-lifecycle": Array [
-      "warn",
-    ],
-    "react/no-danger-with-children": Array [
-      "error",
-    ],
-    "react/no-deprecated": Array [
-      "error",
-    ],
-    "react/no-did-update-set-state": Array [
-      "error",
-    ],
-    "react/no-find-dom-node": Array [
-      "error",
-    ],
-    "react/no-invalid-html-attribute": Array [
-      "warn",
-    ],
-    "react/no-is-mounted": Array [
-      "error",
-    ],
-    "react/no-namespace": Array [
-      "error",
-    ],
-    "react/no-redundant-should-component-update": Array [
-      "error",
-    ],
-    "react/no-render-return-value": Array [
-      "error",
-    ],
-    "react/no-string-refs": Array [
-      "error",
-      Object {
-        "noTemplateLiterals": true,
-      },
-    ],
-    "react/no-this-in-sfc": Array [
-      "error",
-    ],
-    "react/no-typos": Array [
-      "error",
-    ],
-    "react/no-unescaped-entities": Array [
-      "error",
-    ],
-    "react/no-unknown-property": Array [
-      "warn",
-    ],
-    "react/no-unsafe": Array [
-      "error",
-    ],
-    "react/no-unstable-nested-components": Array [
-      "error",
-      Object {
-        "allowAsProps": true,
-      },
-    ],
-    "react/no-unused-class-component-methods": Array [
-      "error",
-    ],
-    "react/no-unused-state": Array [
-      "error",
-    ],
-    "react/no-will-update-set-state": Array [
-      "error",
-    ],
-    "react/require-render-return": Array [
-      "error",
-    ],
-    "react/self-closing-comp": Array [
-      "warn",
-    ],
-    "react/state-in-constructor": Array [
-      "error",
-      "never",
-    ],
-    "react/style-prop-object": Array [
-      "error",
-    ],
-    "react/void-dom-elements-no-children": Array [
-      "error",
-    ],
-    "require-yield": Array [
-      "error",
-    ],
-    "spaced-comment": Array [
-      "warn",
-      "always",
-      Object {
-        "block": Object {
-          "balanced": true,
-          "exceptions": Array [
-            "-",
-            "+",
-            "*",
+        \\"block\\": {
+          \\"exceptions\\": [
+            \\"-\\",
+            \\"+\\",
+            \\"*\\"
           ],
-          "markers": Array [
-            "!",
-            "*",
+          \\"markers\\": [
+            \\"!\\",
+            \\"*\\"
           ],
-        },
-        "line": Object {
-          "exceptions": Array [
-            "-",
-            "+",
-            "*",
-          ],
-          "markers": Array [
-            "!",
-            "/",
-            "=>",
-          ],
-        },
-      },
+          \\"balanced\\": true
+        }
+      }
     ],
-    "strict": Array [
-      "warn",
+    \\"strict\\": [
+      \\"warn\\"
     ],
-    "symbol-description": Array [
-      "error",
+    \\"symbol-description\\": [
+      \\"error\\"
     ],
-    "use-isnan": Array [
-      "error",
+    \\"use-isnan\\": [
+      \\"error\\"
     ],
-    "valid-typeof": Array [
-      "error",
+    \\"valid-typeof\\": [
+      \\"error\\"
     ],
-    "vars-on-top": Array [
-      "error",
+    \\"vars-on-top\\": [
+      \\"error\\"
     ],
-    "yoda": Array [
-      "warn",
+    \\"yoda\\": [
+      \\"warn\\"
     ],
-  },
-  "settings": Object {
-    "import/extensions": Array [
-      ".js",
-      ".ts",
-      ".jsx",
-      ".tsx",
+    \\"@next/next/google-font-display\\": [
+      \\"error\\"
     ],
-    "import/parsers": Object {
-      "@typescript-eslint/parser": Array [
-        ".ts",
-        ".tsx",
-        ".d.ts",
-      ],
-    },
-    "import/resolver": Object {
-      "/Users/sebastian/Workspace/sebastian-software/effective-eslint-config-factory/node_modules/eslint-import-resolver-node/index.js": Object {
-        "extensions": Array [
-          ".js",
-          ".jsx",
-          ".ts",
-          ".tsx",
+    \\"@next/next/google-font-preconnect\\": [
+      \\"error\\"
+    ],
+    \\"@next/next/inline-script-id\\": [
+      \\"error\\"
+    ],
+    \\"@next/next/next-script-for-ga\\": [
+      \\"error\\"
+    ],
+    \\"@next/next/no-assign-module-variable\\": [
+      \\"error\\"
+    ],
+    \\"@next/next/no-before-interactive-script-outside-document\\": [
+      \\"error\\"
+    ],
+    \\"@next/next/no-css-tags\\": [
+      \\"error\\"
+    ],
+    \\"@next/next/no-document-import-in-page\\": [
+      \\"error\\"
+    ],
+    \\"@next/next/no-duplicate-head\\": [
+      \\"error\\"
+    ],
+    \\"@next/next/no-head-element\\": [
+      \\"error\\"
+    ],
+    \\"@next/next/no-head-import-in-document\\": [
+      \\"error\\"
+    ],
+    \\"@next/next/no-html-link-for-pages\\": [
+      \\"error\\"
+    ],
+    \\"@next/next/no-img-element\\": [
+      \\"error\\"
+    ],
+    \\"@next/next/no-page-custom-font\\": [
+      \\"error\\"
+    ],
+    \\"@next/next/no-script-component-in-head\\": [
+      \\"error\\"
+    ],
+    \\"@next/next/no-styled-jsx-in-document\\": [
+      \\"error\\"
+    ],
+    \\"@next/next/no-sync-scripts\\": [
+      \\"error\\"
+    ],
+    \\"@next/next/no-title-in-document-head\\": [
+      \\"error\\"
+    ],
+    \\"@next/next/no-typos\\": [
+      \\"error\\"
+    ],
+    \\"@next/next/no-unwanted-polyfillio\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/adjacent-overload-signatures\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/array-type\\": [
+      \\"warn\\",
+      {
+        \\"default\\": \\"array-simple\\"
+      }
+    ],
+    \\"@typescript-eslint/await-thenable\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/ban-ts-comment\\": [
+      \\"error\\",
+      {
+        \\"ts-expect-error\\": \\"allow-with-description\\",
+        \\"minimumDescriptionLength\\": 4
+      }
+    ],
+    \\"@typescript-eslint/ban-tslint-comment\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/ban-types\\": [
+      \\"warn\\",
+      {
+        \\"extendDefaults\\": false,
+        \\"types\\": {
+          \\"String\\": {
+            \\"message\\": \\"Use \`string\` instead.\\",
+            \\"fixWith\\": \\"string\\"
+          },
+          \\"Number\\": {
+            \\"message\\": \\"Use \`number\` instead.\\",
+            \\"fixWith\\": \\"number\\"
+          },
+          \\"Boolean\\": {
+            \\"message\\": \\"Use \`boolean\` instead.\\",
+            \\"fixWith\\": \\"boolean\\"
+          },
+          \\"Symbol\\": {
+            \\"message\\": \\"Use \`symbol\` instead.\\",
+            \\"fixWith\\": \\"symbol\\"
+          },
+          \\"BigInt\\": {
+            \\"message\\": \\"Use \`bigint\` instead.\\",
+            \\"fixWith\\": \\"bigint\\"
+          },
+          \\"Object\\": {
+            \\"message\\": \\"The \`Object\` type is mostly the same as \`unknown\`. You probably want \`Record<string, unknown>\` instead. See https://github.com/typescript-eslint/typescript-eslint/pull/848\\",
+            \\"fixWith\\": \\"Record<string, unknown>\\"
+          },
+          \\"{}\\": {
+            \\"message\\": \\"The \`{}\` type is mostly the same as \`unknown\`. You probably want \`Record<string, unknown>\` instead.\\",
+            \\"fixWith\\": \\"Record<string, unknown>\\"
+          },
+          \\"object\\": {
+            \\"message\\": \\"The \`object\` type is hard to use. Use \`Record<string, unknown>\` instead. See: https://github.com/typescript-eslint/typescript-eslint/pull/848\\",
+            \\"fixWith\\": \\"Record<string, unknown>\\"
+          },
+          \\"Function\\": \\"Use a specific function type instead, like \`() => void\`.\\",
+          \\"null\\": {
+            \\"message\\": \\"Use \`undefined\` instead. See: https://github.com/sindresorhus/meta/issues/7\\",
+            \\"fixWith\\": \\"undefined\\"
+          },
+          \\"[]\\": \\"Don't use the empty array type \`[]\`. It only allows empty arrays. Use \`SomeType[]\` instead.\\",
+          \\"[[]]\\": \\"Don't use \`[[]]\`. It only allows an array with a single element which is an empty array. Use \`SomeType[][]\` instead.\\",
+          \\"[[[]]]\\": \\"Don't use \`[[[]]]\`. Use \`SomeType[][][]\` instead.\\",
+          \\"[[[[]]]]\\": \\"ur drunk 🤡\\",
+          \\"[[[[[]]]]]\\": \\"🦄💥\\"
+        }
+      }
+    ],
+    \\"@typescript-eslint/class-literal-property-style\\": [
+      \\"warn\\",
+      \\"getters\\"
+    ],
+    \\"@typescript-eslint/consistent-indexed-object-style\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/consistent-type-assertions\\": [
+      \\"error\\",
+      {
+        \\"assertionStyle\\": \\"as\\",
+        \\"objectLiteralTypeAssertions\\": \\"allow-as-parameter\\"
+      }
+    ],
+    \\"@typescript-eslint/default-param-last\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/dot-notation\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/no-array-constructor\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/no-base-to-string\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-duplicate-enum-values\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-duplicate-imports\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-dynamic-delete\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/no-empty-interface\\": [
+      \\"warn\\",
+      {
+        \\"allowSingleExtends\\": true
+      }
+    ],
+    \\"@typescript-eslint/no-explicit-any\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/no-extra-non-null-assertion\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/no-extraneous-class\\": [
+      \\"error\\",
+      {
+        \\"allowConstructorOnly\\": false,
+        \\"allowEmpty\\": false,
+        \\"allowStaticOnly\\": false,
+        \\"allowWithDecorator\\": true
+      }
+    ],
+    \\"@typescript-eslint/no-floating-promises\\": [
+      \\"error\\",
+      {
+        \\"ignoreVoid\\": true,
+        \\"ignoreIIFE\\": true
+      }
+    ],
+    \\"@typescript-eslint/no-for-in-array\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-implicit-any-catch\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/no-implied-eval\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-invalid-this\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-invalid-void-type\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-loop-func\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-loss-of-precision\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-meaningless-void-operator\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/no-misused-new\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-misused-promises\\": [
+      \\"error\\",
+      {
+        \\"checksConditionals\\": true,
+        \\"checksVoidReturn\\": false
+      }
+    ],
+    \\"@typescript-eslint/no-namespace\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-non-null-asserted-nullish-coalescing\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-non-null-asserted-optional-chain\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-non-null-assertion\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-parameter-properties\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-redundant-type-constituents\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-restricted-imports\\": [
+      \\"error\\",
+      [
+        \\"error\\",
+        \\"domain\\",
+        \\"freelist\\",
+        \\"smalloc\\",
+        \\"punycode\\",
+        \\"sys\\",
+        \\"querystring\\",
+        \\"colors\\"
+      ]
+    ],
+    \\"@typescript-eslint/no-shadow\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-this-alias\\": [
+      \\"error\\",
+      {
+        \\"allowDestructuring\\": true
+      }
+    ],
+    \\"@typescript-eslint/no-throw-literal\\": [
+      \\"error\\",
+      {
+        \\"allowThrowingUnknown\\": true,
+        \\"allowThrowingAny\\": false
+      }
+    ],
+    \\"@typescript-eslint/no-unnecessary-boolean-literal-compare\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/no-unnecessary-condition\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/no-unnecessary-qualifier\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/no-unnecessary-type-assertion\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/no-unnecessary-type-constraint\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-unsafe-argument\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-unsafe-assignment\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-unsafe-call\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-unsafe-member-access\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-unused-vars\\": [
+      \\"error\\",
+      {
+        \\"args\\": \\"after-used\\",
+        \\"argsIgnorePattern\\": \\"^_\\",
+        \\"ignoreRestSiblings\\": true,
+        \\"varsIgnorePattern\\": \\"^ignored\\"
+      }
+    ],
+    \\"@typescript-eslint/no-useless-constructor\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/no-useless-empty-export\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/padding-line-between-statements\\": [
+      \\"warn\\",
+      {
+        \\"blankLine\\": \\"always\\",
+        \\"prev\\": \\"multiline-block-like\\",
+        \\"next\\": \\"*\\"
+      }
+    ],
+    \\"@typescript-eslint/parameter-properties\\": [
+      \\"error\\",
+      {
+        \\"prefer\\": \\"parameter-property\\"
+      }
+    ],
+    \\"@typescript-eslint/prefer-as-const\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/prefer-enum-initializers\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/prefer-includes\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/prefer-literal-enum-member\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/prefer-namespace-keyword\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/prefer-nullish-coalescing\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/prefer-optional-chain\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/prefer-reduce-type-parameter\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/prefer-return-this-type\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/prefer-string-starts-ends-with\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/prefer-ts-expect-error\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/restrict-plus-operands\\": [
+      \\"error\\",
+      {
+        \\"checkCompoundAssignments\\": true,
+        \\"allowAny\\": false
+      }
+    ],
+    \\"@typescript-eslint/restrict-template-expressions\\": [
+      \\"error\\",
+      {
+        \\"allowNumber\\": true
+      }
+    ],
+    \\"@typescript-eslint/return-await\\": [
+      \\"warn\\"
+    ],
+    \\"@typescript-eslint/switch-exhaustiveness-check\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/triple-slash-reference\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/unbound-method\\": [
+      \\"error\\"
+    ],
+    \\"@typescript-eslint/unified-signatures\\": [
+      \\"error\\",
+      {
+        \\"ignoreDifferentlyNamedParameters\\": true
+      }
+    ],
+    \\"import/default\\": [
+      \\"error\\"
+    ],
+    \\"import/export\\": [
+      \\"error\\"
+    ],
+    \\"import/first\\": [
+      \\"warn\\"
+    ],
+    \\"import/no-absolute-path\\": [
+      \\"error\\"
+    ],
+    \\"import/no-amd\\": [
+      \\"error\\"
+    ],
+    \\"import/no-deprecated\\": [
+      \\"error\\"
+    ],
+    \\"import/no-duplicates\\": [
+      \\"warn\\"
+    ],
+    \\"import/no-extraneous-dependencies\\": [
+      \\"error\\"
+    ],
+    \\"import/no-import-module-exports\\": [
+      \\"warn\\"
+    ],
+    \\"import/no-mutable-exports\\": [
+      \\"error\\"
+    ],
+    \\"import/no-named-as-default\\": [
+      \\"error\\"
+    ],
+    \\"import/no-named-as-default-member\\": [
+      \\"error\\"
+    ],
+    \\"import/no-named-default\\": [
+      \\"error\\"
+    ],
+    \\"import/no-relative-packages\\": [
+      \\"warn\\"
+    ],
+    \\"import/no-self-import\\": [
+      \\"error\\"
+    ],
+    \\"import/no-webpack-loader-syntax\\": [
+      \\"error\\"
+    ],
+    \\"jest-dom/prefer-checked\\": [
+      \\"error\\"
+    ],
+    \\"jest-dom/prefer-empty\\": [
+      \\"error\\"
+    ],
+    \\"jest-dom/prefer-enabled-disabled\\": [
+      \\"error\\"
+    ],
+    \\"jest-dom/prefer-focus\\": [
+      \\"error\\"
+    ],
+    \\"jest-dom/prefer-in-document\\": [
+      \\"error\\"
+    ],
+    \\"jest-dom/prefer-required\\": [
+      \\"error\\"
+    ],
+    \\"jest-dom/prefer-to-have-attribute\\": [
+      \\"error\\"
+    ],
+    \\"jest-dom/prefer-to-have-class\\": [
+      \\"error\\"
+    ],
+    \\"jest-dom/prefer-to-have-style\\": [
+      \\"error\\"
+    ],
+    \\"jest-dom/prefer-to-have-text-content\\": [
+      \\"error\\"
+    ],
+    \\"jest-dom/prefer-to-have-value\\": [
+      \\"error\\"
+    ],
+    \\"jsx-a11y/alt-text\\": [
+      \\"error\\"
+    ],
+    \\"jsx-a11y/anchor-has-content\\": [
+      \\"error\\"
+    ],
+    \\"jsx-a11y/anchor-is-valid\\": [
+      \\"error\\",
+      {
+        \\"aspects\\": [
+          \\"noHref\\",
+          \\"invalidHref\\"
+        ]
+      }
+    ],
+    \\"jsx-a11y/aria-activedescendant-has-tabindex\\": [
+      \\"error\\"
+    ],
+    \\"jsx-a11y/aria-props\\": [
+      \\"error\\"
+    ],
+    \\"jsx-a11y/aria-proptypes\\": [
+      \\"error\\"
+    ],
+    \\"jsx-a11y/aria-role\\": [
+      \\"error\\",
+      {
+        \\"ignoreNonDOM\\": true
+      }
+    ],
+    \\"jsx-a11y/aria-unsupported-elements\\": [
+      \\"error\\"
+    ],
+    \\"jsx-a11y/click-events-have-key-events\\": [
+      \\"error\\"
+    ],
+    \\"jsx-a11y/heading-has-content\\": [
+      \\"error\\"
+    ],
+    \\"jsx-a11y/html-has-lang\\": [
+      \\"error\\"
+    ],
+    \\"jsx-a11y/iframe-has-title\\": [
+      \\"error\\"
+    ],
+    \\"jsx-a11y/img-redundant-alt\\": [
+      \\"error\\"
+    ],
+    \\"jsx-a11y/interactive-supports-focus\\": [
+      \\"error\\",
+      {
+        \\"tabbable\\": [
+          \\"button\\",
+          \\"checkbox\\",
+          \\"link\\",
+          \\"searchbox\\",
+          \\"spinbutton\\",
+          \\"switch\\",
+          \\"textbox\\"
+        ]
+      }
+    ],
+    \\"jsx-a11y/lang\\": [
+      \\"error\\"
+    ],
+    \\"jsx-a11y/media-has-caption\\": [
+      \\"error\\"
+    ],
+    \\"jsx-a11y/mouse-events-have-key-events\\": [
+      \\"error\\"
+    ],
+    \\"jsx-a11y/no-access-key\\": [
+      \\"error\\"
+    ],
+    \\"jsx-a11y/no-distracting-elements\\": [
+      \\"error\\"
+    ],
+    \\"jsx-a11y/no-interactive-element-to-noninteractive-role\\": [
+      \\"error\\",
+      {
+        \\"tr\\": [
+          \\"none\\",
+          \\"presentation\\"
         ],
-      },
-      "/Users/sebastian/Workspace/sebastian-software/effective-eslint-config-factory/node_modules/eslint-import-resolver-typescript/lib/index.cjs": Object {
-        "alwaysTryTypes": true,
-      },
-    },
-    "propWrapperFunctions": Array [
-      "forbidExtraProps",
-      "exact",
-      "Object.freeze",
+        \\"canvas\\": [
+          \\"img\\"
+        ]
+      }
     ],
-    "react": Object {
-      "pragma": "React",
-      "version": "detect",
-    },
-  },
-}
+    \\"jsx-a11y/no-noninteractive-element-interactions\\": [
+      \\"error\\",
+      {
+        \\"handlers\\": [
+          \\"onClick\\",
+          \\"onError\\",
+          \\"onLoad\\",
+          \\"onMouseDown\\",
+          \\"onMouseUp\\",
+          \\"onKeyPress\\",
+          \\"onKeyDown\\",
+          \\"onKeyUp\\"
+        ],
+        \\"alert\\": [
+          \\"onKeyUp\\",
+          \\"onKeyDown\\",
+          \\"onKeyPress\\"
+        ],
+        \\"body\\": [
+          \\"onError\\",
+          \\"onLoad\\"
+        ],
+        \\"dialog\\": [
+          \\"onKeyUp\\",
+          \\"onKeyDown\\",
+          \\"onKeyPress\\"
+        ],
+        \\"iframe\\": [
+          \\"onError\\",
+          \\"onLoad\\"
+        ],
+        \\"img\\": [
+          \\"onError\\",
+          \\"onLoad\\"
+        ]
+      }
+    ],
+    \\"jsx-a11y/no-noninteractive-element-to-interactive-role\\": [
+      \\"error\\",
+      {
+        \\"ul\\": [
+          \\"listbox\\",
+          \\"menu\\",
+          \\"menubar\\",
+          \\"radiogroup\\",
+          \\"tablist\\",
+          \\"tree\\",
+          \\"treegrid\\"
+        ],
+        \\"ol\\": [
+          \\"listbox\\",
+          \\"menu\\",
+          \\"menubar\\",
+          \\"radiogroup\\",
+          \\"tablist\\",
+          \\"tree\\",
+          \\"treegrid\\"
+        ],
+        \\"li\\": [
+          \\"menuitem\\",
+          \\"option\\",
+          \\"row\\",
+          \\"tab\\",
+          \\"treeitem\\"
+        ],
+        \\"table\\": [
+          \\"grid\\"
+        ],
+        \\"td\\": [
+          \\"gridcell\\"
+        ],
+        \\"fieldset\\": [
+          \\"radiogroup\\",
+          \\"presentation\\"
+        ]
+      }
+    ],
+    \\"jsx-a11y/no-noninteractive-tabindex\\": [
+      \\"error\\",
+      {
+        \\"tags\\": [],
+        \\"roles\\": [
+          \\"tabpanel\\"
+        ],
+        \\"allowExpressionValues\\": true
+      }
+    ],
+    \\"jsx-a11y/no-redundant-roles\\": [
+      \\"error\\"
+    ],
+    \\"jsx-a11y/no-static-element-interactions\\": [
+      \\"error\\",
+      {
+        \\"allowExpressionValues\\": true,
+        \\"handlers\\": [
+          \\"onClick\\",
+          \\"onMouseDown\\",
+          \\"onMouseUp\\",
+          \\"onKeyPress\\",
+          \\"onKeyDown\\",
+          \\"onKeyUp\\"
+        ]
+      }
+    ],
+    \\"jsx-a11y/role-has-required-aria-props\\": [
+      \\"error\\"
+    ],
+    \\"jsx-a11y/role-supports-aria-props\\": [
+      \\"error\\"
+    ],
+    \\"jsx-a11y/scope\\": [
+      \\"error\\"
+    ],
+    \\"jsx-a11y/tabindex-no-positive\\": [
+      \\"error\\"
+    ],
+    \\"react-hooks/exhaustive-deps\\": [
+      \\"warn\\"
+    ],
+    \\"react-hooks/rules-of-hooks\\": [
+      \\"error\\"
+    ],
+    \\"react/button-has-type\\": [
+      \\"error\\"
+    ],
+    \\"react/function-component-definition\\": [
+      \\"warn\\",
+      {
+        \\"namedComponents\\": [
+          \\"function-declaration\\",
+          \\"function-expression\\"
+        ],
+        \\"unnamedComponents\\": \\"function-expression\\"
+      }
+    ],
+    \\"react/iframe-missing-sandbox\\": [
+      \\"error\\"
+    ],
+    \\"react/jsx-boolean-value\\": [
+      \\"warn\\"
+    ],
+    \\"react/jsx-curly-brace-presence\\": [
+      \\"warn\\",
+      {
+        \\"props\\": \\"never\\",
+        \\"children\\": \\"never\\",
+        \\"propElementValues\\": \\"always\\"
+      }
+    ],
+    \\"react/jsx-key\\": [
+      \\"error\\",
+      {
+        \\"checkFragmentShorthand\\": true,
+        \\"checkKeyMustBeforeSpread\\": true,
+        \\"warnOnDuplicates\\": true
+      }
+    ],
+    \\"react/jsx-no-bind\\": [
+      \\"error\\",
+      {
+        \\"allowArrowFunctions\\": true
+      }
+    ],
+    \\"react/jsx-no-comment-textnodes\\": [
+      \\"error\\"
+    ],
+    \\"react/jsx-no-duplicate-props\\": [
+      \\"error\\",
+      {
+        \\"ignoreCase\\": true
+      }
+    ],
+    \\"react/jsx-no-leaked-render\\": [
+      \\"warn\\",
+      {
+        \\"validStrategies\\": [
+          \\"ternary\\"
+        ]
+      }
+    ],
+    \\"react/jsx-no-target-blank\\": [
+      \\"warn\\",
+      {
+        \\"warnOnSpreadAttributes\\": true,
+        \\"forms\\": true
+      }
+    ],
+    \\"react/jsx-no-undef\\": [
+      \\"error\\"
+    ],
+    \\"react/jsx-no-useless-fragment\\": [
+      \\"warn\\"
+    ],
+    \\"react/jsx-pascal-case\\": [
+      \\"error\\"
+    ],
+    \\"react/jsx-uses-react\\": [
+      \\"error\\"
+    ],
+    \\"react/jsx-uses-vars\\": [
+      \\"error\\"
+    ],
+    \\"react/no-access-state-in-setstate\\": [
+      \\"error\\"
+    ],
+    \\"react/no-arrow-function-lifecycle\\": [
+      \\"warn\\"
+    ],
+    \\"react/no-danger-with-children\\": [
+      \\"error\\"
+    ],
+    \\"react/no-deprecated\\": [
+      \\"error\\"
+    ],
+    \\"react/no-did-update-set-state\\": [
+      \\"error\\"
+    ],
+    \\"react/no-find-dom-node\\": [
+      \\"error\\"
+    ],
+    \\"react/no-invalid-html-attribute\\": [
+      \\"warn\\"
+    ],
+    \\"react/no-is-mounted\\": [
+      \\"error\\"
+    ],
+    \\"react/no-namespace\\": [
+      \\"error\\"
+    ],
+    \\"react/no-redundant-should-component-update\\": [
+      \\"error\\"
+    ],
+    \\"react/no-render-return-value\\": [
+      \\"error\\"
+    ],
+    \\"react/no-string-refs\\": [
+      \\"error\\",
+      {
+        \\"noTemplateLiterals\\": true
+      }
+    ],
+    \\"react/no-this-in-sfc\\": [
+      \\"error\\"
+    ],
+    \\"react/no-typos\\": [
+      \\"error\\"
+    ],
+    \\"react/no-unescaped-entities\\": [
+      \\"error\\"
+    ],
+    \\"react/no-unknown-property\\": [
+      \\"warn\\"
+    ],
+    \\"react/no-unsafe\\": [
+      \\"error\\"
+    ],
+    \\"react/no-unstable-nested-components\\": [
+      \\"error\\",
+      {
+        \\"allowAsProps\\": true
+      }
+    ],
+    \\"react/no-unused-class-component-methods\\": [
+      \\"error\\"
+    ],
+    \\"react/no-unused-state\\": [
+      \\"error\\"
+    ],
+    \\"react/no-will-update-set-state\\": [
+      \\"error\\"
+    ],
+    \\"react/require-render-return\\": [
+      \\"error\\"
+    ],
+    \\"react/self-closing-comp\\": [
+      \\"warn\\"
+    ],
+    \\"react/state-in-constructor\\": [
+      \\"error\\",
+      \\"never\\"
+    ],
+    \\"react/style-prop-object\\": [
+      \\"error\\"
+    ],
+    \\"react/void-dom-elements-no-children\\": [
+      \\"error\\"
+    ]
+  }
+}"
 `;

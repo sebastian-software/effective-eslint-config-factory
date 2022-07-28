@@ -232,7 +232,7 @@ function mergeIntoNewConfig(configs: Linter.BaseConfig[]): Linter.BaseConfig {
   return dist
 }
 
-export async function compileFiles() {
+export async function compileFiles(): Promise<Record<string, any>> {
   const dist = getMerged()
 
   // Post-Processing

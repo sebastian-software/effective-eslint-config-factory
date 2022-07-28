@@ -1,3 +1,4 @@
+import pkgDir from "pkg-dir"
 import { getSingleSourceKey, getEqualValue, compileFiles } from "."
 
 describe("getSingleSourceKey()", () => {
@@ -111,7 +112,14 @@ describe("compileFiles", () => {
 
     const fileLists = await compileFiles()
 
-    expect(fileLists.index).toMatchSnapshot("Core Configuration")
-    expect(fileLists.react).toMatchSnapshot("React Configuration")
+    const rootDir = pkgDir.sync(__dirname) as string
+    const fileContents: Record<string, string> = {}
+    Object.keys(fileLists).map((fileId) => {
+      const content = JSON.stringify(fileLists[fileId], null, 2);
+      fileContents[fileId] = content.replaceAll(rootDir, "~")
+    })
+
+    expect(fileContents.index).toMatchSnapshot("Core Configuration")
+    expect(fileContents.react).toMatchSnapshot("React Configuration")
   })
 })

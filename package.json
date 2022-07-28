@@ -30,7 +30,7 @@
     "eslint",
     "eslint-preset",
     "react",
-    "jest"
+    "typescript"
   ],
   "author": {
     "name": "Sebastian Werner",
@@ -45,7 +45,6 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@babel/runtime": "^7.18.9",
-    "@types/require-from-string": "^1.2.1",
     "@typescript-eslint/eslint-plugin": "^5.31.0",
     "@typescript-eslint/parser": "^5.31.0",
     "core-js": "^3.24.0",
@@ -59,8 +58,7 @@
     "eslint-plugin-react": "^7.30.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-testing-library": "^5.5.1",
-    "eslint-plugin-unicorn": "^43.0.2",
-    "require-from-string": "^2.0.2"
+    "eslint-plugin-unicorn": "^43.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.18.9",
