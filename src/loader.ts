@@ -1,11 +1,9 @@
 /* eslint-disable @typescript-eslint/no-var-requires, unicorn/prefer-module */
 
 import { join } from "node:path"
-import { readFileSync } from "node:fs"
 import pkgDir from "pkg-dir"
 import { Linter } from "eslint"
 import { merge, assign } from "lodash"
-import requireFromString from "require-from-string"
 
 import { RulesStructuredByOrigin, SimplifiedRuleValue } from "./types"
 import { recommended } from "./recommended"
@@ -93,7 +91,6 @@ export function getMerged(): RulesStructuredByOrigin {
 
   // TODO: https://www.npmjs.com/package/eslint-plugin-shopify-lean
   // TODO: https://www.npmjs.com/package/eslint-plugin-jsdoc
-  // TODO: https://www.npmjs.com/package/eslint-plugin-import + https://www.npmjs.com/package/eslint-import-resolver-babel-module
   // TODO: https://github.com/epaew/eslint-plugin-filenames-simple
 
   // ==== ==== ==== ==== ==== ==== ====
@@ -110,6 +107,7 @@ export function getMerged(): RulesStructuredByOrigin {
   mergeIntoStructure(getKentDodds(), "kentcdodds", dist)
   mergeIntoStructure(getRemixRecommended(), "remix", dist)
   mergeIntoStructure(getNextJS(), "nextjs", dist)
+  mergeIntoStructure(getRedwoodJS(), "redwood", dist)
 
   // ==== ==== ==== ==== ==== ==== ====
   // Effective
@@ -371,6 +369,31 @@ export function getNextJS(): RuleLoaderReturn {
     ...base.rules,
     ...plugin.configs.recommended.rules,
     ...plugin.configs["core-web-vitals"].rules
+  }
+
+  return {
+    config,
+    rules
+  }
+}
+
+function getFileStr(fileMatch: string | string[]) {
+  return typeof fileMatch === "string" ? fileMatch : fileMatch.sort().join(",")
+}
+
+function getOverride(overrides: Linter.ConfigOverride[], fileMatch: string[]) {
+  const findStr = getFileStr(fileMatch)
+  return overrides.filter((entry) => getFileStr(entry.files) === findStr)[0]
+}
+
+export function getRedwoodJS(): RuleLoaderReturn {
+  const baseCfg = require("@redwoodjs/eslint-config/shared.js")
+  const tsCfg = getOverride(baseCfg.overrides, ["*.ts", "*.tsx"])
+
+  const config = {}
+  const rules = {
+    ...baseCfg.rules,
+    ...tsCfg.rules
   }
 
   return {
