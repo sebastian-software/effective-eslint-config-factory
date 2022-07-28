@@ -105,9 +105,13 @@ describe("getEqualValue", () => {
 
 describe("compileFiles", () => {
   test("Produces two files which match snapshots", async () => {
+    // Block module resolution eslint patch... the require.cache solution does not work in Jest, though
+    // See also: https://github.com/facebook/jest/issues/4940#issuecomment-346557115
+    jest.mock('@rushstack/eslint-patch/modern-module-resolution', () => '', {virtual: true})
+
     const fileLists = await compileFiles()
 
-    expect(fileLists.index).toMatchSnapshot()
-    expect(fileLists.react).toMatchSnapshot()
+    expect(fileLists.index).toMatchSnapshot("Core Configuration")
+    expect(fileLists.react).toMatchSnapshot("React Configuration")
   })
 })
