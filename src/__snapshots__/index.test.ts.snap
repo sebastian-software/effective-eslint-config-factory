@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`compileFiles Produces two files which match snapshots 1`] = `
+exports[`compileFiles Produces two files which match snapshots: Core Configuration 1`] = `
 Object {
   "env": Object {
     "es2021": true,
@@ -96,7 +96,6 @@ Object {
     },
     Object {
       "env": Object {
-        "jest": true,
         "jest/globals": true,
       },
       "files": Array [
@@ -198,11 +197,16 @@ Object {
           "error",
         ],
       },
+      "settings": Object {
+        "version": "28.1.3",
+      },
     },
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": Object {
+    "allowImportExportEverywhere": true,
     "ecmaVersion": "latest",
+    "requireConfigFile": false,
     "sourceType": "module",
     "warnOnUnsupportedTypeScriptVersion": false,
   },
@@ -213,6 +217,66 @@ Object {
   ],
   "reportUnusedDisableDirectives": true,
   "rules": Object {
+    "@next/next/google-font-display": Array [
+      "error",
+    ],
+    "@next/next/google-font-preconnect": Array [
+      "error",
+    ],
+    "@next/next/inline-script-id": Array [
+      "error",
+    ],
+    "@next/next/next-script-for-ga": Array [
+      "error",
+    ],
+    "@next/next/no-assign-module-variable": Array [
+      "error",
+    ],
+    "@next/next/no-before-interactive-script-outside-document": Array [
+      "error",
+    ],
+    "@next/next/no-css-tags": Array [
+      "error",
+    ],
+    "@next/next/no-document-import-in-page": Array [
+      "error",
+    ],
+    "@next/next/no-duplicate-head": Array [
+      "error",
+    ],
+    "@next/next/no-head-element": Array [
+      "error",
+    ],
+    "@next/next/no-head-import-in-document": Array [
+      "error",
+    ],
+    "@next/next/no-html-link-for-pages": Array [
+      "error",
+    ],
+    "@next/next/no-img-element": Array [
+      "error",
+    ],
+    "@next/next/no-page-custom-font": Array [
+      "error",
+    ],
+    "@next/next/no-script-component-in-head": Array [
+      "error",
+    ],
+    "@next/next/no-styled-jsx-in-document": Array [
+      "error",
+    ],
+    "@next/next/no-sync-scripts": Array [
+      "error",
+    ],
+    "@next/next/no-title-in-document-head": Array [
+      "error",
+    ],
+    "@next/next/no-typos": Array [
+      "error",
+    ],
+    "@next/next/no-unwanted-polyfillio": Array [
+      "error",
+    ],
     "@typescript-eslint/adjacent-overload-signatures": Array [
       "error",
     ],
@@ -288,10 +352,6 @@ Object {
     "@typescript-eslint/class-literal-property-style": Array [
       "warn",
       "getters",
-    ],
-    "@typescript-eslint/consistent-generic-constructors": Array [
-      "warn",
-      "constructor",
     ],
     "@typescript-eslint/consistent-indexed-object-style": Array [
       "warn",
@@ -469,18 +529,11 @@ Object {
         "varsIgnorePattern": "^ignored",
       },
     ],
-    "@typescript-eslint/no-use-before-define": Array [
-      "error",
-      "nofunc",
-    ],
     "@typescript-eslint/no-useless-constructor": Array [
       "error",
     ],
     "@typescript-eslint/no-useless-empty-export": Array [
       "warn",
-    ],
-    "@typescript-eslint/no-var-requires": Array [
-      "error",
     ],
     "@typescript-eslint/padding-line-between-statements": Array [
       "warn",
@@ -661,22 +714,38 @@ Object {
     "import/no-webpack-loader-syntax": Array [
       "error",
     ],
-    "import/order": Array [
-      "warn",
-      Object {
-        "groups": Array [
-          "builtin",
-          Array [
-            "external",
-            "internal",
-          ],
-          "parent",
-          Array [
-            "sibling",
-            "index",
-          ],
-        ],
-      },
+    "jest-dom/prefer-checked": Array [
+      "error",
+    ],
+    "jest-dom/prefer-empty": Array [
+      "error",
+    ],
+    "jest-dom/prefer-enabled-disabled": Array [
+      "error",
+    ],
+    "jest-dom/prefer-focus": Array [
+      "error",
+    ],
+    "jest-dom/prefer-in-document": Array [
+      "error",
+    ],
+    "jest-dom/prefer-required": Array [
+      "error",
+    ],
+    "jest-dom/prefer-to-have-attribute": Array [
+      "error",
+    ],
+    "jest-dom/prefer-to-have-class": Array [
+      "error",
+    ],
+    "jest-dom/prefer-to-have-style": Array [
+      "error",
+    ],
+    "jest-dom/prefer-to-have-text-content": Array [
+      "error",
+    ],
+    "jest-dom/prefer-to-have-value": Array [
+      "error",
     ],
     "max-depth": Array [
       "error",
@@ -1037,9 +1106,6 @@ Object {
     "no-useless-concat": Array [
       "error",
     ],
-    "no-useless-escape": Array [
-      "error",
-    ],
     "no-useless-rename": Array [
       "warn",
     ],
@@ -1172,10 +1238,11 @@ Object {
       "@typescript-eslint/parser": Array [
         ".ts",
         ".tsx",
+        ".d.ts",
       ],
     },
     "import/resolver": Object {
-      "node": Object {
+      "/Users/sebastian/Workspace/sebastian-software/effective-eslint-config-factory/node_modules/eslint-import-resolver-node/index.js": Object {
         "extensions": Array [
           ".js",
           ".jsx",
@@ -1183,12 +1250,15 @@ Object {
           ".tsx",
         ],
       },
+      "/Users/sebastian/Workspace/sebastian-software/effective-eslint-config-factory/node_modules/eslint-import-resolver-typescript/lib/index.cjs": Object {
+        "alwaysTryTypes": true,
+      },
     },
   },
 }
 `;
 
-exports[`compileFiles Produces two files which match snapshots 2`] = `
+exports[`compileFiles Produces two files which match snapshots: React Configuration 1`] = `
 Object {
   "env": Object {
     "es2021": true,
@@ -1364,7 +1434,6 @@ Object {
     },
     Object {
       "env": Object {
-        "jest": true,
         "jest/globals": true,
       },
       "files": Array [
@@ -1471,6 +1540,9 @@ Object {
         "testing-library/await-async-utils": Array [
           "error",
         ],
+        "testing-library/no-await-sync-events": Array [
+          "error",
+        ],
         "testing-library/no-await-sync-query": Array [
           "error",
         ],
@@ -1520,18 +1592,29 @@ Object {
         "testing-library/prefer-screen-queries": Array [
           "error",
         ],
+        "testing-library/prefer-user-event": Array [
+          "error",
+        ],
+        "testing-library/prefer-wait-for": Array [
+          "error",
+        ],
         "testing-library/render-result-naming-convention": Array [
           "error",
         ],
+      },
+      "settings": Object {
+        "version": "28.1.3",
       },
     },
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": Object {
+    "allowImportExportEverywhere": true,
     "ecmaFeatures": Object {
       "jsx": true,
     },
     "ecmaVersion": "latest",
+    "requireConfigFile": false,
     "sourceType": "module",
     "warnOnUnsupportedTypeScriptVersion": false,
   },
@@ -1545,6 +1628,66 @@ Object {
   ],
   "reportUnusedDisableDirectives": true,
   "rules": Object {
+    "@next/next/google-font-display": Array [
+      "error",
+    ],
+    "@next/next/google-font-preconnect": Array [
+      "error",
+    ],
+    "@next/next/inline-script-id": Array [
+      "error",
+    ],
+    "@next/next/next-script-for-ga": Array [
+      "error",
+    ],
+    "@next/next/no-assign-module-variable": Array [
+      "error",
+    ],
+    "@next/next/no-before-interactive-script-outside-document": Array [
+      "error",
+    ],
+    "@next/next/no-css-tags": Array [
+      "error",
+    ],
+    "@next/next/no-document-import-in-page": Array [
+      "error",
+    ],
+    "@next/next/no-duplicate-head": Array [
+      "error",
+    ],
+    "@next/next/no-head-element": Array [
+      "error",
+    ],
+    "@next/next/no-head-import-in-document": Array [
+      "error",
+    ],
+    "@next/next/no-html-link-for-pages": Array [
+      "error",
+    ],
+    "@next/next/no-img-element": Array [
+      "error",
+    ],
+    "@next/next/no-page-custom-font": Array [
+      "error",
+    ],
+    "@next/next/no-script-component-in-head": Array [
+      "error",
+    ],
+    "@next/next/no-styled-jsx-in-document": Array [
+      "error",
+    ],
+    "@next/next/no-sync-scripts": Array [
+      "error",
+    ],
+    "@next/next/no-title-in-document-head": Array [
+      "error",
+    ],
+    "@next/next/no-typos": Array [
+      "error",
+    ],
+    "@next/next/no-unwanted-polyfillio": Array [
+      "error",
+    ],
     "@typescript-eslint/adjacent-overload-signatures": Array [
       "error",
     ],
@@ -1620,10 +1763,6 @@ Object {
     "@typescript-eslint/class-literal-property-style": Array [
       "warn",
       "getters",
-    ],
-    "@typescript-eslint/consistent-generic-constructors": Array [
-      "warn",
-      "constructor",
     ],
     "@typescript-eslint/consistent-indexed-object-style": Array [
       "warn",
@@ -1801,18 +1940,11 @@ Object {
         "varsIgnorePattern": "^ignored",
       },
     ],
-    "@typescript-eslint/no-use-before-define": Array [
-      "error",
-      "nofunc",
-    ],
     "@typescript-eslint/no-useless-constructor": Array [
       "error",
     ],
     "@typescript-eslint/no-useless-empty-export": Array [
       "warn",
-    ],
-    "@typescript-eslint/no-var-requires": Array [
-      "error",
     ],
     "@typescript-eslint/padding-line-between-statements": Array [
       "warn",
@@ -1993,24 +2125,37 @@ Object {
     "import/no-webpack-loader-syntax": Array [
       "error",
     ],
-    "import/order": Array [
-      "warn",
-      Object {
-        "groups": Array [
-          "builtin",
-          Array [
-            "external",
-            "internal",
-          ],
-          "parent",
-          Array [
-            "sibling",
-            "index",
-          ],
-        ],
-      },
+    "jest-dom/prefer-checked": Array [
+      "error",
     ],
-    "jsx-a11y/accessible-emoji": Array [
+    "jest-dom/prefer-empty": Array [
+      "error",
+    ],
+    "jest-dom/prefer-enabled-disabled": Array [
+      "error",
+    ],
+    "jest-dom/prefer-focus": Array [
+      "error",
+    ],
+    "jest-dom/prefer-in-document": Array [
+      "error",
+    ],
+    "jest-dom/prefer-required": Array [
+      "error",
+    ],
+    "jest-dom/prefer-to-have-attribute": Array [
+      "error",
+    ],
+    "jest-dom/prefer-to-have-class": Array [
+      "error",
+    ],
+    "jest-dom/prefer-to-have-style": Array [
+      "error",
+    ],
+    "jest-dom/prefer-to-have-text-content": Array [
+      "error",
+    ],
+    "jest-dom/prefer-to-have-value": Array [
       "error",
     ],
     "jsx-a11y/alt-text": Array [
@@ -2044,9 +2189,6 @@ Object {
       },
     ],
     "jsx-a11y/aria-unsupported-elements": Array [
-      "error",
-    ],
-    "jsx-a11y/autocomplete-valid": Array [
       "error",
     ],
     "jsx-a11y/click-events-have-key-events": Array [
@@ -2580,9 +2722,6 @@ Object {
     "no-useless-concat": Array [
       "error",
     ],
-    "no-useless-escape": Array [
-      "error",
-    ],
     "no-useless-rename": Array [
       "warn",
     ],
@@ -2752,13 +2891,7 @@ Object {
     "react/no-deprecated": Array [
       "error",
     ],
-    "react/no-did-mount-set-state": Array [
-      "error",
-    ],
     "react/no-did-update-set-state": Array [
-      "error",
-    ],
-    "react/no-direct-mutation-state": Array [
       "error",
     ],
     "react/no-find-dom-node": Array [
@@ -2813,9 +2946,6 @@ Object {
       "error",
     ],
     "react/no-will-update-set-state": Array [
-      "error",
-    ],
-    "react/react-in-jsx-scope": Array [
       "error",
     ],
     "react/require-render-return": Array [
@@ -2897,16 +3027,20 @@ Object {
       "@typescript-eslint/parser": Array [
         ".ts",
         ".tsx",
+        ".d.ts",
       ],
     },
     "import/resolver": Object {
-      "node": Object {
+      "/Users/sebastian/Workspace/sebastian-software/effective-eslint-config-factory/node_modules/eslint-import-resolver-node/index.js": Object {
         "extensions": Array [
           ".js",
           ".jsx",
           ".ts",
           ".tsx",
         ],
+      },
+      "/Users/sebastian/Workspace/sebastian-software/effective-eslint-config-factory/node_modules/eslint-import-resolver-typescript/lib/index.cjs": Object {
+        "alwaysTryTypes": true,
       },
     },
     "propWrapperFunctions": Array [
